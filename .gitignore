@@ -1,6 +1,9 @@
 # Compiled files
 *.aux
 *.bbl
+*.bcf
+*.run.xml
+*.synctex*
 *.blg
 *.brf
 *.idx
