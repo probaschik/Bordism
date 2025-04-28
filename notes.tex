@@ -1,0 +1,109 @@
+\documentclass[a4paper]{article}
+\input{preamble.tex}
+\addbibresource{sources.bib}
+
+\begin{document}
+\maketitle
+\selectlanguage{english}
+\tableofcontents
+\newgeometry{
+	left=10mm, % left margin
+    top=20mm,
+	textwidth=150mm, % main text block
+	marginparsep=5mm, % gutter between main text block and margin notes
+	marginparwidth=40mm, % width of margin notes
+  bmargin=2cm % height of foot note space
+}
+
+\setcounter{section}{-1}
+
+\section{Introduction}
+
+\section{}
+
+
+\begin{definition}[]
+    \marginnote{This is the beginning of the first definition in Atiyah, I don't understand it yet\ldots Let's look in Br\"ocker now.}
+    If $X,Y$ are spaces with base points $x_0,y_0$, we denote by $[X,Y]$ the \emph{set of homotopy classes of maps} $(X,x_0)\to(Y,y_0)$. We have the suspension sequence 
+    \[[X,Y]\to[SX,SY]\to\dots\to[S^n X,S^n Y]\to\dots\]
+    in which all terms after the first two are abelian groups, the maps being then group homomorphisms.
+    Moreover we have an isomorphism 
+    \[[S^n X, S^n Y]\to[S^{n+1} X, S^{n+1} Y]\]
+    if $n+2$(connectivity $Y$)$\geq\dim X$\dots
+\end{definition}\cite[p.1]{atiyah}
+
+\begin{definition}[Manifold]\marginnote{Beginning of Br\"ocker, chapter 1, Difftopo. From here, many things are known from AnaGeo}
+  When we talk about a \demph{manifold} $M^n$, we will mean an $n$-dimensional, paracompact, smooth manifold (with or without boundary).
+  Its \demph{boundary} $\partial M^n$ of $M^n$ is a manifold without boundary and has dimension $n-1$.
+  A map $f:M\to N$ between two manifolds will always be, unless specified otherwise, smooth.
+\end{definition}\cite[p.1]{brocker}
+
+\begin{definition}[Tangent space]
+  The \demph{tangent vectors} of a manifold $M^n$ form an $n$-dimensional smooth vector bundle $\pi:TM^n\to M^n$, the \demph{tangent bundle} of $M^n$.
+  The \demph{fibre} $T_xM$ of $TM$ over $x\in M$ is isomorphism to $\mathbb{R}^n$.
+\end{definition}\cite[p.1]{brocker}
+
+\begin{definition}[Differential]\marginnote{Br\"ocker writes $Tf$, but I'll stick to C\^ot\'e's notation.}
+A map on manifolds $F:M\to N$ induces a smooth linear map $df:TM\to TN$ on tangent bundles, the \demph{differential of $f$}.
+So the tangent bundle is a functor between the categories $\mathrm{Man}^\infty$ and $\mathrm{vectbund}$
+\end{definition}\cite[p.1]{brocker}
+
+\begin{definition}[Immersion]
+  A map $f:M\to N$ is called an \demph{immersion}, if $df$ is injective on every fibre, i.e. $T_p f$ is injective for every $p\in M$. If an immersion is a homeomorphism onto its image, it is called an \demph{embedding}.
+\end{definition}\cite[p.1]{brocker}
+
+
+We know by Whitney, that a manifold of dimension $n$ can be embedded in $\mathbb{R}^{\geq2n+1}$. Precisely:
+\begin{theorem}[Weak Whitney's embedding theorem]
+  \marginnote{$g$ is an $\varepsilon$-approximation of $f$, if the distance of $f(x)$ and $g(x)$ is smaller than $\varepsilon(x)$ (given a metric). 
+  $f$ only needs to be continuous}
+  Let $\varepsilon:M^n\to\R$ be a strictly positive map, and $f:M^n\to\R^p$ a map for $p>2n$, 
+  which is an embedding in a neighbourhood of a closed subset $A\subset M^n$. 
+  Then there is a $\varepsilon$-approximation $g$ of $f$, with $g\restrict{A}=f\restrict{A}$, which is an embedding. 
+  In particular, there is an embedding $g:M^n\to\R^p$, such that $g(M^n)$ is closed in $\R^p$
+\end{theorem}\cite[p.1]{brocker}
+
+\begin{proof}
+  \marginnote{Still needed}
+  Unclear, if we need a proof here, we could copy one from AnaGeo\ldots
+\end{proof}
+
+\begin{theorem}
+  Let $f:M\to N$ continuous, and on a closed subset $A\subset M$ smooth. 
+  Let $\varepsilon:M\to\R$ be strictly positive and $N$ given a metric. 
+  Then there is a smooth $\varepsilon$-approximation $g:M\to N$ of $f$, with $g\restrict{A}=f\restrict{A}$.
+\end{theorem}\cite[p.2]{brocker}
+
+\begin{proof}
+  \marginnote{Still needed}
+  To be proven.
+\end{proof}
+
+\begin{definition}[Normal bundle]
+  \marginnote{$E$ is the normal space, we need $f$ for the scalar product on $\R^p$. It probably suffices to be a Riemannian manifold}
+  Let now $f:M\to\R^p$ be an embedding. For $f$, there is a \demph{normal bundle} $\nu_f:E(\nu_f)\to M$ of $f$.
+\end{definition}\cite[p.2]{brocker}
+
+Considering $M$ as a subset of $\R^p$ by $f$, the fibre of $\nu_f$ over $x\in M$ consists of the vectors $v\in\R^p$, which (w.r.t. the standard scalar product on $\R^p$), that are in $x$ orthogonal to $M$.
+
+
+The \demph{Whitney sum}\marginnote{Definition needed!} $\nu_f\oplus\pi$ of $\nu_f$ and the tangent bundle is trivial of dimension $p$ over $M$, as it is the restriction of the trivial bundle $T\R$ on $M^n$, 
+\[\nu_f\oplus\pi_M\cong\mathrm{pr}_1:M^n\times\R^p\to M^n\]
+
+\begin{theorem}
+  The inclusion
+  \[(\nu_f:E(\nu_f)\to M)\to(\mathrm{pr}_1:M\times\R^p\to M)\]
+  is a linear embedding of smooth vector bundles.
+\end{theorem}\cite[p.2]{brocker}
+
+\begin{proof}
+  \marginnote{missing.}
+  missing.
+\end{proof}
+
+
+\newpage\printbibliography
+
+
+
+\end{document}
