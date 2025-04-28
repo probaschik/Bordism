@@ -1,0 +1,32 @@
+# Compiled files
+*.aux
+*.bbl
+*.blg
+*.brf
+*.idx
+*.ilg
+*.ind
+*.lof
+*.log
+*.lot
+*.out
+*.toc
+*.synctex.gz
+*.fdb_latexmk
+*.fls
+
+# Intermediate and output files
+*.dvi
+*.ps
+
+# Editor-specific files
+*.swp
+*.swo
+*.bak
+*.tmp
+*~ 
+*.backup
+*.DS_Store
+
+# Directories
+_build/
