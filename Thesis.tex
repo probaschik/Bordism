@@ -1,0 +1,115 @@
+\documentclass[a4paper,11pt]{article}
+\input{preamble.tex}
+\addbibresource{sources.bib}
+
+\begin{document}
+\maketitle
+\selectlanguage{english}
+\tableofcontents
+\newgeometry{
+	left=10mm, % left margin
+    top=20mm,
+    right=10mm, % right margin
+	%textwidth=150mm, % main text block
+	%marginparsep=5mm, % gutter between main text block and margin notes
+	%marginparwidth=40mm, % width of margin notes
+  bmargin=2cm % height of foot note space
+}
+
+\setcounter{section}{-1}
+
+\section{Introduction/Motivation}
+
+Recall the definition of homotopy groups \(\pi_n(X)\) as the set of homotopy classes of maps from the \(n\)-sphere \(S^n\) to a space \(X\). 
+The problem with these groups is that they are generally hard to compute, even for simple spaces. 
+For example, the homotopy groups of spheres are not known in general.
+The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).
+
+\section{Basic Definitions}
+
+\begin{definition}[Manifold]
+    A \demph{smooth manifold with boundary} \(M=(M,[\mathcal{A}])\) is the data of a topological space \(M\) and an equivalence class \([\mathcal{A}]\) of smooth atlases such that:
+    \begin{itemize}
+        \item \(M\) is Hausdorff,
+        \item \(M\) is second countable,
+        \item \(\mathcal{A}\) is locally finite.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    In this thesis, with \emph{manifold} we will always mean a smooth manifold with boundary.
+\end{remark}
+
+\begin{definition}[Boundary]
+    The \demph{boundary} of a manifold \(M\) is the set of points \(x\in M\) such that there exists a chart \((U,\varphi)\) such that \(\varphi(U)\subseteq\mathbb{R}^n_+\). 
+    The boundary is denoted by \(\partial M\).
+\end{definition}
+
+\begin{example}[Standard \(n\)-disk]
+    The \demph{standard \(n\)-disk} is the set of points in \(\mathbb{R}^n\) such that \(|{x}|\leq1\). 
+    The boundary of the standard \(n\)-disk is the standard \((n-1)\)-sphere.
+    The standard \(n\)-disk is denoted by \(D^n\) and the standard \((n-1)\)-sphere is denoted by \(S^{n-1}\).
+\end{example}
+
+\begin{nonex}
+    Line with two origins
+\end{nonex}
+
+The problem with working with manifolds is that they are hard to classify up to homeomorphism or diffeomorphism.
+
+\section{Bordism}
+
+\begin{definition}[Singular manifold]
+\end{definition}
+
+\begin{definition}[nullbordant]
+\end{definition}
+
+\begin{example}
+\end{example}
+
+\begin{definition}[bordant]
+\end{definition}
+
+\begin{remark}
+    \[(M,f)+(\emptyset,g) \text{ are bordant} \iff (M,f) \text{ is nullbordant}\]
+\end{remark}
+
+\begin{example}
+\end{example}
+
+\begin{nonex}
+\end{nonex}
+
+\begin{proposition}
+    Being bordant is an equivalence relation on the set of singular manifolds.
+\end{proposition}
+
+\begin{proof}
+    \begin{itemize}
+        \item Reflexivity: \((M,f)\sim(M,f)\) is trivial.
+        \item Symmetry: If \((M,f)\sim(N,g)\), then \((N,g)\sim(M,f)\).
+        \item Transitivity: If \((M,f)\sim(N,g)\) and \((N,g)\sim(P,h)\), then \((M,f)\sim(P,h)\).
+    \end{itemize}
+\end{proof}
+
+\begin{definition}[bordism group]
+\end{definition}
+
+Observe the similarity with the definition of singular homology groups.
+
+\begin{theorem}
+    The bordism groups are abelian groups.
+\end{theorem}
+
+\begin{definition}[graded bordism ring]
+\end{definition}
+
+
+\section{Cobordism}
+
+classifying spaces, Thom spaces, Thom isomorphism, Thom class, Thom isomorphism theorem
+
+\section{Pontryagin-Thom Construction}
+
+\end{document}
