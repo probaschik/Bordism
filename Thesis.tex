@@ -29,15 +29,55 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 Testing citations:\cite{atiyah},\cite{brocker}, \cite{thom}, \cite{lee}, \cite{hatcher}, \cite{dieck}
 
 \section{Basic Definitions}
+Here, Examples still need to be added.
 
-Maybe I will split this definition into topological manifold, top. manifold with boundary, smooth manifold, smooth manifold with boundary..
+\begin{definition}[Topological manifold]
+    An \(n\)-dimensional \demph{topological manifold} is a topological space \(M\) such that:
+    \begin{itemize}
+        \item \(M\) is Hausdorff, (i.e.\ any two distinct points can be separated by disjoint open sets),
+        \item \(M\) is second countable, (i.e.\ there exists a countable basis for the topology of \(M\)),
+        \item \(M\) is locally Euclidean (i.e.\ every point in \(M\) has a neighbourhood homeomorphic to an open subspace of \(\mathbb{R}^n\)).
+    \end{itemize}
+    We will often write \(M^n\) for an \(n\)-dimensional manifold.
+\end{definition}\cite{lee}
 
 \begin{remark}
-    One could equivalently replace the condition of being second countable with the condition of being paracompact.
-    \[\text{second countable}\iff\text{paracompact and countably many connected components}\]
+    One could replace the condition of being second countable with the condition of being paracompact (i.e. every open cover of \(M\) admits a locally finite refinement). The following equivalence holds:
+    \[M\text{ is second countable}\iff M \text{ is paracompact and countably many connected components}\]
+    This is shown in \cite{lee}.
 \end{remark}
-Maybe I will add a definition of paracompactness later.
 
+\begin{definition}[(Smooth) Atlas]
+    Let \(M\) be a topological manifold. A \demph{(smooth) atlas} \(\mathcal{A}\) on \(M\) is a collection of smooth charts \((U_\alpha,\varphi_\alpha)\) such that:
+    \begin{itemize}
+        \item the \(\{U_\alpha\}\) cover \(M\),
+        \item the charts are pairwise smoothly compatible (i.e.\ the transition functions \(\varphi_j \circ \varphi_i^{-1}:\varphi_i(U_i\cap U_j)\to\varphi_j(U_i\cap U_j)\) are smooth)
+    \end{itemize}
+\end{definition}\cite{lee}
+
+\begin{definition}
+    Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still on atlas.
+\end{definition}\cite{lee}
+
+This is an equivalence relation. \cite{lee}
+
+\begin{definition}[Smooth manifold]
+    A \demph{smooth manifold} \(M=(M,[\mathcal{A}])\) consists of
+    \begin{itemize}
+        \item a topological manifold \(M\),
+        \item an equivalence class \([\mathcal{A}]\) of smooth atlases on \(M\).
+    \end{itemize}
+\end{definition}\cite{lee}
+
+\begin{remark}
+    While being a topological manifold is just a property of the topological space \(M\), begin a smooth manifold gives the manifold extra structure.
+\end{remark}
+
+\begin{definition}[Manifold with boundary]
+    To get a definition of a (smooth or topological) \demph{manifold with boundary}, replace the condition of the manifold being locally Euclidean with the condition that every point has a neighbourhood homeomorphic to an open subspace of \(\mathbb{H}^n:=\{(x_1,\dots,x_n)\in\mathbb{R}\mid x_1\geq0\}\) (the half space).
+\end{definition}\cite{lee}
+
+\begin{comment}
 \begin{definition}[Manifold]
     A \demph{smooth manifold with boundary} \(M=(M,[\mathcal{A}])\) is the data of a topological space \(M\) and an equivalence class \([\mathcal{A}]\) of smooth atlases such that:
     \begin{itemize}
@@ -46,19 +86,16 @@ Maybe I will add a definition of paracompactness later.
         \item \(\mathcal{A}\) is locally finite.
     \end{itemize}
 \end{definition}
-
-\begin{remark}
-    While being a topological manifold is just a property of the topological space \(M\), begin a smooth manifold gives the manifold extra structure.
-\end{remark}
+\end{comment}
 
 \begin{remark}
     In this thesis, with \emph{manifold} we will always mean a smooth manifold with boundary.
 \end{remark}
 
-\begin{definition}[Boundary]
-    The \demph{boundary} of a manifold \(M\) is the set of points \(x\in M\) such that there exists a chart \((U,\varphi)\) such that \(\varphi(U)\subseteq\mathbb{R}^n_+\). 
-    The boundary is denoted by \(\partial M\).
-\end{definition}
+\begin{definition}
+    A point \(x\in M^n\) is called a \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
+    If a manifold is compact and has empty boundary, it is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
+\end{definition}\cite{lee}
 
 \begin{example}[Standard \(n\)-disk]
     The \demph{standard \(n\)-disk} is the set of points in \(\mathbb{R}^n\) such that \(|{x}|\leq1\). 
@@ -70,27 +107,35 @@ Maybe I will add a definition of paracompactness later.
     The boundary of an \(n\)-dimensional manifold is an \((n-1)\)-dimensional submanifold.
 \end{remark}
 
+Maybe I will make a theorem out of this and add a proof.
+
 \begin{nonex}
     Line with two origins
 \end{nonex}
 
-The problem with working with manifolds is that they are hard to classify up to homeomorphism or diffeomorphism.
-
 \section{Bordism}
+
+The problem with working with manifolds is that they are hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is easier to work with.
 
 \subsection{unoriented bordism}
 
 \begin{definition}[Singular manifold]
-\end{definition}
+    Let \(X\) be a topological space. An \(n\)-dimensional \demph{singular manifold} in \(X\) is a pair \(M,f\) of a compact manifold \(M^n\) and a continuous map \(f:M\to X\).\\
+    The \demph{boundary} of a singular manifold is \(\partial(M,f):=(\partial M,f\restrict{\partial M})\).
+\end{definition}\cite{brocker}
 
-\begin{definition}[nullbordant]
-\end{definition}
+\begin{definition}[Nullbordant]
+    Let \((M,f)\) be a singular manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular manifold \((B,F)\), such that \(\partial(B,F)=(M,f)\).\\
+    \(B,F\) is then called a \demph{nullbordism} of \((M,f)\).\\
+\end{definition}\cite{brocker}
 
 \begin{example}
 \end{example}
 
 \begin{definition}[bordant]
-\end{definition}
+    Let \((M,f)\) and \((N,g)\) be singular manifolds in \(X\). We say that \((M,f)\) and \((N,g)\) are \demph{bordant}, if their sum \((M,f)+(N,g)=(M+N, (f,g)):=(M\amalg N, f\amalg g)\) is nullbordant.\\
+    A nullbordism of \((M,f)+(N,g)\) is called a \demph{bordism} between \((M,f)\) and \((N,g)\).
+\end{definition}\cite{brocker}
 
 \begin{remark}
     \[(M,f)+(\emptyset,g) \text{ are bordant} \iff (M,f) \text{ is nullbordant}\]
@@ -106,13 +151,15 @@ The problem with working with manifolds is that they are hard to classify up to 
     Being bordant is an equivalence relation on the set of singular manifolds.
 \end{proposition}
 
-\begin{proof}
+\begin{proof}\cite{brocker}
     \begin{itemize}
-        \item Reflexivity: \((M,f)\sim(M,f)\) is trivial.
-        \item Symmetry: If \((M,f)\sim(N,g)\), then \((N,g)\sim(M,f)\).
-        \item Transitivity: If \((M,f)\sim(N,g)\) and \((N,g)\sim(P,h)\), then \((M,f)\sim(P,h)\).
+        \item Symmetry: Follows from the symmetry of the disjoint union. If \((M,f)\) and \((N,g)\) are bordant, then there exists a nullbordism of \((M,f)+(N,g)=(M\amalg N, f\amalg g) = (N\amalg M, g\amalg f) = (N,g)+ (M,f)\). So, a bordism between \((M,f)\) and \((N,g)\) is also bordism between \((N,g)\) and \((M,f)\).
+        \item Reflexivity: Cylinder
+        \item Transitivity: Draw a picture
     \end{itemize}
 \end{proof}
+
+Check smooth structure!
 
 \begin{definition}[bordism group]
 \end{definition}
