@@ -176,6 +176,35 @@ Observe the similarity with the definition of singular homology groups.
 \subsection{The Eilenberg-Steenrod Axioms}
 The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology and cohomology theories.
 
+\begin{definition}[Homology theory \cite{lueck}]
+    A \demph{homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficiants in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
+    together with a natural transformation \[\partial_\ast:\mathcal{H}_\ast\to\mathcal{H}_{\ast-1}\circ I\]
+    
+    \begin{itemize}
+        \item \textbf{Homotopy invariance}\\
+        Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Then for all \(n\in\mathbb{Z}\), we have
+        \[\mathcal{H}_n(f)=\mathcal{H}_n(g):\mathcal{H}_n(X,A)\to\mathcal{H}_n(Y,B)\]
+        \item \textbf{Long exact sequence}\\
+        Let \((X,A)\) be a pair of spaces. Then for all \(n\in\mathbb{Z}\), we have the long exact sequence of homology groups:
+        \begin{align*}
+            \dots\xrightarrow{\partial_{n+1}(X,A)}\mathcal{H}_n(A)\xrightarrow{\mathcal{H}_n(i)}\mathcal{H}_n(X)\xrightarrow{\mathcal{H}_n(j)}\mathcal{H}_n(X,A)\xrightarrow{\partial_n(X,A)}\mathcal{H}_{n-1}(A)\to\dots
+        \end{align*}
+        \item \textbf{Excision}\\
+        Let \(A\subset B\subset X\) be subspaces of \(X\) such that \(\overline{A}\subset B^\circ\). Then the inclusion \(i:(X\setminus B,A\setminus B)\to(X,A)\) induces an isomorphism of homology groups for all \(n\in\mathbb{Z}\):
+        \[\mathcal{H}_n(i):\mathcal{H}_n(X\setminus A, B\setminus A)\xrightarrow{\cong}\mathcal{H}_n(X,B)\]
+    \end{itemize}
+    Sometimes one adds the following axioms:
+    \begin{itemize}
+        \item \textbf{Disjoin union axiom}\\
+        Let \(\{X_i\}_{i\in I}\) be a family of topological spaces. Let \(j_i:X_i\to\coprod_{i\in I}X_i\) be the inclusion. Then for all \(n\in\mathbb{Z}\), we have a bijection:
+        \[\bigoplus_{i\in I}\mathcal{H}_n(j_i):\bigoplus_{i\in I}\mathcal{H}_n(X_i)\xrightarrow{\cong}\mathcal{H}_n\left(\coprod_{i\in I}X_i\right)\]
+        \item \textbf{Dimension axiom}\\
+        For the point space \(\mathrm{pt}\), we have
+        \[\mathcal{H}_n(\mathrm{pt})\cong\begin{cases}R&n=0\\\{0\}&n\neq0\end{cases}\]
+        
+    \end{itemize}
+\end{definition}
+
 We will now calculate the bordism groups.
 
 \subsection{oriented bordism}
