@@ -26,7 +26,7 @@ The problem with these groups is that they are generally hard to compute, even f
 For example, the homotopy groups of spheres are not known in general.
 The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).
 
-Testing citations:\cite{atiyah},\cite{brocker}, \cite{thom}, \cite{lee}, \cite{hatcher}, \cite{dieck}
+Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatcher},\cite{dieck},\cite{lueck},\cite{luck}
 
 \section{Basic Definitions}
 Here, Examples still need to be added.
@@ -42,9 +42,9 @@ Here, Examples still need to be added.
 \end{definition}\cite{lee}
 
 \begin{remark}
-    One could replace the condition of being second countable with the condition of being paracompact (i.e. every open cover of \(M\) admits a locally finite refinement). The following equivalence holds:
+    One could replace the condition of being second countable with the condition of being paracompact (i.e.\ every open cover of \(M\) admits a locally finite refinement). The following equivalence holds:
     \[M\text{ is second countable}\iff M \text{ is paracompact and countably many connected components}\]
-    This is shown in \cite{lee}.
+    This is shown in\ \cite{lee}.
 \end{remark}
 
 \begin{definition}[(Smooth) Atlas]
@@ -59,7 +59,7 @@ Here, Examples still need to be added.
     Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still on atlas.
 \end{definition}\cite{lee}
 
-This is an equivalence relation. \cite{lee}
+This is an equivalence relation.\ \cite{lee}
 
 \begin{definition}[Smooth manifold]
     A \demph{smooth manifold} \(M=(M,[\mathcal{A}])\) consists of
@@ -173,11 +173,14 @@ Observe the similarity with the definition of singular homology groups.
 \begin{definition}[graded bordism ring]
 \end{definition}
 
+\begin{definition}[relative bordism]
+\end{definition}
+
 \subsection{The Eilenberg-Steenrod Axioms}
 The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology and cohomology theories.
 
-\begin{definition}[Homology theory \cite{lueck}]
-    A \demph{homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficiants in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
+\begin{definition}[Homology theory\ \cite{lueck}]
+    A \demph{homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficients in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
     together with a natural transformation \[\partial_\ast:\mathcal{H}_\ast\to\mathcal{H}_{\ast-1}\circ I\]
     
     \begin{itemize}
@@ -196,7 +199,7 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
     Sometimes one adds the following axioms:
     \begin{itemize}
         \item \textbf{Disjoin union axiom}\\
-        Let \(\{X_i\}_{i\in I}\) be a family of topological spaces. Let \(j_i:X_i\to\coprod_{i\in I}X_i\) be the inclusion. Then for all \(n\in\mathbb{Z}\), we have a bijection:
+        Let \({\{X_i\}}_{i\in I}\) be a family of topological spaces. Let \(j_i:X_i\to\coprod_{i\in I}X_i\) be the inclusion. Then for all \(n\in\mathbb{Z}\), we have a bijection:
         \[\bigoplus_{i\in I}\mathcal{H}_n(j_i):\bigoplus_{i\in I}\mathcal{H}_n(X_i)\xrightarrow{\cong}\mathcal{H}_n\left(\coprod_{i\in I}X_i\right)\]
         \item \textbf{Dimension axiom}\\
         For the point space \(\mathrm{pt}\), we have
@@ -205,6 +208,24 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
     \end{itemize}
 \end{definition}
 
+\begin{theorem}
+    Bordism defines a homology theory satisfying the disjoint union axiom.
+\end{theorem}
+
+\begin{proof}
+    
+    We will check the axioms one by one.
+\end{proof}
+
+\begin{observation}
+    Bordism does not satisfy the dimension axiom.
+\end{observation}
+
+\begin{theorem}
+    There is a natural equivalence of homology theories
+    \[\mathfrak{N}_\ast(--)\xrightarrow{\cong}\mathcal{H}_\ast(--,\mathbf{MO})\]
+\end{theorem}
+
 We will now calculate the bordism groups.
 
 \subsection{oriented bordism}
@@ -212,7 +233,7 @@ We will now calculate the bordism groups.
 \begin{definition}[vector bundle]
 \end{definition}
 
-\begin{definition}[orientable]
+\begin{definition}[orientation]
 \end{definition}
 
 \begin{definition}[bordant]
@@ -222,6 +243,11 @@ We will now calculate the bordism groups.
 \end{definition}
 
 \section{Cobordism}
+
+\begin{definition}[Thom space\cite{brocker}]
+    Let \(\xi:E\to B\) be a real \(k\)-dimensional vector bundle over a compact manifold \(B\).
+    Then the Thom space of \(\xi\) is defined as\[\mathrm{Th}(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.
+\end{definition}
 
 classifying spaces, Thom spaces, Thom isomorphism, Thom class, Thom isomorphism theorem
 
