@@ -212,10 +212,37 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
     Bordism defines a homology theory satisfying the disjoint union axiom.
 \end{theorem}
 
-\begin{proof}
-    
+To see this, we will first define relative bordism.
+
+\begin{definition}[relative bordism \cite{dieck}]
+    Let \((X,A)\) be a pair of topologicel spaces. The elements of \(\mathfrak{N}_n(X,A)\) are represented by maps \(F:(M,\partial M)\to (X,A)\) from a compact \(n\)-manifold \(M\). \(M,f\) is called a singular manifold in \((X,A)\). A bordism between \((M_0,f_0)\) and \(M_1,f_1\) is a singular manifold \(B,F\), such that
+    \begin{itemize}
+        \item \(B\) is a compact \(n+1\)-manifold with boundary,
+        \item \(\partial B=\)
+    \end{itemize}
+\end{definition}
+
+\begin{proof}\cite{brocker}\\
     We will check the axioms one by one.
+    \begin{itemize}
+        \item \textbf{Bordism is a functor}\\
+              \[\mathfrak{N}_\ast:\mathrm{TOP}\to\text{graded }\mathfrak{N}_\ast\text{-modules}\]
+              is a covariant functor.\\
+              On morphisms: Let \(f:X\to Y\) be a continuous map. Then\[\mathfrak{N}_n(f)=f_\ast:\mathfrak{N}_n(X)\to\mathfrak{N}_n(Y)\]
+        \item \textbf{Homotopy invariance}\\
+              If \(f,g:X\to Y\) are homotopic, then \(\mathfrak{N}_n(f)=\mathfrak{N}_n(g)\).\\
+              Let \([M,h]\in\mathfrak{N}_n(X)\), \(F:X\times I\to Y\) a homotopy between \(f\) and \(g\). Then, \((M\times I,F\circ(h\times\mathrm{id}_I))\) is a bordism between \(f_\ast[M,h]\) and \(g_\ast[M,h]\).\\
+        \item \textbf{Long exact sequence}\\
+        \item \textbf{Excision}\\
+        \item \textbf{Disjoint union axiom}\\
+    \end{itemize}
 \end{proof}
+Maybe it is smarter to split this up in many lemmas, one for each axiom.
+
+\begin{definition}[seperating function\cite{brocker}]
+\end{definition}
+
+
 
 \begin{observation}
     Bordism does not satisfy the dimension axiom.
@@ -235,6 +262,8 @@ We will now calculate the bordism groups.
 
 \begin{definition}[orientation]
 \end{definition}
+
+orientation bundle
 
 \begin{definition}[bordant]
 \end{definition}
