@@ -11,6 +11,7 @@
 \usepackage{csquotes}
 \usepackage[backend=biber, style=alphabetic, sorting=nty]{biblatex}
 \usepackage{BA_Titelseite}
+\usepackage{ulem}
 
 %Namen des Verfassers der Arbeit
 \author{Paul Jin Robaschik}
@@ -37,10 +38,11 @@
 %Do not change!
 \ausarbeitungstyp{Bachelorarbeit Mathematik}
 
-
+\theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+
+\theoremstyle{plain}
 \newtheorem{theorem}[definition]{Theorem}
-\newtheorem*{remark}{Remark}
 \newtheorem{proposition}[definition]{Proposition}
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
@@ -48,7 +50,13 @@
 \newtheorem*{nonex}{Non-example}
 \newtheorem*{observation}{Observation}
 
+\theoremstyle{remark}
+\newtheorem*{remark}{Remark}
 
-\newcommand{\demph}[1]{{\underline{{\textbf{#1}}}}}
+
+
+
+
+\newcommand{\demph}[1]{{{{\textbf{#1}}}}}
 \newcommand{\restrict}[1]{_{|_{#1}}}
 \def\R{\mathbb{R}}
