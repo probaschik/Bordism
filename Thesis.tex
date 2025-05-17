@@ -6,7 +6,9 @@
 \begin{document}
 \maketitle
 \selectlanguage{english}
-\tableofcontents
+\tableofcontents\newpage
+
+\begin{comment}
 \newgeometry{
 	left=20mm, % left margin
     top=25mm,
@@ -16,6 +18,7 @@
 	%marginparwidth=40mm, % width of margin notes
   bmargin=2cm % height of foot note space
 }
+\end{comment}
 
 \setcounter{section}{-1}
 
@@ -118,6 +121,7 @@ Maybe I will make a theorem out of this and add a proof.
 The problem with working with manifolds is that they are hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is easier to work with.
 
 \subsection{unoriented bordism}
+\subsubsection{Definitions}
 Examples need to be added here, too.
 
 \begin{definition}[Singular manifold\ \cite{brocker}]\label{singular manifold}
@@ -192,7 +196,7 @@ Observe the similarity with the definition of singular homology groups.
 
 As a \(\mathbb{Z}\)-graded module over \(\mathfrak{N}_\ast\)
 
-\subsection{The Eilenberg-Steenrod Axioms}
+\subsubsection{The Eilenberg-Steenrod Axioms}\label{es axioms}
 The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology and cohomology theories.
 
 \begin{definition}[Homology theory\ \cite{luck}]
@@ -214,7 +218,7 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
     \end{itemize}
     Sometimes one adds the following axioms:
     \begin{itemize}
-        \item \textbf{Disjoin union axiom}\\
+        \item \textbf{Disjoint union axiom}\\
         Let \({\{X_i\}}_{i\in I}\) be a family of topological spaces. Let \(j_i:X_i\to\coprod_{i\in I}X_i\) be the inclusion. Then for all \(n\in\mathbb{Z}\), we have a bijection:
         \[\bigoplus_{i\in I}\mathcal{H}_n(j_i):\bigoplus_{i\in I}\mathcal{H}_n(X_i)\xrightarrow{\cong}\mathcal{H}_n\left(\coprod_{i\in I}X_i\right)\]
         \item \textbf{Dimension axiom}\\
@@ -222,9 +226,12 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
         \[\mathcal{H}_n(\mathrm{pt})\cong\begin{cases}R&n=0\\\{0\}&n\neq0\end{cases}\]
         
     \end{itemize}
+    For homology theories, the abbreviation \(\mathcal{H}_\ast\) is often used to refer to \(\mathcal{H}_\ast(\{\mathrm{pt}\},\emptyset)\).
 \end{definition}
 
 Before we can say that bordism defines a homology theory, we need to define relative bordism.
+
+\subsubsection{relative bordism}
 
 \begin{definition}[relative bordism\ \cite{dieck}]
     For a pair of topological spaces \((X,A)\), we call a \((M,f)=(M,\partial,f)\) a \demph{singular manifold in }\(X\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
@@ -266,7 +273,9 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
     \[g(\partial B\setminus(M_0\cup N_1))=g((M_1\setminus N_1)\cup(\partial M\times I))=f(M\setminus N)\cup f(\partial M)\subseteq A\] 
 \end{proof}
 
-\begin{lemma}\cite{brocker} 
+\subsubsection{Bordism homology}
+
+\begin{lemma}\cite{brocker} \label{functoriality}
     Relative bordism is a covariant functor \[\mathfrak{N}_\ast:\mathrm{TOP}^2\to\text{graded \(\mathfrak{N}_\ast\)modules}\]
 \end{lemma}
 
@@ -279,6 +288,8 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
     Then we get that \(\mathfrak{N}_\ast(\mathrm{id}_{(X,A)})=\mathrm{id}_{\mathfrak{N}_\ast(X,A)}\) and for \(f:(X,A)\to(Y,B), g:(Y,B)\to(Z,C)\), we have for any \([M,h]\in\mathfrak{N}_\ast(X,A)\):
     \[(g\circ f)_\ast[M,h]=[M,g\circ f\circ h]=g_\ast[M,f\circ h]=g_\ast\circ f_\ast[M,h]\]
 \end{proof}
+
+Need to add: Naturality of the boundary map
 
 \begin{lemma}[Homotopy invariance]\cite{brocker}\label{htpy inv}
     \(\mathfrak{N}_\ast\) is homotopy invariant.
@@ -358,7 +369,7 @@ In the above (nonexistent yet, may look into Connor,Floyd) proof, a smooth \(\al
     \[\partial N\subseteq \partial M\cup \alpha^{-1}(r)\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\]
 \end{lemma}
 
-\begin{lemma}[Excision axiom]\ \cite{zhang}
+\begin{lemma}[Excision axiom]\ \cite{zhang}\label{excision}
     Let \(X,A,Z\) be a triple of topological spaces satisfying \(\overline{Z}\subseteq\overset{\circ}{A}\). Then the inclusion map \(i:(X\setminus Z,A\setminus Z)\hookrightarrow(X,A)\) induces an isomorphism of bordism groups:
     \[i_\ast:\mathfrak{N}_n(X\setminus Z,A\setminus Z)\xrightarrow{\cong}\mathfrak{N}_n(X,A)\]
 \end{lemma}
@@ -374,7 +385,7 @@ In the above (nonexistent yet, may look into Connor,Floyd) proof, a smooth \(\al
 
 Now it already follows that bordism is a homology theory. Let let's take a look at the other axioms too.
 
-\begin{lemma}[Disjoint union axiom]
+\begin{lemma}[Disjoint union axiom]\label{disjoint union}
     The disjoint union axiom holds for bordism.
 \end{lemma}
 
@@ -384,20 +395,36 @@ Now it already follows that bordism is a homology theory. Let let's take a look 
     is an isomorphism.
 \end{proof}
 
-\begin{theorem}
-    Bordism defines a homology theory satisfying the disjoint union axiom.
-\end{theorem}
-
 \begin{observation}
     Bordism does not satisfy the dimension axiom.
 \end{observation}
 
+Now we can finally conclude:
+
+\begin{theorem}
+    Bordism defines a homology theory satisfying the disjoint union axiom.
+\end{theorem}
+
+\begin{proof}
+    This follows directly from the lemmas\ \ref{functoriality},\ \ref{htpy inv},\ \ref{les},\ \ref{excision} and\ \ref{disjoint union}.
+    The only axiom that does not hold is the dimension axiom.\\
+\end{proof}
+
+
+Unsure if I will include this theorem, but certainly not here, rather later.
 \begin{theorem}
     There is a natural equivalence of homology theories
     \[\mathfrak{N}_\ast(--)\xrightarrow{\cong}\mathcal{H}_\ast(--,\mathbf{MO})\]
 \end{theorem}
 
+\subsubsection{Calculations}
+
 We will now calculate the bordism groups.
+
+Of points
+
+Of spheres
+
 
 \subsection{oriented bordism}
 
@@ -416,13 +443,61 @@ orientation bundle
 \end{definition}
 
 \section{Cobordism}
+Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual theory, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
 
+\subsection{Unoriented cobordism}
+
+\subsubsection{Definitions}
+
+\begin{definition}[Classifying space]
+\end{definition}
+
+I might adjust this to be more like\ \cite{thom}'s definition.
 \begin{definition}[Thom space\cite{brocker}]
     Let \(\xi:E\to B\) be a real \(k\)-dimensional vector bundle over a compact manifold \(B\).
     Then the Thom space of \(\xi\) is defined as\[\mathrm{Th}(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.
 \end{definition}
 
-classifying spaces, Thom spaces, Thom isomorphism, Thom class, Thom isomorphism theorem
+\begin{theorem}[Suspension sequence]
+    Let \(X, Y\) be pointed spaces. We denote by \([X,Y]^\circ\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
+    \[[X,Y]\to[\sus{X},\sus{Y}]\to\dots\to[\sus^n{X},\sus^n{Y}]\] 
+\end{theorem}
+
+Not sure if I am to include a proof of Freudenthal. (Wouldn't hurt I guess)
+\begin{theorem}[Freudenthal suspension theorem]
+\end{theorem}
+
+\begin{lemma}\cite{thom}
+    The natural map
+    \[\sus\{MSO(n)\}\to MSO(n+1)\]
+    induces isomorphisms of homotopy groups \(\pi_{n+1}\) for \(n\) large.
+\end{lemma}
+
+\begin{corollary}\cite{atiyah}
+    For a finite CW-complex \(X\) with basepoint, \[[X,\sus\{MSO(n)\}]\to[X,MSO(n+1)]\] is bijective for \(n\) large.
+\end{corollary}
+
+\subsubsection{The Eilenberg-Steenrod axioms}
+To get a definition for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in \ref{es axioms}.\\
+
+\begin{definition}[Cohomology theory\ \cite{luck}]
+    A \demph{cohomology theory} \(\mathcal{H}^\ast=(\mathcal{H}^\ast,\partial^\ast)\) with coefficients in \(R\)-modules is a contravariant functor \[\mathcal{H}^\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\] together with a natural transformation \[\partial^\ast:\mathcal{H}^\ast\circ I\to\mathcal{H}^{\ast+1}\] satisfying the following axioms:
+    \begin{itemize}
+        \item \textbf{Homotopy invariance}
+        \item \textbf{Long exact sequence}
+        \item \textbf{Excision}
+    \end{itemize}
+    Sometimes one adds the following axioms:
+    \begin{itemize}
+        \item \textbf{Disjoint union axiom}
+        \item \textbf{Dimension axiom}
+    \end{itemize}
+\end{definition}
+
+\subsubsection{Bordism cohomology}
+\subsubsection{Calculations}
+
+Thom isomorphism, Thom class, Thom isomorphism theorem
 
 %\section{Pontryagin-Thom Construction}
 
