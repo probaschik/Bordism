@@ -34,7 +34,7 @@ Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatc
 \section{Basic Definitions}
 Here, Examples still need to be added.
 
-\begin{definition}[Topological manifold\ \cite{lee}]
+\begin{definition}[Topological manifold\ {\cite[pp.2-3]{lee}}]
     An \(n\)-dimensional \demph{topological manifold} is a topological space \(M\) such that:
     \begin{itemize}
         \item \(M\) is Hausdorff, (i.e.\ any two distinct points can be separated by disjoint open sets),
@@ -47,10 +47,10 @@ Here, Examples still need to be added.
 \begin{remark}
     One could replace the condition of being second countable with the condition of being paracompact (i.e.\ every open cover of \(M\) admits a locally finite refinement). The following equivalence holds:
     \[\text{second countable}\iff \text{paracompact and countably many connected components}\]
-    This is shown in\ \cite{lee}.
+    %This is shown in\ \cite{lee}. --- It is not :(
 \end{remark}
 
-\begin{definition}[(Smooth) Atlas\ \cite{lee}]
+\begin{definition}[(Smooth) Atlas\ {\cite[p.12]{lee}}]
     Let \(M\) be a topological manifold. A \demph{(smooth) atlas} \(\mathcal{A}\) on \(M\) is a collection of smooth charts \((U_\alpha,\varphi_\alpha)\) such that:
     \begin{itemize}
         \item the \(\{U_\alpha\}\) cover \(M\),
@@ -58,13 +58,13 @@ Here, Examples still need to be added.
     \end{itemize}
 \end{definition}
 
-\begin{definition}[Equivalence of atlases\ \cite{lee}]
+\begin{definition}[Equivalence of atlases]
     Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still on atlas.
 \end{definition}
 
-This is an equivalence relation.\ \cite{lee}
+This is an equivalence relation. --- Sadly, Lee does this over maximal atlases. So I need a different citation.
 
-\begin{definition}[Smooth manifold\ \cite{lee}]
+\begin{definition}[Smooth manifold\ {\cite[p.13]{lee}}]
     A \demph{smooth manifold} \(M=(M,[\mathcal{A}])\) consists of
     \begin{itemize}
         \item a topological manifold \(M\),
@@ -76,7 +76,7 @@ This is an equivalence relation.\ \cite{lee}
     While being a topological manifold is just a property of the topological space \(M\), begin a smooth manifold gives the manifold extra structure.
 \end{remark}
 
-\begin{definition}[Manifold with boundary\ \cite{lee}]
+\begin{definition}[Manifold with boundary\ {\cite[p.25]{lee}}]
     To get a definition of a (smooth or topological) \demph{manifold with boundary}, replace the condition of the manifold being locally Euclidean with the condition that every point has a neighbourhood homeomorphic to an open subspace of \(\mathbb{H}^n:=\{(x_1,\dots,x_n)\in\mathbb{R}\mid x_1\geq0\}\) (the half space).
 \end{definition}
 
@@ -95,7 +95,7 @@ This is an equivalence relation.\ \cite{lee}
     In this thesis, with \emph{manifold} we will always mean a smooth manifold with boundary.
 \end{remark}
 
-\begin{definition}[Boundary\ \cite{lee}]
+\begin{definition}[Boundary\ {\cite[p.25]{lee}}]
     A point \(x\in M^n\) is called a \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
     If a manifold is compact and has empty boundary, it is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
 \end{definition}
@@ -124,12 +124,12 @@ The problem with working with manifolds is that they are hard to classify up to 
 \subsubsection{Definitions}
 Examples need to be added here, too.
 
-\begin{definition}[Singular manifold\ \cite{brocker}]\label{singular manifold}
+\begin{definition}[Singular manifold\ {\cite[II, Definition 1.1]{brocker}}]\label{singular manifold}
     Let \(X\) be a topological space. An \(n\)-dimensional \demph{singular manifold} in \(X\) is a pair \(M,f\) of a compact manifold \(M^n\) and a continuous map \(f:M\to X\).\\
     The \demph{boundary} of a singular manifold is \(\partial(M,f):=(\partial M, \partial f):=(\partial M,f\restrict{\partial M})\).
 \end{definition}
 
-\begin{definition}[Nullbordant\ \cite{brocker}]
+\begin{definition}[Nullbordant\ {\cite[II, Definition 1.2]{brocker}}]
     Let \((M,f)\) be a singular manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular manifold \((B,F)\), such that \(\partial(B,F)=(M,f)\).
 
     \(B,F\) is then called a \demph{nullbordism} of \((M,f)\).
@@ -138,7 +138,7 @@ Examples need to be added here, too.
 \begin{example}
 \end{example}
 
-\begin{definition}[Bordant\ \cite{brocker}]\label{bordant}
+\begin{definition}[Bordant\ {\cite[II, Definition 1.3]{brocker}}]\label{bordant}
     Let \((M,f)\) and \((N,g)\) be singular manifolds in \(X\). We say that \((M,f)\) and \((N,g)\) are \demph{bordant}, if their sum \((M,f)+(N,g):=(M+N, (f,g)):=(M\amalg N, f\amalg g)\) is nullbordant.
 
     A nullbordism of \((M,f)+(N,g)\) is called a \demph{bordism} between \((M,f)\) and \((N,g)\).
@@ -157,7 +157,7 @@ We will sometimes refer to this relation as \demph{bordism relation}.
 \begin{nonex}
 \end{nonex}
 
-\begin{proposition}
+\begin{proposition}\cite[II, Satz 1.4]{brocker}
     Being bordant is an equivalence relation on the set of singular manifolds.
 \end{proposition}
 
@@ -171,7 +171,7 @@ We will sometimes refer to this relation as \demph{bordism relation}.
 
 Check smooth structure!
 
-\begin{definition}[bordism group\ \cite{brocker}]
+\begin{definition}[bordism group\ {\cite[II, Definition 1.5]{brocker}}]
     The equivalence classes of the bordism relation are called \demph{bordism classes} and are denoted by \([M,f]\).
     The set of bordism classes of \(n\)-dimensional singular manifolds in \(X\) is denoted by \(\mathfrak{N}_n(X)\) and is called the \(n\)\demph{-th bordism group of }\(X\).
     \[\mathfrak{N}_n=\{\text{singular \(n\)-manifolds in \(X\)}\}\big/\text{bordism}\]
@@ -179,7 +179,7 @@ Check smooth structure!
 
 Observe the similarity with the definition of singular homology groups.
 
-\begin{theorem}\ \cite{brocker}
+\begin{theorem}\ \cite[II, Satz 2.1]{brocker}
     The bordism groups are abelian groups with the operation defined in\ \ref{bordant}:
     \[[M_1,f_1]+[M_2,f_2]=[M_1+M_2,(f_1,f_2)]\]
     Every element in this group has order at most \(2\), making \(\mathfrak{N}_n(X)\) a \(\mathbb{F}_2\)-vector space.
@@ -193,7 +193,33 @@ Observe the similarity with the definition of singular homology groups.
     Since being bordant is a reflexive, every element is its own inverse.
 \end{proof}
 
-\begin{definition}[graded bordism ring, module]
+Let \(X,Y\) be two topological spaces. Then we define a product map
+\[\cdot:\mathfrak{N}_p(X)\times\mathfrak{N}_q(Y)\to\mathfrak{p+q}(X\times Y)\]
+as
+\[((M,f),(N,g))\mapsto (M\times N,f\times g)\]
+
+\begin{remark}
+    Check: Well-definedness, bilinearity
+\end{remark}
+
+For \(X=\{\mathrm{pt}\}\), we write \(\mathfrak{N}_n(X)\) as \(\mathfrak{N}_n\) and for elements of \(\mathfrak{N}_n\), we will omit the map from the notation (\([M]=[M,f]\)).
+
+\begin{definition}[graded bordism ring\ {\cite[Satz 2.2]{brocker}}]
+    \[\mathfrak{N}_\ast:=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n\]
+    is a graded ring over \(\mathbb{F}_2\) and is called the \demph{bordism ring}.
+\end{definition}
+
+\begin{remark}
+    As \(\mathbb{F}_2\) is a field, \(\mathfrak{N}_\ast\) is a graded vector space over \(\mathbb{F}_2\).
+\end{remark}
+
+Maybe do a quick check.
+
+\begin{definition}[graded bordism module\ {\cite[Satz 2.3]{brocker}}]
+    \[\mathfrak{N}_\ast(X):=\bigoplus_{n\in\mathbb{Z}}\]
+    is a graded module over \(\mathfrak{N}_\ast\) via
+    \[[M]\cdot[N,f]=[M\times N, f\circ \mathrm{pr}_2]\]
+    where \(\mathrm{pr}_2:M\times N\to N\) is the projection onto the second factor.
 \end{definition}
 
 As a \(\mathbb{Z}\)-graded module over \(\mathfrak{N}_\ast\)
@@ -201,7 +227,7 @@ As a \(\mathbb{Z}\)-graded module over \(\mathfrak{N}_\ast\)
 \subsubsection{The Eilenberg-Steenrod Axioms}\label{es axioms}
 The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology and cohomology theories.
 
-\begin{definition}[Homology theory\ \cite{luck}]
+\begin{definition}[Homology theory\ {\cite[Definition 1.1]{luck}}]
     A \demph{homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficients in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
     together with a natural transformation \[\partial_\ast:\mathcal{H}_\ast\to\mathcal{H}_{\ast-1}\circ I\]
     
@@ -235,7 +261,7 @@ Before we can say that bordism defines a homology theory, we need to define rela
 
 \subsubsection{relative bordism}
 
-\begin{definition}[relative bordism\ \cite{dieck}]
+\begin{definition}[relative bordism\ {\cite[pp.524-525]{dieck}}]
     For a pair of topological spaces \((X,A)\), we call a \((M,f)=(M,\partial,f)\) a \demph{singular manifold in }\(X\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
     Two singular manifolds \((M_0,f_0)\) and \((M_1,f_1)\) in \(X\) are called \demph{bordant}, if there exists a singular manifold \((B,F)\) in \(X\), such that:
     \begin{itemize}
@@ -254,7 +280,7 @@ Before we can say that bordism defines a homology theory, we need to define rela
     Disks on sphere
 \end{example}
 
-\begin{theorem}\cite{dieck}
+\begin{theorem}\cite[p.525]{dieck}
     Relative bordism is an equivalence relation on the set of singular manifolds in \(X\).
 \end{theorem}
 
@@ -264,8 +290,8 @@ Maybe do a proof or just say that it is similar to the proof of the bordism rela
 relative bordism groups are graded modules in the same way. They are denoted by \(\mathfrak{N}_\ast(X,A)\).
 If \(A=\emptyset\), the definition coincides with the definition of bordism groups.
 
-\begin{lemma}\label{almost excision}\cite{zhang}
-    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(N\) a embedded submanifold, such that \([V,f\restrict{}{V}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). Then \([M,f]=[V,f\restrict{V}]\) in \(\mathfrak{N}_n(X,A)\).
+\begin{lemma}\label{almost excision}\cite[Lemma 5.1]{zhang} %maybe dieck 21.1.8 is better
+    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(V\) a embedded submanifold, such that \([V,f\restrict{}{V}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). Then \([M,f]=[V,f\restrict{V}]\) in \(\mathfrak{N}_n(X,A)\).
 \end{lemma}
 
 \begin{proof}\cite{zhang}
@@ -277,7 +303,7 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
 
 \subsubsection{Bordism homology}
 
-\begin{lemma}\cite{brocker}\label{functoriality}
+\begin{lemma}\cite[II, Satz 3.2]{brocker}\label{functoriality}
     Relative bordism is a covariant functor \[\mathfrak{N}_\ast:\mathrm{TOP}^2\to\text{graded \(\mathfrak{N}_\ast\)modules}\]
 \end{lemma}
 
@@ -293,7 +319,7 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
 
 Need to add: Naturality of the boundary map
 
-\begin{lemma}[Homotopy invariance]\cite{brocker}\label{htpy inv}
+\begin{lemma}[Homotopy invariance]\cite[II, Satz 3.1]{brocker}\label{htpy inv}
     \(\mathfrak{N}_\ast\) is homotopy invariant.
 \end{lemma}
 
@@ -303,9 +329,11 @@ Need to add: Naturality of the boundary map
 
 Maybe do an example here. (Special case Cylinder done before showing that bordism is an equivalence relation)
 
-\begin{lemma}[Long exact sequence]\label{les}\cite{dieck}
+\begin{lemma}[Long exact sequence\ {\cite[Proposition 21.1.9]{dieck}}]\label{les}
     \(\mathfrak{N}_\ast\) satisfies the long exact sequence axiom.
 \end{lemma}
+
+Compare with\ \cite{zhang}!
 
 \begin{proof}\cite{dieck}
     Let \(i,j\) be the inclusion maps \(i:A\to X, j:X=(X,\emptyset)\to(X,A)\).\\
@@ -313,11 +341,18 @@ Maybe do an example here. (Special case Cylinder done before showing that bordis
     \[\dots\xrightarrow{\partial}\mathfrak{N}_n(A)\xrightarrow{i_\ast}\mathfrak{N}_n(X)\xrightarrow{j_\ast}\mathfrak{N}_n(X,A)\xrightarrow{\partial}\mathfrak{N}_{n-1}(A)\xrightarrow{i_\ast}\dots\]
     is exact.
     \begin{itemize}
-        \item \textbf{Exactness at \(\mathfrak{N}_n(A)\)}
-        \item \textbf{Exactness at \(\mathfrak{N}_n(X)\)}
-        \item \textbf{Exactness at \(\mathfrak{N}_n(X,A)\)}
+        \item \textbf{Exactness at \(\mathfrak{N}_n(A)\)} From the definitions, \(i_\ast\circ \partial=0\).\\
+        If \((B,F)\) is a nullbordism of \(f:M\to A\) in \(X\), then \(\partial[B,F]=[M,f]\)
+        \item \textbf{Exactness at \(\mathfrak{N}_n(X)\)} Let \([M,f]\in\mathfrak{N}_n(A)\). Choose \(V=\emptyset\) and use\ \ref{almost excision} to get \([M,f]=0\) in \(\mathfrak{N}_n(X,A)\), so \(j_\ast\circ i_\ast=0\).\\
+        Now let \([M,f]\in\mathfrak{N}_n(X)\) such that \(j_\ast([M,f])=0\). A nullbordism of \([M,f]\) in \(X,A\) is a bordism between \(M,f\) and \(N,g\) with \(g(N)\subset A\). Then \(i_\ast[N,g]=[M,f]\) follows.
+        \item \textbf{Exactness at \(\mathfrak{N}_n(X,A)\)} Again, \(\partial \circ i_\ast=0\) follows from the definitions.\\
+        Let \(\partial[M,f]=0\), \([B,F]\) be a nullbordism of \(\partial M, f\restrict{\partial M}\).Identify \((M,f)\) and \((B,f)\) along \(\partial M\). Call the resulting singular manifold \((C,g)\). Now with\ \ref{almost excision}, get \(j_\ast[C,g]=[M,f]\).
     \end{itemize}
 \end{proof}
+
+\begin{theorem}[Sard's theorem\ {\cite{lee}}]\label{sard}
+    The set of critical values has measure zero.
+\end{theorem}
 
 \begin{comment}[Transversality, Sard, Mayer-Vi\"etoris,...]
 Before checking the next axioms, we need to do some more differential topology. (Maybe I will put this in chapter 1\dots)
@@ -357,7 +392,7 @@ I will not prove this theorem, a proof can be found in\ \cite{lee}.
 
 We only need to check the excision axiom now to see that bordism is a homology theory. But to see the excision property, we need some preliminary lemmas.
 
-\begin{lemma}\cite{zhang}\label{plemma}
+\begin{lemma}[{\cite[Lemma 5.6]{zhang}}]\label{plemma}
     Let \(K,L\subseteq M\) be disjoint closed subsets of a compact manifold \(M\). Then there exists a closed submanifold with boundary \(N\subseteq M\) with \(K\subseteq N, L\cap N=\emptyset\).
 \end{lemma}
 
@@ -366,12 +401,12 @@ We only need to check the excision axiom now to see that bordism is a homology t
 
 In the above (nonexistent yet, may look into Connor,Floyd) proof, a smooth \(\alpha\) with regular value \(r\) is constructed.
 
-\begin{lemma}[\cite{zhang}]\label{plemma2}
+\begin{lemma}[{\cite[Lemma 5.8]{zhang}}]\label{plemma2}
     Let \(K,L,M,N\) be as in\ \ref{plemma}. Then,
     \[\partial N\subseteq \partial M\cup \alpha^{-1}(r)\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\]
 \end{lemma}
 
-\begin{lemma}[Excision axiom]\ \cite{zhang}\label{excision}
+\begin{lemma}[Excision axiom\ {\cite[Theorem 5.10]{zhang}}]\label{excision}
     Let \(X,A,Z\) be a triple of topological spaces satisfying \(\overline{Z}\subseteq\overset{\circ}{A}\). Then the inclusion map \(i:(X\setminus Z,A\setminus Z)\hookrightarrow(X,A)\) induces an isomorphism of bordism groups:
     \[i_\ast:\mathfrak{N}_n(X\setminus Z,A\setminus Z)\xrightarrow{\cong}\mathfrak{N}_n(X,A)\]
 \end{lemma}
@@ -382,19 +417,29 @@ In the above (nonexistent yet, may look into Connor,Floyd) proof, a smooth \(\al
     As \(f^{-1}(X\setminus\overset{\circ}A)\), we get \(f(M\setminus N)\subseteq \overset{\circ}A\). By\ \ref{almost excision}, we get \(i_\ast[N,f\restrict{N}]=[M,f]\)\\
     \textbf{Injectivity}: Take \([M,f]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) such that \(i_\ast[M,f]=0\) in \(\mathfrak{N}_n(X,A)\). Then there exists an (\(n+1\))-manifold \(B\) and \(g:B\to X\), such that \(M\) is an embedded submanifold of \(\partial B\), \(g(\partial B\setminus M)\subseteq A\) and \(g\restrict{M}=f\).\\
     Again, let \(K=g^{-1}(X\setminus\overset{\circ}A)\), \(L=g^{-1}(\overline{Z})\). Then we have an embedded submanifold \(W\subseteq B\) such that \(K\subseteq W\), \(W\cap L=\emptyset\). So \([\partial W,g\restrict{\partial B}]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) nullbordant.\\
-    Still a bit to show\ \ldots
+    \emph{Claim}: \(M\cap\partial B=M\cap B\). \enquote{\(\subseteq\)} is clear. For \enquote{\(\supseteq\)}, take \(p\in M\cap B\). Then \(p\in\partial W\), so there exists a chart \(\varphi:U\to\mathbb{H}^{n+1}\) such that \(\varphi(p)\in\partial\mathbb{H}^{n+1}\). So, \(p\in\partial B\).\\
+    Then \(M\cap\partial B\) is an embedded submanifold of \(M\), because
+    \begin{equation}\label{*}
+        M\cap\partial B= M\cap B={(\alpha\restrict{M})}^{-1}([0,r])
+    \end{equation}
+    and we can assume that \(r\) is a regular value, because of\ \ref{sard}. Now we can see that \((M\cap\partial B,f\restrict{M\cap\partial B})\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\): \(f(M\cap\partial B)\subseteq f(M)\subseteq X\setminus Z\) and \(f(\partial(M\cap\partial B))\subseteq A\setminus Z\) because of\ \ref{*} and \ref{plemma2}, as \(\partial(M\cap\partial B)\subseteq\partial M\cup(K^c\cap L^c)\).\\
+    \textit{Claim}: \([M,f]=[M\cap B,f\restrict{M\cap B}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\). By\ \ref{almost excision}, it is enough to show that \(f(M\setminus(M\cap B))=f(M\setminus \partial(M\cap B))\subseteq A\setminus Z\). Let \(p\in M\setminus\partial B=M\setminus B\), then \(f(p)\in X\setminus Z\) because \(p\in M\), and \(f(p)\in\overset{\circ}A\), because \(p\notin B\). The claim follows.\\
+    By the same argument, \([M\cap B,f\restrict{M\cap B}]=[\partial B,g\restrict{\partial B}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\). Since \(M\cap B\) is an embedded submanifold of \(M\), it is also an embedded submanifold of \(\partial B\). Now, it is enough to show that \(g(\partial B\setminus(M\cap B))=g(\partial B\setminus M)\subseteq A\setminus Z\) We know \(\partial B\subseteq\partial W\cup(K^c\cap L^c)\). Let \(p\in\partial B\setminus M\), then either \(p\in(K^c\cap L^c)\setminus M\) or \(p\in\partial W\setminus M\). In the first case, we are done. In the second case, we know \(p\notin L\), because \(B,Q\) are disjoint. So, \(g(p)\notin\overline{Z}\). By assumption, we have \(g(\partial W\setminus M)\subseteq A\), so \(g(p)\in A\). \(\Rightarrow g(p)\in A\setminus Z\). In total, we have shown that \((M,f), (M\cap B,f\restrict{M\cap B}), (\partial B,g\restrict{\partial B})\) are bordant, so nullbordant, since the last one is nullbordant in \(\mathfrak{N}_n(X\setminus Z,A\setminus Z)\), so \([M,f]=0\) in \(\mathfrak N_n(X\setminus Z,A\setminus Z)\).
 \end{proof}
 
 Now it already follows that bordism is a homology theory. Let let's take a look at the other axioms too.
 
-\begin{lemma}[Disjoint union axiom]\label{disjoint union}
+\begin{lemma}[Disjoint union axiom\ {\cite[Theorem 5.3]{zhang}}]\label{disjoint union}
     The disjoint union axiom holds for bordism.
 \end{lemma}
 
 \begin{proof}\cite{zhang}
     We need to show that 
     \[\bigoplus_{i\in I}\mathfrak{N}_n(j_i):\bigoplus_{i\in I}\mathfrak{N}_n(X_i)\to\mathfrak{N}_n\left(\coprod_{i\in I}X_i\right)\] 
-    is an isomorphism.
+    is an isomorphism.\\
+    \textbf{Injectivity}:
+    \\
+    \textbf{Surjectivity}:
 \end{proof}
 
 \begin{observation}
@@ -492,16 +537,16 @@ No proof.
     induces isomorphisms of homotopy groups \(\pi_{n+1}\) for \(n\) large.
 \end{lemma}
 
-\begin{corollary}\cite{atiyah}
+\begin{corollary}[{\cite[p.201]{atiyah}}]
     For a finite CW-complex \(X\) with basepoint, \[[X,\sus\{MSO(n)\}]\to[X,MSO(n+1)]\] is bijective for \(n\) large.
 \end{corollary}
 
-\begin{lemma}\cite{atiyah}
+\begin{lemma}[{\cite[p.201]{atiyah}}]
     Let \(Y\) be a subcomplex of a CW-complex \(X\). Then from\ \ref{suspension} and\ \ref{natural map}, we get a map
     \[[\sus^{n-k}(X\big/ Y),MSO(n)]\to[\sus^{n+1-k}(X\big/Y, MSO(n+1))]\]
 \end{lemma}
 
-\begin{definition}[relative oriented cobordism group\ \cite{atiyah}]
+\begin{definition}[relative oriented cobordism group\ {\cite[p.201]{atiyah}}]
     Let \((X,Y)\) be a pair of spaces, then for \(k\in\mathbb{Z}\), the \(k\)\demph{-th oriented cobordism group} is
     \[MSO^k(X,Y)=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),MSO(n)]\]
     with respect to the above map.
@@ -510,7 +555,7 @@ No proof.
 \subsubsection{The Eilenberg-Steenrod axioms}
 To get a definition for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in\ \ref{es axioms}.
 
-\begin{definition}[Cohomology theory\ \cite{luck}]
+\begin{definition}[Cohomology theory\ {\cite[Definition 5.2]{luck}}]
     A \demph{cohomology theory} \(\mathcal{H}^\ast=(\mathcal{H}^\ast,\partial^\ast)\) with coefficients in \(R\)-modules is a contravariant functor \[\mathcal{H}^\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\] together with a natural transformation \[\partial^\ast:\mathcal{H}^\ast\circ I\to\mathcal{H}^{\ast+1}\] satisfying the following axioms:
     \begin{itemize}
         \item \textbf{Homotopy invariance}
