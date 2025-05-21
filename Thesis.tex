@@ -437,14 +437,20 @@ Now it already follows that bordism is a homology theory. Let let's take a look 
     We need to show that 
     \[\bigoplus_{i\in I}\mathfrak{N}_n(j_i):\bigoplus_{i\in I}\mathfrak{N}_n(X_i)\to\mathfrak{N}_n\left(\coprod_{i\in I}X_i\right)\] 
     is an isomorphism.\\
-    \textbf{Injectivity}:
+    \textit{Claim}: \[\iota:\bigoplus_{i\in I}[M_i,f_i]\mapsto \left[\coprod_{i\in I}M_i,\coprod_{i\in I} f_i\right]\]
+    gives us the desired isomorphism.\\
+    \textbf{Well-definedness}: All but finitely many \([M_i,f_i]\) are \(0\). So we can assume that \(\coprod M_i\) is a finite disjoint union of compact manifolds, so it is compact.
+    \textbf{Injectivity}: Suppose \(\iota\left(\bigoplus[M_i,f_i]\right)=0\) in \(\mathfrak{N}_n(\coprod X)\). Then there exists a nullbordism \(W,g\) of it. \(W\) as a space is the disjoint union \(\coprod W_i:=\coprod g^{-1}(X_i)\), all of the \(W_i\) being open and closed in \(W\). Hence, \(W_i\) are compact, and manifolds. Also, \(\partial(W_i,g\restrict{W_i})=(M_i,f_i)\), so all the \((M_i,f_i)\) are nullbordant and the sum \(\bigoplus[M_i,f_i]=0\).
     \\
-    \textbf{Surjectivity}:
+    \textbf{Surjectivity}: Suppose \([M,f]\in\mathfrak{N}_n(\coprod X_i)\). As in the proof of injectivity, we can write \(M=\coprod M_i:=f^{-1}(X_i)\), with all \(M_i\) compact manifolds. Then a preimage of \([M,f]\) under \(\iota\) is \(\bigoplus[M_i,f\restrict{M_i}]\).
 \end{proof}
 
 \begin{observation}
-    Bordism does not satisfy the dimension axiom.
+    Bordism does not satisfy the dimension axiom.\\
+    \textit{Check}: Compute \(\mathfrak{N}_2\). We know a classification of compact \(2\)-manifolds. They are either homeomorphic to \(S^2\), \(\mathbb{T}^2\), \(\mathbb{RP}^2\) or a connected sum of these. We have already seen that \(S^2\) and \(\mathbb{T}^2\) are nullbordant. For \(\mathbb{RP}^2\), however, we have that \(\chi(\mathbb{RP}^2)=1\). But we have that boundaries of manifolds always have even euler characteristic {\cite[Proposition 18.6.2]{dieck}}, so \(\mathbb{RP}^2\) cannot be nullbordant and \(\mathfrak{N}_2\) cannot be \(0\). In fact, \([\mathbb{RP}^2]\) is the generator of \(\mathfrak{N}_2\cong\mathbb{F}_2\)
 \end{observation}
+
+I could include a definition for the connected sum...
 
 Now we can finally conclude:
 
@@ -468,7 +474,14 @@ This theorem should probably be done after cobordism.
 
 We will now calculate the bordism groups.
 
-Of points
+\begin{align*}
+    \mathfrak N_0 &\cong \mathbb F_2\\
+    \mathfrak N_1 &\cong \{0\}\\
+    \mathfrak N_2 &\cong \mathbb F_2\\
+    \mathfrak N_3 &\cong \{0\}\\
+    \mathfrak N_4 &\cong \mathbb F_2\oplus\mathbb F_2\\
+    \mathfrak N_5 &\cong \mathbb F_2
+\end{align*}
 
 Of spheres
 
