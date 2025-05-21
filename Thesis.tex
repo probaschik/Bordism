@@ -39,14 +39,14 @@ Here, Examples still need to be added.
     \begin{itemize}
         \item \(M\) is Hausdorff, (i.e.\ any two distinct points can be separated by disjoint open sets),
         \item \(M\) is second countable, (i.e.\ there exists a countable basis for the topology of \(M\)),
-        \item \(M\) is locally Euclidean (i.e.\ every point in \(M\) has a neighborhood homeomorphic to an open subspace of \(\mathbb{R}^n\)).
+        \item \(M\) is locally Euclidean (i.e.\ every point in \(M\) has a neighbourhood homeomorphic to an open subspace of \(\mathbb{R}^n\)).
     \end{itemize}
     We will often write \(M^n\) for an \(n\)-dimensional manifold.
 \end{definition}
 
 \begin{remark}
     One could replace the condition of being second countable with the condition of being paracompact (i.e.\ every open cover of \(M\) admits a locally finite refinement). The following equivalence holds:
-    \[M\text{ is second countable}\iff M \text{ is paracompact and countably many connected components}\]
+    \[\text{second countable}\iff \text{paracompact and countably many connected components}\]
     This is shown in\ \cite{lee}.
 \end{remark}
 
@@ -96,7 +96,7 @@ This is an equivalence relation.\ \cite{lee}
 \end{remark}
 
 \begin{definition}[Boundary\ \cite{lee}]
-    A point \(x\in M^n\) is called a \demph{interior point} if it admits a neighborhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
+    A point \(x\in M^n\) is called a \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
     If a manifold is compact and has empty boundary, it is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
 \end{definition}
 
@@ -120,7 +120,7 @@ Maybe I will make a theorem out of this and add a proof.
 
 The problem with working with manifolds is that they are hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is easier to work with.
 
-\subsection{unoriented bordism}
+\subsection{Unoriented bordism}
 \subsubsection{Definitions}
 Examples need to be added here, too.
 
@@ -130,15 +130,17 @@ Examples need to be added here, too.
 \end{definition}
 
 \begin{definition}[Nullbordant\ \cite{brocker}]
-    Let \((M,f)\) be a singular manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular manifold \((B,F)\), such that \(\partial(B,F)=(M,f)\).\\
-    \(B,F\) is then called a \demph{nullbordism} of \((M,f)\).\\
+    Let \((M,f)\) be a singular manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular manifold \((B,F)\), such that \(\partial(B,F)=(M,f)\).
+
+    \(B,F\) is then called a \demph{nullbordism} of \((M,f)\).
 \end{definition}
 
 \begin{example}
 \end{example}
 
 \begin{definition}[Bordant\ \cite{brocker}]\label{bordant}
-    Let \((M,f)\) and \((N,g)\) be singular manifolds in \(X\). We say that \((M,f)\) and \((N,g)\) are \demph{bordant}, if their sum \((M,f)+(N,g):=(M+N, (f,g)):=(M\amalg N, f\amalg g)\) is nullbordant.\\
+    Let \((M,f)\) and \((N,g)\) be singular manifolds in \(X\). We say that \((M,f)\) and \((N,g)\) are \demph{bordant}, if their sum \((M,f)+(N,g):=(M+N, (f,g)):=(M\amalg N, f\amalg g)\) is nullbordant.
+
     A nullbordism of \((M,f)+(N,g)\) is called a \demph{bordism} between \((M,f)\) and \((N,g)\).
 \end{definition}
 
@@ -185,7 +187,7 @@ Observe the similarity with the definition of singular homology groups.
 
 \begin{proof}
     \ \cite{brocker}
-    The neutral element is the bordism class of the empty manifold (i.e. the class of all nullbordant manifolds).\\
+    The neutral element is the bordism class of the empty manifold (i.e.\ the class of all nullbordant manifolds).\\
     \enquote{+} is associative and commutative, because the disjoint union is associative and commutative.\\
     It is well-defined: by + of the two bordisms.\\
     Since being bordant is a reflexive, every element is its own inverse.
@@ -241,11 +243,11 @@ Before we can say that bordism defines a homology theory, we need to define rela
         \item \(\partial B=\partial_0B\cup\partial_1B\cup\partial_2B\) such that \\
                 \(\partial(\partial_2B)=\partial(\partial_0B)\amalg\partial(\partial_1B)\) and
                 for \(i\in\{0,1\}\), \(\partial_i B\cap\partial_2B=\partial(\partial_i B)\)
-        \item There are diffeomorphisms \(g:(M_i,f_i)\xrightarrow{\cong}(\partial_iB,\partial(\partial_iB))\) for \(i\in\{0,1\}\) such that \(\partial F\circ g_i=\partial f_i\)\\
+        \item There are diffeomorphisms \(g:(M_i,f_i)\xrightarrow{\cong}(\partial_{i} B,\partial(\partial_{i}B))\) for \(i\in\{0,1\}\) such that \(\partial F\circ g_i=\partial f_i\)\\
         \(\partial f_i, \partial g_i, \partial F_i\) are as defined in\ \ref{singular manifold}.
         \item \(F(\partial_2B)\subseteq A\)
     \end{itemize}
-    As before, \(B,F\) will be called a \demph{bordism} between \((M_0,f_0)\) and \((M_1,f_1)\) and a \demph{nullbordism} of \(M_0,f_0\) if \(M_1=\emptyset\)\\
+    As before, \(B,F\) will be called a \demph{bordism} between \((M_0,f_0)\) and \((M_1,f_1)\) and a \demph{nullbordism} of \(M_0,f_0\) if \(M_1=\emptyset\).
 \end{definition}
 
 \begin{example}
@@ -260,7 +262,7 @@ Maybe do a proof or just say that it is similar to the proof of the bordism rela
 
 
 relative bordism groups are graded modules in the same way. They are denoted by \(\mathfrak{N}_\ast(X,A)\).
-If \(A=\emptyset\), the definition coincides with the definition of bordism groups.\\
+If \(A=\emptyset\), the definition coincides with the definition of bordism groups.
 
 \begin{lemma}\label{almost excision}\cite{zhang}
     Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(N\) a embedded submanifold, such that \([V,f\restrict{}{V}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). Then \([M,f]=[V,f\restrict{V}]\) in \(\mathfrak{N}_n(X,A)\).
@@ -270,12 +272,12 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
     We need to show that \((M,f)\) and \((N,f\restrict{N})\) are bordant.\\
     Let \(B=M\times I\) the cylinder. \(\partial B= \underbrace{M\times\{0\}}_{M_0}\cup \underbrace{M\times\{1\}}_{M_1}\cup \partial M\times I\). Define \(g:B\to X\) as \(g(p,t)=f(p)\).\\
     Writing \(M_1=(M_1\setminus N_1)\cup N_1\), we get that \(M\times I\) is a bordism between \(M\) and \(N\), because
-    \[g(\partial B\setminus(M_0\cup N_1))=g((M_1\setminus N_1)\cup(\partial M\times I))=f(M\setminus N)\cup f(\partial M)\subseteq A\] 
+    \[g(\partial B\setminus(M_0\cup N_1))=g((M_1\setminus N_1)\cup(\partial M\times I))=f(M\setminus N)\cup f(\partial M)\subseteq A\]
 \end{proof}
 
 \subsubsection{Bordism homology}
 
-\begin{lemma}\cite{brocker} \label{functoriality}
+\begin{lemma}\cite{brocker}\label{functoriality}
     Relative bordism is a covariant functor \[\mathfrak{N}_\ast:\mathrm{TOP}^2\to\text{graded \(\mathfrak{N}_\ast\)modules}\]
 \end{lemma}
 
@@ -286,7 +288,7 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
     \[f_\ast:=\mathfrak{N}_\ast(f):\mathfrak{N}_\ast(X,A)\to\mathfrak{N}_\ast(Y,B)\]
     given by \(f_\ast[M,g]=[M,f\circ g]\) for \([M,g]\in\mathfrak{N}_n(X,A)\) and \(n\in\mathbb{N}\).\\
     Then we get that \(\mathfrak{N}_\ast(\mathrm{id}_{(X,A)})=\mathrm{id}_{\mathfrak{N}_\ast(X,A)}\) and for \(f:(X,A)\to(Y,B), g:(Y,B)\to(Z,C)\), we have for any \([M,h]\in\mathfrak{N}_\ast(X,A)\):
-    \[(g\circ f)_\ast[M,h]=[M,g\circ f\circ h]=g_\ast[M,f\circ h]=g_\ast\circ f_\ast[M,h]\]
+    \[{(g\circ f)}_{\ast}[M,h]=[M,g\circ f\circ h]=g_\ast[M,f\circ h]=g_\ast\circ f_\ast[M,h]\]
 \end{proof}
 
 Need to add: Naturality of the boundary map
@@ -308,8 +310,8 @@ Maybe do an example here. (Special case Cylinder done before showing that bordis
 \begin{proof}\cite{dieck}
     Let \(i,j\) be the inclusion maps \(i:A\to X, j:X=(X,\emptyset)\to(X,A)\).\\
     Claim: The sequence
-    \[\dots,\xrightarrow{\partial}\mathfrak{N}_n(A)\xrightarrow{i_\ast}\mathfrak{N}_n(X)\xrightarrow{j_\ast}\mathfrak{N}_n(X,A)\xrightarrow{\partial}\mathfrak{N}_{n-1}(A)\xrightarrow{i_\ast}\dots\]
-    is exact.\\
+    \[\dots\xrightarrow{\partial}\mathfrak{N}_n(A)\xrightarrow{i_\ast}\mathfrak{N}_n(X)\xrightarrow{j_\ast}\mathfrak{N}_n(X,A)\xrightarrow{\partial}\mathfrak{N}_{n-1}(A)\xrightarrow{i_\ast}\dots\]
+    is exact.
     \begin{itemize}
         \item \textbf{Exactness at \(\mathfrak{N}_n(A)\)}
         \item \textbf{Exactness at \(\mathfrak{N}_n(X)\)}
@@ -365,7 +367,7 @@ We only need to check the excision axiom now to see that bordism is a homology t
 In the above (nonexistent yet, may look into Connor,Floyd) proof, a smooth \(\alpha\) with regular value \(r\) is constructed.
 
 \begin{lemma}[\cite{zhang}]\label{plemma2}
-    Let \(K,L,M,N\) be as in \ref{plemma}. Then,
+    Let \(K,L,M,N\) be as in\ \ref{plemma}. Then,
     \[\partial N\subseteq \partial M\cup \alpha^{-1}(r)\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\]
 \end{lemma}
 
@@ -380,7 +382,7 @@ In the above (nonexistent yet, may look into Connor,Floyd) proof, a smooth \(\al
     As \(f^{-1}(X\setminus\overset{\circ}A)\), we get \(f(M\setminus N)\subseteq \overset{\circ}A\). By\ \ref{almost excision}, we get \(i_\ast[N,f\restrict{N}]=[M,f]\)\\
     \textbf{Injectivity}: Take \([M,f]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) such that \(i_\ast[M,f]=0\) in \(\mathfrak{N}_n(X,A)\). Then there exists an (\(n+1\))-manifold \(B\) and \(g:B\to X\), such that \(M\) is an embedded submanifold of \(\partial B\), \(g(\partial B\setminus M)\subseteq A\) and \(g\restrict{M}=f\).\\
     Again, let \(K=g^{-1}(X\setminus\overset{\circ}A)\), \(L=g^{-1}(\overline{Z})\). Then we have an embedded submanifold \(W\subseteq B\) such that \(K\subseteq W\), \(W\cap L=\emptyset\). So \([\partial W,g\restrict{\partial B}]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) nullbordant.\\
-    Still a bit to show...
+    Still a bit to show\ \ldots
 \end{proof}
 
 Now it already follows that bordism is a homology theory. Let let's take a look at the other axioms too.
@@ -411,7 +413,7 @@ Now we can finally conclude:
 \end{proof}
 
 
-Unsure if I will include this theorem, but certainly not here, rather later.
+This theorem should probably be done after cobordism.
 \begin{theorem}
     There is a natural equivalence of homology theories
     \[\mathfrak{N}_\ast(--)\xrightarrow{\cong}\mathcal{H}_\ast(--,\mathbf{MO})\]
@@ -440,34 +442,51 @@ orientation bundle
 \end{definition}
 
 \begin{definition}[oriented bordism group]
+    \[\Omega_n(X)\]
 \end{definition}
 
 \section{Cobordism}
 Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual theory, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
+I should give a explanation of how \(O(n)\) (real bundles) and \(SO(n)\) (oriented real bundles) come into play.
 
-\subsection{Unoriented cobordism}
+\subsection{Cobordism}
 
 \subsubsection{Definitions}
 
+Maybe I will not need this
 \begin{definition}[Classifying space]
+    Let \(G\) be a topological group. The \demph{classifying space} \(BG\) of \(G\) is the 
 \end{definition}
+
+\begin{observation}
+    \[BO(n)=\mathbb{G}_{k,\infty}\]
+    \[BSO(n)=\widetilde{\mathbb{G}}_{k,\infty}\]
+\end{observation}
 
 I might adjust this to be more like\ \cite{thom}'s definition.
 \begin{definition}[Thom space\cite{brocker}]
     Let \(\xi:E\to B\) be a real \(k\)-dimensional vector bundle over a compact manifold \(B\).
-    Then the Thom space of \(\xi\) is defined as\[\mathrm{Th}(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.
+    Then the Thom space of \(\xi\) is defined as\[M(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.
 \end{definition}
 
-\begin{theorem}[Suspension sequence]
-    Let \(X, Y\) be pointed spaces. We denote by \([X,Y]^\circ\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
+\begin{definition}[\(MO(n), MSO(n)\)\ \cite{brocker}]
+    \[MO(n):=M(\xi_{n,\infty})\] with \(\xi_{n,\infty}\) being the universal real vector bundle over \(\mathbb{G}_{k,\infty}\).
+    \[MSO(n):=  \]
+\end{definition}
+Maybe it is enough to just say that these are called this way because the Grassmannians are the classifying spaces of \(O(n), SO(n)\) instead of defining classifying spaces.
+
+\begin{theorem}[Suspension sequence]\label{suspension}
+    Let \(X, Y\) be pointed spaces. We denote by \({[X,Y]}^\circ\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
     \[[X,Y]\to[\sus{X},\sus{Y}]\to\dots\to[\sus^n{X},\sus^n{Y}]\] 
 \end{theorem}
 
-Not sure if I am to include a proof of Freudenthal. (Wouldn't hurt I guess)
-\begin{theorem}[Freudenthal suspension theorem]
+
+\begin{theorem}[Freudenthal suspension theorem]\label{freudenthal}
 \end{theorem}
 
-\begin{lemma}\cite{thom}
+No proof.
+
+\begin{lemma}\label{natural map}\cite{thom}
     The natural map
     \[\sus\{MSO(n)\}\to MSO(n+1)\]
     induces isomorphisms of homotopy groups \(\pi_{n+1}\) for \(n\) large.
@@ -477,8 +496,19 @@ Not sure if I am to include a proof of Freudenthal. (Wouldn't hurt I guess)
     For a finite CW-complex \(X\) with basepoint, \[[X,\sus\{MSO(n)\}]\to[X,MSO(n+1)]\] is bijective for \(n\) large.
 \end{corollary}
 
+\begin{lemma}\cite{atiyah}
+    Let \(Y\) be a subcomplex of a CW-complex \(X\). Then from\ \ref{suspension} and\ \ref{natural map}, we get a map
+    \[[\sus^{n-k}(X\big/ Y),MSO(n)]\to[\sus^{n+1-k}(X\big/Y, MSO(n+1))]\]
+\end{lemma}
+
+\begin{definition}[relative oriented cobordism group\ \cite{atiyah}]
+    Let \((X,Y)\) be a pair of spaces, then for \(k\in\mathbb{Z}\), the \(k\)\demph{-th oriented cobordism group} is
+    \[MSO^k(X,Y)=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),MSO(n)]\]
+    with respect to the above map.
+\end{definition}
+
 \subsubsection{The Eilenberg-Steenrod axioms}
-To get a definition for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in \ref{es axioms}.\\
+To get a definition for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in\ \ref{es axioms}.
 
 \begin{definition}[Cohomology theory\ \cite{luck}]
     A \demph{cohomology theory} \(\mathcal{H}^\ast=(\mathcal{H}^\ast,\partial^\ast)\) with coefficients in \(R\)-modules is a contravariant functor \[\mathcal{H}^\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\] together with a natural transformation \[\partial^\ast:\mathcal{H}^\ast\circ I\to\mathcal{H}^{\ast+1}\] satisfying the following axioms:
@@ -495,6 +525,8 @@ To get a definition for cohomology theories, intuitively, we \enquote{reverse al
 \end{definition}
 
 \subsubsection{Bordism cohomology}
+Again, we will check the axioms one by one.
+
 \subsubsection{Calculations}
 
 Thom isomorphism, Thom class, Thom isomorphism theorem
@@ -502,5 +534,4 @@ Thom isomorphism, Thom class, Thom isomorphism theorem
 %\section{Pontryagin-Thom Construction}
 
 \newpage\printbibliography%
-
 \end{document}
