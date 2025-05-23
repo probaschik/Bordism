@@ -194,7 +194,7 @@ Observe the similarity with the definition of singular homology groups.
 \end{proof}
 
 Let \(X,Y\) be two topological spaces. Then we define a product map
-\[\cdot:\mathfrak{N}_p(X)\times\mathfrak{N}_q(Y)\to\mathfrak{p+q}(X\times Y)\]
+\[\cdot:\mathfrak{N}_p(X)\times\mathfrak{N}_q(Y)\to\mathfrak{N}_{p+q}(X\times Y)\]
 as
 \[((M,f),(N,g))\mapsto (M\times N,f\times g)\]
 
@@ -216,13 +216,15 @@ For \(X=\{\mathrm{pt}\}\), we write \(\mathfrak{N}_n(X)\) as \(\mathfrak{N}_n\) 
 Maybe do a quick check.
 
 \begin{definition}[graded bordism module\ {\cite[Satz 2.3]{brocker}}]
-    \[\mathfrak{N}_\ast(X):=\bigoplus_{n\in\mathbb{Z}}\]
+    \[\mathfrak{N}_\ast(X):=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n(X)\]
     is a graded module over \(\mathfrak{N}_\ast\) via
     \[[M]\cdot[N,f]=[M\times N, f\circ \mathrm{pr}_2]\]
     where \(\mathrm{pr}_2:M\times N\to N\) is the projection onto the second factor.
 \end{definition}
 
-As a \(\mathbb{Z}\)-graded module over \(\mathfrak{N}_\ast\)
+\begin{remark}
+    Notice that in this definition, this is a right module, but since we could just project to the first factor instead, we also get a left module structure.
+\end{remark}
 
 \subsubsection{The Eilenberg-Steenrod Axioms}\label{es axioms}
 The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology and cohomology theories.
@@ -259,10 +261,10 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
 
 Before we can say that bordism defines a homology theory, we need to define relative bordism.
 
-\subsubsection{relative bordism}
+\subsubsection{Relative bordism}
 
 \begin{definition}[relative bordism\ {\cite[pp.524-525]{dieck}}]
-    For a pair of topological spaces \((X,A)\), we call a \((M,f)=(M,\partial,f)\) a \demph{singular manifold in }\(X\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
+    For a pair of topological spaces \((X,A)\), we call a \((M,f)=(M,\partial M,f)\) a \demph{singular manifold in }\(X\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
     Two singular manifolds \((M_0,f_0)\) and \((M_1,f_1)\) in \(X\) are called \demph{bordant}, if there exists a singular manifold \((B,F)\) in \(X\), such that:
     \begin{itemize}
         \item \((B,F)\) is a (\(n+1\))-dimensional compact manifold with boundary,
@@ -323,6 +325,7 @@ Need to add: Naturality of the boundary map
     \(\mathfrak{N}_\ast\) is homotopy invariant.
 \end{lemma}
 
+This proof is in the absolute case! I need the relative case! (Look in the AT script).
 \begin{proof}\cite{brocker}
     Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Let \(F:X\times I\to Y\) be a homotopy between \(f\) and \(g\). Then we have a bordism between \(f_\ast[M,h]\) and \(g_\ast[M,h]\) by \((M\times I, F\circ (h\times\mathrm{id}_I))\).
 \end{proof}
@@ -485,23 +488,109 @@ We will now calculate the bordism groups.
 
 Of spheres
 
+\subsection{More basic definitions}
 
-\subsection{oriented bordism}
+\begin{definition}[Tangent space]
+\end{definition}
+I probably need this already before. (Along with tangent bundle)
+
+\begin{definition}[Orientation on vector spaces]
+\end{definition}
+
+\begin{definition}[Pointwise orientation on manifolds]
+\end{definition}
+
+\begin{definition}[Local frame]
+\end{definition}
+Maybe also need global frame.
+
+\begin{definition}[Continuous orientation]
+\end{definition}
+
+\begin{definition}[Orientation on manifolds]
+\end{definition}
+
+\begin{definition}[Oriented manifold\ {\cite[p.380]{lee}}]
+    An \demph{oriented manifold} is the pair \((M,\mathcal{O})\), of an orientable manifold \(M\) and a choice of orientation \(\mathcal{O}\) on \(M\).
+    We will often write just \(M\) for an oriented manifold.
+\end{definition}
 
 \begin{definition}[vector bundle]
+    To be put somewhere else
 \end{definition}
 
-\begin{definition}[orientation]
+Maybe I should say something about orientations covers\dots
+
+\subsection{Oriented bordism}
+
+\subsubsection{Definitions}
+Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)). Also I am unsure if I need a twofold cover (and a \(\mathbb{Z}\big/2\mathbb{Z}\)-principal bundle) of/over \(X\)..
+
+Now, we have defined additional structure on manifolds.
+We will adapt our definition of bordism to respect the additional structure.\\
+The Definition of singular manifolds stays the same, but we additionally require \(M\) to be oriented now.
+
+\begin{definition}[bordant\ {\cite[p.526]{dieck}}, {\cite[p.202]{atiyah}}]
+    Two closed singular oriented \(n\)-manifolds \((M_0,f_0),(M_1,f_1)\) are called \demph{bordant}, if there exists a singular oriented \(n+1\)-manifold \((B,g)\) with oriented boundary such that \(\partial (B,g) = (M_1,f_1)-(M_0,f_0)\). \((M_1,f_1)-(M_0,f_0)\) is defined as
+    \[(M_1,f_1)-(M_0,f_0)=(M_1,f_1)+((M_0,-\mathcal{O}_0),f_0),\]
+    where \(\mathcal{O}_0\) is the orientation on \(M_0\). \((B,g)\) is then called a \demph{oriented bordism} between \((M_0,f_0)\) and \((M_1,f_1)\).
 \end{definition}
 
-orientation bundle
+\begin{remark}
+    The definition of being nullbordant follows if we take one of the singular oriented manifolds to be empty.
+\end{remark}
 
-\begin{definition}[bordant]
-\end{definition}
+\begin{proposition}\label{oriented eq. rel}
+    Being bordant is an equivalence relation on the set of singular oriented manifolds.
+\end{proposition}
+
+The proof can be copied from the proof in the oriented case, but we have to check a few more things.
+
+\begin{proof}
+    \begin{itemize}
+        \item \textbf{Symmetry}: If \((B,g)\) is an oriented bordism between \((M_0,f_0)\) and \(M_1,f_1\), then \(-(B,g)\) (again, the negative sign is denoting the opposite orientation) is an oriented bordism between \((M_1,f_1)\) and \((M_0,f_0)\).
+        \item \textbf{Reflexivity}: The cylinder still works as the proof of reflexivity here. We have defined oriented bordism in this way with giving \(M_1,f_1\) the opposite orientation, so that the cylinder is still a bordism.
+        \item \textbf{Transitivity}: Again, here the reversed orientation is important. We have flipped the orientation of both \(M_1\) now once, giving them the same orientation now and can glue them together without any problems on orientations.
+    \end{itemize}
+\end{proof}
+This should probably be done in more detail.
 
 \begin{definition}[oriented bordism group]
-    \[\Omega_n(X)\]
+    The equivalence classes of the oriented bordism relation called \demph{oriented bordism classes} and the set of oriented bordism classes of \(n\)-dimensional singular oriented manifolds in \(X\) is denoted by \(\Omega_n(X)\). \(\Omega_n(X)\) is called the \(n\)\demph{-th oriented bordism group} of \(X\)
+    \[\Omega_n(X)=\{\text{singular oriented \(n\)-manifolds in } X\}\big/\text{oriented boridsm}\]
 \end{definition}
+
+Up until now, everything seems to be the same as in the unoriented case, but we will now see a critical difference.
+
+\begin{theorem}
+    The oriented bordism groups are abelian groups via the operation \(+\)
+\end{theorem}
+
+\begin{proof}
+    For this proof, the only thing we need to change is for the existence of the inverse. We have seen in an example (to be added) that the elements are not self-inverse anymore. The inverse of \([M,f]\) is now given by \([-M,f]\). We have seen in the proof of\ \ref{oriented eq. rel} that \([M,f]+[-M,f]=0\).
+\end{proof}
+
+So, \(\Omega_n(X)\) is not a \(\mathbb{F}_2\)-vector space anymore! This makes \(\Omega_n(X)\) harder to compute.
+
+The graded ring \(\Omega_\ast\) and the graded module \(\Omega_\ast(X)\) are defined in the same way as in the unoriented case.
+
+I still need to see that this is ok with the orientation.
+
+\subsubsection{Relative oriented bordism}
+
+The path from absolute oriented bordism to relative oriented bordism is exactly the same as in the unoriented case. We just always need to remember that we reverse the orientations for the second singular oriented manifold.
+
+Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a more complicated homology theory now.
+
+\subsubsection{Oriented bordism homology}
+
+\begin{lemma}[Homotopy invariance\ {\cite[Lemma \(2\cdot1\)]{atiyah}}]
+    Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Then \(f_\ast,g_\ast:\Omega_n(X,A)\to\Omega_n(Y,B)\) are the same homomorphisms.
+\end{lemma}
+
+\begin{proof}\cite{atiyah}
+
+\end{proof}
 
 \section{Cobordism}
 Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual theory, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
