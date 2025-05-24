@@ -524,7 +524,7 @@ Maybe I should say something about orientations covers\dots
 \subsection{Oriented bordism}
 
 \subsubsection{Definitions}
-Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)). Also I am unsure if I need a twofold cover (and a \(\mathbb{Z}\big/2\mathbb{Z}\)-principal bundle) of/over \(X\)..
+Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)).
 
 Now, we have defined additional structure on manifolds.
 We will adapt our definition of bordism to respect the additional structure.\\
@@ -584,13 +584,28 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 
 \subsubsection{Oriented bordism homology}
 
+\begin{lemma}
+    Relative oriented bordism is a covariant functor
+    \[\Omega_\ast:\mathrm{TOP}^2\to\text{graded }\Omega_\ast\text{ modules}\]
+\end{lemma}
+
+\begin{proof}
+    
+\end{proof}
+
 \begin{lemma}[Homotopy invariance\ {\cite[Lemma \(2\cdot1\)]{atiyah}}]
-    Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Then \(f_\ast,g_\ast:\Omega_n(X,A)\to\Omega_n(Y,B)\) are the same homomorphisms.
+    Let \(f_0,f_1:(X,A)\to(Y,B)\) be homotopic maps. Then \(f_\ast,g_\ast:\Omega_n(X,A)\to\Omega_n(Y,B)\) are the same homomorphisms.
 \end{lemma}
 
 \begin{proof}\cite{atiyah}
-
+    Let \(h:(X,A)\times I\to (Y,B)\) be a homotopy between \(f_0\) and \(f_1\).\\
+    The proof is exactly the same as in the unoriented case.
 \end{proof}
+
+\begin{lemma}[Long exact sequence]
+    The sequence
+    \[\cdots\xrightarrow{\partial}\Omega_n(A)\xrightarrow{i_\ast}\Omega_n(X)\xrightarrow{j_\ast}\Omega_n(X,A)\xrightarrow{\partial}\Omega_{n-1}(A)\xrightarrow{i_\ast}\cdots\]
+\end{lemma}
 
 \section{Cobordism}
 Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual theory, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
