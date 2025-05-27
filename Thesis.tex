@@ -31,7 +31,9 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 
 Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatcher},\cite{dieck},\cite{luck}
 
-\section{Basic Definitions}
+\section{Bordism}
+
+\subsection{Manifolds}
 Here, Examples still need to be added.
 
 \begin{definition}[Topological manifold\ {\cite[pp.2-3]{lee}}]
@@ -116,7 +118,7 @@ Maybe I will make a theorem out of this and add a proof.
     Line with two origins
 \end{nonex}
 
-\section{Bordism}
+%\section{Bordism}
 
 The problem with working with manifolds is that they are hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is easier to work with.
 
@@ -292,11 +294,11 @@ Maybe do a proof or just say that it is similar to the proof of the bordism rela
 relative bordism groups are graded modules in the same way. They are denoted by \(\mathfrak{N}_\ast(X,A)\).
 If \(A=\emptyset\), the definition coincides with the definition of bordism groups.
 
-\begin{lemma}\label{almost excision}\cite[Lemma 5.1]{zhang} %maybe dieck 21.1.8 is better
-    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(V\) a embedded submanifold, such that \([V,f\restrict{}{V}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). Then \([M,f]=[V,f\restrict{V}]\) in \(\mathfrak{N}_n(X,A)\).
+\begin{lemma}\label{almost excision}\cite[Lemma 5.1]{zhang}, maybe \cite[21.1.8]{dieck}
+    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(V\) a embedded submanifold, such that \([V,f\restrict{V}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). Then \([M,f]=[V,f\restrict{V}]\) in \(\mathfrak{N}_n(X,A)\).
 \end{lemma}
 
-\begin{proof}\cite{zhang}
+\begin{proof}\cite{zhang}, maybe \cite{dieck}
     We need to show that \((M,f)\) and \((N,f\restrict{N})\) are bordant.\\
     Let \(B=M\times I\) the cylinder. \(\partial B= \underbrace{M\times\{0\}}_{M_0}\cup \underbrace{M\times\{1\}}_{M_1}\cup \partial M\times I\). Define \(g:B\to X\) as \(g(p,t)=f(p)\).\\
     Writing \(M_1=(M_1\setminus N_1)\cup N_1\), we get that \(M\times I\) is a bordism between \(M\) and \(N\), because
@@ -488,7 +490,7 @@ We will now calculate the bordism groups.
 
 Of spheres
 
-\subsection{More basic definitions}
+\subsection{Orientation}
 
 \begin{definition}[Tangent space]
 \end{definition}
@@ -605,7 +607,22 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 \begin{lemma}[Long exact sequence]
     The sequence
     \[\cdots\xrightarrow{\partial}\Omega_n(A)\xrightarrow{i_\ast}\Omega_n(X)\xrightarrow{j_\ast}\Omega_n(X,A)\xrightarrow{\partial}\Omega_{n-1}(A)\xrightarrow{i_\ast}\cdots\]
+    is exact.
 \end{lemma}
+
+\begin{proof}
+    The proof is exactly the same as in the unoriented case, we just need to remember that we reverse the orientation of the second singular oriented manifold.
+    \begin{itemize}
+        \item \textbf{Exactness at \(\Omega_n(A)\)}: \(i_\ast\circ\partial=0\), as \((M,f)\) is a nullbordism for \(i_\ast\circ\partial(M,f)=\partial(M,f)\)\\
+        For a nullbordism \((B,g)\) of \(M,f\), \(\partial(B,g)=(M,f)\).
+        \item \textbf{Exactness at \(\Omega_n(X)\)}: 
+        \(j_\ast\circ i_\ast=0\) exactly as in the unoriented case.
+
+        \item \textbf{Exactness at \(\Omega_n(X,A)\)}: 
+    \end{itemize}
+\end{proof}
+I think the whole proof is the same as in the unoriented case\dots
+
 
 \section{Cobordism}
 Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual theory, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
