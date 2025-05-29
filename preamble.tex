@@ -11,7 +11,10 @@
 \usepackage{csquotes}
 \usepackage[backend=biber, style=alphabetic, sorting=nty]{biblatex}
 \usepackage{BA_Titelseite}
-\usepackage{ulem}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\graphicspath{ {./images/} }
 
 %Namen des Verfassers der Arbeit
 \author{Paul Jin Robaschik}
@@ -46,8 +49,11 @@
 \newtheorem{proposition}[definition]{Proposition}
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
-\newtheorem*{example}{Example}
+\newtheorem*{fact}{Fact}
+\newtheorem{example}{Example}
+\newtheorem{exs}[example]{Examples}
 \newtheorem*{nonex}{Non-example}
+\newtheorem*{nonexs}{Non-examples}
 \newtheorem*{observation}{Observation}
 
 \theoremstyle{remark}
