@@ -293,7 +293,7 @@ Maybe do a quick check.
     Notice that in this definition, this is a right module, but since we could just project to the first factor instead, we also get a left module structure.
 \end{remark}
 
-\subsubsection{The Eilenberg-Steenrod Axioms}\label{es axioms}
+\subsubsection{The Eilenberg-Steenrod axioms}\label{es axioms}
 The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology and cohomology theories.
 
 \begin{definition}[Homology theory\ {\cite[Definition 1.1]{luck}}]
@@ -386,13 +386,27 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
     \[{(g\circ f)}_{\ast}[M,h]=[M,g\circ f\circ h]=g_\ast[M,f\circ h]=g_\ast\circ f_\ast[M,h]\]
 \end{proof}
 
-Need to add: Naturality of the boundary map
+\begin{lemma}[Naturality of the boundary map]
+    The following diagram commutes: (Diagrams cannot be compiled for some reason)
+    \begin{center}
+        \begin{tikzcd}
+            {\mathfrak{N}_n(A)} \arrow[r]& {\mathfrak{N}_{n-1}(X,A)}
+        \end{tikzcd}
+    \end{center}
+\end{lemma}
+
+\begin{proof}
+    Let \([M,g]\in\mathfrak{N}_n(X,A)\). This maps to \([\partial M,g\restrict{\partial M}]\in\mathfrak{N}_{n-1}(A)\).
+    Now \({f\restrict{A}}_\ast([\partial M,g\restrict{\partial M}])=[\partial M,f\circ g\restrict{\partial M}]\in \mathfrak{N}_{n-1}(B)\).\\
+    On the other side, \((\partial\circ f_\ast)[M,g]=\partial [M,f_\ast\circ g]=[\partial M,(f_\ast\circ g)\restrict{\partial M}]\in \mathfrak{N}_{n-1}(B)\), which is the same as the previous composition, hence,
+    \[\partial\circ f_\ast={f\restrict{A}}_\ast\circ \partial\]
+    and the diagram commutes.
+\end{proof}
 
 \begin{lemma}[Homotopy invariance]\cite[II, Satz 3.1]{brocker}\label{htpy inv}
     \(\mathfrak{N}_\ast\) is homotopy invariant.
 \end{lemma}
 
-This proof is in the absolute case! I need the relative case! (Look in the AT script).
 \begin{proof}\cite{brocker}\cite[5.5]{conner}
     Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Let \(h:(X\times I,A\times I)\to (Y,B)\) be a homotopy between \(f\) and \(g\). Then we have a bordism between \(f_\ast[M,F]\) and \(g_\ast[M,F]\) by \((M\times I, h\circ (F\times\mathrm{id}_I))\).
 \end{proof}
@@ -560,22 +574,28 @@ Of spheres
 
 \begin{definition}[Tangent space]
 \end{definition}
-I probably need this already before. (Along with tangent bundle)
+I probably need this already before. (Along with tangent bundle, vector fields)
 
-\begin{definition}[Orientation on vector spaces]
+\begin{definition}[Orientation on vector spaces\ {\cite[p.379]{lee}}]
+    An \demph{orientation} on a vector space \(V\) with \(\mathrm{dim} V\geq 1\) is an equivalence class of ordered bases \((e_1,\dots,e_{\mathrm{dim}V})\). Two bases are equivalent, if the basis transformation has positive determinant. For \(\mathrm{dim}V=0\), an orientation is the choice of \(\pm\).\\
+    This gives us exactly two orientations for any vector space.
 \end{definition}
 
-\begin{definition}[Pointwise orientation on manifolds]
+\begin{definition}[Pointwise orientation on manifolds\ {\cite[p.380]{lee}}]
+    For each point on a manifold, we have an associated vector space: the tangent space. A \demph{pointwise orientation} on a manifold is a choice of orientation on each tangent space.
 \end{definition}
 
 \begin{definition}[Local frame]
 \end{definition}
 Maybe also need global frame.
 
+Check again
 \begin{definition}[Continuous orientation]
+    A pointwise orientation on a manifold \(M\) is called \demph{continuous}, if for every point \(p\in M\), there exists a neighborhood \(U\) of \(p\) such that the orientations on the tangent spaces of all points in \(U\) are equivalent.
 \end{definition}
 
-\begin{definition}[Orientation on manifolds]
+\begin{definition}[Orientation on manifolds\ {\cite[p.380]{lee}}]
+    An \demph{orientation} of a manifold \(M\) is a continuous pointwise orientation of \(M\). If there exists an orientation on \(M\), \(M\) is called \demph{orientable}.
 \end{definition}
 
 \begin{definition}[Oriented manifold\ {\cite[p.380]{lee}}]
@@ -625,7 +645,7 @@ This should probably be done in more detail.
 
 \begin{definition}[oriented bordism group]
     The equivalence classes of the oriented bordism relation called \demph{oriented bordism classes} and the set of oriented bordism classes of \(n\)-dimensional singular oriented manifolds in \(X\) is denoted by \(\Omega_n(X)\). \(\Omega_n(X)\) is called the \(n\)\demph{-th oriented bordism group} of \(X\)
-    \[\Omega_n(X)=\{\text{singular oriented \(n\)-manifolds in } X\}\big/\text{oriented boridsm}\]
+    \[\Omega_n(X)=\{\text{singular oriented \(n\)-manifolds in } X\}\big/\text{oriented bordism}\]
 \end{definition}
 
 Up until now, everything seems to be the same as in the unoriented case, but we will now see a critical difference.
@@ -701,6 +721,19 @@ The used lemma might have to be adjusted.
     Again, everything stays the same as in the unoriented case.
 \end{proof}
 
+\begin{lemma}[Disjoint union axiom]
+    same-same
+\end{lemma}
+
+We can finally conclude:
+\begin{theorem}
+    Relative oriented bordism is a homology theory satisfying the disjoint union axiom.
+\end{theorem}
+
+\begin{observation}
+    Relative oriented bordism does not satisfy the dimension axiom.
+\end{observation}
+
 
 \section{Cobordism}
 Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual theory, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
@@ -710,9 +743,18 @@ I should give a explanation of how \(O(n)\) (real bundles) and \(SO(n)\) (orient
 
 \subsubsection{Definitions}
 
+\begin{definition}[Local trivialization\ {\cite[p.242]{tu}}]
+    Let \(E,B,F\) be manifolds. A \demph{local trivialization} for a smooth surjective map \(\pi:E\to B\) is a collection of charts \(\{(U_i,\varphi_i)\}_{i\in I}\) (for \(\{U_i\}\) an open cover of \(M\)) such that \(\pi^{-1}(U_i)\) is diffeomorphic to \(U_i\times F\) via \(\varphi_i\) for all \(i\in I\). The charts are called \demph{trivializing charts}.
+\end{definition}
+
+\begin{definition}[Fibre bundle\ {\cite[p.242]{tu}}]
+    Let \(E,B,F\) be manifolds. A \demph{fibre bundle} is a smooth surjective map \(\pi:E\to B\) with a local trivialization with fibre \(F\).
+    \(E\) is called the \demph{total space}, \(B\) the \demph{base space} and \(F\) the \demph{fibre} of the fibre bundle.
+\end{definition}
+
 Maybe I will not need this
 \begin{definition}[Classifying space]
-    Let \(G\) be a topological group. The \demph{classifying space} \(BG\) of \(G\) is the 
+    Let \(G\) be a topological group. The \demph{classifying space} \(BG\) of \(G\) is the base space of the universal principal \(G\)-bundle
 \end{definition}
 
 \begin{observation}
@@ -721,9 +763,14 @@ Maybe I will not need this
 \end{observation}
 
 I might adjust this to be more like\ \cite{thom}'s definition.
-\begin{definition}[Thom space\cite{brocker}]
+\begin{definition}[Thom space\cite{brocker}, {\cite[p.29]{thom}}, {\cite[p.201]{atiyah}}]
     Let \(\xi:E\to B\) be a real \(k\)-dimensional vector bundle over a compact manifold \(B\).
-    Then the Thom space of \(\xi\) is defined as\[M(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.
+    Then the Thom space of \(\xi\) is defined as\[M(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.\\
+    Alternatively (without compact assumption):\\
+    Let \(\xi:E\to B\) be a real vector bundle with Riemannian metric over a manifold \(B\). Its \demph{disk bundle} is defined by \(D(\xi):DE\to X\), \(DE=\{v\in E\mid \lVert v\rVert \leq 1\}\) and similarly, the \demph{sphere bundle} is defined by \(S(\xi):SE\to X\), \(SE=\{v\in E\mid \lVert v\rVert = 1\}\). Then the Thom space of \(\xi\) is defined as
+    \[M(\xi)=D(\xi)\big/S(\xi)\]
+    where the sphere bundle is collapsed to a point. We can also get the Thom space without a choice of a Riemannian metric, but I will omit this here.\\
+    For \(\xi\) the universal principal \(G\)-bundle, we can write \(M(G)\) instead of \(M(\xi)\).
 \end{definition}
 
 \begin{definition}[\(MO(n), MSO(n)\)\ \cite{brocker}]
@@ -731,6 +778,14 @@ I might adjust this to be more like\ \cite{thom}'s definition.
     \[MSO(n):=  \]
 \end{definition}
 Maybe it is enough to just say that these are called this way because the Grassmannians are the classifying spaces of \(O(n), SO(n)\) instead of defining classifying spaces.
+
+\begin{definition}[Spectrum\ {\cite[Definition IV.1.1.]{brocker}}]
+    A \demph{spectrum} \(\underline E = \{(E_n,\sigma_n)\mid n\in\mathbb{Z}\}\) is a sequence of pointed spaces \(E_n\) with pointed \demph{structure maps}\[\sigma_n:E_n\wedge{S^1}\to E_{n+1}\]
+\end{definition}
+
+\begin{definition}[Thom spectrum\ {\cite[Beispiele IV.1.2(b)]{brocker}}]
+    Let \(\gamma_{n,\infty}\) be the universal real vector bundle over \(BO(n)=\mathbb{G}_{n,\infty}\)
+\end{definition}
 
 \begin{theorem}[Suspension sequence]\label{suspension}
     Let \(X, Y\) be pointed spaces. We denote by \({[X,Y]}^\circ\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
