@@ -30,7 +30,7 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 
 The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).
 
-Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatcher},\cite{dieck},\cite{luck}
+%Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatcher},\cite{dieck},\cite{luck}
 
 \section{Bordism}
 
@@ -40,10 +40,10 @@ Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatc
     An \(n\)-dimensional \demph{topological manifold} is a topological space \(M\) such that:
     \begin{itemize}
         \item \(M\) is Hausdorff, (i.e.\ any two distinct points can be separated by disjoint open sets),
-        \item \(M\) is second countable, (i.e.\ there exists a countable basis for the topology of \(M\)),
+        \item \(M\) is second countable, (i.e.\ there exists a countable basis for the topology of \(M\)) and
         \item \(M\) is locally Euclidean (i.e.\ every point in \(M\) has a neighbourhood homeomorphic to an open subspace of \(\mathbb{R}^n\)).
     \end{itemize}
-    We will often write \(M^n\) for an \(n\)-dimensional manifold.
+    We will often write \(M^n\) for an \(n\)-dimensional manifold. \(n\)-dimensional manifolds are also called \demph{\(n\)-manifolds}.
 \end{definition}
 
 \begin{example}
@@ -57,10 +57,10 @@ Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatc
 \begin{nonexs}
     %\includegraphics[width=0.2\textwidth]{cross}
     \begin{itemize}
-        \item Two crossing lines in \(\mathbb{R}^2\) are not a topological manifold, because they are not locally Euclidean at the crossing point. 
-        \item The line with two origins is not a topological manifold. It is not Hausdorff, as the two origins cannot be separated by disjoint open sets.
-        \item \(\coprod_{i\in \mathbb{R}}\{pt\}\) is not a topological manifold, because it is not second countable, as it has uncountably many connected components.
-        \item \(S^1\amalg\{pt\}\) is not a topological manifold, because it is, depending on the point, locally homeomorphic to \(\mathbb{R}^2\) or \(\mathbb{R}\), and the dimension needs to be fixed.
+        \item A \enquote{cross} in \(\mathbb{R}^2\) (\(\{(x_1,x_2\mid x_1=0 \lor x_2=0)\}\)) is not a topological manifold, because it is not locally Euclidean at the crossing point. 
+        \item The line with two origins (\((\R\times\{0\}\dis\R\times\{1\})\big/((x,0)\sim(y,1)\Leftrightarrow (x=y \land x\neq 0))\)) is not a topological manifold. It is not Hausdorff, as the two origins cannot be separated by disjoint open sets.
+        \item Let \(\{\pt\}\) denote the point space. \(\coprod_{i\in \mathbb{R}}\{\pt\}\) is not a topological manifold, because it is not second countable, as it has uncountably many connected components.
+        \item \(S^1\dis\{\pt\}\) is not a topological manifold, because it is, depending on the point, locally homeomorphic to \(\mathbb{R}^2\) or \(\mathbb{R}\), and the dimension needs of a manifold needs to be constant.
     \end{itemize}
 \end{nonexs}
 
@@ -81,14 +81,14 @@ Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatc
 \end{definition}
 
 \begin{example}
-    The charts we chose for the \(n\)-sphere \(S^n\) in \ref{sphere chart} form a smooth atlas on \(S^n\).
+    The charts we chose for the \(n\)-sphere \(S^n\) in Example \ref{sphere chart} form a smooth atlas on \(S^n\).
 \end{example}
 
 \begin{definition}[Equivalence of atlases]
     Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still on atlas.
 \end{definition}
 
-It can be shown that this is indeed an equivalence relation, but I will omit the proof here.
+%It can be shown that this is indeed an equivalence relation, but I will omit the proof here.
 
 \begin{definition}[Smooth manifold\ {\cite[p.13]{lee}}]
     A \demph{smooth manifold} \(M=(M,[\mathcal{A}])\) consists of
@@ -98,12 +98,16 @@ It can be shown that this is indeed an equivalence relation, but I will omit the
     \end{itemize}
 \end{definition}
 
-\begin{example}
-    The \(n\)-sphere \(S^n\) with the atlas given by the charts in \ref{sphere chart} is a smooth manifold.
+\noindent\textit{Notation:}
+    For two smooth manifolds \(M,N\), when writing \(M=N\), we will mean that they are diffeomorphic, i.e.\ there exists a bijective map \(f:M\to N\) such that \(f\) and \(f^{-1}\) are smooth.
+
+
+\begin{example}[Spheres]
+    The \(n\)-sphere \(S^n\) with the atlas given by the charts in\ \ref{sphere chart} is a smooth manifold.
 \end{example}
 
 \begin{example}[Subset of manifolds]
-    For a manifold \(M,[\mathcal{A}]\) any open subset is a manifold. The atlas is given by restriction of the charts in \([\mathcal{A}]\) to the open subset.
+    For a manifold \(M,[\mathcal{A}]\) any open subset \(U\) of \(M\) is a manifold. The atlas is given by restriction of the charts in \([\mathcal{A}]\) to \(U\). We call \(U\) an \demph{open submanifold} of \(M\).
 \end{example}
 
 \begin{example}[Product of manifolds]
@@ -111,15 +115,22 @@ It can be shown that this is indeed an equivalence relation, but I will omit the
 \end{example}
 
 \begin{remark}
-    While being a topological manifold is just a property of the topological space \(M\), begin a smooth manifold gives the manifold extra structure.
+    While being a topological manifold is just a property of the topological space \(M\), being a smooth manifold gives the manifold extra structure.
 \end{remark}
 
 \begin{example}
-    \(\mathbb{R},[(\mathbb{R},\mathrm{id})]\) and \(\mathbb{R},[\mathbb{R},x\mapsto x^3]\) are two different smooth manifolds, because the transition functions between them are not smooth: \(\mathrm{id}\circ(x\mapsto x^3)^{-1}=(x\mapsto x^{\frac13})\).
+    \(\mathbb{R},[(\mathbb{R},\mathrm{id})]\) and \(\mathbb{R},[\mathbb{R},x\mapsto x^3]\) are different smooth manifolds, because the transition functions between them are not smooth: \(\mathrm{id}\circ(x\mapsto x^3)^{-1}=(x\mapsto x^{\frac13})\), hence the atlases are not equivalent.\\
+    But they are diffeomorphic, as the map \(x\mapsto x^{\frac{1}{3}}\) is a diffeomorphism between the two manifolds: \((x\mapsto x^3)\circ (x\mapsto x^{\frac13})\circ \id^{-1}= \id\)
+\end{example}
+
+I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
+
+\begin{example}(Exotic spheres)
+    There exists 15 pairwise non-diffeomorphic smooth structures on \(S^7\). See\ \cite{kervaire} for a construction of these exotic spheres.
 \end{example}
 
 \begin{definition}[Manifold with boundary\ {\cite[p.25]{lee}}]
-    To get a definition of a (smooth or topological) \demph{manifold with boundary}, replace the condition of the manifold being locally Euclidean with the condition that every point has a neighbourhood homeomorphic to an open subspace of \(\mathbb{H}^n:=\{(x_1,\dots,x_n)\in\mathbb{R}\mid x_1\geq0\}\) (the half space).
+    To get a definition of a (smooth or topological) \demph{manifold with boundary}, replace the condition of the manifold being locally Euclidean with the condition that every point has a neighbourhood homeomorphic to an open subspace of \(\mathbb{H}^n:=\{(x_1,\dots,x_n)\in\mathbb{R}\mid x_1\geq0\}\) (the half space). Naturally, the charts now map into \(\H^n\) instead of \(\R^n\).
 \end{definition}
 
 \begin{comment}
@@ -134,12 +145,12 @@ It can be shown that this is indeed an equivalence relation, but I will omit the
 \end{comment}
 
 \begin{remark}
-    In this thesis, with \demph{manifold} we will always mean a smooth manifold with boundary.
+    In this thesis, with \demph{manifold} we will always mean a smooth manifold with boundary, unless specified otherwise.
 \end{remark}
 
 \begin{definition}[Boundary\ {\cite[p.25]{lee}}]
-    A point \(x\in M^n\) is called a \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
-    If a manifold is compact and has empty boundary, it is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
+    Let \(M^n\) be a manifold. A point \(x\in M^n\) is called a \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
+    If a \(M\) is compact and has empty boundary, \(M\) is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
 \end{definition}
 
 \begin{example}
@@ -154,9 +165,25 @@ It can be shown that this is indeed an equivalence relation, but I will omit the
     The \(n\)-disk \(D^n\) is a manifold with boundary \(S^{n-1}\)
 \end{example}
 
-\begin{remark}
-    The boundary of an \(n\)-dimensional manifold is an \((n-1)\)-dimensional submanifold.
-\end{remark}
+\begin{theorem}[Boundaries are submanifolds]
+    The boundary of an \(n\)-manifold is an \((n-1)\)-dimensional submanifold.
+\end{theorem}
+
+\begin{proof}
+    Let \((M^n,[\mathcal{A}])\) be a manifold. A smooth structure of \(\partial M\) is given by the restriction of the charts in \([\mathcal{A}]\) to \(\partial M\): \[\{(U\cap\partial M,\varphi\restrict{U\cap\partial M})\mid (U,\varphi)\in[\mathcal{A}]\}\]
+    Smooth compatability follows from the smooth compatibility of the charts in \([\mathcal{A}]\).
+\end{proof}
+
+\begin{theorem}[Collar theorem \ {\cite[I, Satz 1.5]{brocker}}]
+    Let \(M\) be a manifold. Then there exists a neighbourhood \(U\) of \(\partial M\) with a diffeomorphism \(s:\partial M\times [0,1)\to U\) with \(s(\partial M\times\{0\})=\partial M\). \(U\) is called a \demph{collar} of \(\partial M\) in \(M\).
+\end{theorem}
+
+\begin{proof}See\ \cite[p.223]{lee} for a proof.
+\end{proof}
+
+\begin{observation}
+    If \(\partial M\) has multiple path components, then we can find a collar for each path component.
+\end{observation}
 
 %\section{Bordism}
 
@@ -167,35 +194,42 @@ The problem with working with manifolds is that they are hard to classify up to 
 Examples need to be added here, too.
 
 \begin{definition}[Singular manifold\ {\cite[II, Definition 1.1]{brocker}}]\label{singular manifold}
-    Let \(X\) be a topological space. An \(n\)-dimensional \demph{singular manifold} in \(X\) is a pair \(M,f\) of a compact manifold \(M^n\) and a continuous map \(f:M\to X\).\\
+    Let \(X\) be a topological space. An \(n\)-dimensional \demph{singular manifold} in \(X\) is a pair \((M,f)\) of a compact manifold \(M\) and a continuous map \(f:M\to X\).\\
     The \demph{boundary} of a singular manifold is \(\partial(M,f):=(\partial M, \partial f):=(\partial M,f\restrict{\partial M})\).
 \end{definition}
 
 \begin{definition}[Nullbordant\ {\cite[II, Definition 1.2]{brocker}}]
-    Let \((M,f)\) be a singular manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular manifold \((B,F)\), such that \(\partial(B,F)=(M,f)\).
+    Let \((M,f)\) be a singular \(n\)-manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular (\(n+1\))-manifold \((B,F)\) in \(X\), such that \(\partial(B,F)=(M,f)\).
 
     \(B,F\) is then called a \demph{nullbordism} of \((M,f)\).
 \end{definition}
 
 \begin{example}
-    For \(X\) the point space, and \(M=S^n\), we have a nullbordism \(B=D^{n+1}\).
+    For \(X=\pt\), and \(M=S^n\), we have a nullbordism \(B=D^{n+1}\), the disk. (\(f\) can be omitted, as it is constant.)
 \end{example}
 
 \begin{example}
-    For \(X\) the point space, and \(M=\mathbb{T}^1\) the torus, \(S^1\times D^2\), the filled torus, is a nullbordism.
+    For \(X=\pt\), and \(M=T^2\), the torus, \(S^1\times D^2\), the filled torus, is a nullbordism.
 \end{example}
 
-\begin{example}
-    For \(M=\emptyset\), any closed manifold is a nullbordism of \(M\), no matter what the space \(X\) is.
-\end{example}
+These examples can be generalized to just \(f\) being a constant %maybe even nullhomotopic
+ map, and \(B\) any manifold such that \(\partial B=M\). 
 
 \begin{example}
-    \(X=S^1\), \(M=S^1\), and \(f\) is given by wrapping around the circle twice, a nullbordism is given by the M\"obius strip \(\mathbb{M}\) with \(F\) as projection onto the circle.
+    For \(M=\emptyset\), any closed manifold is a nullbordism of \(M\), no matter what the space \(X\) is. (Again, \(f\) can be omitted, as it is the empty map.)
 \end{example}
-Draw a picture.
+
+\begin{observation}
+    A singular manifold \((M,f)\) can be nullbordant even if \(f\) is not nullhomotopic.
+\end{observation}
+
+\begin{example}
+    \(X=S^1\), \(M=S^1\), and \(f\) is given by wrapping around the circle twice, a nullbordism is given by the M\"obius strip \(\mathbb{M}\) with \(F\) as projection onto the circle.\begin{center} \includegraphics[width=0.4\textwidth]{mobius.jpg} \end{center}
+\end{example}
+
 
 \begin{definition}[Bordant\ {\cite[II, Definition 1.3]{brocker}}]\label{bordant}
-    Let \((M,f)\) and \((N,g)\) be singular manifolds in \(X\). We say that \((M,f)\) and \((N,g)\) are \demph{bordant}, if their sum \((M,f)+(N,g):=(M+N, (f,g)):=(M\amalg N, f\amalg g)\) is nullbordant.
+    Let \((M,f)\) and \((N,g)\) be singular manifolds in \(X\). We say that \((M,f)\) and \((N,g)\) are \demph{bordant}, if their sum \((M,f)+(N,g):=(M+N, (f,g)):=(M\dis N, f\dis g)\) is nullbordant.
 
     A nullbordism of \((M,f)+(N,g)\) is called a \demph{bordism} between \((M,f)\) and \((N,g)\).
 \end{definition}
@@ -207,19 +241,26 @@ We will refer to this relation as \demph{bordism relation}.
 \end{remark}
 
 \begin{example}[Cylinder]\label{cylinder bordism}
-    For an arbitrary \(X\), and \((M_1,f_1)=(M_2,f_2)\), we always get the cylinder as a bordism: \((M\times[0,1],f\circ\mathrm{pr}_1)\).
+    For an arbitrary \(X\), and \((M_0,f_0)=(M_1,f_1')\), we always get the cylinder as a bordism: \((M\times[0,1],f\circ\mathrm{pr}_1)\), where \(\mathrm{pr}_1\) is the projection onto the first factor.
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{cylinder.jpg}
+    \end{center}
 \end{example}
-Draw a picture
+%Draw a picture
 
-\begin{example}[Pair of pants]
-    For \(X=\mathrm{pt}\), \((M_1,f_1)=(M,f)\amalg (M,f)\) and \(M_2=M\# M\).
+\begin{example}[TODO: Pair of pants]
+    For \(X=\mathrm{pt}\), \((M_1,f_1)=(M,f)\dis (M,f)\) and \(M_2=M\# M\).
 \end{example}
 Look this up again. Maybe it suffices to take \(X\) path-connected. Draw a picture.
 
 \begin{nonex}
-    \(\mathrm{pt}\) and \(\mathrm{pt}\amalg\mathrm{pt}\) are not bordant, as \(1\)-manifolds either have 2 or 0 boundary points.
+    \(\{\mathrm{pt}\}\) and \(\{\mathrm{pt}\}\dis\{\mathrm{pt}\}\) are not bordant, as \(1\)-manifolds either have 2 or 0 boundary points. (Compact \(1\)-manifolds can be classified up to homeomorphism as the circle \(S^1\) (no boundary) and the interval \([0,1]\) (two boundary points).)
 \end{nonex}
-Draw a picture.
+
+\begin{remark}
+     It follows that an odd number of points is never nullbordant as a singular manifold in \(\{\pt\}\), but an even number of points is. (This gives us \(\N_0(\pt)=\F_2\), as we will see later.)
+\end{remark}
+
 
 \begin{proposition}\cite[II, Satz 1.4]{brocker}
     Being bordant is an equivalence relation on the set of singular manifolds.
@@ -227,16 +268,17 @@ Draw a picture.
 
 \begin{proof}\cite{brocker}, \cite[p.8]{conner}
     \begin{itemize}
-        \item Symmetry: Follows from the symmetry of the disjoint union. If \((M,f)\) and \((N,g)\) are bordant, then there exists a nullbordism of \((M,f)+(N,g)=(M\amalg N, f\amalg g) = (N\amalg M, g\amalg f) = (N,g)+ (M,f)\). So, a bordism between \((M,f)\) and \((N,g)\) is also bordism between \((N,g)\) and \((M,f)\).
-        \item Reflexivity: We have already constructed a bordism between \(M,f\) and itself In\ \ref{cylinder bordism}.
-        \item Transitivity: Let \(B_1,F_1\) be the bordism between \(M_1,f_1\) and \(M_2,f_2\), and let \(B_2,F_2\) be the bordism between \(M_2,f_2\) and \(M_3,f_3\). Then we can \enquote{glue} the two bordisms together at the common boundary \(M_2,f_2\). We only need to check that the gluing is smooth, i.e. \((B_1,F_1)\cup_{(M_2,f_2)}(B_2,F_2)\) is a smooth manifold. We can find a collar of \(M_2\) in both \(B_1\) and \(B_2\). These collars glued together are homeomorphism to \(M_2\times(-1,1)\). This induces a smooth structure on the glued collar, and let \(B\setminus M_2\) inherit the smooth structure from \(B_1\) and \(B_2\). Then there exists a smooth structure on \(B\) by a previous lemma.
+        \item Symmetry: Follows from the symmetry of the disjoint union. If \((M,f)\) and \((N,g)\) are bordant, then there exists a nullbordism of \((M,f)+(N,g)=(M\dis N, f\dis g) = (N\dis M, g\dis f) = (N,g)+ (M,f)\). So, a bordism between \((M,f)\) and \((N,g)\) is also bordism between \((N,g)\) and \((M,f)\).
+        \item Reflexivity: We have already constructed a bordism between \((M,f)\) and itself in Example\ \ref{cylinder bordism}.
+        \item Transitivity: Let \((B_1,F_1)\) be the bordism between \((M_1,f_1)\) and \((M_2,f_2)\), and let \((B_2,F_2)\) be the bordism between \((M_2,f_2)\) and \((M_3,f_3)\). Then we can \enquote{glue} the two bordisms together at the common boundary \((M_2,f_2)\). We only need to check that the gluing is smooth, i.e.\ \((B_1,F_1)\cup_{(M_2,f_2)}(B_2,F_2)\) is a smooth manifold. We can find a collar of \(M_2\) in both \(B_1\) and \(B_2\). These collars glued together are homeomorphism to \(M_2\times(-1,1)\). This induces a smooth structure on the glued collar, and let \(B\setminus M_2\) inherit the smooth structure from \(B_1\) and \(B_2\). Then there exists a smooth structure on \(B\) by a previous lemma.
+        \begin{center}
+            \includegraphics[width=0.4\textwidth]{transitivity.jpg}
+        \end{center}
     \end{itemize}
 \end{proof}
 Draw a picture.
 Need to add collar theorem somewhere up.
 and inducing structure.
-
-Check smooth structure!
 
 \begin{definition}[bordism group\ {\cite[II, Definition 1.5]{brocker}}]
     The equivalence classes of the bordism relation are called \demph{bordism classes} and are denoted by \([M,f]\).
@@ -336,7 +378,7 @@ Before we can say that bordism defines a homology theory, we need to define rela
     \begin{itemize}
         \item \((B,F)\) is a (\(n+1\))-dimensional compact manifold with boundary,
         \item \(\partial B=\partial_0B\cup\partial_1B\cup\partial_2B\) such that \\
-                \(\partial(\partial_2B)=\partial(\partial_0B)\amalg\partial(\partial_1B)\) and
+                \(\partial(\partial_2B)=\partial(\partial_0B)\dis\partial(\partial_1B)\) and
                 for \(i\in\{0,1\}\), \(\partial_i B\cap\partial_2B=\partial(\partial_i B)\)
         \item There are diffeomorphisms \(g:(M_i,f_i)\xrightarrow{\cong}(\partial_{i} B,\partial(\partial_{i}B))\) for \(i\in\{0,1\}\) such that \(\partial F\circ g_i=\partial f_i\)\\
         \(\partial f_i, \partial g_i, \partial F_i\) are as defined in\ \ref{singular manifold}.
@@ -688,7 +730,7 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 
 \begin{proof}\cite{atiyah}, \cite{conner}
     Let \(h:(X,A)\times I\to (Y,B)\) be a homotopy between \(f_0\) and \(f_1\).\\
-    The proof is exactly the same as in the unoriented case; noting that the cylinder is now oriented and \(\partial M\times I\) is now \(\partial I\times (M\cup M^-)=M\amalg M^-\)%\((\partial I\times M)\cup (I\times M^-)\).
+    The proof is exactly the same as in the unoriented case; noting that the cylinder is now oriented and \(\partial M\times I\) is now \(\partial I\times (M\cup M^-)=M\dis M^-\)%\((\partial I\times M)\cup (I\times M^-)\).
 \end{proof}
 Maybe do this more precisely.
 
@@ -878,7 +920,7 @@ Conclude:
 
 \subsubsection{Calculations}
 
-Thom isomorphism, Thom class, Thom isomorphism theorem
+%Thom isomorphism, Thom class, Thom isomorphism theorem
 
 %\section{Pontryagin-Thom Construction}
 
