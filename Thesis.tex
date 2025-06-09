@@ -99,7 +99,10 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{definition}
 
 \noindent\textit{Notation:}
-    For two smooth manifolds \(M,N\), when writing \(M=N\), we will mean that they are diffeomorphic, i.e.\ there exists a bijective map \(f:M\to N\) such that \(f\) and \(f^{-1}\) are smooth.
+    For two smooth manifolds \(M,N\), when writing \(M=N\), we will mean that they are diffeomorphic, i.e.\ there exists a bijective map \(f:M\to N\) such that \(f\) and \(f^{-1}\) are smooth. 
+    (We say a map \(f\) between two manifolds \(M^m,N^n\) is smooth, if for all \(p\in M\), there exists a charts \((U\ni p,\varphi)\) and \((V\subset M,\psi)\), such that 
+    (i) \(f(U)\subset V\) and 
+    (ii) \(\psi\circ f\circ \varphi:\varphi(U)\subset \R^m\to\R^n\) is smooth.)
 
 
 \begin{example}[Spheres]
@@ -107,11 +110,13 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{example}
 
 \begin{example}[Subset of manifolds]
-    For a manifold \(M,[\mathcal{A}]\) any open subset \(U\) of \(M\) is a manifold. The atlas is given by restriction of the charts in \([\mathcal{A}]\) to \(U\). We call \(U\) an \demph{open submanifold} of \(M\).
+    For a manifold \(M,[\mathcal{A}]\) any open subset \(U\) of \(M\) is a manifold. 
+    The atlas is given by restriction of the charts in \([\mathcal{A}]\) to \(U\). 
+    We call \(U\) an \demph{open submanifold} of \(M\).
 \end{example}
 
 \begin{example}[Product of manifolds]
-    For manifolds \(M,N\), \(M\times N\) is a manifold with the charts\[\{(U\times V,(\varphi,\psi))\mid(U,\varphi),(V,\psi)\text{ charts of }M,N\}\].
+    For manifolds \(M,N\), \(M\times N\) is a manifold with the charts\[\{(U\times V,(\varphi,\psi))\mid(U,\varphi),(V,\psi)\text{ charts of }M,N\}\]
 \end{example}
 
 \begin{remark}
@@ -119,8 +124,10 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{remark}
 
 \begin{example}
-    \(\mathbb{R},[(\mathbb{R},\mathrm{id})]\) and \(\mathbb{R},[\mathbb{R},x\mapsto x^3]\) are different smooth manifolds, because the transition functions between them are not smooth: \(\mathrm{id}\circ(x\mapsto x^3)^{-1}=(x\mapsto x^{\frac13})\), hence the atlases are not equivalent.\\
-    But they are diffeomorphic, as the map \(x\mapsto x^{\frac{1}{3}}\) is a diffeomorphism between the two manifolds: \((x\mapsto x^3)\circ (x\mapsto x^{\frac13})\circ \id^{-1}= \id\)
+    \(\mathbb{R},[(\mathbb{R},\mathrm{id})]\) and \(\mathbb{R},[\mathbb{R},x\mapsto x^3]\) are different smooth manifolds, because the transition functions between them are not smooth: 
+    \(\mathrm{id}\circ(x\mapsto x^3)^{-1}=(x\mapsto x^{\frac13})\), hence the atlases are not equivalent.\\
+    But they are diffeomorphic, as the map \(x\mapsto x^{\frac{1}{3}}\) is a diffeomorphism between the two manifolds: 
+    \((x\mapsto x^3)\circ (x\mapsto x^{\frac13})\circ \id^{-1}= \id\)
 \end{example}
 
 I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
@@ -165,13 +172,13 @@ I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
     The \(n\)-disk \(D^n\) is a manifold with boundary \(S^{n-1}\)
 \end{example}
 
-\begin{theorem}[Boundaries are submanifolds]
-    The boundary of an \(n\)-manifold is an \((n-1)\)-dimensional submanifold.
+\begin{theorem}[Boundaries are submanifolds]\label{boundary manifold}
+    The boundary of an \(n\)-manifold is a closed \((n-1)\)-dimensional (embedded) submanifold.
 \end{theorem}
 
 \begin{proof}
     Let \((M^n,[\mathcal{A}])\) be a manifold. A smooth structure of \(\partial M\) is given by the restriction of the charts in \([\mathcal{A}]\) to \(\partial M\): \[\{(U\cap\partial M,\varphi\restrict{U\cap\partial M})\mid (U,\varphi)\in[\mathcal{A}]\}\]
-    Smooth compatability follows from the smooth compatibility of the charts in \([\mathcal{A}]\).
+    Smooth compatability follows from the smooth compatibility of the charts in \([\mathcal{A}]\). This makes \(\partial M\) a submanifold of \(M\). It remains to show that it is closed and of codimension \(1\). The charts of \([\mathcal{A}]\) map every point in \(\partial M\) to \(\partial\H^n=\R^{n-1}\). If they didn't, we could find a euclidean neighbourhood of that point, contradicting the fact that it was a boundary point in \(M\). As the charts restricted to \(\partial M\) no map to \(\R^{n-1}\), we have an \((n-1)\)-dimensional submanifold without boundary.
 \end{proof}
 
 \begin{theorem}[Collar theorem \ {\cite[I, Satz 1.5]{brocker}}]
@@ -191,7 +198,7 @@ The problem with working with manifolds is that they are hard to classify up to 
 
 \subsection{Unoriented bordism}
 \subsubsection{Definitions}
-Examples need to be added here, too.
+%Examples need to be added here, too.
 
 \begin{definition}[Singular manifold\ {\cite[II, Definition 1.1]{brocker}}]\label{singular manifold}
     Let \(X\) be a topological space. An \(n\)-dimensional \demph{singular manifold} in \(X\) is a pair \((M,f)\) of a compact manifold \(M\) and a continuous map \(f:M\to X\).\\
@@ -212,8 +219,10 @@ Examples need to be added here, too.
     For \(X=\pt\), and \(M=T^2\), the torus, \(S^1\times D^2\), the filled torus, is a nullbordism.
 \end{example}
 
-These examples can be generalized to just \(f\) being a constant %maybe even nullhomotopic
- map, and \(B\) any manifold such that \(\partial B=M\). 
+\begin{remark}
+    These examples can be generalized to just \(f\) being a constant %maybe even nullhomotopic
+    map, and \(B\) any manifold such that \(\partial B=M\). 
+\end{remark}
 
 \begin{example}
     For \(M=\emptyset\), any closed manifold is a nullbordism of \(M\), no matter what the space \(X\) is. (Again, \(f\) can be omitted, as it is the empty map.)
@@ -251,7 +260,8 @@ We will refer to this relation as \demph{bordism relation}.
 \begin{example}[TODO: Pair of pants]
     For \(X=\mathrm{pt}\), \((M_1,f_1)=(M,f)\dis (M,f)\) and \(M_2=M\# M\).
 \end{example}
-Look this up again. Maybe it suffices to take \(X\) path-connected. Draw a picture.
+Look this up again. Maybe it suffices to take \(X\) path-connected. Draw a picture.\\
+Probably to do: separating function
 
 \begin{nonex}
     \(\{\mathrm{pt}\}\) and \(\{\mathrm{pt}\}\dis\{\mathrm{pt}\}\) are not bordant, as \(1\)-manifolds either have 2 or 0 boundary points. (Compact \(1\)-manifolds can be classified up to homeomorphism as the circle \(S^1\) (no boundary) and the interval \([0,1]\) (two boundary points).)
@@ -263,33 +273,56 @@ Look this up again. Maybe it suffices to take \(X\) path-connected. Draw a pictu
 
 
 \begin{proposition}\cite[II, Satz 1.4]{brocker}
-    Being bordant is an equivalence relation on the set of singular manifolds.
+    Being bordant is an equivalence relation on the set of closed singular manifolds.
 \end{proposition}
 
 \begin{proof}\cite{brocker}, \cite[p.8]{conner}
     \begin{itemize}
-        \item Symmetry: Follows from the symmetry of the disjoint union. If \((M,f)\) and \((N,g)\) are bordant, then there exists a nullbordism of \((M,f)+(N,g)=(M\dis N, f\dis g) = (N\dis M, g\dis f) = (N,g)+ (M,f)\). So, a bordism between \((M,f)\) and \((N,g)\) is also bordism between \((N,g)\) and \((M,f)\).
-        \item Reflexivity: We have already constructed a bordism between \((M,f)\) and itself in Example\ \ref{cylinder bordism}.
-        \item Transitivity: Let \((B_1,F_1)\) be the bordism between \((M_1,f_1)\) and \((M_2,f_2)\), and let \((B_2,F_2)\) be the bordism between \((M_2,f_2)\) and \((M_3,f_3)\). Then we can \enquote{glue} the two bordisms together at the common boundary \((M_2,f_2)\). We only need to check that the gluing is smooth, i.e.\ \((B_1,F_1)\cup_{(M_2,f_2)}(B_2,F_2)\) is a smooth manifold. We can find a collar of \(M_2\) in both \(B_1\) and \(B_2\). These collars glued together are homeomorphism to \(M_2\times(-1,1)\). This induces a smooth structure on the glued collar, and let \(B\setminus M_2\) inherit the smooth structure from \(B_1\) and \(B_2\). Then there exists a smooth structure on \(B\) by a previous lemma.
+        \item Symmetry: 
+        Follows from the symmetry of the disjoint union. 
+        If \((M,f)\) and \((N,g)\) are bordant, then there exists a nullbordism of \((M,f)+(N,g)=(M\dis N, f\dis g) = (N\dis M, g\dis f) = (N,g)+ (M,f)\). 
+        So, a bordism between \((M,f)\) and \((N,g)\) is also bordism between \((N,g)\) and \((M,f)\).
+
+        \item Reflexivity: 
+        We have already constructed a bordism between \((M,f)\) and itself in Example\ \ref{cylinder bordism}.
+
+        \item Transitivity: 
+        Let \((B_1,F_1)\) be the bordism between \((M_1,f_1)\) and \((M_2,f_2)\), and let \((B_2,F_2)\) be the bordism between \((M_2,f_2)\) and \((M_3,f_3)\). Then we can \enquote{glue} the two bordisms together at the common boundary \((M_2,f_2)\). 
+        We only need to check that the gluing is smooth, i.e.\ \((B_1,F_1)\cup_{(M_2,f_2)}(B_2,F_2)\) is a smooth manifold. 
+        We can find a collar of \(M_2\) in both \(B_1\) and \(B_2\). 
+        %These collars glued together are homeomorphism to \(M_2\times(-1,1)\). This induces a smooth structure on the glued collar, and let \(B\setminus M_2\) inherit the smooth structure from \(B_1\) and \(B_2\). Then there exists a smooth structure on \(B\) by a previous lemma.
+        Both these collars have the induced smooth structure of \(M_2\times [0,1)\). 
+        Glueing the bordisms along \(M_2\) glues the collars to something diffeomorphic to \(M_2\times (-1,1)\), as the smooth structures align in the collars. 
+        Since smoothness is local and we now have that the glueing is smooth for a open neighbourhood or \(M_2\), the whole glueing is smooth.
         \begin{center}
             \includegraphics[width=0.4\textwidth]{transitivity.jpg}
         \end{center}
     \end{itemize}
 \end{proof}
-Draw a picture.
-Need to add collar theorem somewhere up.
-and inducing structure.
+%Draw a picture. Done
+%Need to add collar theorem somewhere up. Done (without proof)
+%and inducing structure. No
+
+\begin{remark}
+    We required the singular manifolds to be closed, because on manifolds with non-empty boundary, the bordism relation does not make any sense, as they cannot be the boundary of another manifold (see Theorem\ \ref{boundary manifold}).
+\end{remark}
 
 \begin{definition}[bordism group\ {\cite[II, Definition 1.5]{brocker}}]
-    The equivalence classes of the bordism relation are called \demph{bordism classes} and are denoted by \([M,f]\).
+    The equivalence classes of the bordism relation are called \demph{bordism classes}. 
+    The bordism class of \((M,f)\) is denoted by \([M,f]\). 
     The set of bordism classes of \(n\)-dimensional singular manifolds in \(X\) is denoted by \(\mathfrak{N}_n(X)\) and is called the \(n\)\demph{-th bordism group of }\(X\).
-    \[\mathfrak{N}_n=\{\text{singular \(n\)-manifolds in \(X\)}\}\big/\text{bordism}\]
+    \[\mathfrak{N}_n(X)=\{\text{closed singular \(n\)-manifolds in \(X\)}\}\big/\text{bordism}\]
 \end{definition}
 
-Observe the similarity with the definition of singular homology groups: We defined the singular homology groups as the quotient of kernel and image of some maps. Here, the same thing happens: Our map here is the boundary map.
+\begin{observation}
+    This might seem similar to the definition of singular homology groups. They were also defined by the quotient of the kernel and the image of a boundary map.
+    In our case, the boundary map is \(\partial\), defined in Definition\ \ref{singular manifold}. Let us introduce an index for this map to denote the dimension: \(\partial_n:\{n\text{-manifolds}\}\to\{\text{closed }(n-1)\text{-manifolds}\}\).
+    Then: \[\N_n=\ker(\partial_n)\big/\im(\partial_{n+1})\]
+\end{observation}
+%Observe the similarity with the definition of singular homology groups: We defined the singular homology groups as the quotient of kernel and image of some maps. Here, the same thing happens: Our map here is the boundary map.
 
 \begin{theorem}\ \cite[II, Satz 2.1]{brocker}
-    The bordism groups are abelian groups with the operation defined in\ \ref{bordant}:
+    The bordism groups are abelian groups with the operation \(+\) defined in\ \ref{bordant}:
     \[[M_1,f_1]+[M_2,f_2]=[M_1+M_2,(f_1,f_2)]\]
     Every element in this group has order at most \(2\), making \(\mathfrak{N}_n(X)\) a \(\mathbb{F}_2\)-vector space.
 \end{theorem}
@@ -298,7 +331,9 @@ Observe the similarity with the definition of singular homology groups: We defin
     \ \cite{brocker}
     The neutral element is the bordism class of the empty manifold (i.e.\ the class of all nullbordant manifolds).\\
     \enquote{+} is associative and commutative, because the disjoint union is associative and commutative.\\
-    It is well-defined: by + of the two bordisms.\\
+    It is well-defined:
+    Let \((M_1,f_1),(M_1^\prime,f_1^\prime)\in[M_1,f_1]\), and \((M_2,f_2),(M_2^\prime,f_2^\prime)\in[M_2,f_2]\).
+    Moreover, let \((B_1,F_1)\) and \((B_2,F_2)\) be bordisms between \((M_1,f_1)\) and \((M_1^\prime,f_2^\prime)\), respectively between \((M_2,f_2)\) and \((M_2^\prime,f_2^\prime)\). Then, a bordism between \((M_1,f_1)+(M_2,f_2)\) and \((M_1^\prime,f_1^\prime)+(M_2^\prime,f_2^\prime)\) is given by \((B_1,F_1)+(B_2,F_2)\).\\
     Since being bordant is a reflexive, every element is its own inverse.
 \end{proof}
 
@@ -311,7 +346,7 @@ as
     Check: Well-definedness, bilinearity
 \end{remark}
 
-For \(X=\{\mathrm{pt}\}\), we write \(\mathfrak{N}_n(X)\) as \(\mathfrak{N}_n\) and for elements of \(\mathfrak{N}_n\), we will omit the map from the notation (\([M]=[M,f]\)).
+\noindent\textit{Notation.} For \(X=\{\mathrm{pt}\}\), we will write \(\mathfrak{N}_n\) for \(\mathfrak{N}_n(X)\) and for elements of \(\mathfrak{N}_n\), we will omit the map from the notation (\([M]=[M,f]\)).
 
 \begin{definition}[graded bordism ring\ {\cite[Satz 2.2]{brocker}}]
     \[\mathfrak{N}_\ast:=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n\]
@@ -322,7 +357,7 @@ For \(X=\{\mathrm{pt}\}\), we write \(\mathfrak{N}_n(X)\) as \(\mathfrak{N}_n\) 
     As \(\mathbb{F}_2\) is a field, \(\mathfrak{N}_\ast\) is a graded vector space over \(\mathbb{F}_2\).
 \end{remark}
 
-Maybe do a quick check.
+%Maybe do a quick check.
 
 \begin{definition}[graded bordism module\ {\cite[Satz 2.3]{brocker}}]
     \[\mathfrak{N}_\ast(X):=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n(X)\]
