@@ -181,7 +181,7 @@ I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
     Smooth compatability follows from the smooth compatibility of the charts in \([\mathcal{A}]\). This makes \(\partial M\) a submanifold of \(M\). It remains to show that it is closed and of codimension \(1\). The charts of \([\mathcal{A}]\) map every point in \(\partial M\) to \(\partial\H^n=\R^{n-1}\). If they didn't, we could find a euclidean neighbourhood of that point, contradicting the fact that it was a boundary point in \(M\). As the charts restricted to \(\partial M\) no map to \(\R^{n-1}\), we have an \((n-1)\)-dimensional submanifold without boundary.
 \end{proof}
 
-\begin{theorem}[Collar theorem \ {\cite[I, Satz 1.5]{brocker}}]
+\begin{theorem}[Collar theorem \ {\cite[I, Satz 1.5]{brocker}}]\label{collar}
     Let \(M\) be a manifold. Then there exists a neighbourhood \(U\) of \(\partial M\) with a diffeomorphism \(s:\partial M\times [0,1)\to U\) with \(s(\partial M\times\{0\})=\partial M\). \(U\) is called a \demph{collar} of \(\partial M\) in \(M\).
 \end{theorem}
 
@@ -191,6 +191,33 @@ I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
 \begin{observation}
     If \(\partial M\) has multiple path components, then we can find a collar for each path component.
 \end{observation}
+
+\begin{definition}[Tangent space {\cite[p.72]{lee}}]
+    The \demph{tangent space} of a manifold \(M\) at a point \(p\in M\), denoted by \(T_pM\) is the set of equivalence classes of smooth curves \(\gamma:[-\varepsilon,\varepsilon]\to M\), \(\gamma(0)=p\) with the equivalence relation \(\gamma_1\sim\gamma_2:\Leftrightarrow\) for any smooth function defined in a neighbourhood of \(p\), we have \((f\circ\gamma_1)'(0)=(f\circ\gamma_2)'(0)\) (\(\varepsilon>0\) depends on \(\gamma\))
+\end{definition}
+
+\begin{remark}
+    For an \(n\)-manifold, \(T_p M\) is an \(n\)-dimensional vector space over \(\R\) for every point \(p\in M\).
+\end{remark}
+
+\begin{definition}[Differential {\cite[p.55]{lee}}]
+    Let \(f:M\to N\) be a smooth map between two manifolds. For \(p\in M\), the \demph{differential of} \(f\) \demph{at} \(p\) is given by
+    \[df_p:T_pM\to T_{f(p)}N\]
+    \[[\gamma]\mapsto[F\circ \gamma]\]
+\end{definition}
+
+\begin{definition}[critical value {\cite[p.105]{lee}}]
+    Let \(f:M\to N\) be a smooth map between two manifolds. A point \(p\in M\) is a \demph{critical point} of \(f\), if the differential \(df_p:T_p M\to T_{f(p)}N\) fails to be surjective. Otherwise, it is called a \demph{regular point}.\\
+    A point \(q\in N\) is a \demph{critical value} of \(f\), if \(f^{-1}(q)\) containa a critical point of \(f\). Otherwise, it is called a \demph{regular value}.
+\end{definition}
+
+\begin{theorem}[Sard's theorem\ {\cite{lee}}]\label{sard}
+    For a smooth map \(f:M\to N\) between two manifolds, the set of critical values of \(f\) has measure zero in \(N\).
+\end{theorem}
+
+\begin{proof}
+    See \cite{lee} for a proof.
+\end{proof}
 
 %\section{Bordism}
 
@@ -289,7 +316,7 @@ Probably to do: separating function
         \item Transitivity: 
         Let \((B_1,F_1)\) be the bordism between \((M_1,f_1)\) and \((M_2,f_2)\), and let \((B_2,F_2)\) be the bordism between \((M_2,f_2)\) and \((M_3,f_3)\). Then we can \enquote{glue} the two bordisms together at the common boundary \((M_2,f_2)\). 
         We only need to check that the gluing is smooth, i.e.\ \((B_1,F_1)\cup_{(M_2,f_2)}(B_2,F_2)\) is a smooth manifold. 
-        We can find a collar of \(M_2\) in both \(B_1\) and \(B_2\). 
+        By Theorem\ \ref{collar}, we can find a collar of \(M_2\) in both \(B_1\) and \(B_2\). 
         %These collars glued together are homeomorphism to \(M_2\times(-1,1)\). This induces a smooth structure on the glued collar, and let \(B\setminus M_2\) inherit the smooth structure from \(B_1\) and \(B_2\). Then there exists a smooth structure on \(B\) by a previous lemma.
         Both these collars have the induced smooth structure of \(M_2\times [0,1)\). 
         Glueing the bordisms along \(M_2\) glues the collars to something diffeomorphic to \(M_2\times (-1,1)\), as the smooth structures align in the collars. 
@@ -466,7 +493,7 @@ As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will ex
 \end{example}
 
 \begin{remark}
-    The above example is just the same as the cylinder bordism in Example\ \ref{cylinder bordism} (if we had constructed the cylinder we would not have to have worried about the embedding). This cylinder bordism now also works for manifolds with non-empty boundary, we can take its lateral surface (\(=\partial M_0\times [0,1]\)) as \(M'\).
+    The above example is just the same as the cylinder bordism in Example\ \ref{cylinder bordism} (if we had constructed the cylinder we would not have had to worry about the embedding). This cylinder bordism now also works for manifolds with non-empty boundary, we can take its lateral surface (\(=\partial M_0\times [0,1]\)) as \(M'\).
 \end{remark}
 
 \begin{theorem}\cite[p.525]{dieck}
@@ -490,7 +517,7 @@ over \(\N_\ast\), the relative bordism module.
 
 \begin{proof}\cite{tomdieck}
     We need to show that \((M,f)\) and \((N,f\restrict{N})\) are bordant.\\
-    Let \(B=M\times [0,1]\) the cylinder.\ \(\partial B= \underbrace{M\times\{0\}}_{M_0}\cup \underbrace{M\times\{1\}}_{M_1}\cup \partial M\times I\). Define \(F:B\to X\) as \(F(p,t)=f(p)\).\\
+    Let \(B=M\times [0,1]\) the cylinder.\ \(\partial B= M\times\{0\}\cup M\times\{1\}\cup \partial M\times I\). Define \(F:B\to X\) as \(F(p,t)=f(p)\).\\
     \textit{Claim:} \((B,F)\) is a bordism between \((M\times \{0\},f\circ\mathrm{pr}_1)\) and \((N\times \{1\}, f\restrict{N}\circ\mathrm{pr}_1)\).\\
     As both are embedded submanifolds of \(B\), we only need to check that \(\partial B\setminus((M\times \{0\})\cup (N\times\{1\}))\) is mapped into \(A\) by \(F\).
     \begin{align*}
@@ -511,26 +538,28 @@ over \(\N_\ast\), the relative bordism module.
     \[(X,A)\xmapsto{\mathfrak{N}_\ast}\mathfrak{N}_\ast(X,A)\]
     For a map \(\mathrm{Mor}(\mathrm{TOP}^2)\ni f:(X,A)\to(Y,B)\), we take the induced map on the bordism groups:
     \[f_\ast:=\mathfrak{N}_\ast(f):\mathfrak{N}_\ast(X,A)\to\mathfrak{N}_\ast(Y,B)\]
-    given by \(f_\ast[M,g]=[M,f\circ g]\) for \([M,g]\in\mathfrak{N}_n(X,A)\) and \(n\in\mathbb{N}\).\\
+    given by 
+    \[f_\ast[M,g] = [M,f\circ g]\]
+    %\(f_\ast[M,g]=[M,f\circ g]\) for \([M,g]\in\mathfrak{N}_n(X,A)\) and \(n\in\mathbb{N}\).\\
     Then we get that \(\mathfrak{N}_\ast(\mathrm{id}_{(X,A)})=\mathrm{id}_{\mathfrak{N}_\ast(X,A)}\) and for \(f:(X,A)\to(Y,B), g:(Y,B)\to(Z,C)\), we have for any \([M,h]\in\mathfrak{N}_\ast(X,A)\):
     \[{(g\circ f)}_{\ast}[M,h]=[M,g\circ f\circ h]=g_\ast[M,f\circ h]=g_\ast\circ f_\ast[M,h]\]
 \end{proof}
 
 \begin{lemma}[Naturality of the boundary map]
-    The following diagram commutes: %(Diagrams cannot be compiled for some reason)
+    The following diagram commutes for any \(f:(X,A)\to(Y,B)\) and \(n\in\Z\): %(Diagrams cannot be compiled for some reason)
     \begin{center}
         \begin{tikzcd}
-            {\mathfrak{N}_n(X,A)} \arrow[r, "\partial_n"] \arrow[d, "{f\restrict{A}}_\ast"'] & {\mathfrak{N}_{n-1}(A)}  \arrow[d, "f_\ast"] \\
+            {\mathfrak{N}_n(X,A)} \arrow[r, "\partial_n"] \arrow[d, "f_\ast"'] & {\mathfrak{N}_{n-1}(A)}  \arrow[d, "{\left(f\restrict{A}\right)}_\ast"] \\
             {\mathfrak{N}_n(Y,B)} \arrow[r, "\partial_n"]  & {\mathfrak{N}_{n-1}(B)}
         \end{tikzcd}
     \end{center}
 \end{lemma}
 
 \begin{proof}
-    Let \([M,g]\in\mathfrak{N}_n(X,A)\). This maps to \([\partial M,g\restrict{\partial M}]\in\mathfrak{N}_{n-1}(A)\).
+    Let \([M,g]\in\mathfrak{N}_n(X,A)\). \(\partial_n[M,g]=[\partial M, g\restrict{\partial M}]\in\N_{n-1}(A)\), as \(\partial M\) is closed and \(g\) maps \(\partial M\) to \(A\). % maps this to \([\partial M,g\restrict{\partial M}]\in\mathfrak{N}_{n-1}(A)\).
     Now \({f\restrict{A}}_\ast([\partial M,g\restrict{\partial M}])=[\partial M,f\circ g\restrict{\partial M}]\in \mathfrak{N}_{n-1}(B)\).\\
-    On the other side, \((\partial\circ f_\ast)[M,g]=\partial [M,f_\ast\circ g]=[\partial M,(f_\ast\circ g)\restrict{\partial M}]\in \mathfrak{N}_{n-1}(B)\), which is the same as the previous composition, hence,
-    \[\partial\circ f_\ast={f\restrict{A}}_\ast\circ \partial\]
+    On the other side, \((\partial_n\circ f_\ast)[M,g]=\partial_n [M,f_\ast\circ g]=[\partial M,(f\circ g)\restrict{\partial M}]\in \mathfrak{N}_{n-1}(B)\), which is the same as the previous composition, hence,
+    \[\partial_n\circ f_\ast={f\restrict{A}}_\ast\circ \partial_n\]
     and the diagram commutes.
 \end{proof}
 
@@ -538,37 +567,45 @@ over \(\N_\ast\), the relative bordism module.
     \(\mathfrak{N}_\ast\) is homotopy invariant.
 \end{lemma}
 
-\begin{proof}\cite{brocker}\cite[5.5]{conner}
-    Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Let \(h:(X\times I,A\times I)\to (Y,B)\) be a homotopy between \(f\) and \(g\). Then we have a bordism between \(f_\ast[M,F]\) and \(g_\ast[M,F]\) by \((M\times I, h\circ (F\times\mathrm{id}_I))\).
+\begin{proof}\cite{brocker}\cite[Chapter I, 5.5]{conner}
+    Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Let \(h:(X\times I,A\times I)\to (Y,B)\) be a homotopy between \(f\) and \(g\). Then, for \([M,f]\in\N_\ast(X,A)\), we have a bordism between \(f_\ast[M,F]\) and \(g_\ast[M,F]\) by the cylinder \((M\times I, h\circ (F\times\mathrm{id}_I))\).
 \end{proof}
-Maybe an explanation in the end (\cite{conner}).
 
-Maybe do an example here. (Special case Cylinder done before showing that bordism is an equivalence relation)
+%Maybe an explanation in the end (\cite{conner}). No
+
+%Maybe do an example here. (Special case Cylinder done before showing that bordism is an equivalence relation) No
+
+\begin{remark}%\cite[I.5, pp.12-13]{conner}
+    For a closed manifold \(M\) with \([M,f]=0\in\N_n(X,A)\) and a nullbordism \((B,F)\) of \((M,f)\). Then \(\partial B\setminus M\) is a closed \(n\)-dimensional submanifold of \(B\). For a proof, see \cite[Lemma 5.4]{zhang}.
+\end{remark}
 
 \begin{lemma}[Long exact sequence\ {\cite[Proposition 21.1.9]{dieck}}]\label{les}
     \(\mathfrak{N}_\ast\) satisfies the long exact sequence axiom.
 \end{lemma}
 
-Compare with\ \cite{zhang}!
+%Compare with\ \cite{zhang}!
 
 \begin{proof}\cite{dieck}
     Let \(i,j\) be the inclusion maps \(i:A\to X, j:X=(X,\emptyset)\to(X,A)\).\\
-    Claim: The sequence
-    \[\dots\xrightarrow{\partial}\mathfrak{N}_n(A)\xrightarrow{i_\ast}\mathfrak{N}_n(X)\xrightarrow{j_\ast}\mathfrak{N}_n(X,A)\xrightarrow{\partial}\mathfrak{N}_{n-1}(A)\xrightarrow{i_\ast}\dots\]
+    \textit{Claim:} The sequence
+    \[\dots\xrightarrow{\partial_{n+1}}\mathfrak{N}_n(A)\xrightarrow{i_\ast}\mathfrak{N}_n(X)\xrightarrow{j_\ast}\mathfrak{N}_n(X,A)\xrightarrow{\partial_n}\mathfrak{N}_{n-1}(A)\xrightarrow{i_\ast}\dots\]
     is exact.
     \begin{itemize}
-        \item \textbf{Exactness at \(\mathfrak{N}_n(A)\)} From the definitions, \(i_\ast\circ \partial=0\).\\
-        If \((B,F)\) is a nullbordism of \(f:M\to A\) in \(X\), then \(\partial[B,F]=[M,f]\)
-        \item \textbf{Exactness at \(\mathfrak{N}_n(X)\)} Let \([M,f]\in\mathfrak{N}_n(A)\). Choose \(V=\emptyset\) and use\ \ref{almost excision} to get \([M,f]=0\) in \(\mathfrak{N}_n(X,A)\), so \(j_\ast\circ i_\ast=0\).\\
-        Now let \([M,f]\in\mathfrak{N}_n(X)\) such that \(j_\ast([M,f])=0\). A nullbordism of \([M,f]\) in \(X,A\) is a bordism between \(M,f\) and \(N,g\) with \(g(N)\subset A\). Then \(i_\ast[N,g]=[M,f]\) follows.
-        \item \textbf{Exactness at \(\mathfrak{N}_n(X,A)\)} Again, \(\partial \circ i_\ast=0\) follows from the definitions.\\
-        Let \(\partial[M,f]=0\), \([B,F]\) be a nullbordism of \(\partial M, f\restrict{\partial M}\).Identify \((M,f)\) and \((B,f)\) along \(\partial M\). Call the resulting singular manifold \((C,g)\). Now with\ \ref{almost excision}, get \(j_\ast[C,g]=[M,f]\).
+        \item \textbf{Exactness at \(\mathfrak{N}_n(A)\)}
+        \(i_\ast\circ \partial=0\), as for \([M,f]\in\N_{n+1}(X,A)\), \(\partial_{n+1} [M,f]=[\partial M,f\restrict{\partial M}]\), which, considered as an element in \(\N_n(X)\) is nullbordant via the nullbordism \((M,f)\).
+
+        Let \((M,f)\in\N_n(A)\) with nullbordism \((B,F)\) in \(X\). Then, \(\partial_{n+1}[B,F]=[M,f]\).
+
+        \item \textbf{Exactness at \(\mathfrak{N}_n(X)\)} Let \([M,f]\in\mathfrak{N}_n(A)\). Choose \(V=\emptyset\) and use\ \ref{almost excision} to get \([M,f]=0\) in \(\mathfrak{N}_n(X,A)\), so \(j_\ast\circ i_\ast=0\).
+        
+        Now let \([M,f]\in\ker(j_\ast)\subseteq \mathfrak{N}_n(X)\). Then there exists a singular manifold \((B^{n+1},F)\) in \(X,A\) of \([M,f]\). \((B,F)\) is a bordism between \(M,f\) and \(\partial B\setminus M,F\restrict{\partial B\setminus M}\), as \(\partial B\setminus M\) is a closed submanifold of \(B\) by the previous remark. Since \(F(\partial B\setminus M)\subseteq A\), \([\partial B\setminus M,F\restrict{\partial B\setminus M}]\in\N_n(A)\). So, \(i_\ast[\partial B\setminus M,F\restrict{\partial B\setminus M}]=[M,f]\in\N_n(X)\).
+
+        \item \textbf{Exactness at \(\mathfrak{N}_n(X,A)\)} \(\partial \circ j_\ast=0\) holds because every element in \(\N_n(X)\) is a closed manifold, so it has empty boundary, hence applying the boundary map gets us to \([\emptyset,\emptyset\to X]\) which is the zero element in \(\N_{n-1}(A)\).
+        
+        Let \(\partial[M,f]=0\), and \([B,F]\) be a nullbordism of \([\partial M, f\restrict{\partial M}]\). Identify \((M,f)\) and \((B,F)\) along \(\partial M\). This is smooth by the same argument as in Theorem\ \ref{equivalence bordant}. Call the resulting singular manifold \((C,g)\). This has no boundary, so \([C,g]\in\N_n(X)\) Now with Lemma\ \ref{almost excision}, get \(j_\ast[C,g]=[M,f]\).
     \end{itemize}
 \end{proof}
 
-\begin{theorem}[Sard's theorem\ {\cite{lee}}]\label{sard}
-    The set of critical values has measure zero.
-\end{theorem}
 
 \begin{comment}[Transversality, Sard, Mayer-Vi\"etoris,...]
 Before checking the next axioms, we need to do some more differential topology. (Maybe I will put this in chapter 1\dots)
@@ -606,34 +643,51 @@ I will not prove this theorem, a proof can be found in\ \cite{lee}.
 
 \end{comment}
 
-We only need to check the excision axiom now to see that bordism is a homology theory. But to see the excision property, we need some preliminary lemmas.
+Only the excision axiom is left to check. But to see the excision property, we need some preliminary lemmas.
 
-\begin{lemma}[{\cite[Lemma 5.6]{zhang}}]\label{plemma}
-    Let \(K,L\subseteq M\) be disjoint closed subsets of a compact manifold \(M\). Then there exists a closed submanifold with boundary \(N\subseteq M\) with \(K\subseteq N, L\cap N=\emptyset\).
+\begin{lemma}[{\cite[Chapter I, 3.1]{conner}}]\label{plemma}%{\cite[Lemma 5.6]{zhang}}
+    Let \(M\) be a closed manifold, let \(K,L\subseteq M\) closed, such that \(K\cap L=\emptyset\). Then there exists a closed submanifold with boundary \(N\) of \(M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).
 \end{lemma}
 
-\begin{proof}\cite{zhang}
+\begin{proof}\cite{conner}
+    \(K\cap\partial M\) and \(L\cap\partial M\) are still disjoint, closed in \(\partial M\), so we can find disjoint closed subsets \(K',L'\subseteq\partial M\) such that \(K\subseteq\overset{\circ}{K'}\), \(L\subseteq\overset{\circ}{L'}\). 
+    We find a collar \(C\) of \(\partial M\) by Theorem\ \ref{collar} and identify it by \(\partial M\times[0,1)\). As \(M\) is compact, there exists a \(t\in (0,1)\) such that \(L\cap (\partial M\times [0,t))\subseteq L'\) and \(K\cap (\partial M\times [0,t))\subseteq K'\). 
+    Now \(M':=M\setminus (\partial M\times [0,t))\) is a closed \(n\)-dimensional submanifold of \(M\). By Urysohn's lemma, there exists a smooth function \(\alpha:M'\to[0,1]\) such that \(\alpha\restrict{(K'\times \{t\})\cup (K\cap M')}=0\) and \(\alpha\restrict{(L'\times \{t\})\cup(L\cap M')}=1\). 
+    We can extend \(\alpha\) to \(M\) by \(\alpha(p,s):=\alpha(p,t)\) for \(p\in \partial M\) and \(s\in[0,t)\). 
+    By Theorem\ \ref{sard}, there is a regular value \(r\in(0,1)\) of \(\alpha\). 
+    Then \(N:=\alpha^{-1}([0,r])=\alpha^{-1}(-\infty,r]\) is a closed submanifold of \(M\) %with boundary \(\partial N=\alpha^{-1}(r)\)
+    . By construction, \(K\subseteq N\), \(L\cap N=\emptyset\).\\
+    It remains to show that \(N\) is smoothable, but we will omit the proof here.
 \end{proof}
 
-In the above (nonexistent yet, may look into Conner,Floyd) proof, a smooth \(\alpha\) with regular value \(r\) is constructed.
+%In the above (nonexistent yet, may look into Conner,Floyd) proof, a smooth \(\alpha\) with regular value \(r\) is constructed.
 
 \begin{lemma}[{\cite[Lemma 5.8]{zhang}}]\label{plemma2}
-    Let \(K,L,M,N\) be as in\ \ref{plemma}. Then,
+    Let \(K,L,M,N\alpha,r\) be as in\ \ref{plemma}. Then,
     \[\partial N\subseteq \partial M\cup \alpha^{-1}(r)\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\]
 \end{lemma}
 
+\begin{proof}\cite{zhang}
+    \textit{First inclusion:} Assume \(p\in\partial N\setminus \partial M\). We need to show that \(\alpha(p)=r\). By assumption, \(p\) is an interior point of \(M\), so we can find a euclidean neighbourhood \(U\) of \(p\) in \(M\). 
+    As \(p\in N\), \(\alpha(p)\leq r\). Suppose \(\alpha(p)<r\). Then, for a \(r'\in(\alpha(p),r)\), we have \(p\in\alpha^{-1}([0,r'))\subseteq N\). Since \(\alpha^{-1}([0,r'))\) is open in \(M\), it is open in \(N\) and \(U\cap V\) is an open euclidean neighbourhood of \(p\) in \(N\). But then, \(p\) is an interior point of \(N\), contradicting the assumption that \(p\in\partial N\). So, \(\alpha(p)=r\).\\
+    \textit{Second inclusion:} Since \(\alpha\restrict{K}=0\) and \(\alpha\restrict{L}=1\), we have \(\alpha^{-1}(r)\subseteq M\setminus (K\cup L)\).
+\end{proof}
+
 \begin{lemma}[Excision axiom\ {\cite[Theorem 5.10]{zhang}}]\label{excision}
-    Let \(X,A,Z\) be a triple of topological spaces satisfying \(\overline{Z}\subseteq\overset{\circ}{A}\). Then the inclusion map \(i:(X\setminus Z,A\setminus Z)\hookrightarrow(X,A)\) induces an isomorphism of bordism groups:
+    Let \((X,A,Z)\) be a triple of topological spaces satisfying \(\overline{Z}\subseteq\overset{\circ}{A}\). Then the inclusion map \(i:(X\setminus Z,A\setminus Z)\hookrightarrow(X,A)\) induces an isomorphism of bordism groups:
     \[i_\ast:\mathfrak{N}_n(X\setminus Z,A\setminus Z)\xrightarrow{\cong}\mathfrak{N}_n(X,A)\]
 \end{lemma}
 
 \begin{proof}
-    \textbf{Surjectivity}: Let \([M,f]\in\mathfrak{N}_n(X,A)\). Then the preimages \(K=f^{-1}(X\setminus\overset{\circ}A)\) and \(L=f^{-1}(\overline{Z})\) are disjoint and closed subsets of \(M\). By\ \ref{plemma}, there exists a closed submanifold with boundary \(N\subset M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).\\
+    \textbf{Surjectivity}: Let \([M,f]\in\mathfrak{N}_n(X,A)\). Then the preimages \(K=f^{-1}(X\setminus\overset{\circ}A)\) and \(L=f^{-1}(\overline{Z})\) are disjoint and closed subsets of \(M\). By lemma\ \ref{plemma}, there exists a closed submanifold with boundary \(N\subset M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).\\
     From \(L\cap N=\emptyset\), it follows that \(f(N)\subseteq X\setminus\overline{Z}\). By\ \ref{plemma2}, we have \(\partial N\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\). So, for any \(p\in \partial N\), we have either \(p\in\partial M\), implying \(f(p)\in A\), or \(p\in(M\setminus K)\), implying \(f(p)\in\overset{\circ}A\). In any case, we get \(f(\partial N)\subseteq A\setminus\overline{Z}\), so \([N, f\restrict{N}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\).\\
-    As \(f^{-1}(X\setminus\overset{\circ}A)\), we get \(f(M\setminus N)\subseteq \overset{\circ}A\). By\ \ref{almost excision}, we get \(i_\ast[N,f\restrict{N}]=[M,f]\)\\
-    \textbf{Injectivity}: Take \([M,f]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) such that \(i_\ast[M,f]=0\) in \(\mathfrak{N}_n(X,A)\). Then there exists an (\(n+1\))-manifold \(B\) and \(g:B\to X\), such that \(M\) is an embedded submanifold of \(\partial B\), \(g(\partial B\setminus M)\subseteq A\) and \(g\restrict{M}=f\).\\
-    Again, let \(K=g^{-1}(X\setminus\overset{\circ}A)\), \(L=g^{-1}(\overline{Z})\). Then we have an embedded submanifold \(W\subseteq B\) such that \(K\subseteq W\), \(W\cap L=\emptyset\). So \([\partial W,g\restrict{\partial B}]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) nullbordant.\\
-    \emph{Claim}: \(M\cap\partial B=M\cap B\). \enquote{\(\subseteq\)} is clear. For \enquote{\(\supseteq\)}, take \(p\in M\cap B\). Then \(p\in\partial W\), so there exists a chart \(\varphi:U\to\mathbb{H}^{n+1}\) such that \(\varphi(p)\in\partial\mathbb{H}^{n+1}\). So, \(p\in\partial B\).\\
+    As \(f^{-1}(X\setminus\overset{\circ}A)\), we get \(f(M\setminus N)\subseteq \overset{\circ}A\). By lemma\ \ref{almost excision}, we get \(i_\ast[N,f\restrict{N}]=[M,f]\).
+
+    \noindent\textbf{Injectivity}: Take \([M,f]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) such that \(i_\ast[M,f]=0\) in \(\mathfrak{N}_n(X,A)\). Then there exists %an (\(n+1\))-manifold \(B\) and \(g:B\to X\), such that \(M\) is an embedded submanifold of \(\partial B\), \(g(\partial B\setminus M)\subseteq A\) and \(g\restrict{M}=f\).\\
+    a nullbordism \((B,F)\) with \(F(\partial B\setminus M)\subseteq A\).\\
+    Again, let \(K=F^{-1}(X\setminus\overset{\circ}A)\), \(L=F^{-1}(\overline{Z})\). By lemma\ \ref{plemma}, we have a submanifold \(N\subseteq B\) such that \(K\subseteq N\), \(N\cap L=\emptyset\). Then, \([\partial N,F\restrict{\partial N}]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) nullbordant by \((N,F\restrict{N})\).\\
+    \emph{Claim}: \(M\cap\partial N=M\cap N\).\\
+    \enquote{\(\subseteq\)} is clear. For \enquote{\(\supseteq\)}, take \(p\in M\cap N\). Then \(p\in\partial B\), so there exists a chart \(\varphi:U\to\mathbb{H}^{n+1}\) of \(B\), such that \(\varphi(p)\in\partial\mathbb{H}^{n+1}\). So, \(p\in\partial N\).\\
     Then \(M\cap\partial B\) is an embedded submanifold of \(M\), because
     \begin{equation}\label{*}
         M\cap\partial B= M\cap B={(\alpha\restrict{M})}^{-1}([0,r])
