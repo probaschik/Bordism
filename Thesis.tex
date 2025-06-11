@@ -250,7 +250,7 @@ We will refer to this relation as \demph{bordism relation}.
 \end{remark}
 
 \begin{example}[Cylinder]\label{cylinder bordism}
-    For an arbitrary \(X\), and \((M_0,f_0)=(M_1,f_1')\), we always get the cylinder as a bordism: \((M\times[0,1],f\circ\mathrm{pr}_1)\), where \(\mathrm{pr}_1\) is the projection onto the first factor.
+    For an arbitrary \(X\), and \((M_0,f_0)=(M_1,f_1)\), we always get the cylinder as a bordism: \((M\times[0,1],f\circ\mathrm{pr}_1)\), where \(\mathrm{pr}_1\) is the projection onto the first factor.
     \begin{center}
         \includegraphics[width=0.4\textwidth]{cylinder.jpg}
     \end{center}
@@ -272,7 +272,7 @@ Probably to do: separating function
 \end{remark}
 
 
-\begin{proposition}\cite[II, Satz 1.4]{brocker}
+\begin{proposition}\cite[II, Satz 1.4]{brocker}\label{equivalence bordant}
     Being bordant is an equivalence relation on the set of closed singular manifolds.
 \end{proposition}
 
@@ -337,20 +337,34 @@ Probably to do: separating function
     Since being bordant is a reflexive, every element is its own inverse.
 \end{proof}
 
-Let \(X,Y\) be two topological spaces. Then we define a product map
-\[\cdot:\mathfrak{N}_p(X)\times\mathfrak{N}_q(Y)\to\mathfrak{N}_{p+q}(X\times Y)\]
-as
-\[((M,f),(N,g))\mapsto (M\times N,f\times g)\]
+\begin{definition}[Product map\ {\cite[pp.12-13]{brocker}}]
+    Let \(X,Y\) be two topological spaces. Then we define a product map
+    \[\cdot:\mathfrak{N}_p(X)\times\mathfrak{N}_q(Y)\to\mathfrak{N}_{p+q}(X\times Y)\]
+    as
+    \[([M,f],[N,g])\mapsto [M\times N,f\times g]\]
+\end{definition}
 
-\begin{remark}
-    Check: Well-definedness, bilinearity
-\end{remark}
+\begin{observation}
+    This map is well defined, as for two bordant singular manifolds \((M,f)\) and \((M^\prime,f^\prime)\) with bordism \((B,F)\), we get a bordism between \((M\times N,f\times g)\) and \((M^\prime\times N, f^\prime\times g)\) by \((B\times N, F\times g)\). 
+    This map is also bilinear (as a map between \(\F_2\)-vector spaces). Scalar multiplication is defined as \(0\cdot[M,f]=[\emptyset,\emptyset\to X]\), \(1\cdot[M,f]=[M,f]\). As \([\emptyset]\cdot[N,g]=[\emptyset]=[M,f]\cdot[\emptyset]\), we conclude for any \(a\in\F_2\): \([M,f]\cdot(a\cdot[N,g])=a\cdot([M,f]\cdot[N,g])=(a\cdot[M,f])\cdot[N,g]\). Additivity follows, as addition is defined as disjoint union: 
+    \begin{align*}
+        ([M,f]+[M',f'])\cdot[N,g]&=[M+M',(f,f')]\cdot[N,g]\\
+        &=[((M+M')\times N ),(f,f')\times g]\\
+        &= [(M\times N) + (M'\times N),(f\times g,f'\times g)]\\
+        &=[M,f]\cdot[N,g]+[M',f']\cdot[N,g]\end{align*}
+    %For \(a,b\in\F_2\), \([M,f],[M^\prime,f^\prime]\in\N_p(X)\) and \([N,g],[N^\prime,g^\prime]\in\N_q(Y)\):
+    %\[([M,f]+a[M^\prime,f^\prime])\cdot([N,g]+b [N^\prime,g^\prime])\]
+\end{observation}
+
+%\begin{remark}
+%    Check: Well-definedness, bilinearity
+%\end{remark}
 
 \noindent\textit{Notation.} For \(X=\{\mathrm{pt}\}\), we will write \(\mathfrak{N}_n\) for \(\mathfrak{N}_n(X)\) and for elements of \(\mathfrak{N}_n\), we will omit the map from the notation (\([M]=[M,f]\)).
 
 \begin{definition}[graded bordism ring\ {\cite[Satz 2.2]{brocker}}]
     \[\mathfrak{N}_\ast:=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n\]
-    is a graded ring over \(\mathbb{F}_2\) and is called the \demph{bordism ring}.
+    is a \(\Z\)-graded ring over \(\mathbb{F}_2\) via \(+\) and \(\cdot\) and is called the \demph{bordism ring}.
 \end{definition}
 
 \begin{remark}
@@ -361,13 +375,13 @@ as
 
 \begin{definition}[graded bordism module\ {\cite[Satz 2.3]{brocker}}]
     \[\mathfrak{N}_\ast(X):=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n(X)\]
-    is a graded module over \(\mathfrak{N}_\ast\) via
+    is a \(\Z\)-graded module over \(\mathfrak{N}_\ast\). It is called the \demph{bordism module}. Explicitly, the product map acts as follows:
     \[[M]\cdot[N,f]=[M\times N, f\circ \mathrm{pr}_2]\]
     where \(\mathrm{pr}_2:M\times N\to N\) is the projection onto the second factor.
 \end{definition}
 
 \begin{remark}
-    Notice that in this definition, this is a right module, but since we could just project to the first factor instead, we also get a left module structure.
+    Notice that in this definition, this is a left module, but since we could just project to the first factor instead, we also get a right module structure.
 \end{remark}
 
 \subsubsection{The Eilenberg-Steenrod axioms}\label{es axioms}
@@ -375,8 +389,10 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
 
 \begin{definition}[Homology theory\ {\cite[Definition 1.1]{luck}}]
     A \demph{homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficients in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
-    together with a natural transformation \[\partial_\ast:\mathcal{H}_\ast\to\mathcal{H}_{\ast-1}\circ I\]
-    
+    together with a natural transformation 
+    \[\partial_\ast:\mathcal{H}_\ast\to\mathcal{H}_{\ast-1}\circ I\]
+    where \(I\) is a forgetful functor \(I:\mathrm{TOP}^2\to\mathrm{TOP}^2\), given by \(I(X,A)=(A,\emptyset)\). We will often write \(X\) for \((X,\emptyset)\) for any space \(X\).\\
+    \(\mathcal{H}_\ast\) has to satisfy the following \demph{Eilenberg-Steenrod axioms for homology theories}:
     \begin{itemize}
         \item \textbf{Homotopy invariance}\\
         Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Then for all \(n\in\mathbb{Z}\), we have
@@ -400,51 +416,88 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
         \[\mathcal{H}_n(\mathrm{pt})\cong\begin{cases}R&n=0\\\{0\}&n\neq0\end{cases}\]
         
     \end{itemize}
-    For homology theories, the abbreviation \(\mathcal{H}_\ast\) is often used to refer to \(\mathcal{H}_\ast(\{\mathrm{pt}\},\emptyset)\).
+    For homology theories, the abbreviation \(\mathcal{H}_\ast=\mathcal{H}_\ast(\{\pt\})=\mathcal{H}_\ast(\{\pt\},\emptyset)\) is often used.
 \end{definition}
 
-Before we can say that bordism defines a homology theory, we need to define relative bordism.
+\begin{remark}
+    If a homology theory satisfies the dimension axiom, it is called an \demph{ordinary homology theory}.
+\end{remark}
+
+As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will extend the definition of bordism to pairs of topological spaces.
 
 \subsubsection{Relative bordism}
 
 \begin{definition}[relative bordism\ {\cite[pp.524-525]{dieck}}]
-    For a pair of topological spaces \((X,A)\), we call a \((M,f)=(M,\partial M,f)\) a \demph{singular manifold in }\(X\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
-    Two singular manifolds \((M_0,f_0)\) and \((M_1,f_1)\) in \(X\) are called \demph{bordant}, if there exists a singular manifold \((B,F)\) in \(X\), such that:
+    For a pair of topological spaces \((X,A)\), we call \((M,f)=(M,\partial M,f)\) a \demph{singular manifold in }\((X,A)\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
+    Two \(n\)-dimensional singular manifolds \((M^n_0,f_0)\) and \((M^n_1,f_1)\) in \(X\) are called \demph{bordant}, if there exists an (\(n+1\))-dimensional singular manifold \((B^{n+1},F)\) in \(X\), such that:
     \begin{itemize}
-        \item \((B,F)\) is a (\(n+1\))-dimensional compact manifold with boundary,
-        \item \(\partial B=\partial_0B\cup\partial_1B\cup\partial_2B\) such that \\
-                \(\partial(\partial_2B)=\partial(\partial_0B)\dis\partial(\partial_1B)\) and
-                for \(i\in\{0,1\}\), \(\partial_i B\cap\partial_2B=\partial(\partial_i B)\)
-        \item There are diffeomorphisms \(g:(M_i,f_i)\xrightarrow{\cong}(\partial_{i} B,\partial(\partial_{i}B))\) for \(i\in\{0,1\}\) such that \(\partial F\circ g_i=\partial f_i\)\\
-        \(\partial f_i, \partial g_i, \partial F_i\) are as defined in\ \ref{singular manifold}.
-        \item \(F(\partial_2B)\subseteq A\)
+        %\item \((B,F)\) is a (\(n+1\))-dimensional compact manifold with boundary,
+        \item \(\partial B\) can be decomposed as  \(\partial B=M_0\cup M_1\cup M'\), where \(M_0,M_1,M'\) are considerd as embedded submanifolds of \(B\) with boundary, such that 
+        \(\partial M'=\partial M_0\dis M_1\), 
+        for \(i\in\{0,1\}\), \(M_i\cap M'=\partial M_i\) and \(\partial M_0
+        \cap\partial M_1=\emptyset\).
+
+        \item \(\partial F\restrict{M_i}=f_i\), for \(i\in\{0,1\}\)
+
+        \item \(F(M')\subseteq A\)
     \end{itemize}
-    As before, \(B,F\) will be called a \demph{bordism} between \((M_0,f_0)\) and \((M_1,f_1)\) and a \demph{nullbordism} of \(M_0,f_0\) if \(M_1=\emptyset\).
+    As before, \((B,F)\) will be called a \demph{bordism} between \((M_0,f_0)\) and \((M_1,f_1)\) and a \demph{nullbordism} of \((M_0,f_0)\) if \(M_1=\emptyset\).
 \end{definition}
 
+\begin{remark}
+    If we take \(A=\emptyset\), we get the definition of (absolute) bordism as we had before. In particular, if \((M,f)\) and \(N,g\) are bordant in the absolute sense, then they are also bordant in the relative sense with the same bordism (but there may be more possible bordisms in the relative sense).
+\end{remark}
+
+\begin{observation}
+    Now, the bordism relation also makes sense fo manifolds with non-empty boundary.
+\end{observation}
+
 \begin{example}
-    Disks on sphere
+    Consider the disk \((D^n,f)\) as a singular manifold in \((X,A)\). 
+    %We already know that \((D^n\times [0,1],f\circ\mathrm{pr}_1)\) is a bordism between \((D^n,f)\) and itself. 
+    We have a bordism \(B,F\) between \((D^n,f)\) and itself by \(B=D^{n+1}\). We have to cover \(\partial D^{n+1}=S^n\) by two \(D^n\)s and \(M^\prime\), which can be done by taking almost all of each the upper and the lower hemisphere as \(D^n\) 
+    (In this example, the chosen embedding heavily matters. We will embed them such that there is only one pair of points such that the antipodal points in the embedding correspond to each other.) 
+    and the remaining cylinder around the equator as \(M'\). 
+    Now \(F\) just has to map \(M'\) to \(A\) (and along with it, also \(\partial M_0\) and \(\partial M_1\), as desired). 
+    To do this, \(F\) will \enquote{squeeze} the disk such that the \(D^n\)s are identified together and will then map the resulting disk with the remains of \(M'\) to \(D^n,\partial D^n\) via the identity on \(D^n\) and contracting \(M'\) to its boundary. Lastly, apply \(f\).
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{squeeze2.jpg}
+    \end{center}
 \end{example}
+
+\begin{remark}
+    The above example is just the same as the cylinder bordism in Example\ \ref{cylinder bordism} (if we had constructed the cylinder we would not have to have worried about the embedding). This cylinder bordism now also works for manifolds with non-empty boundary, we can take its lateral surface (\(=\partial M_0\times [0,1]\)) as \(M'\).
+\end{remark}
 
 \begin{theorem}\cite[p.525]{dieck}
     Relative bordism is an equivalence relation on the set of singular manifolds in \(X\).
 \end{theorem}
 
-Maybe do a proof or just say that it is similar to the proof of the bordism relation.
+\begin{proof}
+    The proof is similar to the proof of Proposition\ \ref{equivalence bordant}. Symmetry is clear, for reflexivity, we now also have the cylinder as stated in the above remark. For transitivity, we again glue the bordisms along their common boundary \(M_2\), but as \(M_2\) may have boundary now, we glue the bordism along a open neighbourhood \(U\) (in \(\partial B_1\) and \(\partial B_1\)) of \(M_2\). To see this is smooth, we again look at the collars of \(\partial B_i\). This time we restrict the collars to \(U\) and see that the collars are diffeomorphic to \(M_2\times(-1,1)\). The rest of the proof is the same as in Proposition\ \ref{equivalence bordant}.
+\end{proof}
 
+Relative bordism groups are defined in the same way as absolute bordism groups, they also are abelian by the same proof. The product map is defined as \[\cdot:\N_p(X,A)\times\N_q(Y,B)\to\N_{p+q}(X\times Y, A\times B)\]
+on elements, it does the same as before. Again, we get a graded module structure
+\[\N_\ast(X,A):= \bigoplus_{n\in\Z}N_n(X,A)\]
+over \(\N_\ast\), the relative bordism module.
 
-relative bordism groups are graded modules in the same way. They are denoted by \(\mathfrak{N}_\ast(X,A)\).
-If \(A=\emptyset\), the definition coincides with the definition of bordism groups.
-
-\begin{lemma}\label{almost excision}\cite[Lemma 5.1]{zhang}, maybe \cite[21.1.8]{dieck}
-    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(V\) a embedded submanifold, such that \([V,f\restrict{V}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). Then \([M,f]=[V,f\restrict{V}]\) in \(\mathfrak{N}_n(X,A)\).
+\begin{lemma}\ \cite[Lemma 13.10]{tomdieck} \label{almost excision} %\cite[Lemma 5.1]{zhang} \cite[Lemma 21.1.8]{dieck}
+    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(N\) a \(n\)-dimensional embedded submanifold of \(M\). 
+    Suppose that \([N,f\restrict{N}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). 
+    Then \([M,f]=[N,f\restrict{N}]\) in \(\mathfrak{N}_n(X,A)\).
 \end{lemma}
 
-\begin{proof}\cite{zhang}, maybe \cite{dieck}
+\begin{proof}\cite{tomdieck}
     We need to show that \((M,f)\) and \((N,f\restrict{N})\) are bordant.\\
-    Let \(B=M\times I\) the cylinder. \(\partial B= \underbrace{M\times\{0\}}_{M_0}\cup \underbrace{M\times\{1\}}_{M_1}\cup \partial M\times I\). Define \(g:B\to X\) as \(g(p,t)=f(p)\).\\
-    Writing \(M_1=(M_1\setminus N_1)\cup N_1\), we get that \(M\times I\) is a bordism between \(M\) and \(N\), because
-    \[g(\partial B\setminus(M_0\cup N_1))=g((M_1\setminus N_1)\cup(\partial M\times I))=f(M\setminus N)\cup f(\partial M)\subseteq A\]
+    Let \(B=M\times [0,1]\) the cylinder.\ \(\partial B= \underbrace{M\times\{0\}}_{M_0}\cup \underbrace{M\times\{1\}}_{M_1}\cup \partial M\times I\). Define \(F:B\to X\) as \(F(p,t)=f(p)\).\\
+    \textit{Claim:} \((B,F)\) is a bordism between \((M\times \{0\},f\circ\mathrm{pr}_1)\) and \((N\times \{1\}, f\restrict{N}\circ\mathrm{pr}_1)\).\\
+    As both are embedded submanifolds of \(B\), we only need to check that \(\partial B\setminus((M\times \{0\})\cup (N\times\{1\}))\) is mapped into \(A\) by \(F\).
+    \begin{align*}
+        F(\partial B\setminus((M\times \{0\})\cup (N\times\{1\})))&\subseteq F((\partial M\times I)\cup ((M\times\{1\})\setminus (N\times \{1\})))\\
+        =f(\partial M)\cup f(M\setminus N)&\subseteq A
+    \end{align*}
+    %\[g(\partial B\setminus(M_0\cup N_1))=g((M_1\setminus N_1)\cup(\partial M\times I))=f(M\setminus N)\cup f(\partial M)\subseteq A\]
 \end{proof}
 
 \subsubsection{Bordism homology}
@@ -464,11 +517,11 @@ If \(A=\emptyset\), the definition coincides with the definition of bordism grou
 \end{proof}
 
 \begin{lemma}[Naturality of the boundary map]
-    The following diagram commutes: (Diagrams cannot be compiled for some reason)
+    The following diagram commutes: %(Diagrams cannot be compiled for some reason)
     \begin{center}
         \begin{tikzcd}
-            {\mathfrak{N}_n(A)} \arrow[r, "\partial"] \arrow[d, "{f\restrict{A}}_\ast"'] & {\mathfrak{N}_{n-1}(X,A)}  \arrow[d, "f_\ast"] \\
-            {\mathfrak{N}_n(B)} \arrow[r, "\partial"]  & {\mathfrak{N}_{n-1}(Y,B)}
+            {\mathfrak{N}_n(X,A)} \arrow[r, "\partial_n"] \arrow[d, "{f\restrict{A}}_\ast"'] & {\mathfrak{N}_{n-1}(A)}  \arrow[d, "f_\ast"] \\
+            {\mathfrak{N}_n(Y,B)} \arrow[r, "\partial_n"]  & {\mathfrak{N}_{n-1}(B)}
         \end{tikzcd}
     \end{center}
 \end{lemma}
