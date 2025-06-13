@@ -510,7 +510,7 @@ on elements, it does the same as before. Again, we get a graded module structure
 over \(\N_\ast\), the relative bordism module.
 
 \begin{lemma}\ \cite[Lemma 13.10]{tomdieck} \label{almost excision} %\cite[Lemma 5.1]{zhang} \cite[Lemma 21.1.8]{dieck}
-    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(N\) a \(n\)-dimensional embedded submanifold of \(M\). 
+    Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(N\) a \(n\)-dimensional submanifold of \(M\). 
     Suppose that \([N,f\restrict{N}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). 
     Then \([M,f]=[N,f\restrict{N}]\) in \(\mathfrak{N}_n(X,A)\).
 \end{lemma}
@@ -646,7 +646,7 @@ I will not prove this theorem, a proof can be found in\ \cite{lee}.
 Only the excision axiom is left to check. But to see the excision property, we need some preliminary lemmas.
 
 \begin{lemma}[{\cite[Chapter I, 3.1]{conner}}]\label{plemma}%{\cite[Lemma 5.6]{zhang}}
-    Let \(M\) be a closed manifold, let \(K,L\subseteq M\) closed, such that \(K\cap L=\emptyset\). Then there exists a closed submanifold with boundary \(N\) of \(M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).
+    Let \(M^n\) be a closed manifold, let \(K,L\subseteq M\) closed, such that \(K\cap L=\emptyset\). Then there exists a closed \(n\)-dimensional submanifold with boundary \(N\) of \(M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).
 \end{lemma}
 
 \begin{proof}\cite{conner}
@@ -655,7 +655,7 @@ Only the excision axiom is left to check. But to see the excision property, we n
     Now \(M':=M\setminus (\partial M\times [0,t))\) is a closed \(n\)-dimensional submanifold of \(M\). By Urysohn's lemma, there exists a smooth function \(\alpha:M'\to[0,1]\) such that \(\alpha\restrict{(K'\times \{t\})\cup (K\cap M')}=0\) and \(\alpha\restrict{(L'\times \{t\})\cup(L\cap M')}=1\). 
     We can extend \(\alpha\) to \(M\) by \(\alpha(p,s):=\alpha(p,t)\) for \(p\in \partial M\) and \(s\in[0,t)\). 
     By Theorem\ \ref{sard}, there is a regular value \(r\in(0,1)\) of \(\alpha\). 
-    Then \(N:=\alpha^{-1}([0,r])=\alpha^{-1}(-\infty,r]\) is a closed submanifold of \(M\) %with boundary \(\partial N=\alpha^{-1}(r)\)
+    Then \(N:=\alpha^{-1}([0,r])=\alpha^{-1}(-\infty,r]\) is a \(n\)-dimensional closed submanifold of \(M\)%with boundary \(\partial N=\alpha^{-1}(r)\)
     . By construction, \(K\subseteq N\), \(L\cap N=\emptyset\).\\
     It remains to show that \(N\) is smoothable, but we will omit the proof here.
 \end{proof}
@@ -678,23 +678,34 @@ Only the excision axiom is left to check. But to see the excision property, we n
     \[i_\ast:\mathfrak{N}_n(X\setminus Z,A\setminus Z)\xrightarrow{\cong}\mathfrak{N}_n(X,A)\]
 \end{lemma}
 
-\begin{proof}
+\begin{proof}\cite{zhang}
     \textbf{Surjectivity}: Let \([M,f]\in\mathfrak{N}_n(X,A)\). Then the preimages \(K=f^{-1}(X\setminus\overset{\circ}A)\) and \(L=f^{-1}(\overline{Z})\) are disjoint and closed subsets of \(M\). By lemma\ \ref{plemma}, there exists a closed submanifold with boundary \(N\subset M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).\\
     From \(L\cap N=\emptyset\), it follows that \(f(N)\subseteq X\setminus\overline{Z}\). By\ \ref{plemma2}, we have \(\partial N\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\). So, for any \(p\in \partial N\), we have either \(p\in\partial M\), implying \(f(p)\in A\), or \(p\in(M\setminus K)\), implying \(f(p)\in\overset{\circ}A\). In any case, we get \(f(\partial N)\subseteq A\setminus\overline{Z}\), so \([N, f\restrict{N}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\).\\
     As \(f^{-1}(X\setminus\overset{\circ}A)\), we get \(f(M\setminus N)\subseteq \overset{\circ}A\). By lemma\ \ref{almost excision}, we get \(i_\ast[N,f\restrict{N}]=[M,f]\).
 
     \noindent\textbf{Injectivity}: Take \([M,f]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) such that \(i_\ast[M,f]=0\) in \(\mathfrak{N}_n(X,A)\). Then there exists %an (\(n+1\))-manifold \(B\) and \(g:B\to X\), such that \(M\) is an embedded submanifold of \(\partial B\), \(g(\partial B\setminus M)\subseteq A\) and \(g\restrict{M}=f\).\\
     a nullbordism \((B,F)\) with \(F(\partial B\setminus M)\subseteq A\).\\
-    Again, let \(K=F^{-1}(X\setminus\overset{\circ}A)\), \(L=F^{-1}(\overline{Z})\). By lemma\ \ref{plemma}, we have a submanifold \(N\subseteq B\) such that \(K\subseteq N\), \(N\cap L=\emptyset\). Then, \([\partial N,F\restrict{\partial N}]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) nullbordant by \((N,F\restrict{N})\).\\
+    Again, let \(K=F^{-1}(X\setminus\overset{\circ}A)\), \(L=F^{-1}(\overline{Z})\). By lemma\ \ref{plemma}, we have a submanifold \(N^{n+1}\subseteq B\) such that \(K\subseteq N\), \(N\cap L=\emptyset\). Then, \([\partial N,F\restrict{\partial N}]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) nullbordant by \((N,F\restrict{N})\).\\
     \emph{Claim}: \(M\cap\partial N=M\cap N\).\\
     \enquote{\(\subseteq\)} is clear. For \enquote{\(\supseteq\)}, take \(p\in M\cap N\). Then \(p\in\partial B\), so there exists a chart \(\varphi:U\to\mathbb{H}^{n+1}\) of \(B\), such that \(\varphi(p)\in\partial\mathbb{H}^{n+1}\). So, \(p\in\partial N\).\\
-    Then \(M\cap\partial B\) is an embedded submanifold of \(M\), because
+    Then \(M\cap\partial N\) is an submanifold of \(M\), because
     \begin{equation}\label{*}
-        M\cap\partial B= M\cap B={(\alpha\restrict{M})}^{-1}([0,r])
+        M\cap\partial N= M\cap N={(\alpha\restrict{M})}^{-1}([0,r]),\tag{$\star$}
     \end{equation}
-    and we can assume that \(r\) is a regular value, because of\ \ref{sard}. Now we can see that \((M\cap\partial B,f\restrict{M\cap\partial B})\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\): \(f(M\cap\partial B)\subseteq f(M)\subseteq X\setminus Z\) and \(f(\partial(M\cap\partial B))\subseteq A\setminus Z\) because of\ \ref{*} and \ref{plemma2}, as \(\partial(M\cap\partial B)\subseteq\partial M\cup(K^c\cap L^c)\).\\
-    \textit{Claim}: \([M,f]=[M\cap B,f\restrict{M\cap B}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\). By\ \ref{almost excision}, it is enough to show that \(f(M\setminus(M\cap B))=f(M\setminus \partial(M\cap B))\subseteq A\setminus Z\). Let \(p\in M\setminus\partial B=M\setminus B\), then \(f(p)\in X\setminus Z\) because \(p\in M\), and \(f(p)\in\overset{\circ}A\), because \(p\notin B\). The claim follows.\\
-    By the same argument, \([M\cap B,f\restrict{M\cap B}]=[\partial B,g\restrict{\partial B}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\). Since \(M\cap B\) is an embedded submanifold of \(M\), it is also an embedded submanifold of \(\partial B\). Now, it is enough to show that \(g(\partial B\setminus(M\cap B))=g(\partial B\setminus M)\subseteq A\setminus Z\) We know \(\partial B\subseteq\partial W\cup(K^c\cap L^c)\). Let \(p\in\partial B\setminus M\), then either \(p\in(K^c\cap L^c)\setminus M\) or \(p\in\partial W\setminus M\). In the first case, we are done. In the second case, we know \(p\notin L\), because \(B,Q\) are disjoint. So, \(g(p)\notin\overline{Z}\). By assumption, we have \(g(\partial W\setminus M)\subseteq A\), so \(g(p)\in A\). \(\Rightarrow g(p)\in A\setminus Z\). In total, we have shown that \((M,f), (M\cap B,f\restrict{M\cap B}), (\partial B,g\restrict{\partial B})\) are bordant, so nullbordant, since the last one is nullbordant in \(\mathfrak{N}_n(X\setminus Z,A\setminus Z)\), so \([M,f]=0\) in \(\mathfrak N_n(X\setminus Z,A\setminus Z)\).
+    where \(\alpha\) is again such that \(N=\alpha^{-1}([0,r])\). 
+    By theorem\ \ref{sard}, we assume that \(r\) is also a regular value of \(\alpha\restrict{M}\). Now we see that \([M\cap\partial N,f\restrict{M\cap\partial N}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\): \(f(M\cap\partial N)\subseteq f(M)\subseteq X\setminus Z\) and \(f(\partial(M\cap\partial N))\subseteq A\setminus Z\) because of\ (\ref{*}) and lemma\ \ref{plemma2}, as \(\partial(M\cap\partial N)\subseteq\partial M\cup(B\setminus (K\cup L))\).\\
+    \textit{Claim}: 
+    \([M,f]=[M\cap N,f\restrict{M\cap N}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\). \\
+    By\ \ref{almost excision}, it is enough to show that 
+    \(f(M\setminus(M\cap N))=f(M\setminus M\cap \partial N)\subseteq A\setminus Z\). 
+    Let \(p\in M\setminus\partial N=M\setminus N\), then \(f(p)\in X\setminus Z\) because \(p\in M\), and \(f(p)\in A\), because \(p\notin N\).\\
+    By exactly the same argument, \([M\cap N,f\restrict{M\cap N}]=[\partial N,F\restrict{\partial N}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\). 
+    Since \(M\cap N\) is an submanifold of \(M\), it is also an submanifold of \(\partial N\). 
+    Now, we only need to show that \(F(\partial N\setminus(M\cap N))=F(\partial N\setminus M)\subseteq A\setminus Z\). 
+    We know \(\partial N\subseteq\partial B\cup(B\setminus(K\cup L))\) (lemma\ \ref{plemma2}). 
+    Let \(p\in\partial N\setminus M\), then either \(p\in(B\setminus(K\cup L))\setminus M\) or \(p\in\partial B\setminus M\). In the first case, \(F(p)\in A\setminus Z\), so we are done. 
+    In the second case, we know \(p\notin L\), because \(B\cap L=\emptyset\). So, \(F(p)\notin\overline{Z}\). By construction, we have \(F(\partial B\setminus M)\subseteq A\), so \(F(p)\in A\). \(\Rightarrow g(p)\in A\setminus Z\).\\
+    In total, we have shown that \((M,f), (M\cap N,f\restrict{M\cap N}), (\partial N,F\restrict{\partial N})\) are bordant, so nullbordant, since the last one is nullbordant in \(\mathfrak{N}_n(X\setminus Z,A\setminus Z)\) by \((N,F\restrict{N})\), so \([M,f]=0\) in \(\mathfrak N_n(X\setminus Z,A\setminus Z)\).
 \end{proof}
 
 Now it already follows that bordism is a homology theory. Let let's take a look at the other axioms too.
@@ -709,8 +720,8 @@ Now it already follows that bordism is a homology theory. Let let's take a look 
     is an isomorphism.\\
     \textit{Claim}: \[\iota:\bigoplus_{i\in I}[M_i,f_i]\mapsto \left[\coprod_{i\in I}M_i,\coprod_{i\in I} f_i\right]\]
     gives us the desired isomorphism.\\
-    \textbf{Well-definedness}: All but finitely many \([M_i,f_i]\) are \(0\). So we can assume that \(\coprod M_i\) is a finite disjoint union of compact manifolds, so it is compact.\\
-    \textbf{Injectivity}: Suppose \(\iota\left(\bigoplus[M_i,f_i]\right)=0\) in \(\mathfrak{N}_n(\coprod X)\). Then there exists a nullbordism \(W,g\) of it. \(W\) as a space is the disjoint union \(\coprod W_i:=\coprod g^{-1}(X_i)\), all of the \(W_i\) being open and closed in \(W\). Hence, \(W_i\) are compact, and manifolds. Also, \(\partial(W_i,g\restrict{W_i})=(M_i,f_i)\), so all the \((M_i,f_i)\) are nullbordant and the sum \(\bigoplus[M_i,f_i]=0\).
+    \textbf{Well-definedness}: All but finitely many \([M_i,f_i]\) are \(0\). So \(\coprod M_i\) is a finite disjoint union of compact manifolds, so it is compact.\\
+    \textbf{Injectivity}: Suppose \(\iota\left(\bigoplus_i[M_i,f_i]\right)=0\) in \(\mathfrak{N}_n(\coprod_i X_i)\). Then there exists a nullbordism \((B,F)\) of it. \(W\) as a space is the disjoint union \(\coprod W_i:=\coprod g^{-1}(X_i)\), all of the \(W_i\) being open and closed in \(W\). Hence, \(W_i\) are compact, and manifolds. Also, \(\partial(W_i,g\restrict{W_i})=(M_i,f_i)\), so all the \((M_i,f_i)\) are nullbordant and the sum \(\bigoplus[M_i,f_i]=0\).
     \\
     \textbf{Surjectivity}: Suppose \([M,f]\in\mathfrak{N}_n(\coprod X_i)\). As in the proof of injectivity, we can write \(M=\coprod M_i:=f^{-1}(X_i)\), with all \(M_i\) compact manifolds. Then a preimage of \([M,f]\) under \(\iota\) is \(\bigoplus[M_i,f\restrict{M_i}]\).
 \end{proof}
