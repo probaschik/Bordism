@@ -755,7 +755,7 @@ Now we can finally conclude:
 \begin{proof}
     This follows directly from the lemmas\ \ref{functoriality},\ \ref{htpy inv},\ \ref{les},\ \ref{excision} and\ \ref{disjoint union}.\\
     %The only axiom that does not hold is the dimension axiom.\\
-    As it is not an ordinary homology theory (i.e.\ the dimension axiom does not hold), we call bordism an \demph{extraordinary} of a \demph{generalized} homology theory.
+    As it is not an ordinary homology theory (i.e.\ the dimension axiom does not hold), we call bordism an \demph{extraordinary} or a \demph{generalized} homology theory.
 \end{proof}
 
 
@@ -771,16 +771,32 @@ Now we can finally conclude:
 
 As we have already noted in example\ \ref{points}, we have \(\N_0\cong\F_2\). An even number of points is nullbordant, an odd number is not. Let us try to argue for higher dimensions.\\
 The only closed \(1\)-dimensional manifold (up to diffeomorphism) is \(S^1\). As \(S^1=\partial D^2\), we conclude \(\N_1\cong \{0\}\).\\
-Closed \(2\)-manifolds are classified to be \(S^2, \#_i\T^2, \#_i\mathbb{RP}^2\). I.e.\ they are classified by genus and orientability. We know \(S^2=\partial D^3\) and \(\T^2=\partial (S^1\times D^2)\). So \(\#_i\T^2=\partial(\#_i D^3)\). 
+Closed \(2\)-manifolds are classified to be \(S^2, \#_i\T^2, \#_i\mathbb{RP}^2\). I.e.\ they are classified by euler characteristic and orientability. We know \(S^2=\partial D^3\) and \(\T^2=\partial (S^1\times D^2)\). So \(\#_i\T^2=\partial(\#_i D^3)\). From the above observation, we know \(\mathbb{RP}^2\) is not nullbordant. 
+By example\ \ref{pants}, we have \([\mathbb{RP}^2\#\mathbb{RP}^2]=[\mathbb{RP}^2]+[\mathbb{RP}^2]\), and by theorem\ \ref{equivalence bordant}, this is \([\mathbb{RP}^2]+[\mathbb{RP}^2]=0\). Inductively, any even number of connected sums of \(\mathbb{RP}^2\)s is nullbordant, and any odd number of connected sums of \(\mathbb{RP}^2\)s is not nullbordant, but in the same equivalence class as \(\mathbb{RP}^2\). So we have \(\N_2\cong\F_2\) with \(\mathbb{RP}^2\) as generator.\\
+%\(\mathbb{RP}^2\#\mathbb{RP}^2\) is homeomorphic to the Klein bottle \(K=(S^1\times [0,1])\big/((x,0)\sim (-x,1))\), where \(S^1\) is described as \([-1,1]\big/ (-1\sim 1)\). \(K\) is nullbordant by \(K=\partial ((D^2\times [0,1]))\)\\
+For closed \(3\)-manifolds, there is a similar, but more complicated classification by connected sums of geometrizable pieces, where we can see that every piece is nullbordant, hence also the connected sums and get \(\N_3\cong \{0\}\).\\
+But for dimension 4, already for \(\R^4\), there are uncountably many pairwise non-diffeomorphic smooth structures, so we cannot hope to continue this argumentation further.\\
+For dimensions 5 and above, we would need surgery theory, which we will not discuss here.
 
-\begin{align*}
-    \mathfrak N_0 &\cong \mathbb F_2\\
-    \mathfrak N_1 &\cong \{0\}\\
-    \mathfrak N_2 &\cong \mathbb F_2\\
-    \mathfrak N_3 &\cong \{0\}\\
-    \mathfrak N_4 &\cong \mathbb F_2\oplus\mathbb F_2\\
-    \mathfrak N_5 &\cong \mathbb F_2
-\end{align*}
+But while classifications of manifolds up to diffeomorphism is hard, the bordism ring \(\N_\ast\) has been completely determined in\ \cite{thom}. It is isomorphic to the graded polynomial ring over \(\F_2\) with one generator in each dimension that cannot be written as \(2^k+1\).
+\[\N_\ast\cong\F_2[x_i\mid i\neq 2^k-1]\]
+We get \begin{center}
+\begin{tabular}[c]{l|c|c|c|c|c|c|c|c|c|c}
+    & $\N_0$ & $\N_1$ & $\N_2$ & $\N_3$ & $\N_4$ & $\N_5$ & $\N_6$ & $\N_7$ & $\N_8$ & $\N_9$ \\ \hline
+    & $\F_2$ & 0 & $\F_2$ & 0 & $\F_2\oplus\F_2$ & $\F_2$ & $\F_2$ & 0 & $\F_2^4$ & ??\\ \hline
+    New generator & $\pt$ & -- & $\mathbb{RP}^2$ & -- & $\mathbb{RP}^4$ & $V_3$ & ?? & -- & ?? & ??
+\end{tabular}
+\end{center}
+
+
+%\begin{align*}
+%    \mathfrak N_0 &\cong \mathbb F_2\\
+%    \mathfrak N_1 &\cong \{0\}\\
+%    \mathfrak N_2 &\cong \mathbb F_2\\
+%    \mathfrak N_3 &\cong \{0\}\\
+%    \mathfrak N_4 &\cong \mathbb F_2\oplus\mathbb F_2\\
+%    \mathfrak N_5 &\cong \mathbb F_2
+%\end{align*}
 
 Of spheres
 
