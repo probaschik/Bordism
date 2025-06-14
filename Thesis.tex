@@ -211,9 +211,11 @@ I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
     A point \(q\in N\) is a \demph{critical value} of \(f\), if \(f^{-1}(q)\) containa a critical point of \(f\). Otherwise, it is called a \demph{regular value}.
 \end{definition}
 
-For a smooth map \(f:M^n\to \R\) between two manifolds, \(r\) a regular value of \(f\), \(\{p\in M:f(p)\leq r\}=f^{-1}(-\infty,r]\) is an \(n\)-dimensional submanifold of \(M\).
+\begin{remark}
+    For a smooth map \(f:M^n\to \R\) between two manifolds, \(r\) a regular value of \(f\), \(\{p\in M:f(p)\leq r\}=f^{-1}(-\infty,r]\) is an \(n\)-dimensional submanifold of \(M\). \(f^{-1}(r)\) is an \((n-1)\)-dimensional submanifold of \(M\).
+\end{remark}
 
-\begin{theorem}[Sard's theorem\ {\cite{lee}}]\label{sard}
+\begin{theorem}[Sard's theorem\ {\cite[Theorem 6.10]{lee}}]\label{sard}
     For a smooth map \(f:M\to N\) between two manifolds, the set of critical values of \(f\) has measure zero in \(N\).
 \end{theorem}
 
@@ -221,13 +223,23 @@ For a smooth map \(f:M^n\to \R\) between two manifolds, \(r\) a regular value of
     See\ \cite{lee} for a proof.
 \end{proof}
 
-\begin{definition}[Connected sum]
-    to be done (maybe). Maybe define it in an example.
+\begin{definition}[Connected sum {\cite[Example 9.31]{lee}}]
+    For two connected manifolds \(M^n,N^n\), choose embeddings \(D^n\xrightarrow{i}M\), \(D^n\xrightarrow{j}N\). Then the connected sum of \(M\) and \(N\) is defined as
+    \[M\#N:=((M\setminus i(\overset{\circ}{D^n}))\dis(N\setminus j(\overset{\circ}{D^n})))\big/(i(x)\sim j(x))\]
+    for all \(x\in\partial D^n\).
+    \begin{center}
+        \includegraphics[width=0.6\textwidth]{connectedsum.jpg}
+    \end{center}
 \end{definition}
 
-\begin{definition}[Separating function]
-    to be done. I need this in an example that still needs to be done (pair of pants).
-\end{definition}
+\begin{remark}
+    This construction is only unique up to homeomorphism. It can be made unique up to diffeomorphism, see\ \cite[VI.1]{kosinski} for details.
+\end{remark}
+
+%\begin{definition}[Separating function]
+%    to be done. I need this in an example that still needs to be done (pair of pants).
+%\end{definition}
+%We can use this without calling it separating function.
 
 %\section{Bordism}
 
@@ -294,11 +306,18 @@ We will refer to this relation as \demph{bordism relation}.
 \end{example}
 %Draw a picture
 
-\begin{example}[TODO: Pair of pants]
-    For \(X=\mathrm{pt}\), \((M_1,f_1)=(M,f)\dis (M,f)\) and \(M_2=M\# M\).
+\begin{example}[Pair of pants]\label{pants}
+    For \(X=\mathrm{pt}\), \(M_1=M^n\dis N^n\) and \(M_2=M\# N\), we get the \enquote{pair of pants} as a bordism between them. We can construct the pants as follows. Take the two cylinders \(M\times [0,1]\) and \(N\times[0,1]\). Now \[f:(M\times[0,1])\dis(N\times[0,1])\to [0,1]\]
+    given by
+    \[(p,t)\mapsto t\] regardless of \(p\in M\) or \(p\in N\) is a smooth map between manifolds. By theorem\ \ref{sard}, we may assume that \(\frac12\) is a regular value. We embed \(D^{n+1}\) by \(i\) and \(j\) into the cylinders such that \(f\circ i(0)=f\circ j(0)=\frac12\) and \(f\circ i(x)=f\circ j(x)\) for all \(x\in D^{n+1}\). Taking the connected sum now with respect to \(i\) and \(j\) leaves \[\tilde f:(M\times[0,1])\#(N\times[0,1])\to[0,1]\], which is induced  by \(f\), well-defined. \(\frac12\) is still a regular value of \(\tilde f\). 
+    Note that \(\tilde{f}^{-1}=M\#N\), as the embeddings \(i,j\) induce embeddings of \(D^n\) into \(M,N\). 
+    Now we define the pair of pants to be \(\tilde{f}^{-1}([0,\frac12])\), which is an \((n+1)\)-dimensional manifold by with boundary \(\tilde f^{-1}(0)\dis\tilde f^{-1}(\frac12)=(M\dis N)\dis(M\#N)\) by construction. Thus, it is a bordism between \(M_1\) and \(M_2\).
+    \begin{center}
+        \includegraphics[width=0.4\textwidth]{pants.jpg}
+    \end{center}
 \end{example}
-Look this up again. Maybe it suffices to take \(X\) path-connected. Draw a picture.\\
-Probably to do: separating function
+%Look this up again. Maybe it suffices to take \(X\) path-connected. Draw a picture.\\
+%Probably to do: separating function. No
 
 \begin{example}\label{points}
     \(\{\mathrm{pt}\}\) and \(\{\mathrm{pt}\}\dis\{\mathrm{pt}\}\) are not bordant, as \(1\)-manifolds either have 2 or 0 boundary points. (Compact \(1\)-manifolds can be classified up to homeomorphism as the circle \(S^1\) (no boundary) and the interval \([0,1]\) (two boundary points).)
@@ -690,7 +709,7 @@ Only the excision axiom is left to check. But to see the excision property, we n
 
 \begin{proof}\cite{zhang}
     \textbf{Surjectivity}: Let \([M,f]\in\mathfrak{N}_n(X,A)\). Then the preimages \(K=f^{-1}(X\setminus\overset{\circ}A)\) and \(L=f^{-1}(\overline{Z})\) are disjoint and closed subsets of \(M\). By lemma\ \ref{plemma}, there exists a closed submanifold with boundary \(N\subset M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).\\
-    From \(L\cap N=\emptyset\), it follows that \(f(N)\subseteq X\setminus\overline{Z}\). By\ \ref{plemma2}, we have \(\partial N\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\). So, for any \(p\in \partial N\), we have either \(p\in\partial M\), implying \(f(p)\in A\), or \(p\in(M\setminus K)\), implying \(f(p)\in\overset{\circ}A\). In any case, we get \(f(\partial N)\subseteq A\setminus\overline{Z}\), so \([N, f\restrict{N}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\).\\
+    From \(L\cap N=\emptyset\), it follows that \(f(N)\subseteq X\setminus\overline{Z}\). By lemma\ \ref{plemma2}, we have \(\partial N\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\). So, for any \(p\in \partial N\), we have either \(p\in\partial M\), implying \(f(p)\in A\), or \(p\in(M\setminus K)\), implying \(f(p)\in\overset{\circ}A\). In any case, we get \(f(\partial N)\subseteq A\setminus\overline{Z}\), so \([N, f\restrict{N}]\in\mathfrak{N}_n(X\setminus Z,A\setminus Z)\).\\
     As \(f^{-1}(X\setminus\overset{\circ}A)\), we get \(f(M\setminus N)\subseteq \overset{\circ}A\). By lemma\ \ref{almost excision}, we get \(i_\ast[N,f\restrict{N}]=[M,f]\).
 
     \noindent\textbf{Injectivity}: Take \([M,f]\in\mathfrak{N}_n(X\setminus Z, A\setminus Z)\) such that \(i_\ast[M,f]=0\) in \(\mathfrak{N}_n(X,A)\). Then there exists %an (\(n+1\))-manifold \(B\) and \(g:B\to X\), such that \(M\) is an embedded submanifold of \(\partial B\), \(g(\partial B\setminus M)\subseteq A\) and \(g\restrict{M}=f\).\\
@@ -718,7 +737,7 @@ Only the excision axiom is left to check. But to see the excision property, we n
     In total, we have shown that \((M,f), (M\cap N,f\restrict{M\cap N}), (\partial N,F\restrict{\partial N})\) are bordant, so nullbordant, since the last one is nullbordant in \(\mathfrak{N}_n(X\setminus Z,A\setminus Z)\) by \((N,F\restrict{N})\), so \([M,f]=0\) in \(\mathfrak N_n(X\setminus Z,A\setminus Z)\).
 \end{proof}
 
-Now it already follows that bordism is a homology theory. Let let's take a look at the other axioms too.
+Now it already follows that bordism is a homology theory. But let's take a look at the other axioms too.
 
 \begin{lemma}[Disjoint union axiom\ {\cite[Theorem 5.3]{zhang}}]\label{disjoint union}
     The disjoint union axiom holds for bordism.
@@ -782,11 +801,14 @@ But while classifications of manifolds up to diffeomorphism is hard, the bordism
 \[\N_\ast\cong\F_2[x_i\mid i\neq 2^k-1]\]
 We get \begin{center}
 \begin{tabular}[c]{l|c|c|c|c|c|c|c|c|c|c}
-    & $\N_0$ & $\N_1$ & $\N_2$ & $\N_3$ & $\N_4$ & $\N_5$ & $\N_6$ & $\N_7$ & $\N_8$ & $\N_9$ \\ \hline
-    & $\F_2$ & 0 & $\F_2$ & 0 & $\F_2\oplus\F_2$ & $\F_2$ & $\F_2$ & 0 & $\F_2^4$ & ??\\ \hline
-    New generator & $\pt$ & -- & $\mathbb{RP}^2$ & -- & $\mathbb{RP}^4$ & $V_3$ & ?? & -- & ?? & ??
+    & $\N_0$ & $\N_1$ & $\N_2$ & $\N_3$ & $\N_4$ & $\N_5$ & $\N_6$ & $\N_7$ & $\N_8$ & \dots\\ \hline
+    & $\F_2$ & 0 & $\F_2$ & 0 & $\F_2\oplus\F_2$ & $\F_2$ & $\F_2$ & 0 & $\F_2^4$ & \dots\\ \hline
+    New generator & $\pt$ & -- & $\mathbb{RP}^2$ & -- & $\mathbb{RP}^4$ & $V_{2,4}$ & $\mathbb{RP}^6$ & -- & $\mathbb{RP}^8$ & \dots
 \end{tabular}
 \end{center}
+where \(V_{n,k}\) denotes the Stiefel manifold. The generators in even dimension are always \(\mathbb{RP}^n\), as shown in\ \cite{thom}, and in odd dimensions, the generators have been determined in\ \cite{dold}.
+
+For negative \(n\), we have \(\N_n\cong\{0\}\), as the only negative-dimensional manifold is \(\emptyset\).
 
 
 %\begin{align*}
@@ -798,13 +820,32 @@ We get \begin{center}
 %    \mathfrak N_5 &\cong \mathbb F_2
 %\end{align*}
 
-Of spheres
+\begin{definition}[Reduced bordism homology group {\cite[p.13]{zhang}}]
+    The \demph{reduced bordism homology group} is defined as
+    \[\tilde\N_n(X):=\ker(\N_n(X)\xrightarrow{\varepsilon}\N_n)\]
+    where \(\varepsilon\) is the induced map of \(X\to\pt\).
+\end{definition}
+
+\begin{remark}
+    \[\N_n(X)\cong\tilde\N_n(X)\oplus\N_n\]
+\end{remark}
+
+\begin{remark}
+    For any reduced homology theory, we have the suspension isomorphism \[\tilde\N_n(X)\cong\tilde\N_{n+1}(\sus X)\]
+    where \(\sus X\) denotes the suspension of \(X\).
+\end{remark}
+
+Using the above two remarks, we can calculate the bordism groups of spheres\ \cite[Proposition 6.1]{zhang}. We first notice that \(S^k=\sus(S^{k-1})\). So,
+\[\N_n(S^k)\cong\tilde\N_n(S^k)\oplus\N_n\cong\tilde\N_{n-1}(S^{k-1})\oplus\N_n\cong\dots\cong\tilde\N_{n-k}(S^0)\oplus\N_n\]
+It suffices to calculate \(\tilde\N_n(S^0)=\ker(\N_n(S^0))\xrightarrow{\varepsilon}\N_n\). As \(S^0=\pt\dis\pt\), we have by lemma\ \ref{disjoint union} \(\N_n(S^0)\xrightarrow{\iota}\N_n\oplus\N_n\) is an isomorphism. 
+Look at \(\varepsilon\circ\iota\). \(\varepsilon\circ\iota([M]\oplus[M'])=[M]+[M']\). This is zero if and only if \([M]=[M']\), as elements are self-inverse. It follows that \(\ker(\varepsilon\cong\N_n)\). 
+Altogether, we have \(\N_n(S^k)\cong\N_{n-k}\oplus\N_n\).
 
 \subsection{Orientation}
 
-\begin{definition}[Tangent space]
-\end{definition}
-I probably need this already before. (Along with tangent bundle, vector fields)
+%\begin{definition}[Tangent space]
+%\end{definition}
+%I probably need this already before. (Along with tangent bundle, vector fields), done, but not bundle/field
 
 \begin{definition}[Orientation on vector spaces\ {\cite[p.379]{lee}}]
     An \demph{orientation} on a vector space \(V\) with \(\mathrm{dim} V\geq 1\) is an equivalence class of ordered bases \((e_1,\dots,e_{\mathrm{dim}V})\). Two bases are equivalent, if the basis transformation has positive determinant. For \(\mathrm{dim}V=0\), an orientation is the choice of \(\pm\).\\
@@ -813,6 +854,14 @@ I probably need this already before. (Along with tangent bundle, vector fields)
 
 \begin{definition}[Pointwise orientation on manifolds\ {\cite[p.380]{lee}}]
     For each point on a manifold, we have an associated vector space: the tangent space. A \demph{pointwise orientation} on a manifold is a choice of orientation on each tangent space.
+\end{definition}
+
+\begin{definition}[Tangent bundle {\cite[p.65]{lee}}]
+    For a manifold \(M\), the tangent bundle is defined to be \[TM=\coprod_{p\in M} T_p M\]
+\end{definition}
+
+\begin{definition}[Vector field {\cite[p.174]{lee}}]
+        
 \end{definition}
 
 \begin{definition}[Local frame]
