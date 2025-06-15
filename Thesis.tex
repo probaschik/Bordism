@@ -377,7 +377,7 @@ We will refer to this relation as \demph{bordism relation}.
 \end{observation}
 %Observe the similarity with the definition of singular homology groups: We defined the singular homology groups as the quotient of kernel and image of some maps. Here, the same thing happens: Our map here is the boundary map.
 
-\begin{theorem}\ \cite[II, Satz 2.1]{brocker}
+\begin{theorem}[{\cite[II, Satz 2.1]{brocker}}]\label{group structure}
     The bordism groups are abelian groups with the operation \(+\) defined in definition\ \ref{bordant}:
     \[[M_1,f_1]+[M_2,f_2]=[M_1+M_2,(f_1,f_2)]\]
     Every element in this group has order at most \(2\), making \(\mathfrak{N}_n(X)\) a \(\mathbb{F}_2\)-vector space.
@@ -418,7 +418,7 @@ We will refer to this relation as \demph{bordism relation}.
 
 \noindent\textit{Notation.} For \(X=\{\mathrm{pt}\}\), we will write \(\mathfrak{N}_n\) for \(\mathfrak{N}_n(X)\) and for elements of \(\mathfrak{N}_n\), we will omit the map from the notation (\([M]=[M,f]\)).
 
-\begin{definition}[graded bordism ring\ {\cite[Satz 2.2]{brocker}}]
+\begin{definition}[graded bordism ring\ {\cite[Satz 2.2]{brocker}}]\label{bordism ring}
     \[\mathfrak{N}_\ast:=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n\]
     is a \(\Z\)-graded ring over \(\mathbb{F}_2\) via \(+\) and \(\cdot\) and is called the \demph{bordism ring}.
 \end{definition}
@@ -429,7 +429,7 @@ We will refer to this relation as \demph{bordism relation}.
 
 %Maybe do a quick check.
 
-\begin{definition}[graded bordism module\ {\cite[Satz 2.3]{brocker}}]
+\begin{definition}[graded bordism module\ {\cite[Satz 2.3]{brocker}}]\label{bordism module}
     \[\mathfrak{N}_\ast(X):=\bigoplus_{n\in\mathbb{Z}}\mathfrak{N}_n(X)\]
     is a \(\Z\)-graded module over \(\mathfrak{N}_\ast\). It is called the \demph{bordism module}. Explicitly, the product map acts as follows:
     \[[M]\cdot[N,f]=[M\times N, f\circ \mathrm{pr}_2]\]
@@ -505,7 +505,7 @@ As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will ex
 \end{remark}
 
 \begin{observation}
-    Now, the bordism relation also makes sense fo manifolds with non-empty boundary.
+    Now, the bordism relation also makes sense for manifolds with non-empty boundary.
 \end{observation}
 
 \begin{example}
@@ -530,7 +530,7 @@ As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will ex
 \end{theorem}
 
 \begin{proof}
-    The proof is similar to the proof of proposition\ \ref{equivalence bordant}. Symmetry is clear, for reflexivity, we now also have the cylinder as stated in the above remark. For transitivity, we again glue the bordisms along their common boundary \(M_2\), but as \(M_2\) may have boundary now, we glue the bordism along a open neighbourhood \(U\) (in \(\partial B_1\) and \(\partial B_1\)) of \(M_2\). To see this is smooth, we again look at the collars of \(\partial B_i\). This time we restrict the collars to \(U\) and see that the collars are diffeomorphic to \(M_2\times(-1,1)\). The rest of the proof is the same as in Proposition\ \ref{equivalence bordant}.
+    The proof is similar to the proof of proposition\ \ref{equivalence bordant}. Symmetry is clear, for reflexivity, we now also have the cylinder as stated in the above remark. For transitivity, we again glue the bordisms along their common boundary \(M_2\), but as \(M_2\) may have boundary now, we glue the bordism along a open neighbourhood \(U\) (in \(\partial B_1\) and \(\partial B_1\)) of \(M_2\). To see this is smooth, we again look at the collars of \(\partial B_i\). This time we restrict the collars to \(U\) and see that the collars are diffeomorphic to \(M_2\times(-1,1)\). The rest of the proof is the same as in proposition\ \ref{equivalence bordant}.
 \end{proof}
 
 Relative bordism groups are defined in the same way as absolute bordism groups, they also are abelian by the same proof. The product map is defined as \[\cdot:\N_p(X,A)\times\N_q(Y,B)\to\N_{p+q}(X\times Y, A\times B)\]
@@ -574,7 +574,7 @@ over \(\N_\ast\), the relative bordism module.
     \[{(g\circ f)}_{\ast}[M,h]=[M,g\circ f\circ h]=g_\ast[M,f\circ h]=g_\ast\circ f_\ast[M,h]\]
 \end{proof}
 
-\begin{lemma}[Naturality of the boundary map]
+\begin{lemma}[Naturality of the boundary map]\label{naturality}
     The following diagram commutes for any \(f:(X,A)\to(Y,B)\) and \(n\in\Z\): %(Diagrams cannot be compiled for some reason)
     \begin{center}
         \begin{tikzcd}
@@ -631,7 +631,7 @@ over \(\N_\ast\), the relative bordism module.
 
         \item \textbf{Exactness at \(\mathfrak{N}_n(X,A)\)} \(\partial \circ j_\ast=0\) holds because every element in \(\N_n(X)\) is a closed manifold, so it has empty boundary, hence applying the boundary map gets us to \([\emptyset,\emptyset\to X]\) which is the zero element in \(\N_{n-1}(A)\).
         
-        Let \(\partial[M,f]=0\), and \([B,F]\) be a nullbordism of \([\partial M, f\restrict{\partial M}]\). Identify \((M,f)\) and \((B,F)\) along \(\partial M\). This is smooth by the same argument as in theorem\ \ref{equivalence bordant}. Call the resulting singular manifold \((C,g)\). This has no boundary, so \([C,g]\in\N_n(X)\) Now with lemma\ \ref{almost excision}, get \(j_\ast[C,g]=[M,f]\).
+        Let \(\partial[M,f]=0\), and \([B,F]\) be a nullbordism of \([\partial M, f\restrict{\partial M}]\). Identify \((M,f)\) and \((B,F)\) along \(\partial M\). This is smooth by the same argument as in proposition\ \ref{equivalence bordant}. Call the resulting singular manifold \((C,g)\). This has no boundary, so \([C,g]\in\N_n(X)\) Now with lemma\ \ref{almost excision}, get \(j_\ast[C,g]=[M,f]\).
     \end{itemize}
 \end{proof}
 
@@ -692,7 +692,7 @@ Only the excision axiom is left to check. But to see the excision property, we n
 %In the above (nonexistent yet, may look into Conner,Floyd) proof, a smooth \(\alpha\) with regular value \(r\) is constructed.
 
 \begin{lemma}[{\cite[Lemma 5.8]{zhang}}]\label{plemma2}
-    Let \(K,L,M,N\alpha,r\) be as in lemma\ \ref{plemma}. Then,
+    Let \(K,L,M,N,\alpha,r\) be as in lemma\ \ref{plemma}. Then,
     \[\partial N\subseteq \partial M\cup \alpha^{-1}(r)\subseteq \partial M\cup((M\setminus K)\cap(M\setminus L))\]
 \end{lemma}
 
@@ -791,7 +791,7 @@ Now we can finally conclude:
 As we have already noted in example\ \ref{points}, we have \(\N_0\cong\F_2\). An even number of points is nullbordant, an odd number is not. Let us try to argue for higher dimensions.\\
 The only closed \(1\)-dimensional manifold (up to diffeomorphism) is \(S^1\). As \(S^1=\partial D^2\), we conclude \(\N_1\cong \{0\}\).\\
 Closed \(2\)-manifolds are classified to be \(S^2, \#_i\T^2, \#_i\mathbb{RP}^2\). I.e.\ they are classified by euler characteristic and orientability. We know \(S^2=\partial D^3\) and \(\T^2=\partial (S^1\times D^2)\). So \(\#_i\T^2=\partial(\#_i D^3)\). From the above observation, we know \(\mathbb{RP}^2\) is not nullbordant. 
-By example\ \ref{pants}, we have \([\mathbb{RP}^2\#\mathbb{RP}^2]=[\mathbb{RP}^2]+[\mathbb{RP}^2]\), and by theorem\ \ref{equivalence bordant}, this is \([\mathbb{RP}^2]+[\mathbb{RP}^2]=0\). Inductively, any even number of connected sums of \(\mathbb{RP}^2\)s is nullbordant, and any odd number of connected sums of \(\mathbb{RP}^2\)s is not nullbordant, but in the same equivalence class as \(\mathbb{RP}^2\). So we have \(\N_2\cong\F_2\) with \(\mathbb{RP}^2\) as generator.\\
+By example\ \ref{pants}, we have \([\mathbb{RP}^2\#\mathbb{RP}^2]=[\mathbb{RP}^2]+[\mathbb{RP}^2]\), and by proposition\ \ref{equivalence bordant}, this is \([\mathbb{RP}^2]+[\mathbb{RP}^2]=0\). Inductively, any even number of connected sums of \(\mathbb{RP}^2\)s is nullbordant, and any odd number of connected sums of \(\mathbb{RP}^2\)s is not nullbordant, but in the same equivalence class as \(\mathbb{RP}^2\). So we have \(\N_2\cong\F_2\) with \(\mathbb{RP}^2\) as generator.\\
 %\(\mathbb{RP}^2\#\mathbb{RP}^2\) is homeomorphic to the Klein bottle \(K=(S^1\times [0,1])\big/((x,0)\sim (-x,1))\), where \(S^1\) is described as \([-1,1]\big/ (-1\sim 1)\). \(K\) is nullbordant by \(K=\partial ((D^2\times [0,1]))\)\\
 For closed \(3\)-manifolds, there is a similar, but more complicated classification by connected sums of geometrizable pieces, where we can see that every piece is nullbordant, hence also the connected sums and get \(\N_3\cong \{0\}\).\\
 But for dimension 4, already for \(\R^4\), there are uncountably many pairwise non-diffeomorphic smooth structures, so we cannot hope to continue this argumentation further.\\
@@ -856,51 +856,55 @@ Altogether, we have \(\N_n(S^k)\cong\N_{n-k}\oplus\N_n\).
     For each point on a manifold, we have an associated vector space: the tangent space. A \demph{pointwise orientation} on a manifold is a choice of orientation on each tangent space.
 \end{definition}
 
-\begin{definition}[Tangent bundle {\cite[p.65]{lee}}]
-    For a manifold \(M\), the tangent bundle is defined to be \[TM=\coprod_{p\in M} T_p M\]
-\end{definition}
+%\begin{definition}[Tangent bundle {\cite[p.65]{lee}}]
+%    For a manifold \(M\), the tangent bundle is defined to be \[TM=\coprod_{p\in M} T_p M\]
+%\end{definition} %Not needed
 
-\begin{definition}[Vector field {\cite[p.174]{lee}}]
-        
-\end{definition}
+%\begin{definition}[Vector field {\cite[p.174]{lee}}]
 
-\begin{definition}[Local frame]
-\end{definition}
-Maybe also need global frame.
+%\end{definition}
 
-Check again
-\begin{definition}[Continuous orientation]
-    A pointwise orientation on a manifold \(M\) is called \demph{continuous}, if for every point \(p\in M\), there exists a neighborhood \(U\) of \(p\) such that the orientations on the tangent spaces of all points in \(U\) are equivalent.
-\end{definition}
+%\begin{definition}[Local frame]
+%\end{definition}
+%Maybe also need global frame. I don't think so.
+
+%Check again
+%\begin{definition}[Continuous orientation]
+%    A pointwise orientation on a manifold \(M\) is called \demph{continuous}, if for every point \(p\in M\), there exists a neighborhood \(U\) of \(p\) such that the orientations on the tangent spaces of all points in \(U\) are equivalent.
+%\end{definition}
 
 \begin{definition}[Orientation on manifolds\ {\cite[p.380]{lee}}]
     An \demph{orientation} of a manifold \(M\) is a continuous pointwise orientation of \(M\). If there exists an orientation on \(M\), \(M\) is called \demph{orientable}.
 \end{definition}
 
+%\begin{remark}
+%    One could remark here, that I have not defined what it means for a pointwise orientation to be continuous. See\ \cite{lee} for more detail.
+%\end{remark}
+
 \begin{definition}[Oriented manifold\ {\cite[p.380]{lee}}]
-    An \demph{oriented manifold} is the pair \((M,\mathcal{O})\), of an orientable manifold \(M\) and a choice of orientation \(\mathcal{O}\) on \(M\).
+    An \demph{oriented manifold} is the pair \((M,\mathcal{O})\), of an orientable manifold \(M\) and a choice of an orientation \(\mathcal{O}\) of \(M\).
     We will often write just \(M\) for an oriented manifold.
 \end{definition}
 
-\begin{definition}[vector bundle]
-    To be put somewhere else
-\end{definition}
+%\begin{definition}[vector bundle]
+%    To be put somewhere else
+%\end{definition}
 
-Maybe I should say something about orientations covers\dots
+%Maybe I should say something about orientations covers\dots
 
 \subsection{Oriented bordism}
 
 \subsubsection{Definitions}
-Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)).
+%Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)).
 
 Now, we have defined additional structure on manifolds.
 We will adapt our definition of bordism to respect the additional structure.\\
 The Definition of singular manifolds stays the same, but we additionally require \(M\) to be oriented now.
 
 \begin{definition}[bordant\ {\cite[p.526]{dieck}}, {\cite[p.202]{atiyah}}]
-    Two closed singular oriented \(n\)-manifolds \((M_0,f_0),(M_1,f_1)\) are called \demph{bordant}, if there exists a singular oriented \(n+1\)-manifold \((B,g)\) with oriented boundary such that \(\partial (B,g) = (M_1,f_1)-(M_0,f_0)\). \((M_1,f_1)-(M_0,f_0)\) is defined as
-    \[(M_1,f_1)-(M_0,f_0)=(M_1,f_1)+((M_0,-\mathcal{O}_0),f_0),\]
-    where \(\mathcal{O}_0\) is the orientation on \(M_0\). \((B,g)\) is then called a \demph{oriented bordism} between \((M_0,f_0)\) and \((M_1,f_1)\).
+    Two closed singular oriented \(n\)-manifolds \((M,f),(N,g)\) are called \demph{bordant}, if there exists a singular oriented \(n+1\)-manifold \((B,F)\) with oriented boundary such that \(\partial (B,F) = (N,g)-(M,f)\). \((N,g)-(M,f)\) is defined as
+    \[(N,g)-(M,f)=(N,g)+(M^-,f),\]
+    where \(M^-=(M,-\mathcal{O})\), \(M\) with opposite orientation. \((B,F)\) is then called a \demph{oriented bordism} between \((M,f)\) and \((N,g)\).
 \end{definition}
 
 \begin{remark}
@@ -908,44 +912,53 @@ The Definition of singular manifolds stays the same, but we additionally require
 \end{remark}
 
 \begin{proposition}\label{oriented eq. rel}
-    Being bordant is an equivalence relation on the set of singular oriented manifolds.
+    Being bordant is an equivalence relation on the set of closed singular oriented manifolds.
 \end{proposition}
 
-The proof can be copied from the proof in the oriented case, but we have to check a few more things.
+The proof can be copied from the proof of proposition\ \ref{equivalence bordant}, but we have to check a few more things.
 
 \begin{proof}
     \begin{itemize}
-        \item \textbf{Symmetry}: If \((B,g)\) is an oriented bordism between \((M_0,f_0)\) and \(M_1,f_1\), then \(-(B,g)\) (again, the negative sign is denoting the opposite orientation) is an oriented bordism between \((M_1,f_1)\) and \((M_0,f_0)\).
-        \item \textbf{Reflexivity}: The cylinder still works as the proof of reflexivity here. We have defined oriented bordism in this way with giving \(M_1,f_1\) the opposite orientation, so that the cylinder is still a bordism.
-        \item \textbf{Transitivity}: Again, here the reversed orientation is important. We have flipped the orientation of both \(M_1\) now once, giving them the same orientation now and can glue them together without any problems on orientations.
+        \item \textbf{Symmetry}: If \((B,F)\) is an oriented bordism between \((M,f)\) and \((N,g)\), then \((B^-,F)\) (again, the negative sign is denoting the opposite orientation) is an oriented bordism between \((N,g)\) and \((M,f)\).
+        \item \textbf{Reflexivity}: The cylinder still works as the proof of reflexivity here. We have defined oriented bordism in this way with giving one side the opposite orientation, so the cylinder is still a bordism. \(\partial(M\times [0,1])=M\dis M^-\).
+        \item \textbf{Transitivity}: The glueing or the manifolds has to be orientation preserving now. Let there be bordisms \((B_1,F_1)\) between \((M_1,f_1)\) and \((M_2,f_2)\), and \((B_2,F_2)\) between \((M_2,f_2)\) and \(M_3,f_3\). Focus on \((M_2,f_2)\), where the glueing happens. Since \(M_2\subset B_1\) has negative orientation and \(M_2\subset B_2\)has positive orientation, so the glueing we had before respects the orientation.
+        \begin{center}
+        \includegraphics[width=0.6\textwidth]{ortransitivity.jpg}
+        \end{center}
+        %Again, here the reversed orientation is important. We have flipped the orientation of both \(N\) now once, giving them the same orientation now and can glue them together without any problems on orientations.
     \end{itemize}
 \end{proof}
-This should probably be done in more detail.
+%This should probably be done in more detail.
 
-\begin{definition}[oriented bordism group]
+\begin{definition}[oriented bordism group {\cite[p.202, 2]{atiyah}}]
     The equivalence classes of the oriented bordism relation called \demph{oriented bordism classes} and the set of oriented bordism classes of \(n\)-dimensional singular oriented manifolds in \(X\) is denoted by \(\Omega_n(X)\). \(\Omega_n(X)\) is called the \(n\)\demph{-th oriented bordism group} of \(X\)
-    \[\Omega_n(X)=\{\text{singular oriented \(n\)-manifolds in } X\}\big/\text{oriented bordism}\]
+    \[\Omega_n(X)=\{\text{closed singular oriented \(n\)-manifolds in } X\}\big/\text{oriented bordism}\]
 \end{definition}
 
-Up until now, everything seems to be the same as in the unoriented case, but we will now see a critical difference.
+Up until now, everything seems to work out the same as in the unoriented case, but we will now see a critical difference.
+
+\begin{observation}
+    As in the oriented case, any odd number of points is not nullbordant, but now, an even number does not guarantee \(\coprod_i\{\pt\}\) being nullbordant. For instance, \((\pt,+)\) and \((\pt,-)\) are not bordant.
+\end{observation}
 
 \begin{theorem}
     The oriented bordism groups are abelian groups via the operation \(+\)
 \end{theorem}
 
 \begin{proof}
-    For this proof, the only thing we need to change is for the existence of the inverse. We have seen in an example (to be added) that the elements are not self-inverse anymore. The inverse of \([M,f]\) is now given by \([-M,f]\). We have seen in the proof of\ \ref{oriented eq. rel} that \([M,f]+[-M,f]=0\).
+    See proof of theorem\ \ref{group structure}. The only thing that changes is the inverse element. Note that the elements are not self-inverse anymore, as \((M,f)\) and \((M,f)\) being bordant only gives us that \((M,f)+(M^-,f)\) is nullbordant, and in general, \(M\neq M^-\). So the inverse for \([M,f]\) exists, but is \([M^-,f]\) rather than \([M,f]\).
+    %For this proof, the only thing we need to change is for the existence of the inverse. We have seen in an example (to be added) that the elements are not self-inverse anymore. The inverse of \([M,f]\) is now given by \([-M,f]\). We have seen in the proof of\ \ref{oriented eq. rel} that \([M,f]+[-M,f]=0\).
 \end{proof}
 
 So, \(\Omega_n(X)\) is not a \(\mathbb{F}_2\)-vector space anymore! This makes \(\Omega_n(X)\) harder to compute.
 
-The graded ring \(\Omega_\ast\) and the graded module \(\Omega_\ast(X)\) are defined in the same way as in the unoriented case.
+The graded ring \(\Omega_\ast\) and the graded module \(\Omega_\ast(X)\) are defined in the same way as in the unoriented case (definitions\ \ref{bordism ring},\ \ref{bordism module}).
 
-I still need to see that this is ok with the orientation.
+%I still need to see that this is ok with the orientation.
 
 \subsubsection{Relative oriented bordism}
 
-The path from absolute oriented bordism to relative oriented bordism is exactly the same as in the unoriented case. We just always need to remember that we reverse the orientations for the second singular oriented manifold.
+The path from absolute oriented bordism to relative oriented bordism is exactly the same as in the unoriented case. We just always need to remember that we reverse the orientations for the second singular oriented manifold. Relative oriented bordism extends the equivalence relation to not necessarily closed singular oriented manifolds.
 
 Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a more complicated homology theory now.
 
@@ -957,20 +970,34 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 \end{lemma}
 
 \begin{proof}
-    
+    See proof of lemma\ \ref{functoriality}.
+\end{proof}
+
+\begin{lemma}[Naturality of the boundary map]
+    The following diagram commutes for \(f:(X,A)\to(Y,A)\), \(n\in\Z\):
+    \begin{center}
+        \begin{tikzcd}
+            {\Omega_n(X,A)} \arrow[r, "\partial_n"] \arrow[d, "f_\ast"'] & {\Omega_{n-1}(A)}  \arrow[d, "{\left(f\restrict{A}\right)}_\ast"] \\
+            {\Omega_n(Y,B)} \arrow[r, "\partial_n"]  & {\Omega_{n-1}(B)}
+        \end{tikzcd}
+    \end{center}
+\end{lemma}
+
+\begin{proof}
+    See proof of lemma\ \ref{naturality}
 \end{proof}
 
 \begin{lemma}[Homotopy invariance\ {\cite[Lemma \(2\cdot1\)]{atiyah}}]
-    Let \(f_0,f_1:(X,A)\to(Y,B)\) be homotopic maps. Then \(f_\ast,g_\ast:\Omega_n(X,A)\to\Omega_n(Y,B)\) are the same homomorphisms.
+    Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Then \(f_\ast,g_\ast:\Omega_n(X,A)\to\Omega_n(Y,B)\) are the same homomorphisms.
 \end{lemma}
 
-\begin{proof}\cite{atiyah}, \cite{conner}
-    Let \(h:(X,A)\times I\to (Y,B)\) be a homotopy between \(f_0\) and \(f_1\).\\
-    The proof is exactly the same as in the unoriented case; noting that the cylinder is now oriented and \(\partial M\times I\) is now \(\partial I\times (M\cup M^-)=M\dis M^-\)%\((\partial I\times M)\cup (I\times M^-)\).
+\begin{proof}\cite{atiyah},\ \cite{conner}
+    %Let \(h:(X,A)\times I\to (Y,B)\) be a homotopy between \(f_0\) and \(f_1\).\\
+    The proof is exactly the same as the proof of lemma\ \ref{htpy inv}; noting that the cylinder is now oriented and \(\partial M\times I\) is now \(\partial I\times (M\cup M^-)=M\dis M^-\)%\((\partial I\times M)\cup (I\times M^-)\).
 \end{proof}
-Maybe do this more precisely.
+%Maybe do this more precisely.
 
-\begin{lemma}[Long exact sequence, \cite{conner}]
+\begin{lemma}[Long exact sequence,\ \cite{conner}]
     The sequence
     \[\cdots\xrightarrow{\partial}\Omega_n(A)\xrightarrow{i_\ast}\Omega_n(X)\xrightarrow{j_\ast}\Omega_n(X,A)\xrightarrow{\partial}\Omega_{n-1}(A)\xrightarrow{i_\ast}\cdots\]
     is exact.
@@ -989,7 +1016,10 @@ Maybe do this more precisely.
     \end{itemize}
 \end{comment}
 \end{proof}
-The used lemma might have to be adjusted.
+
+\begin{remark}
+    We used lemma\ \ref{almost excision} in the proof. The oriented version of this lemma also holds, by the same proof, just keep in mind that \(M\times\{1\}\) and \(N\times\{1\}\) have negative orientation.
+\end{remark}
 
 \begin{lemma}[Excision axiom,\ {\cite[5.7]{conner}}]
     If \(\overline{U}\subset\overset{\circ}{A}\), then \(i:(X\setminus U, A\setminus U)\subset (X,A)\) induces an isomorphism of relative oriented bordism groups:
@@ -997,7 +1027,7 @@ The used lemma might have to be adjusted.
 \end{lemma}
 
 \begin{proof}\cite{conner}
-    Again, everything stays the same as in the unoriented case.
+    Again, everything stays the same as the proof of lemma \ref{excision}. The used lemmas\ \ref{plemma} and\ \ref{plemma2} are left unbothered by the orientations.
 \end{proof}
 
 \begin{lemma}[Disjoint union axiom]
@@ -1005,17 +1035,39 @@ The used lemma might have to be adjusted.
 \end{lemma}
 
 \begin{proof}
-    The proof can be copied from the unoriented case.
+    See proof of lemma\ \ref{disjoint union}
 \end{proof}
 
-We can finally conclude:
+%\begin{observation}
+%    Relative oriented bordism does not satisfy the dimension axiom.
+%\end{observation}
+
+\begin{remark}
+    The dimension axiom does not hold. Seeing this is harder than in the unoriented case, but for dimension 4, the signature map gives an isomorphism
+    \[\mathrm{sign}:\Omega_4\xrightarrow{\cong}\Z\]
+    This map is well-defined, because the signature is a bordism invariant in every dimension, but we will not show this here.
+\end{remark}
+
+We conclude:
 \begin{theorem}
-    Relative oriented bordism is a homology theory satisfying the disjoint union axiom.
+    Relative oriented bordism is an extraordinary homology theory satisfying the disjoint union axiom.
 \end{theorem}
 
-\begin{observation}
-    Relative oriented bordism does not satisfy the dimension axiom.
-\end{observation}
+\subsubsection{Calculations}
+
+Let us try to calculate \(\Omega_n\) for low \(n\).\\
+For \(n=0\), we need to see if a disjoint union of oriented points is nullbordant. An orientation of such spaces is a choice of a sign for every point. We know that \((\pt,+)\) and \(\pt,-\) are bordant by the interval, and that \((\pt,+)\) is not bordant to itself, again by classifying compact \(1\)-manifolds, as in the unoriented case. So, we get an isomorphism \(\Omega_0\cong\Z\) by \[\coprod_{i=0}^n(\pt,+)\dis\coprod_{i=0}^k(\pt,-)\mapsto n-k.\]
+For \(n=1\), we see \(\Omega_1\cong\{0\}\) by seeing that \(S^1\) with any orientation has \(D^2\) with corresponding orientation as nullbordism. \(S^1\) is the only connected closed 1-manifold.\\
+For \(n=2\), our problem from the unoriented case has been solved, as singular manifolds are oriented now and any connected sum of \(\mathbb{RP}^2\)s is not orientable. So, by the argumentation of the unoriented case, we get \(\Omega_2\cong\{0\}\).\\
+Again, from dimension 3 onwards, calculations are hard, so I will just state the results of\ \cite[\S 17]{stasheff}: We only have \(\Omega_n\cong 0\) for \(n\in\{1,2,3,5,6\}\) (and, of course, negative \(n\)). Else, we have:
+\[\Omega_n\cong\begin{cases}\Z & n=0\\
+\Z & n=4\\
+\F_2 & n=5\\
+\Z\oplus\Z & n=8\\
+\F_2\oplus\F_2 & n=9\\
+\dots
+\end{cases}\]
+Just like in the unoriented case, the oriented bordism groups have been completely determined.
 
 
 \section{Cobordism}
