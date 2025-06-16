@@ -130,7 +130,7 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
     \((x\mapsto x^3)\circ (x\mapsto x^{\frac13})\circ \id^{-1}= \id\)
 \end{example}
 
-I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
+%I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
 
 \begin{example}(Exotic spheres)
     There exists 15 pairwise non-diffeomorphic smooth structures on \(S^7\). See\ \cite{kervaire} for a construction of these exotic spheres.
@@ -839,7 +839,7 @@ Using the above two remarks, we can calculate the bordism groups of spheres\ \ci
 \[\N_n(S^k)\cong\tilde\N_n(S^k)\oplus\N_n\cong\tilde\N_{n-1}(S^{k-1})\oplus\N_n\cong\dots\cong\tilde\N_{n-k}(S^0)\oplus\N_n\]
 It suffices to calculate \(\tilde\N_n(S^0)=\ker(\N_n(S^0))\xrightarrow{\varepsilon}\N_n\). As \(S^0=\pt\dis\pt\), we have by lemma\ \ref{disjoint union} \(\N_n(S^0)\xrightarrow{\iota}\N_n\oplus\N_n\) is an isomorphism. 
 Look at \(\varepsilon\circ\iota\). \(\varepsilon\circ\iota([M]\oplus[M'])=[M]+[M']\). This is zero if and only if \([M]=[M']\), as elements are self-inverse. It follows that \(\ker(\varepsilon\cong\N_n)\). 
-Altogether, we have \(\N_n(S^k)\cong\N_{n-k}\oplus\N_n\).
+Altogether, we have \[\N_n(S^k)\cong\N_{n-k}\oplus\N_n\].
 
 \subsection{Orientation}
 
@@ -1069,27 +1069,63 @@ Again, from dimension 3 onwards, calculations are hard, so I will just state the
 \end{cases}\]
 Just like in the unoriented case, the oriented bordism groups have been completely determined.
 
+We can define the \demph{reduced oriented bordism homology} analogously to reduced unoriented bordism homology.
+\[\tilde\Omega_n(X):=\ker(\Omega_n(X)\to\Omega_n)\]
+By the same arguments as in the unoriented case, we get 
+\[\Omega_n(S^k)\cong\Omega_n\oplus\Omega_{n-k}\]
+
 
 \section{Cobordism}
-Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual theory, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
-I should give a explanation of how \(O(n)\) (real bundles) and \(SO(n)\) (oriented real bundles) come into play.
+Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual to this, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
+%I should give a explanation of how \(O(n)\) (real bundles) and \(SO(n)\) (oriented real bundles) come into play.
 
 \subsection{Cobordism}
 
-\subsubsection{Definitions}
+\subsubsection{(Thom) Spectra}
 
 \begin{definition}[Local trivialization\ {\cite[p.242]{tu}}]
     Let \(E,B,F\) be manifolds. A \demph{local trivialization} for a smooth surjective map \(\pi:E\to B\) is a collection of charts \(\{(U_i,\varphi_i)\}_{i\in I}\) (for \(\{U_i\}\) an open cover of \(M\)) such that \(\pi^{-1}(U_i)\) is diffeomorphic to \(U_i\times F\) via \(\varphi_i\) for all \(i\in I\). The charts are called \demph{trivializing charts}.
 \end{definition}
 
-\begin{definition}[Fibre bundle\ {\cite[p.242]{tu}}]
-    Let \(E,B,F\) be manifolds. A \demph{fibre bundle} is a smooth surjective map \(\pi:E\to B\) with a local trivialization with fibre \(F\).
-    \(E\) is called the \demph{total space}, \(B\) the \demph{base space} and \(F\) the \demph{fibre} of the fibre bundle.
+Unsure if I need this.
+
+%\begin{definition}[Fibre bundle\ {\cite[p.242]{tu}}]
+%    Let \(E,B,F\) be manifolds. A \demph{fibre bundle} is a smooth surjective map \(\pi:E\to B\) with a local trivialization with fibre \(F\).
+%    \(E\) is called the \demph{total space}, \(B\) the \demph{base space} and \(F\) the \demph{fibre} of the fibre bundle.
+%\end{definition}
+
+%Maybe I will not need this Probably
+
+\begin{definition}[Principal bundle {\cite[\nopp I.11]{tomdieck}}]
+    Let \(G\) be a topological group, \(r:E\times G\to E\), \(r(x,g)=xg\) be a free right action on \(E\), and \(p:E\to B\) a continuous map. Then \((p,r)\) is called a \(G\)\demph{-principal bundle}, if 
+    \begin{itemize}
+        \item \(\forall g\in G, x\in E: p(xg)=p(x)\)
+        \item \(\forall b\in B\exists\) a neighbourhood \(U\) and a \(G\)-homeomorphism \(\varphi:p^{-1}(U)\to U\times G\) which is a local trivialization of \(p\) over \(U\). \(\varphi\) is given by \(((u,x),g)\mapsto (u,xg)\).
+    \end{itemize}
 \end{definition}
 
-Maybe I will not need this
-\begin{definition}[Classifying space]
-    Let \(G\) be a topological group. The \demph{classifying space} \(BG\) of \(G\) is the base space of the universal principal \(G\)-bundle
+\begin{definition}[Numerable cover]
+    Let \(X\) be a topological space, and \(\{U_i \}_{i\in I}\) an open cover of \(X\). \(\{U_i\_{i\in I}\}\) is called \demph{numerable} if it admits a partition of unity subordinate to this cover.
+\end{definition}
+
+\begin{remark}
+    For \(X\) a manifold, every cover is numerable, as manifolds are paracompact.
+\end{remark}
+
+\begin{definition}[Numerable bundle {\cite[\nopp IX.4]{tomdieck}}]
+    A vector bundle \(\xi:E\to B\) is called \demph{numerable} if there exists a numerable cover \(\{U_i \}_{i\in I}\) of \(B\) such that \(\xi\) is trivial over each \(U_i\).
+\end{definition}
+
+\begin{definition}[Universal bundle {\cite[\nopp IX.4]{tomdieck}}]
+    A \(G\)-principal bundle \(\xi:EG\to BG\) is called \demph{universal}, if it is numerable and for every numerable \(G\)-principal bundle \(\eta:E\to B\) has a unique bundle map to \(\xi\) (up to homotopy).
+\end{definition}
+
+\begin{remark}
+    The universal \(G\)-bundle exists for every topological group \(G\) and is unique up to homotopy equivalence, in particular, \(EG\) and \(BG\) are unique up to homotopy equivalence.
+\end{remark}
+
+\begin{definition}[Classifying space {\cite[\nopp IX.4]{tomdieck}}]
+    Let \(G\) be a topological group. The \demph{classifying space} \(BG\) of \(G\) is the base space of the universal principal \(G\)-bundle.
 \end{definition}
 
 \begin{observation}
@@ -1118,19 +1154,23 @@ Maybe it is enough to just say that these are called this way because the Grassm
     A \demph{spectrum} \(\underline E = \{(E_n,\sigma_n)\mid n\in\mathbb{Z}\}\) is a sequence of pointed spaces \(E_n\) with pointed \demph{structure maps}\[\sigma_n:E_n\wedge{S^1}\to E_{n+1}\]
 \end{definition}
 
-\begin{definition}[Thom spectrum\ {\cite[Beispiele IV.1.2(b)]{brocker}}]
+\begin{example}[Sphere spectrum]
+    
+\end{example}
+
+\begin{example}[Thom spectrum\ {\cite[Beispiel IV.1.2(b)]{brocker}}]
     Let \(\gamma_{n,\infty}\) be the universal real vector bundle over \(BO(n)=\mathbb{G}_{n,\infty}\)
-\end{definition}
+\end{example}
 
 \begin{theorem}[Suspension sequence]\label{suspension}
-    Let \(X, Y\) be pointed spaces. We denote by \({[X,Y]}^\circ\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
+    Let \(X, Y\) be pointed spaces. We denote by \({[X,Y]}\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
     \[[X,Y]\to[\sus{X},\sus{Y}]\to\dots\to[\sus^n{X},\sus^n{Y}]\] 
 \end{theorem}
 
 
 \begin{theorem}[Freudenthal suspension theorem]\label{freudenthal}
     For large enough \(n\), the suspension map
-    \[[\sus^nX,\sus^nY]\to[\sus^{n+1}Xm\sus^{n+1}Y]\]
+    \[[\sus^nX,\sus^nY]\to[\sus^{n+1}X,\sus^{n+1}Y]\]
     is an isomorphism.
 \end{theorem}
 
@@ -1150,16 +1190,27 @@ Maybe it is enough to just say that these are called this way because the Grassm
     \[[\sus^{n-k}(X\big/ Y),MSO(n)]\to[\sus^{n+1-k}(X\big/Y, MSO(n+1))]\]
 \end{lemma}
 
-\begin{definition}[relative oriented cobordism group\ {\cite[p.201]{atiyah}}]
-    Let \((X,Y)\) be a pair of spaces, then for \(k\in\mathbb{Z}\), the \(k\)\demph{-th oriented cobordism group} is
-    \[\Omega^k(X,Y):=MSO^k(X,Y)=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),MSO(n)]\]
-    with respect to the above map.
-    Analogously, we define the \demph{relative unoriented cobordism group} as
-    \[\mathfrak{N}^k(X,Y):= MO^k(X,Y)=\lim_{n\to\infty}[\sus^{n-k}(X\big/ Y),MO(n)]\]
+\begin{definition}[Reduced cohomology associated to a spectrum]
+    
 \end{definition}
 
+\begin{theorem}[Cohomology associated to a spectrum]\label{spectrum cohomology}
+    Let \(\underline{E}\) be a spectrum. Then the following is a cohomology theory.
+    \[\h(X,Y;\underline{E}):=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),E_n]\]
+\end{theorem}
+
+\begin{definition}[Cobordism group\ {\cite[p.201]{atiyah}}]
+    Let \((X,Y)\) be a pair of spaces, then for \(k\in\mathbb{Z}\), the \(k\)\demph{-th oriented cobordism group} is
+    \[\Omega^k(X,Y):=\h^k(X,Y;MSO)=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),MSO(n)]\]
+    with respect to the above map.
+    Analogously, we define the \demph{relative unoriented cobordism group} as
+    \[\mathfrak{N}^k(X,Y):= \h^k(X\big/Y;MO)=\lim_{n\to\infty}[\sus^{n-k}(X\big/ Y),MO(n)]\]
+\end{definition}
+
+So, proving theorem\ \ref{spectrum cohomology} gives us that cobordism defines a cohomology theory. Again, we need to check axioms.
+
 \subsubsection{The Eilenberg-Steenrod axioms}
-To get a definition for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in\ \ref{es axioms}.
+To get a the axioms for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in\ \ref{es axioms}.
 
 \begin{definition}[Cohomology theory\ {\cite[Definition 5.2]{luck}}]
     A \demph{cohomology theory} \(\mathcal{H}^\ast=(\mathcal{H}^\ast,\partial^\ast)\) with coefficients in \(R\)-modules is a contravariant functor \[\mathcal{H}^\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\] together with a natural transformation \[\partial^\ast:\mathcal{H}^\ast\circ I\to\mathcal{H}^{\ast+1}\] satisfying the following axioms:
