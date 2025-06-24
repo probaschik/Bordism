@@ -22,13 +22,17 @@
 
 \setcounter{section}{-1}
 
+\section*{\todo{Zusammenfassung}}
+\todo{Hier eine deutsche Zusammenfassung der Arbeit}
+
 \section{Introduction/Motivation}
 %\includegraphics{galaxy.png}
 
 Recall the definition of homotopy groups \(\pi_n(X)\) as the set of homotopy classes of maps from the \(n\)-sphere \(S^n\) to a space \(X\). 
-The problem with homotopy groups is that they are, in general, hard to compute, even for simple spaces such as spheres. 
+The problem with homotopy groups is that they are, in general, hard to compute, even for simple spaces such as spheres.\\
+\todo{The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).}
 
-The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).
+\todo{more detail here}
 
 %Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatcher},\cite{dieck},\cite{luck}
 
@@ -43,7 +47,7 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
         \item \(M\) is second countable, (i.e.\ there exists a countable basis for the topology of \(M\)) and
         \item \(M\) is locally Euclidean (i.e.\ every point in \(M\) has a neighbourhood homeomorphic to an open subspace of \(\mathbb{R}^n\)).
     \end{itemize}
-    We will often write \(M^n\) for an \(n\)-dimensional manifold. \(n\)-dimensional manifolds are also called \demph{\(n\)-manifolds}.
+    We will often write \(M^n\) for an \(n\)-dimensional manifold.\ \(n\)-dimensional manifolds are also called \demph{\(n\)-manifolds}.
 \end{definition}
 
 \begin{example}
@@ -58,34 +62,39 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
     %\includegraphics[width=0.2\textwidth]{cross}
     \begin{itemize}
         \item A \enquote{cross} in \(\mathbb{R}^2\) (\(\{(x_1,x_2\mid x_1=0 \lor x_2=0)\}\)) is not a topological manifold, because it is not locally Euclidean at the crossing point. 
-        \item The line with two origins (\((\R\times\{0\}\dis\R\times\{1\})\big/((x,0)\sim(y,1)\Leftrightarrow (x=y \land x\neq 0))\)) is not a topological manifold. It is not Hausdorff, as the two origins cannot be separated by disjoint open sets.
-        \item Let \(\{\pt\}\) denote the point space. \(\coprod_{i\in \mathbb{R}}\{\pt\}\) is not a topological manifold, because it is not second countable, as it has uncountably many connected components.
-        \item \(S^1\dis\{\pt\}\) is not a topological manifold, because it is, depending on the point, locally homeomorphic to \(\mathbb{R}^2\) or \(\mathbb{R}\), and the dimension needs of a manifold needs to be constant.
+        \item The line with two origins (\((\R\times\{0\}\dis\R\times\{1\})\big/((x,0)\sim(y,1)\Leftrightarrow (x=y \land x\neq 0))\)) is not a topological manifold. It is not Hausdorff, as the two origins cannot be separated by disjoint open sets. However, it is locally Euclidean.
+        \item Let \(\{\pt\}\) denote the point space.\ \(\coprod_{i\in \mathbb{R}}\{\pt\}\) is not a topological manifold, because it is not second countable, as it has uncountably many connected components.
+        \item \(S^1\dis\{\pt\}\) is not a topological manifold, because it is, locally homeomorphic to \(\mathbb{R}^1\) for any point in \(S^1\) or \(\mathbb{R}^0\), if the chosen point is not in \(S^1\), and the dimension of a manifold needs to be constant.
     \end{itemize}
 \end{nonexs}
 
 \begin{remark}
-    One could replace the condition of being second countable with the condition of being paracompact (i.e.\ every open cover of \(M\) admits a locally finite refinement). The following equivalence holds:
+    One could replace the condition of being second countable with the condition of being paracompact (i.e.\ every open cover of \(M\) admits a locally finite refinement). The following equivalence holds for any topological space:
     \[\text{second countable}\iff \text{paracompact and countably many connected components}\]
     %This is shown in\ \cite{lee}. --- It is not :(
 \end{remark}
 
 %Being a topological manifold is just a property of a topological space \(M\). We will give manifolds extra structure by defining a smooth structure on them.
 
+\begin{definition}[Chart]
+    For a manifold \(M^n\), a \demph{chart} is a pair \(U,\varphi\) of an open subset \(U\subset M\) and a map \(\varphi:U\to\R^n\) such that \(\varphi:U\to\varphi(U)\) is a homeomorphism.
+\end{definition}
+
 \begin{definition}[(Smooth) Atlas\ {\cite[p.12]{lee}}]
-    Let \(M\) be a topological manifold. A \demph{(smooth) atlas} \(\mathcal{A}\) on \(M\) is a collection of smooth charts \((U_\alpha,\varphi_\alpha)\) such that:
+    Let \(M\) be a topological manifold. A \demph{(smooth) atlas} \(\mathcal{A}\) on \(M\) is a collection of charts \((U_\alpha,\varphi_\alpha)\) such that:
     \begin{itemize}
         \item the \(\{U_\alpha\}\) cover \(M\),
-        \item the charts are pairwise smoothly compatible (i.e.\ the transition functions \(\varphi_j \circ \varphi_i^{-1}:\varphi_i(U_i\cap U_j)\to\varphi_j(U_i\cap U_j)\) are smooth)
+        \item the charts are pairwise smoothly compatible, i.e.\ the transition functions 
+        \(\varphi_j \circ \varphi_i^{-1}:\R^n\supset\varphi_i(U_i\cap U_j)\to\varphi_j(U_i\cap U_j)\subset\R^n\) are smooth.
     \end{itemize}
 \end{definition}
 
 \begin{example}
-    The charts we chose for the \(n\)-sphere \(S^n\) in Example \ref{sphere chart} form a smooth atlas on \(S^n\).
+    The charts we chose for the \(n\)-sphere \(S^n\) in example\ \ref{sphere chart} form a smooth atlas on \(S^n\).
 \end{example}
 
 \begin{definition}[Equivalence of atlases]
-    Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still on atlas.
+    Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still an atlas.
 \end{definition}
 
 %It can be shown that this is indeed an equivalence relation, but I will omit the proof here.
@@ -98,25 +107,33 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
     \end{itemize}
 \end{definition}
 
+\begin{definition}[Smoothness of maps]
+    A map \(f:(M^m,\mathcal{A})\to (N^n,\mathcal{B})\) between two smooth manifolds is said to be \demph{smooth}, if for all \(p\in M\), there exists a chart \((U,\varphi)\in\mathcal{A}\) such that \(p\in U\) and \((V,\psi)\in\mathcal{B}\) such that
+    \begin{itemize}
+        \item \(f(U\subset V)\)
+        \item \(\psi\circ f\circ \varphi:\varphi(U)\subset \R^m\to R^n\) is smooth as a map from \(\R^m\) to \(\R^n\).
+    \end{itemize}
+\end{definition}
+
 \noindent\textit{Notation:}
     For two smooth manifolds \(M,N\), when writing \(M=N\), we will mean that they are diffeomorphic, i.e.\ there exists a bijective map \(f:M\to N\) such that \(f\) and \(f^{-1}\) are smooth. 
-    (We say a map \(f\) between two manifolds \(M^m,N^n\) is smooth, if for all \(p\in M\), there exists a charts \((U\ni p,\varphi)\) and \((V\subset M,\psi)\), such that 
-    (i) \(f(U)\subset V\) and 
-    (ii) \(\psi\circ f\circ \varphi:\varphi(U)\subset \R^m\to\R^n\) is smooth.)
+    %\todo{(We say a map \(f\) between two manifolds \(M^m,N^n\) is smooth, if for all \(p\in M\), there exist  charts \((U\ni p,\varphi)\) and \((V\subset N,\psi)\), such that 
+    %(i) \(f(U)\subset V\) and 
+    %(ii) \(\psi\circ f\circ \varphi:\varphi(U)\subset \R^m\to\R^n\) is smooth.)}
 
 
 \begin{example}[Spheres]
-    The \(n\)-sphere \(S^n\) with the atlas given by the charts in\ \ref{sphere chart} is a smooth manifold.
+    The \(n\)-sphere \(S^n\) with the atlas given by the charts in example\ \ref{sphere chart} is a smooth manifold.
 \end{example}
 
 \begin{example}[Subset of manifolds]
-    For a manifold \(M,[\mathcal{A}]\) any open subset \(U\) of \(M\) is a manifold. 
+    For a smooth manifold \(M,[\mathcal{A}]\) any open subset \(U\) of \(M\) is a smooth manifold. 
     The atlas is given by restriction of the charts in \([\mathcal{A}]\) to \(U\). 
     We call \(U\) an \demph{open submanifold} of \(M\).
 \end{example}
 
 \begin{example}[Product of manifolds]
-    For manifolds \(M,N\), \(M\times N\) is a manifold with the charts\[\{(U\times V,(\varphi,\psi))\mid(U,\varphi),(V,\psi)\text{ charts of }M,N\}\]
+    For smooth manifolds \(M,N\), the product \(M\times N\) is a smooth manifold with the charts\[\{(U\times V,(\varphi,\psi))\mid(U,\varphi),(V,\psi)\text{ charts of }M,N\}\]
 \end{example}
 
 \begin{remark}
@@ -124,20 +141,20 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{remark}
 
 \begin{example}
-    \(\mathbb{R},[(\mathbb{R},\mathrm{id})]\) and \(\mathbb{R},[\mathbb{R},x\mapsto x^3]\) are different smooth manifolds, because the transition functions between them are not smooth: 
-    \(\mathrm{id}\circ(x\mapsto x^3)^{-1}=(x\mapsto x^{\frac13})\), hence the atlases are not equivalent.\\
-    But they are diffeomorphic, as the map \(x\mapsto x^{\frac{1}{3}}\) is a diffeomorphism between the two manifolds: 
-    \((x\mapsto x^3)\circ (x\mapsto x^{\frac13})\circ \id^{-1}= \id\)
+    \((\mathbb{R},[(\mathbb{R},\mathrm{id})])\) and \((\mathbb{R},[\mathbb{R},x\mapsto x^3])\) are different smooth manifolds, because the transition functions between the charts are not smooth: 
+    \(\mathrm{id}\circ{(x\mapsto x^3)}^{-1}=(x\mapsto x^{\frac13})\), hence the atlases are not equivalent.\\
+    However, they are diffeomorphic, as the map \(x\mapsto x^{\frac{1}{3}}\) is a diffeomorphism between the two manifolds: 
+    \((x\mapsto x^3)\circ (x\mapsto x^{\frac13})\circ \id^{-1}= \id\). Its inverse is given by \(x\mapsto x^3\), which is also smooth: \(\id\circ (x\mapsto x^3)\circ{(x\mapsto x^3)}^{-1}=\id\)
 \end{example}
 
 %I am confused a bit, doesn't the diffeomorphism have to be smooth?? Check again.
 
-\begin{example}(Exotic spheres)
-    There exists 15 pairwise non-diffeomorphic smooth structures on \(S^7\). See\ \cite{kervaire} for a construction of these exotic spheres.
+\begin{example}[Exotic spheres]
+    There exist 15 pairwise non-diffeomorphic smooth structures on \(S^7\). See\ \cite{kervaire} for a construction of these exotic spheres.
 \end{example}
 
 \begin{definition}[Manifold with boundary\ {\cite[p.25]{lee}}]
-    To get a definition of a (smooth or topological) \demph{manifold with boundary}, replace the condition of the manifold being locally Euclidean with the condition that every point has a neighbourhood homeomorphic to an open subspace of \(\mathbb{H}^n:=\{(x_1,\dots,x_n)\in\mathbb{R}\mid x_1\geq0\}\) (the half space). Naturally, the charts now map into \(\H^n\) instead of \(\R^n\).
+    To get a definition of a (smooth or topological) \demph{manifold with boundary}, replace the condition of the manifold being locally Euclidean with the condition that every point has a neighbourhood homeomorphic to an open subspace of the half space \(\mathbb{H}^n:=\{(x_1,\dots,x_n)\in\mathbb{R}\mid x_1\geq0\}\). Naturally, the charts now map into \(\H^n\) instead of \(\R^n\).
 \end{definition}
 
 \begin{comment}
@@ -152,12 +169,12 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{comment}
 
 \begin{remark}
-    In this thesis, with \demph{manifold} we will always mean a smooth manifold with boundary, unless specified otherwise.
+    In this thesis, by \demph{manifold} we will always mean a smooth manifold with boundary, unless specified otherwise.
 \end{remark}
 
 \begin{definition}[Boundary\ {\cite[p.25]{lee}}]
     Let \(M^n\) be a manifold. A point \(x\in M^n\) is called a \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
-    If a \(M\) is compact and has empty boundary, \(M\) is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
+    If \(M\) is compact and has empty boundary, \(M\) is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
 \end{definition}
 
 \begin{example}
@@ -177,8 +194,9 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{theorem}
 
 \begin{proof}
-    Let \((M^n,[\mathcal{A}])\) be a manifold. A smooth structure of \(\partial M\) is given by the restriction of the charts in \([\mathcal{A}]\) to \(\partial M\): \[\{(U\cap\partial M,\varphi\restrict{U\cap\partial M})\mid (U,\varphi)\in[\mathcal{A}]\}\]
-    Smooth compatability follows from the smooth compatibility of the charts in \([\mathcal{A}]\). This makes \(\partial M\) a submanifold of \(M\). It remains to show that it is closed and of codimension \(1\). The charts of \([\mathcal{A}]\) map every point in \(\partial M\) to \(\partial\H^n=\R^{n-1}\). If they didn't, we could find a euclidean neighbourhood of that point, contradicting the fact that it was a boundary point in \(M\). As the charts restricted to \(\partial M\) no map to \(\R^{n-1}\), we have an \((n-1)\)-dimensional submanifold without boundary.
+    Let \((M^n,[\mathcal{A}])\) be a manifold. A smooth structure on \(\partial M\) is given by the restriction of the charts in \([\mathcal{A}]\) to \(\partial M\): \[\{(U\cap\partial M,\varphi\restrict{U\cap\partial M})\mid (U,\varphi)\in[\mathcal{A}]\}\]
+    Smooth compatability follows from the smooth compatibility of the charts in \([\mathcal{A}]\). This makes \(\partial M\) a submanifold of \(M\). It remains to show that it is closed and of codimension \(1\). The charts in \([\mathcal{A}]\) map every point in \(\partial M\) to \(\partial\H^n=\R^{n-1}\). If they didn't, we could find a Euclidean neighbourhood of that point, contradicting the fact that it was a boundary point in \(M\). As the charts restricted to \(\partial M\) now map to \(\R^{n-1}\), we have an \((n-1)\)-dimensional submanifold without boundary.\\
+    \unsure{Need: \(\varphi(U\cap\partial M)\) is open and \(\varphi(x)\notin\partial\H^n\) for \(x\) interior point}
 \end{proof}
 
 \begin{theorem}[Collar theorem \ {\cite[I, Satz 1.5]{brocker}}]\label{collar}
@@ -193,7 +211,7 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{observation}
 
 \begin{definition}[Tangent space {\cite[p.72]{lee}}]
-    The \demph{tangent space} of a manifold \(M\) at a point \(p\in M\), denoted by \(T_pM\) is the set of equivalence classes of smooth curves \(\gamma:[-\varepsilon,\varepsilon]\to M\), \(\gamma(0)=p\) with the equivalence relation \(\gamma_1\sim\gamma_2:\Leftrightarrow\) for any smooth function defined in a neighbourhood of \(p\), we have \((f\circ\gamma_1)'(0)=(f\circ\gamma_2)'(0)\) (\(\varepsilon>0\) depends on \(\gamma\))
+    The \demph{tangent space} of a manifold \(M\) at a point \(p\in M\), denoted by \(T_p M\) is the set of equivalence classes of smooth curves \(\gamma:[-\varepsilon,\varepsilon]\to M\), \(\gamma(0)=p\) with the equivalence relation \(\gamma_1\sim\gamma_2:\Leftrightarrow\) for any smooth function defined in a neighbourhood of \(p\), we have \((f\circ\gamma_1)'(0)=(f\circ\gamma_2)'(0)\) (\(\varepsilon>0\) depends on \(\gamma\))
 \end{definition}
 
 \begin{remark}
@@ -202,17 +220,17 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 
 \begin{definition}[Differential {\cite[p.55]{lee}}]
     Let \(f:M\to N\) be a smooth map between two manifolds. For \(p\in M\), the \demph{differential of} \(f\) \demph{at} \(p\) is given by
-    \[df_p:T_pM\to T_{f(p)}N\]
-    \[[\gamma]\mapsto[F\circ \gamma]\]
+    \[df_p:T_p M\to T_{f(p)}N\]
+    \[[\gamma]\mapsto[f\circ \gamma]\]
 \end{definition}
 
 \begin{definition}[critical value {\cite[p.105]{lee}}]
     Let \(f:M\to N\) be a smooth map between two manifolds. A point \(p\in M\) is a \demph{critical point} of \(f\), if the differential \(df_p:T_p M\to T_{f(p)}N\) fails to be surjective. Otherwise, it is called a \demph{regular point}.\\
-    A point \(q\in N\) is a \demph{critical value} of \(f\), if \(f^{-1}(q)\) containa a critical point of \(f\). Otherwise, it is called a \demph{regular value}.
+    A point \(q\in N\) is a \demph{critical value} of \(f\), if \(f^{-1}(q)\) contains a critical point of \(f\). Otherwise, it is called a \demph{regular value}.
 \end{definition}
 
 \begin{remark}
-    For a smooth map \(f:M^n\to \R\) between two manifolds, \(r\) a regular value of \(f\), \(\{p\in M:f(p)\leq r\}=f^{-1}(-\infty,r]\) is an \(n\)-dimensional submanifold of \(M\). \(f^{-1}(r)\) is an \((n-1)\)-dimensional submanifold of \(M\).
+    For a smooth map \(f:M^n\to \R\), \(r\) a regular value of \(f\), \(\{p\in M:f(p)\leq r\}=f^{-1}(-\infty,r]\) is an \(n\)-dimensional submanifold of \(M\). \(f^{-1}(r)\) is an \((n-1)\)-dimensional submanifold of \(M\).
 \end{remark}
 
 \begin{theorem}[Sard's theorem\ {\cite[Theorem 6.10]{lee}}]\label{sard}
@@ -233,7 +251,7 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 \end{definition}
 
 \begin{remark}
-    This construction is only unique up to homeomorphism. It can be made unique up to diffeomorphism, see\ \cite[VI.1]{kosinski} for details.
+    This construction is a priori only unique up to homeomorphism. It can be shown that \(M\#N\) is a smooth manifold if \(M\) and \(N\) are smooth and that it is unique up to diffeomorphism, see\ \cite[VI, Theorem 1.1.]{kosinski} for \unsure{details}.
 \end{remark}
 
 %\begin{definition}[Separating function]
@@ -243,7 +261,7 @@ The general idea of bordism is to replace the \(n\)-sphere with a manifold of di
 
 %\section{Bordism}
 
-The problem with working with manifolds is that they are, in higher dimensions, hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is easier to work with.
+One of the problems with working with manifolds is that they are, in higher dimensions, hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is \todo{easier to work with}.
 
 \subsection{Unoriented bordism}
 \subsubsection{Definitions}
@@ -255,26 +273,27 @@ The problem with working with manifolds is that they are, in higher dimensions, 
 \end{definition}
 
 \begin{definition}[Nullbordant\ {\cite[II, Definition 1.2]{brocker}}]
-    Let \((M,f)\) be a singular \(n\)-manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular (\(n+1\))-manifold \((B,F)\) in \(X\), such that \(\partial(B,F)=(M,f)\).
-
+    Let \((M,f)\) be a singular \(n\)-manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular (\(n+1\))-manifold \((B,F)\) in \(X\), such that \(\partial(B,F)=(M,f)\).\\
     \(B,F\) is then called a \demph{nullbordism} of \((M,f)\).
 \end{definition}
 
+In the following, we will sometimes omit \(f\) from the notation, if it is clear, what \(f\) is, e.g.\ if \(X=\pt\) or \(M=\emptyset\)
+
 \begin{example}
-    For \(X=\pt\), and \(M=S^n\), we have a nullbordism \(B=D^{n+1}\), the disk.\ (\(f\) can be omitted, as it is constant.)
+    For \(X=\pt\), and \(M=S^n\), we have a nullbordism \(B=D^{n+1}\), the disk.%\ (\(f\) can be omitted, as it is constant.)
 \end{example}
 
 \begin{example}
-    For \(X=\pt\), and \(M=\T^2\), the torus, \(S^1\times D^2\), the filled torus, is a nullbordism.
+    For \(X=\pt\), and \(M=\T^2\), the torus, a nullbordism is \(S^1\times D^2\), the filled torus.
 \end{example}
 
 \begin{remark}
-    These examples can be generalized to just \(f\) being a constant %maybe even nullhomotopic
+    These examples can be generalized to \(f\) just being a constant %maybe even nullhomotopic
     map, and \(B\) any manifold such that \(\partial B=M\). 
 \end{remark}
 
 \begin{example}
-    For \(M=\emptyset\), any closed manifold is a nullbordism of \(M\), no matter what the space \(X\) is. (Again, \(f\) can be omitted, as it is the empty map.)
+    For \(M=\emptyset\), any closed manifold is a nullbordism of \(M\), no matter what the space \(X\) is.% (Again, \(f\) can be omitted, as it is the empty map.)
 \end{example}
 
 \begin{observation}
@@ -309,7 +328,11 @@ We will refer to this relation as \demph{bordism relation}.
 \begin{example}[Pair of pants]\label{pants}
     For \(X=\mathrm{pt}\), \(M_1=M^n\dis N^n\) and \(M_2=M\# N\), we get the \enquote{pair of pants} as a bordism between them. We can construct the pants as follows. Take the two cylinders \(M\times [0,1]\) and \(N\times[0,1]\). Now \[f:(M\times[0,1])\dis(N\times[0,1])\to [0,1]\]
     given by
-    \[(p,t)\mapsto t\] regardless of \(p\in M\) or \(p\in N\) is a smooth map between manifolds. By theorem\ \ref{sard}, we may assume that \(\frac12\) is a regular value. We embed \(D^{n+1}\) by \(i\) and \(j\) into the cylinders such that \(f\circ i(0)=f\circ j(0)=\frac12\) and \(f\circ i(x)=f\circ j(x)\) for all \(x\in D^{n+1}\). Taking the connected sum now with respect to \(i\) and \(j\) leaves \[\tilde f:(M\times[0,1])\#(N\times[0,1])\to[0,1]\], which is induced  by \(f\), well-defined. \(\frac12\) is still a regular value of \(\tilde f\). 
+    \[(p,t)\mapsto t\] regardless of \(p\in M\) or \(p\in N\) is a smooth map between manifolds. By theorem\ \ref{sard}, we may assume that \(\frac12\) is a regular value. We embed \(D^{n+1}\) by \(i\) and \(j\) into the cylinders such that \(f\circ i(0)=f\circ j(0)=\frac12\) and \(f\circ i(x)=f\circ j(x)\) for all \(x\in D^{n+1}\). 
+    We may also assume that \({(f\circ i)}^{-1}(\frac{1}{2})\) and is connected, else we can just consider smaller disks inside the disks. 
+    Taking the connected sum now with respect to \(i\) and \(j\) leaves 
+    \[\tilde f:(M\times[0,1])\#(N\times[0,1])\to[0,1],\]
+    which is induced  by \(f\), well-defined. Furthermore, \(\frac12\) is still a regular value of \(\tilde f\). 
     Note that \(\tilde{f}^{-1}=M\#N\), as the embeddings \(i,j\) induce embeddings of \(D^n\) into \(M,N\). 
     Now we define the pair of pants to be \(\tilde{f}^{-1}([0,\frac12])\), which is an \((n+1)\)-dimensional manifold by with boundary \(\tilde f^{-1}(0)\dis\tilde f^{-1}(\frac12)=(M\dis N)\dis(M\#N)\) by construction. Thus, it is a bordism between \(M_1\) and \(M_2\).
     \begin{center}
@@ -320,11 +343,11 @@ We will refer to this relation as \demph{bordism relation}.
 %Probably to do: separating function. No
 
 \begin{example}\label{points}
-    \(\{\mathrm{pt}\}\) and \(\{\mathrm{pt}\}\dis\{\mathrm{pt}\}\) are not bordant, as \(1\)-manifolds either have 2 or 0 boundary points. (Compact \(1\)-manifolds can be classified up to homeomorphism as the circle \(S^1\) (no boundary) and the interval \([0,1]\) (two boundary points).)
+    \(\{\mathrm{pt}\}\) and \(\{\mathrm{pt}\}\dis\{\mathrm{pt}\}\) are not bordant, as \(1\)-manifolds either have 2 or 0 boundary points. Compact \(1\)-manifolds can be classified up to homeomorphism as the circle \(S^1\) (no boundary) and the interval \([0,1]\) (two boundary points).
 \end{example}
 
 \begin{remark}
-     It follows that an odd number of points is never nullbordant as a singular manifold in \(\{\pt\}\), but an even number of points is. (This gives us \(\N_0(\pt)=\F_2\), as we will see later.)
+     It follows that an odd number of points is never nullbordant as a singular manifold in \(\{\pt\}\), but an even number of points is. (This gives us \(\N_0(\pt)\cong\F_2\), as we will see later.)
 \end{remark}
 
 
@@ -332,7 +355,7 @@ We will refer to this relation as \demph{bordism relation}.
     Being bordant is an equivalence relation on the set of closed singular manifolds.
 \end{proposition}
 
-\begin{proof}\cite{brocker}, \cite[p.8]{conner}
+\begin{proof}\cite{brocker},\ \cite[p.8]{conner}
     \begin{itemize}
         \item Symmetry: 
         Follows from the symmetry of the disjoint union. 
@@ -349,7 +372,7 @@ We will refer to this relation as \demph{bordism relation}.
         %These collars glued together are homeomorphism to \(M_2\times(-1,1)\). This induces a smooth structure on the glued collar, and let \(B\setminus M_2\) inherit the smooth structure from \(B_1\) and \(B_2\). Then there exists a smooth structure on \(B\) by a previous lemma.
         Both these collars have the induced smooth structure of \(M_2\times [0,1)\). 
         Glueing the bordisms along \(M_2\) glues the collars to something diffeomorphic to \(M_2\times (-1,1)\), as the smooth structures align in the collars. 
-        Since smoothness is local and we now have that the glueing is smooth for a open neighbourhood or \(M_2\), the whole glueing is smooth.
+        Since smoothness is local and we now have that the glueing is smooth for a open neighbourhood of \(M_2\), the whole glueing is smooth.
         \begin{center}
             \includegraphics[width=0.4\textwidth]{transitivity.jpg}
         \end{center}
@@ -360,7 +383,7 @@ We will refer to this relation as \demph{bordism relation}.
 %and inducing structure. No
 
 \begin{remark}
-    We required the singular manifolds to be closed, because on manifolds with non-empty boundary, the bordism relation does not make any sense, as they cannot be the boundary of another manifold (see theorem\ \ref{boundary manifold}).
+    We required the singular manifolds to be closed, because on manifolds with non-empty boundary the bordism relation does not make sense, as they cannot be the boundary of another manifold (see theorem\ \ref{boundary manifold}).
 \end{remark}
 
 \begin{definition}[bordism group\ {\cite[II, Definition 1.5]{brocker}}]
@@ -371,7 +394,7 @@ We will refer to this relation as \demph{bordism relation}.
 \end{definition}
 
 \begin{observation}
-    This might seem similar to the definition of singular homology groups. They were also defined by the quotient of the kernel and the image of a boundary map.
+    This might seem similar to the definition of singular homology groups. They were also defined by the quotient of the kernel by the image of a boundary map.
     In our case, the boundary map is \(\partial\), defined in definition\ \ref{singular manifold}. Let us introduce an index for this map to denote the dimension: \(\partial_n:\{n\text{-manifolds}\}\to\{\text{closed }(n-1)\text{-manifolds}\}\).
     Then: \[\N_n=\ker(\partial_n)\big/\im(\partial_{n+1})\]
 \end{observation}
@@ -390,7 +413,7 @@ We will refer to this relation as \demph{bordism relation}.
     It is well-defined:
     Let \((M_1,f_1),(M_1^\prime,f_1^\prime)\in[M_1,f_1]\), and \((M_2,f_2),(M_2^\prime,f_2^\prime)\in[M_2,f_2]\).
     Moreover, let \((B_1,F_1)\) and \((B_2,F_2)\) be bordisms between \((M_1,f_1)\) and \((M_1^\prime,f_2^\prime)\), respectively between \((M_2,f_2)\) and \((M_2^\prime,f_2^\prime)\). Then, a bordism between \((M_1,f_1)+(M_2,f_2)\) and \((M_1^\prime,f_1^\prime)+(M_2^\prime,f_2^\prime)\) is given by \((B_1,F_1)+(B_2,F_2)\).\\
-    Since being bordant is a reflexive, every element is its own inverse.
+    Since being bordant is reflexive, every element is its own inverse.
 \end{proof}
 
 \begin{definition}[Product map\ {\cite[pp.12-13]{brocker}}]
@@ -441,11 +464,11 @@ We will refer to this relation as \demph{bordism relation}.
 \end{remark}
 
 \subsubsection{The Eilenberg-Steenrod axioms}\label{es axioms}
-The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology and cohomology theories.
+The Eilenberg-Steenrod axioms are a set of axioms that characterize homology and cohomology theories.
 
-\begin{definition}[Homology theory\ {\cite[Definition 1.1]{luck}}]
-    A \demph{homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficients in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
-    together with a natural transformation 
+\begin{definition}[Homology theory\ {\cite[\nopp I.3]{eilenberg}}, {\cite[Definition 1.1.]{luck}}]\label{homtheo}
+    An \demph{ordinary homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficients in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
+    together with a natural boundary operator 
     \[\partial_\ast:\mathcal{H}_\ast\to\mathcal{H}_{\ast-1}\circ I\]
     where \(I\) is a forgetful functor \(I:\mathrm{TOP}^2\to\mathrm{TOP}^2\), given by \(I(X,A)=(A,\emptyset)\). We will often write \(X\) for \((X,\emptyset)\) for any space \(X\).\\
     \(\mathcal{H}_\ast\) has to satisfy the following \demph{Eilenberg-Steenrod axioms for homology theories}:
@@ -461,37 +484,47 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize the homology
         \item \textbf{Excision}\\
         Let \(A\subset B\subset X\) be subspaces of \(X\) such that \(\overline{A}\subset B^\circ\). Then the inclusion \(i:(X\setminus B,A\setminus B)\to(X,A)\) induces an isomorphism of homology groups for all \(n\in\mathbb{Z}\):
         \[\mathcal{H}_n(i):\mathcal{H}_n(X\setminus A, B\setminus A)\xrightarrow{\cong}\mathcal{H}_n(X,B)\]
-    \end{itemize}
-    Sometimes one adds the following axioms:
-    \begin{itemize}
-        \item \textbf{Disjoint union axiom}\\
-        Let \({\{X_i\}}_{i\in I}\) be a family of topological spaces. Let \(j_i:X_i\to\coprod_{i\in I}X_i\) be the inclusion. Then for all \(n\in\mathbb{Z}\), we have a bijection:
-        \[\bigoplus_{i\in I}\mathcal{H}_n(j_i):\bigoplus_{i\in I}\mathcal{H}_n(X_i)\xrightarrow{\cong}\mathcal{H}_n\left(\coprod_{i\in I}X_i\right)\]
         \item \textbf{Dimension axiom}\\
         For the point space \(\mathrm{pt}\), we have
         \[\mathcal{H}_n(\mathrm{pt})\cong\begin{cases}R&n=0\\\{0\}&n\neq0\end{cases}\]
-        
     \end{itemize}
     For homology theories, the abbreviation \(\mathcal{H}_\ast=\mathcal{H}_\ast(\{\pt\})=\mathcal{H}_\ast(\{\pt\},\emptyset)\) is often used.
 \end{definition}
 
+The following axiom is often considered part of the Eilenberg-Steenrod axioms, although it was formulated by Milnor 10 years later
+
+\begin{itemize}
+    \item \textbf{Disjoint union axiom}\ \cite[p.337, Additivity axiom]{milnor},\cite[Definition 1.1.]{luck}\\
+        Let \({\{X_i\}}_{i\in I}\) be a family of topological spaces. Let \(j_i:X_i\to\coprod_{i\in I}X_i\) be the inclusion. Then for all \(n\in\mathbb{Z}\), we have a bijection:
+        \[\bigoplus_{i\in I}\mathcal{H}_n(j_i):\bigoplus_{i\in I}\mathcal{H}_n(X_i)\xrightarrow{\cong}\mathcal{H}_n\left(\coprod_{i\in I}X_i\right)\]
+\end{itemize}
+
+The motivation behind the disjoint union axiom is the following uniqueness theorem.
+
+\begin{theorem}[{\cite[p.340, Uniqueness Theorem]{milnor}}]
+    Let \(\mathcal{H}_\ast\) be an ordinary homology theory satisfying the disjoint union axiom on CW-complexes with values in \(R\). Then there is a natural isomorphism \(\mathcal{H}_\ast\xrightarrow{\cong}H_\ast\), where \(H_\ast\) denotes singular homology.
+\end{theorem}
+
+A proof can be found in\ \cite{milnor}, but we will not need this here.
+
 \begin{remark}
-    If a homology theory satisfies the dimension axiom, it is called an \demph{ordinary homology theory}.
+    If a functor only fails to satisfy the dimension axiom from definition\ \ref{homtheo}, it is called an \demph{extraordinary homology theory}.
 \end{remark}
 
-As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will extend the definition of bordism to pairs of topological spaces.
 
 \subsubsection{Relative bordism}
 
+As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will extend the definition of bordism to pairs of topological spaces.
+
 \begin{definition}[relative bordism\ {\cite[pp.524-525]{dieck}}]
     For a pair of topological spaces \((X,A)\), we call \((M,f)=(M,\partial M,f)\) a \demph{singular manifold in }\((X,A)\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
-    Two \(n\)-dimensional singular manifolds \((M^n_0,f_0)\) and \((M^n_1,f_1)\) in \(X\) are called \demph{bordant}, if there exists an (\(n+1\))-dimensional singular manifold \((B^{n+1},F)\) in \(X\), such that:
+    Two \(n\)-dimensional singular manifolds \((M_0,f_0)\) and \((M_1,f_1)\) in \((X,A)\) are called \demph{bordant}, if there exists an (\(n+1\))-dimensional singular manifold \((B,F)\) in \(X\), such that:
     \begin{itemize}
         %\item \((B,F)\) is a (\(n+1\))-dimensional compact manifold with boundary,
         \item \(\partial B\) can be decomposed as  \(\partial B=M_0\cup M_1\cup M'\), where \(M_0,M_1,M'\) are considerd as embedded submanifolds of \(B\) with boundary, such that 
-        \(\partial M'=\partial M_0\dis M_1\), 
-        for \(i\in\{0,1\}\), \(M_i\cap M'=\partial M_i\) and \(\partial M_0
-        \cap\partial M_1=\emptyset\).
+        \(\partial M'=\partial M_0\dis \partial M_1\), 
+        \(M_i\cap M'=\partial M_i\) and \(\partial M_0
+        \cap\partial M_1=\emptyset\), for \(i\in\{0,1\}\).
 
         \item \(\partial F\restrict{M_i}=f_i\), for \(i\in\{0,1\}\)
 
@@ -501,44 +534,49 @@ As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will ex
 \end{definition}
 
 \begin{remark}
-    If we take \(A=\emptyset\), we get the definition of (absolute) bordism as we had before. In particular, if \((M,f)\) and \(N,g\) are bordant in the absolute sense, then they are also bordant in the relative sense with the same bordism (but there may be more possible bordisms in the relative sense).
+    If we take \(A=\emptyset\), we get the definition of (absolute) bordism as we had before. In particular, if \((M,f)\) and \((N,g)\) are bordant in the absolute sense, then they are also bordant in the relative sense with the same bordism (but there may be more possible bordisms in the relative sense).
 \end{remark}
 
-\begin{observation}
+\begin{remark}
     Now, the bordism relation also makes sense for manifolds with non-empty boundary.
-\end{observation}
+\end{remark}
 
-\begin{example}
+\begin{example}\label{pokeball}
     Consider the disk \((D^n,f)\) as a singular manifold in \((X,A)\). 
     %We already know that \((D^n\times [0,1],f\circ\mathrm{pr}_1)\) is a bordism between \((D^n,f)\) and itself. 
     We have a bordism \(B,F\) between \((D^n,f)\) and itself by \(B=D^{n+1}\). We have to cover \(\partial D^{n+1}=S^n\) by two \(D^n\)s and \(M^\prime\), which can be done by taking almost all of each the upper and the lower hemisphere as \(D^n\) 
-    (In this example, the chosen embedding heavily matters. We will embed them such that there is only one pair of points such that the antipodal points in the embedding correspond to each other.) 
+    \todo{(In this example, the chosen embedding heavily matters. We will embed them such that there is only one pair of points such that the antipodal points in the embedding correspond to each other.)} 
     and the remaining cylinder around the equator as \(M'\). 
     Now \(F\) just has to map \(M'\) to \(A\) (and along with it, also \(\partial M_0\) and \(\partial M_1\), as desired). 
-    To do this, \(F\) will \enquote{squeeze} the disk such that the \(D^n\)s are identified together and will then map the resulting disk with the remains of \(M'\) to \(D^n,\partial D^n\) via the identity on \(D^n\) and contracting \(M'\) to its boundary. Lastly, apply \(f\).
+    To do this, \(F\) \enquote{squeezes} the disk such that the \(D^n\)s are identified together and then maps the resulting disk with the remains of \(M'\) to \((D^n,\partial D^n)\) via the identity on \(D^n\) and contracting \(M'\) to its boundary. Lastly, apply \(f\).
     \begin{center}
         \includegraphics[width=0.6\textwidth]{squeeze2.jpg}
     \end{center}
 \end{example}
 
 \begin{remark}
-    The above example is just the same as the cylinder bordism in example\ \ref{cylinder bordism} (if we had constructed the cylinder we would not have had to worry about the embedding). This cylinder bordism now also works for manifolds with non-empty boundary, we can take its lateral surface (\(=\partial M_0\times [0,1]\)) as \(M'\).
+    The above example is just the same as the cylinder bordism in example\ \ref{cylinder bordism}, if we had constructed it as a cylinder we would not have had to worry about the embedding. If cylinder bordism works for manifolds with non-empty boundary, we can take its lateral surface (\(=\partial M_0\times [0,1]\)) as \(M'\). For this to work, it has to be shown that \(M\times[0,1]\) admits a smooth structure; a priori it is a manifold with corners. This is done by applying a technique called \demph{straightening the angle}\ \cite[I.3]{conner}. We will not go into detail here, but the main idea is to find an submanifold of codimension 2 containing all corners and a open neighbourhood of it which can be charted into \(\R^{n-2}\times\R_{\geq0}^2\) and then getting new charts by composing with a diffeomorphism \(\R_{\geq0}^2\xrightarrow\cong\R\times\R_{\geq0}\).
 \end{remark}
 
-\begin{theorem}\cite[p.525]{dieck}
-    Relative bordism is an equivalence relation on the set of singular manifolds in \(X\).
+\begin{theorem}[{\cite[p.525]{dieck}}]
+    Relative bordism is an equivalence relation on the set of singular manifolds in \((X,A)\).
 \end{theorem}
 
 \begin{proof}
-    The proof is similar to the proof of proposition\ \ref{equivalence bordant}. Symmetry is clear, for reflexivity, we now also have the cylinder as stated in the above remark. For transitivity, we again glue the bordisms along their common boundary \(M_2\), but as \(M_2\) may have boundary now, we glue the bordism along a open neighbourhood \(U\) (in \(\partial B_1\) and \(\partial B_1\)) of \(M_2\). To see this is smooth, we again look at the collars of \(\partial B_i\). This time we restrict the collars to \(U\) and see that the collars are diffeomorphic to \(M_2\times(-1,1)\). The rest of the proof is the same as in proposition\ \ref{equivalence bordant}.
+    The proof is similar to the proof of proposition\ \ref{equivalence bordant}. 
+    Symmetry is clear, for reflexivity, we now also have the cylinder as stated in the above remark. 
+    For transitivity, we again glue the bordisms along their common boundary \(M_2\), but as \(M_2\) may have boundary now, we glue the bordism along a open neighbourhood \(U\) (in \(\partial B_1\) and \(\partial B_1\)) of \(M_2\). 
+    To see that this is smooth, we again look at the collars of \(\partial B_i\). This time we restrict the collars to \(U\) and see that the collars are diffeomorphic to \(M_2\times(-1,1)\). The rest of the proof is the same as in proposition\ \ref{equivalence bordant}.
 \end{proof}
 
-Relative bordism groups are defined in the same way as absolute bordism groups, they also are abelian by the same proof. The product map is defined as \[\cdot:\N_p(X,A)\times\N_q(Y,B)\to\N_{p+q}(X\times Y, A\times B)\]
-on elements, it does the same as before. Again, we get a graded module structure
-\[\N_\ast(X,A):= \bigoplus_{n\in\Z}N_n(X,A)\]
+Relative bordism groups are also defined to be the set of relative bordism classes, analogously to absolute bordism groups, but as manifolds with boundary are also allowed now, we have
+\[\N_n(X,A)=\{\text{\textit{compact} singular $n$-manifolds in $(X,A)$}\}\big/\text{relative bordism}.\]
+These also are abelian by the same proof (theorem\ \ref{group structure}). The product map is defined as \[\cdot:\N_p(X,A)\times\N_q(Y,B)\to\N_{p+q}(X\times Y, (A\times Y)\cup(X\times B))\]
+on elements, it does the same as before. A product of manifolds is again a smoothable manifold by straightening the angle as in the remark after example\ \ref{pokeball}. Again, we get a graded module structure
+\[\N_\ast(X,A):= \bigoplus_{n\in\Z}\N_n(X,A)\]
 over \(\N_\ast\), the relative bordism module.
 
-\begin{lemma}\ \cite[VIII, Lemma 13.10]{tomdieck} \label{almost excision} %\cite[Lemma 5.1]{zhang} \cite[Lemma 21.1.8]{dieck}
+\begin{lemma}\ \cite[VIII, Lemma 13.10]{tomdieck}\label{almost excision} %\cite[Lemma 5.1]{zhang} \cite[Lemma 21.1.8]{dieck}
     Let \([M,f]\in\mathfrak{N}_n(X,A)\) and \(N\) an \(n\)-dimensional submanifold of \(M\). 
     Suppose that \([N,f\restrict{N}]\in\mathfrak{N}_n(X,A)\) and \(f(M\setminus N)\subseteq A\). 
     Then \([M,f]=[N,f\restrict{N}]\) in \(\mathfrak{N}_n(X,A)\).
@@ -574,6 +612,10 @@ over \(\N_\ast\), the relative bordism module.
     \[{(g\circ f)}_{\ast}[M,h]=[M,g\circ f\circ h]=g_\ast[M,f\circ h]=g_\ast\circ f_\ast[M,h]\]
 \end{proof}
 
+The boundary map is defined similarly as before.
+\[\partial_n:\N_n(X,A)\to\N_{n-1}(A,\emptyset)\]
+\[\partial_n(M, f)=(\partial M,f\restrict{\partial M})\]
+
 \begin{lemma}[Naturality of the boundary map]\label{naturality}
     The following diagram commutes for any \(f:(X,A)\to(Y,B)\) and \(n\in\Z\): %(Diagrams cannot be compiled for some reason)
     \begin{center}
@@ -585,7 +627,7 @@ over \(\N_\ast\), the relative bordism module.
 \end{lemma}
 
 \begin{proof}
-    Let \([M,g]\in\mathfrak{N}_n(X,A)\). \(\partial_n[M,g]=[\partial M, g\restrict{\partial M}]\in\N_{n-1}(A)\), as \(\partial M\) is closed and \(g\) maps \(\partial M\) to \(A\). % maps this to \([\partial M,g\restrict{\partial M}]\in\mathfrak{N}_{n-1}(A)\).
+    Let \([M,g]\in\mathfrak{N}_n(X,A)\).\ \(\partial_n[M,g]=[\partial M, g\restrict{\partial M}]\in\N_{n-1}(A)\), as \(\partial M\) is closed and \(g\) maps \(\partial M\) to \(A\). % maps this to \([\partial M,g\restrict{\partial M}]\in\mathfrak{N}_{n-1}(A)\).
     Now \({f\restrict{A}}_\ast([\partial M,g\restrict{\partial M}])=[\partial M,f\circ g\restrict{\partial M}]\in \mathfrak{N}_{n-1}(B)\).\\
     On the other side, \((\partial_n\circ f_\ast)[M,g]=\partial_n [M,f_\ast\circ g]=[\partial M,(f\circ g)\restrict{\partial M}]\in \mathfrak{N}_{n-1}(B)\), which is the same as the previous composition, hence,
     \[\partial_n\circ f_\ast={f\restrict{A}}_\ast\circ \partial_n\]
@@ -597,7 +639,7 @@ over \(\N_\ast\), the relative bordism module.
 \end{lemma}
 
 \begin{proof}\cite{brocker}\cite[Chapter I, 5.5]{conner}
-    Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps. Let \(h:(X\times I,A\times I)\to (Y,B)\) be a homotopy between \(f\) and \(g\). Then, for \([M,f]\in\N_\ast(X,A)\), we have a bordism between \(f_\ast[M,F]\) and \(g_\ast[M,F]\) by the cylinder \((M\times I, h\circ (F\times\mathrm{id}_I))\).
+    Let \(f,g:(X,A)\to(Y,B)\) be homotopic maps of pairs. Let \(h:(X\times I,A\times I)\to (Y,B)\) be a homotopy between \(f\) and \(g\). Then, for \([M,F]\in\N_\ast(X,A)\), we have a bordism between \(f_\ast[M,F]\) and \(g_\ast[M,F]\) by the cylinder \((M\times I, h\circ (F\times\mathrm{id}_I))\).
 \end{proof}
 
 %Maybe an explanation in the end (\cite{conner}). No
@@ -620,16 +662,17 @@ over \(\N_\ast\), the relative bordism module.
     \[\dots\xrightarrow{\partial_{n+1}}\mathfrak{N}_n(A)\xrightarrow{i_\ast}\mathfrak{N}_n(X)\xrightarrow{j_\ast}\mathfrak{N}_n(X,A)\xrightarrow{\partial_n}\mathfrak{N}_{n-1}(A)\xrightarrow{i_\ast}\dots\]
     is exact.
     \begin{itemize}
-        \item \textbf{Exactness at \(\mathfrak{N}_n(A)\)}
+        \item \textbf{Exactness at \(\mathfrak{N}_n(A)\):}
         \(i_\ast\circ \partial=0\), as for \([M,f]\in\N_{n+1}(X,A)\), \(\partial_{n+1} [M,f]=[\partial M,f\restrict{\partial M}]\), which, considered as an element in \(\N_n(X)\) is nullbordant via the nullbordism \((M,f)\).
 
         Let \((M,f)\in\N_n(A)\) with nullbordism \((B,F)\) in \(X\). Then, \(\partial_{n+1}[B,F]=[M,f]\).
 
-        \item \textbf{Exactness at \(\mathfrak{N}_n(X)\)} Let \([M,f]\in\mathfrak{N}_n(A)\). Choose \(V=\emptyset\) and use lemma\ \ref{almost excision} to get \([M,f]=0\) in \(\mathfrak{N}_n(X,A)\), so \(j_\ast\circ i_\ast=0\).
+        \item \textbf{Exactness at \(\mathfrak{N}_n(X)\):} Let \([M,f]\in\mathfrak{N}_n(A)\). Choose \(N=\emptyset\) and use lemma\ \ref{almost excision} to get \([M,f]=0\) in \(\mathfrak{N}_n(X,A)\), so \(j_\ast\circ i_\ast=0\).
         
-        Now let \([M,f]\in\ker(j_\ast)\subseteq \mathfrak{N}_n(X)\). Then there exists a singular manifold \((B^{n+1},F)\) in \(X,A\) of \([M,f]\). \((B,F)\) is a bordism between \(M,f\) and \(\partial B\setminus M,F\restrict{\partial B\setminus M}\), as \(\partial B\setminus M\) is a closed submanifold of \(B\) by the previous remark. Since \(F(\partial B\setminus M)\subseteq A\), \([\partial B\setminus M,F\restrict{\partial B\setminus M}]\in\N_n(A)\). So, \(i_\ast[\partial B\setminus M,F\restrict{\partial B\setminus M}]=[M,f]\in\N_n(X)\).
+        Now let \([M,f]\in\ker(j_\ast)\subseteq \mathfrak{N}_n(X)\). Then there exists a singular manifold \((B^{n+1},F)\) in \((X,A)\) of \([M,f]\). \((B,F)\) is a bordism between \(M,f\) and \(\partial B\setminus M,F\restrict{\partial B\setminus M}\), as \(\partial B\setminus M\) is a closed submanifold of \(B\) by the previous remark. 
+        Since \(F(\partial B\setminus M)\subseteq A\), \([\partial B\setminus M,F\restrict{\partial B\setminus M}]\in\N_n(A)\). So, \(i_\ast[\partial B\setminus M,F\restrict{\partial B\setminus M}]=[M,f]\in\N_n(X)\).
 
-        \item \textbf{Exactness at \(\mathfrak{N}_n(X,A)\)} \(\partial \circ j_\ast=0\) holds because every element in \(\N_n(X)\) is a closed manifold, so it has empty boundary, hence applying the boundary map gets us to \([\emptyset,\emptyset\to X]\) which is the zero element in \(\N_{n-1}(A)\).
+        \item \textbf{Exactness at \(\mathfrak{N}_n(X,A)\):} \(\partial \circ j_\ast=0\) holds because every element in \(\N_n(X)\) is a closed manifold, so it has empty boundary, hence applying the boundary map gets us to \([\emptyset,\emptyset\to X]\) which is the zero element in \(\N_{n-1}(A)\).
         
         Let \(\partial[M,f]=0\), and \([B,F]\) be a nullbordism of \([\partial M, f\restrict{\partial M}]\). Identify \((M,f)\) and \((B,F)\) along \(\partial M\). This is smooth by the same argument as in proposition\ \ref{equivalence bordant}. Call the resulting singular manifold \((C,g)\). This has no boundary, so \([C,g]\in\N_n(X)\) Now with lemma\ \ref{almost excision}, get \(j_\ast[C,g]=[M,f]\).
     \end{itemize}
@@ -672,16 +715,17 @@ I will not prove this theorem, a proof can be found in\ \cite{lee}.
 
 \end{comment}
 
-Only the excision axiom is left to check. But to see the excision property, we need some preliminary lemmas.
+Only the excision axiom is left to check. To see the excision property, we need some preliminary lemmas.
 
 \begin{lemma}[{\cite[Chapter I, 3.1]{conner}}]\label{plemma}%{\cite[Lemma 5.6]{zhang}}
-    Let \(M^n\) be a closed manifold, let \(K,L\subseteq M\) closed, such that \(K\cap L=\emptyset\). Then there exists a closed \(n\)-dimensional submanifold with boundary \(N\) of \(M\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).
+    Let \(M^n\) be a compact manifold, let \(K,L\subseteq M\) closed, such that \(K\cap L=\emptyset\). Then there exists a closed \(n\)-dimensional submanifold \(N\subset M\) with boundary \(\partial N\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).
 \end{lemma}
 
-\begin{proof}\cite{conner}
+\begin{proof}\cite{conner}\\
     \(K\cap\partial M\) and \(L\cap\partial M\) are still disjoint, closed in \(\partial M\), so we can find disjoint closed subsets \(K',L'\subseteq\partial M\) such that \(K\subseteq\overset{\circ}{K'}\), \(L\subseteq\overset{\circ}{L'}\). 
-    We find a collar \(C\) of \(\partial M\) by theorem\ \ref{collar} and identify it by \(\partial M\times[0,1)\). As \(M\) is compact, there exists a \(t\in (0,1)\) such that \(L\cap (\partial M\times [0,t))\subseteq L'\) and \(K\cap (\partial M\times [0,t))\subseteq K'\). 
-    Now \(M':=M\setminus (\partial M\times [0,t))\) is a closed \(n\)-dimensional submanifold of \(M\). By Urysohn's lemma, there exists a smooth function \(\alpha:M'\to[0,1]\) such that \(\alpha\restrict{(K'\times \{t\})\cup (K\cap M')}=0\) and \(\alpha\restrict{(L'\times \{t\})\cup(L\cap M')}=1\). 
+    We find a collar \(C\) of \(\partial M\) by theorem\ \ref{collar} and identify it with \(\partial M\times[0,1)\). 
+    As \(M\) is compact, there exists a \(t\in (0,1)\) such that \(L\cap (\partial M\times [0,t))\subseteq L'\) and \(K\cap (\partial M\times [0,t))\subseteq K'\). 
+    Now \(M':=M\setminus (\partial M\times [0,t))\) is a closed \(n\)-dimensional submanifold of \(M\). By \todo{Urysohn's lemma}, there exists a smooth function \(\alpha:M'\to[0,1]\) such that \(\alpha\restrict{(K'\times \{t\})\cup (K\cap M')}=0\) and \(\alpha\restrict{(L'\times \{t\})\cup(L\cap M')}=1\). 
     We can extend \(\alpha\) to \(M\) by \(\alpha(p,s):=\alpha(p,t)\) for \(p\in \partial M\) and \(s\in[0,t)\). 
     By theorem\ \ref{sard}, there is a regular value \(r\in(0,1)\) of \(\alpha\). 
     Then \(N:=\alpha^{-1}([0,r])=\alpha^{-1}(-\infty,r]\) is a \(n\)-dimensional closed submanifold of \(M\)%with boundary \(\partial N=\alpha^{-1}(r)\)
@@ -734,10 +778,10 @@ Only the excision axiom is left to check. But to see the excision property, we n
     We know \(\partial N\subseteq\partial B\cup(B\setminus(K\cup L))\) (lemma\ \ref{plemma2}). 
     Let \(p\in\partial N\setminus M\), then either \(p\in(B\setminus(K\cup L))\setminus M\) or \(p\in\partial B\setminus M\). In the first case, \(F(p)\in A\setminus Z\), so we are done. 
     In the second case, we know \(p\notin L\), because \(B\cap L=\emptyset\). So, \(F(p)\notin\overline{Z}\). By construction, we have \(F(\partial B\setminus M)\subseteq A\), so \(F(p)\in A\). \(\Rightarrow g(p)\in A\setminus Z\).\\
-    In total, we have shown that \((M,f), (M\cap N,f\restrict{M\cap N}), (\partial N,F\restrict{\partial N})\) are bordant, so nullbordant, since the last one is nullbordant in \(\mathfrak{N}_n(X\setminus Z,A\setminus Z)\) by \((N,F\restrict{N})\), so \([M,f]=0\) in \(\mathfrak N_n(X\setminus Z,A\setminus Z)\).
+    \todo{In total, we have shown that \((M,f), (M\cap N,f\restrict{M\cap N}), (\partial N,F\restrict{\partial N})\) are bordant, so nullbordant, since the last one is nullbordant in \(\mathfrak{N}_n(X\setminus Z,A\setminus Z)\) by \((N,F\restrict{N})\), so \([M,f]=0\) in \(\mathfrak N_n(X\setminus Z,A\setminus Z)\).}
 \end{proof}
 
-Now it already follows that bordism is a homology theory. But let's take a look at the other axioms too.
+Now it already follows that bordism is a homology theory.\ \todo{But let's take a look at the other axioms too.}
 
 \begin{lemma}[Disjoint union axiom\ {\cite[Theorem 5.3]{zhang}}]\label{disjoint union}
     The disjoint union axiom holds for bordism.
@@ -749,16 +793,22 @@ Now it already follows that bordism is a homology theory. But let's take a look 
     is an isomorphism.\\
     \textit{Claim}: \[\iota:\bigoplus_{i\in I}[M_i,f_i]\mapsto \left[\coprod_{i\in I}M_i,\coprod_{i\in I} f_i\right]\]
     gives us the desired isomorphism.\\
-    \textbf{Well-definedness}: All but finitely many \([M_i,f_i]\) are \(0\). So \(\coprod M_i\) is a finite disjoint union of compact manifolds, so it is compact.\\
-    \textbf{Injectivity}: Suppose \(\iota\left(\bigoplus_i[M_i,f_i]\right)=0\) in \(\mathfrak{N}_n(\coprod_i X_i)\). Then there exists a nullbordism \((B,F)\) of it. \(B\) as a space is the disjoint union \(\coprod_i B_i:=\coprod_i F^{-1}(X_i)\), all of the \(B_i\) being open and closed in \(B\). So, the \(B_i\) are compact \((n+1)\)-manifolds. Also, \(\partial(B_i,F\restrict{B_i})=(M_i,f_i)\), so all the \((M_i,f_i)\) are nullbordant and the sum \(\bigoplus[M_i,f_i]=0\).
+    \textbf{Well-definedness}: All but finitely many \([M_i,f_i]\) are \(0\). Thus, \(\coprod M_i\) is a finite disjoint union of compact manifolds, so it is compact.\\
+    \textbf{Injectivity}: Suppose \(\iota\left(\bigoplus_i[M_i,f_i]\right)=0\) in \(\mathfrak{N}_n(\coprod_i X_i)\). 
+    Then there exists a nullbordism \((B,F)\) of it.\ \todo{\(B\) as a space is the disjoint union \(\coprod_i B_i:=\coprod_i F^{-1}(X_i)\), all of the \(B_i\) being open and closed in \(B\)}. 
+    Thus, the \(B_i\) are compact \((n+1)\)-manifolds. Also, \(\partial(B_i,F\restrict{B_i})=(M_i,f_i)\), so all the \((M_i,f_i)\) are nullbordant and the sum \(\bigoplus[M_i,f_i]=0\).
     \\
     \textbf{Surjectivity}: Suppose \([M,f]\in\mathfrak{N}_n(\coprod_i X_i)\). As in the proof of injectivity, we can write \(M=\coprod_i M_i:=f^{-1}(X_i)\), with all \(M_i\) compact manifolds. Then a preimage of \([M,f]\) under \(\iota\) is \(\bigoplus[M_i,f\restrict{M_i}]\).
 \end{proof}
 
-\begin{observation} \label{dimension axiom}
+\begin{observation}\label{dimension axiom}
     Bordism does not satisfy the dimension axiom.\\
     \textit{Check}: 
-    Consider \([\R\mathbb{P}^2]\in \N_2\). There is no \(3\)-manifold that has \(\mathbb{RP}^2\) as its boundary. We can see this by the eulercharacteristic: \(\chi(\mathbb{RP}^2)=1\). But boundaries of manifolds always have even euler characteristic\ \cite[Proposition 18.6.2]{dieck}. So, \(\N_2\not\cong \{0\}\). 
+    Consider \([\R\mathbb{P}^2]\in \N_2\). 
+    There is no \(3\)-manifold that has \(\mathbb{RP}^2\) as its boundary. 
+    We can see this by the euler characteristic: \(\chi(\mathbb{RP}^2)=1\). 
+    However boundaries of manifolds always have even euler characteristic\ \cite[Proposition 18.6.2]{dieck}. 
+    So, \(\N_2\not\cong \{0\}\). 
     %Compute \(\mathfrak{N}_2\). We know a classification of compact \(2\)-manifolds. They are either homeomorphic to \(S^2\), \(\mathbb{T}^2\), \(\mathbb{RP}^2\) or a connected sum of these. We have already seen that \(S^2\) and \(\mathbb{T}^2\) are nullbordant. For \(\mathbb{RP}^2\), however, we have that \(\chi(\mathbb{RP}^2)=1\). But we have that boundaries of manifolds always have even euler characteristic {\cite[Proposition 18.6.2]{dieck}}, so \(\mathbb{RP}^2\) cannot be nullbordant and \(\mathfrak{N}_2\) cannot be \(0\).% In fact, \([\mathbb{RP}^2]\) is the generator of \(\mathfrak{N}_2\cong\mathbb{F}_2\)
     %this fact later
 \end{observation}
@@ -793,20 +843,20 @@ The only closed \(1\)-dimensional manifold (up to diffeomorphism) is \(S^1\). As
 Closed \(2\)-manifolds are classified to be \(S^2, \#_i\T^2, \#_i\mathbb{RP}^2\). I.e.\ they are classified by euler characteristic and orientability. We know \(S^2=\partial D^3\) and \(\T^2=\partial (S^1\times D^2)\). So \(\#_i\T^2=\partial(\#_i D^3)\). From the above observation, we know \(\mathbb{RP}^2\) is not nullbordant. 
 By example\ \ref{pants}, we have \([\mathbb{RP}^2\#\mathbb{RP}^2]=[\mathbb{RP}^2]+[\mathbb{RP}^2]\), and by proposition\ \ref{equivalence bordant}, this is \([\mathbb{RP}^2]+[\mathbb{RP}^2]=0\). Inductively, any even number of connected sums of \(\mathbb{RP}^2\)s is nullbordant, and any odd number of connected sums of \(\mathbb{RP}^2\)s is not nullbordant, but in the same equivalence class as \(\mathbb{RP}^2\). So we have \(\N_2\cong\F_2\) with \(\mathbb{RP}^2\) as generator.\\
 %\(\mathbb{RP}^2\#\mathbb{RP}^2\) is homeomorphic to the Klein bottle \(K=(S^1\times [0,1])\big/((x,0)\sim (-x,1))\), where \(S^1\) is described as \([-1,1]\big/ (-1\sim 1)\). \(K\) is nullbordant by \(K=\partial ((D^2\times [0,1]))\)\\
-For closed \(3\)-manifolds, there is a similar, but more complicated classification by connected sums of geometrizable pieces, where we can see that every piece is nullbordant, hence also the connected sums and get \(\N_3\cong \{0\}\).\\
+\todo{For closed \(3\)-manifolds, there is a similar but more complicated classification by connected sums of geometrizable pieces, where we can see that every piece is nullbordant, hence also the connected sums and get \(\N_3\cong \{0\}\).}\\
 But for dimension 4, already for \(\R^4\), there are uncountably many pairwise non-diffeomorphic smooth structures, so we cannot hope to continue this argumentation further.\\
 For dimensions 5 and above, we would need surgery theory, which we will not discuss here.
 
-But while classifications of manifolds up to diffeomorphism is hard, the bordism ring \(\N_\ast\) has been completely determined in\ \cite{thom}. It is isomorphic to the graded polynomial ring over \(\F_2\) with one generator in each dimension that cannot be written as \(2^k+1\).
+But while classifications of manifolds up to diffeomorphism are hard, the bordism ring \(\N_\ast\) has been completely determined in\ \cite{thom}. It is isomorphic to the graded polynomial ring over \(\F_2\) with one generator in each dimension that cannot be written as \(2^k-1\).
 \[\N_\ast\cong\F_2[x_i\mid i\neq 2^k-1]\]
 We get \begin{center}
 \begin{tabular}[c]{l|c|c|c|c|c|c|c|c|c|c}
     & $\N_0$ & $\N_1$ & $\N_2$ & $\N_3$ & $\N_4$ & $\N_5$ & $\N_6$ & $\N_7$ & $\N_8$ & \dots\\ \hline
-    & $\F_2$ & 0 & $\F_2$ & 0 & $\F_2\oplus\F_2$ & $\F_2$ & $\F_2$ & 0 & $\F_2^4$ & \dots\\ \hline
+    & $\F_2$ & 0 & $\F_2$ & 0 & $\F_2\oplus\F_2$ & $\F_2$ & \todo{$\F_2$} & 0 & \todo{$\F_2^4$} & \dots\\ \hline
     New generator & $\pt$ & -- & $\mathbb{RP}^2$ & -- & $\mathbb{RP}^4$ & $V_{2,4}$ & $\mathbb{RP}^6$ & -- & $\mathbb{RP}^8$ & \dots
 \end{tabular}
 \end{center}
-where \(V_{n,k}\) denotes the Stiefel manifold. The generators in even dimension are always \(\mathbb{RP}^n\), as shown in\ \cite{thom}, and in odd dimensions, the generators have been determined in\ \cite{dold}.
+where \(V_{n,k}\) denotes the \todo{Stiefel manifold}. The generators in even dimension are always \(\mathbb{RP}^n\), as shown in\ \cite{thom}, and in odd dimensions, the generators have been determined in\ \cite{dold}.
 
 For negative \(n\), we have \(\N_n\cong\{0\}\), as the only negative-dimensional manifold is \(\emptyset\).
 
@@ -838,17 +888,18 @@ For negative \(n\), we have \(\N_n\cong\{0\}\), as the only negative-dimensional
 Using the above two remarks, we can calculate the bordism groups of spheres\ \cite[Proposition 6.1]{zhang}. We first notice that \(S^k=\sus(S^{k-1})\). So,
 \[\N_n(S^k)\cong\tilde\N_n(S^k)\oplus\N_n\cong\tilde\N_{n-1}(S^{k-1})\oplus\N_n\cong\dots\cong\tilde\N_{n-k}(S^0)\oplus\N_n\]
 It suffices to calculate \(\tilde\N_n(S^0)=\ker(\N_n(S^0))\xrightarrow{\varepsilon}\N_n\). As \(S^0=\pt\dis\pt\), we have by lemma\ \ref{disjoint union} \(\N_n(S^0)\xrightarrow{\iota}\N_n\oplus\N_n\) is an isomorphism. 
-Look at \(\varepsilon\circ\iota\). \(\varepsilon\circ\iota([M]\oplus[M'])=[M]+[M']\). This is zero if and only if \([M]=[M']\), as elements are self-inverse. It follows that \(\ker(\varepsilon\cong\N_n)\). 
+Consider \(\varepsilon\circ\iota\).\ \(\varepsilon\circ\iota([M]\oplus[M'])=[M]+[M']\). This is zero if and only if \([M]=[M']\), as elements are self-inverse. It follows that \(\ker(\varepsilon\cong\N_n)\). 
 Altogether, we have \[\N_n(S^k)\cong\N_{n-k}\oplus\N_n\].
 
-\subsection{Orientation}
+\subsection{\todo{Orientation}}
 
 %\begin{definition}[Tangent space]
 %\end{definition}
 %I probably need this already before. (Along with tangent bundle, vector fields), done, but not bundle/field
 
 \begin{definition}[Orientation on vector spaces\ {\cite[p.379]{lee}}]
-    An \demph{orientation} on a vector space \(V\) with \(\mathrm{dim} V\geq 1\) is an equivalence class of ordered bases \((e_1,\dots,e_{\mathrm{dim}V})\). Two bases are equivalent, if the basis transformation has positive determinant. For \(\mathrm{dim}V=0\), an orientation is the choice of \(\pm\).\\
+    An \demph{orientation} on a real vector space \(V\) with \(\mathrm{dim} V\geq 1\) is an equivalence class of ordered bases \((e_1,\dots,e_{\mathrm{dim}V})\). Two bases are equivalent if the basis transformation has positive determinant. 
+    For \(\mathrm{dim}V=0\) an orientation is the choice of \(\pm\).\\
     This gives us exactly two orientations for any vector space.
 \end{definition}
 
@@ -874,7 +925,7 @@ Altogether, we have \[\N_n(S^k)\cong\N_{n-k}\oplus\N_n\].
 %\end{definition}
 
 \begin{definition}[Orientation on manifolds\ {\cite[p.380]{lee}}]
-    An \demph{orientation} of a manifold \(M\) is a continuous pointwise orientation of \(M\). If there exists an orientation on \(M\), \(M\) is called \demph{orientable}.
+    An \demph{orientation} of a manifold \(M\) is a \todo{continuous} pointwise orientation of \(M\). If there exists an orientation on \(M\), \(M\) is called \demph{orientable}.
 \end{definition}
 
 %\begin{remark}
@@ -897,12 +948,12 @@ Altogether, we have \[\N_n(S^k)\cong\N_{n-k}\oplus\N_n\].
 \subsubsection{Definitions}
 %Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)).
 
-Now, we have defined additional structure on manifolds.
+Now we have defined additional structure on manifolds.
 We will adapt our definition of bordism to respect the additional structure.\\
 The Definition of singular manifolds stays the same, but we additionally require \(M\) to be oriented now.
 
 \begin{definition}[bordant\ {\cite[p.526]{dieck}}, {\cite[p.202]{atiyah}}]
-    Two closed singular oriented \(n\)-manifolds \((M,f),(N,g)\) are called \demph{bordant}, if there exists a singular oriented \(n+1\)-manifold \((B,F)\) with oriented boundary such that \(\partial (B,F) = (N,g)-(M,f)\). \((N,g)-(M,f)\) is defined as
+    Two closed singular oriented \(n\)-manifolds \((M,f),(N,g)\) are called \demph{bordant}, if there exists a singular oriented \(n+1\)-manifold \((B,F)\) with \todo{oriented boundary} such that \(\partial (B,F) = (N,g)-(M,f)\). \((N,g)-(M,f)\) is defined as
     \[(N,g)-(M,f)=(N,g)+(M^-,f),\]
     where \(M^-=(M,-\mathcal{O})\), \(M\) with opposite orientation. \((B,F)\) is then called a \demph{oriented bordism} between \((M,f)\) and \((N,g)\).
 \end{definition}
@@ -921,7 +972,7 @@ The proof can be copied from the proof of proposition\ \ref{equivalence bordant}
     \begin{itemize}
         \item \textbf{Symmetry}: If \((B,F)\) is an oriented bordism between \((M,f)\) and \((N,g)\), then \((B^-,F)\) (again, the negative sign is denoting the opposite orientation) is an oriented bordism between \((N,g)\) and \((M,f)\).
         \item \textbf{Reflexivity}: The cylinder still works as the proof of reflexivity here. We have defined oriented bordism in this way with giving one side the opposite orientation, so the cylinder is still a bordism. \(\partial(M\times [0,1])=M\dis M^-\).
-        \item \textbf{Transitivity}: The glueing or the manifolds has to be orientation preserving now. Let there be bordisms \((B_1,F_1)\) between \((M_1,f_1)\) and \((M_2,f_2)\), and \((B_2,F_2)\) between \((M_2,f_2)\) and \(M_3,f_3\). Focus on \((M_2,f_2)\), where the glueing happens. Since \(M_2\subset B_1\) has negative orientation and \(M_2\subset B_2\)has positive orientation, so the glueing we had before respects the orientation.
+        \item \textbf{Transitivity}: The glueing of the manifolds has to be orientation preserving now. Let there be bordisms \((B_1,F_1)\) between \((M_1,f_1)\) and \((M_2,f_2)\), and \((B_2,F_2)\) between \((M_2,f_2)\) and \(M_3,f_3\). Focus on \((M_2,f_2)\), where the glueing happens. Since \(M_2\subset B_1\) has negative orientation and \(M_2\subset B_2\) has positive orientation, so the glueing we had before respects the orientation.
         \begin{center}
         \includegraphics[width=0.6\textwidth]{ortransitivity.jpg}
         \end{center}
@@ -946,7 +997,7 @@ Up until now, everything seems to work out the same as in the unoriented case, b
 \end{theorem}
 
 \begin{proof}
-    See proof of theorem\ \ref{group structure}. The only thing that changes is the inverse element. Note that the elements are not self-inverse anymore, as \((M,f)\) and \((M,f)\) being bordant only gives us that \((M,f)+(M^-,f)\) is nullbordant, and in general, \(M\neq M^-\). So the inverse for \([M,f]\) exists, but is \([M^-,f]\) rather than \([M,f]\).
+    See proof of theorem\ \ref{group structure}. The only thing that changes is the inverse element. Note that the elements are not self-inverse anymore, as \((M,f)\) and \((M,f)\) being bordant only gives us that \((M,f)+(M^-,f)\) is nullbordant, and in general, \(M\todo{\neq} M^-\). So the inverse for \([M,f]\) exists, but is \([M^-,f]\) rather than \([M,f]\).
     %For this proof, the only thing we need to change is for the existence of the inverse. We have seen in an example (to be added) that the elements are not self-inverse anymore. The inverse of \([M,f]\) is now given by \([-M,f]\). We have seen in the proof of\ \ref{oriented eq. rel} that \([M,f]+[-M,f]=0\).
 \end{proof}
 
@@ -1004,7 +1055,7 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 \end{lemma}
 
 \begin{proof}\cite{conner}
-    The proof is exactly the same as in the unoriented case, one minor adjustment. For exactness at \(\Omega_n(X,A)\), we identify the boundaries of \((M,f)\) and \((B^-,F)\); \(B\) with the opposite orientation.
+    The proof is exactly the same as in the unoriented case, up to one minor adjustment. For exactness at \(\Omega_n(X,A)\), we identify the boundaries of \((M,f)\) and \((B^-,F)\); \(B\) with the opposite orientation.
 \begin{comment}
     \begin{itemize}
         \item \textbf{Exactness at \(\Omega_n(A)\)}: \(i_\ast\circ\partial=0\), as \((M,f)\) is a nullbordism for \(i_\ast\circ\partial(M,f)=\partial(M,f)\)\\
@@ -1043,7 +1094,7 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 %\end{observation}
 
 \begin{remark}
-    The dimension axiom does not hold. Seeing this is harder than in the unoriented case, but for dimension 4, the signature map gives an isomorphism
+    The dimension axiom does not hold. Seeing this is harder than in the unoriented case, but for dimension 4 the signature map gives an isomorphism
     \[\mathrm{sign}:\Omega_4\xrightarrow{\cong}\Z\]
     This map is well-defined, because the signature is a bordism invariant in every dimension, but we will not show this here.
 \end{remark}
@@ -1056,10 +1107,14 @@ We conclude:
 \subsubsection{Calculations}
 
 Let us try to calculate \(\Omega_n\) for low \(n\).\\
-For \(n=0\), we need to see if a disjoint union of oriented points is nullbordant. An orientation of such spaces is a choice of a sign for every point. We know that \((\pt,+)\) and \(\pt,-\) are bordant by the interval, and that \((\pt,+)\) is not bordant to itself, again by classifying compact \(1\)-manifolds, as in the unoriented case. So, we get an isomorphism \(\Omega_0\cong\Z\) by \[\coprod_{i=0}^n(\pt,+)\dis\coprod_{i=0}^k(\pt,-)\mapsto n-k.\]
+\todo{For \(n=0\), we need to see if a disjoint union of oriented points is nullbordant. 
+An orientation of such spaces is a choice of a sign for every point. 
+We know that \((\pt,+)\) and \((\pt,-)\) are bordant by the interval, and that \((\pt,+)\) is not bordant to itself, again by classifying compact \(1\)-manifolds, as in the unoriented case. 
+So, we get an isomorphism \(\Omega_0\cong\Z\) by \[\coprod_{i=0}^n(\pt,+)\dis\coprod_{i=0}^k(\pt,-)\mapsto n-k.\]}
 For \(n=1\), we see \(\Omega_1\cong\{0\}\) by seeing that \(S^1\) with any orientation has \(D^2\) with corresponding orientation as nullbordism. \(S^1\) is the only connected closed 1-manifold.\\
-For \(n=2\), our problem from the unoriented case has been solved, as singular manifolds are oriented now and any connected sum of \(\mathbb{RP}^2\)s is not orientable. So, by the argumentation of the unoriented case, we get \(\Omega_2\cong\{0\}\).\\
-Again, from dimension 3 onwards, calculations are hard, so I will just state the results of\ \cite[\S 17]{stasheff}: We only have \(\Omega_n\cong 0\) for \(n\in\{1,2,3,5,6\}\) (and, of course, negative \(n\)). Else, we have:
+For \(n=2\), our problem from the unoriented case has been solved, as singular manifolds are oriented now and any connected sum of \(\mathbb{RP}^2\)s is not orientable. 
+So, by the argumentation of the unoriented case, we get \(\Omega_2\cong\{0\}\).\\
+Again, from dimension 3 onwards, calculations are difficult, so we will just state the results of\ \cite[\S 17]{stasheff}: We only have \(\Omega_n\cong 0\) for \(n\in\{1,2,3,5,6\}\) (and, of course, negative \(n\)). Else, we have:
 \[\Omega_n\cong\begin{cases}\Z & n=0\\
 \Z & n=4\\
 \F_2 & n=5\\
@@ -1087,7 +1142,7 @@ Now that we have seen that bordism is a homology theory, we can ask the question
     Let \(E,B,F\) be manifolds. A \demph{local trivialization} for a smooth surjective map \(\pi:E\to B\) is a collection of charts \(\{(U_i,\varphi_i)\}_{i\in I}\) (for \(\{U_i\}\) an open cover of \(M\)) such that \(\pi^{-1}(U_i)\) is diffeomorphic to \(U_i\times F\) via \(\varphi_i\) for all \(i\in I\). The charts are called \demph{trivializing charts}.
 \end{definition}
 
-Unsure if I need this.
+\todo{Unsure if I need this.}
 
 %\begin{definition}[Fibre bundle\ {\cite[p.242]{tu}}]
 %    Let \(E,B,F\) be manifolds. A \demph{fibre bundle} is a smooth surjective map \(\pi:E\to B\) with a local trivialization with fibre \(F\).
@@ -1133,7 +1188,7 @@ Unsure if I need this.
     \[BSO(n)=\widetilde{\mathbb{G}}_{k,\infty}\]
 \end{observation}
 
-I might adjust this to be more like\ \cite{thom}'s definition.
+\todo{I might adjust this to be more like\ \cite{thom}'s definition.}
 \begin{definition}[Thom space\cite{brocker}, {\cite[p.29]{thom}}, {\cite[p.201]{atiyah}}]
     Let \(\xi:E\to B\) be a real \(k\)-dimensional vector bundle over a compact manifold \(B\).
     Then the Thom space of \(\xi\) is defined as\[M(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.\\
@@ -1151,7 +1206,8 @@ I might adjust this to be more like\ \cite{thom}'s definition.
 Maybe it is enough to just say that these are called this way because the Grassmannians are the classifying spaces of \(O(n), SO(n)\) instead of defining classifying spaces.
 
 \begin{definition}[Spectrum\ {\cite[Definition IV.1.1.]{brocker}}]
-    A \demph{spectrum} \(\underline E = \{(E_n,\sigma_n)\mid n\in\mathbb{Z}\}\) is a sequence of pointed spaces \(E_n\) with pointed \demph{structure maps}\[\sigma_n:E_n\wedge{S^1}\to E_{n+1}\]
+    A \demph{spectrum} \(\underline E = \{(E_n,\sigma_n)\mid n\in\mathbb{Z}\}\) is a sequence of pointed spaces \(E_n\) with pointed \demph{structure maps}\[\sigma_n:\sus E_n\to E_{n+1}\]
+    where \(\sus\) denotes the reduced suspension functor.
 \end{definition}
 
 \begin{example}[Sphere spectrum]
@@ -1162,41 +1218,44 @@ Maybe it is enough to just say that these are called this way because the Grassm
     Let \(\gamma_{n,\infty}\) be the universal real vector bundle over \(BO(n)=\mathbb{G}_{n,\infty}\)
 \end{example}
 
-\begin{theorem}[Suspension sequence]\label{suspension}
+\begin{definition}[Suspension sequence]\label{suspension}
     Let \(X, Y\) be pointed spaces. We denote by \({[X,Y]}\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
     \[[X,Y]\to[\sus{X},\sus{Y}]\to\dots\to[\sus^n{X},\sus^n{Y}]\] 
-\end{theorem}
+\end{definition}
 
 
-\begin{theorem}[Freudenthal suspension theorem]\label{freudenthal}
-    For large enough \(n\), the suspension map
-    \[[\sus^nX,\sus^nY]\to[\sus^{n+1}X,\sus^{n+1}Y]\]
+\begin{theorem}[\todo{Freudenthal suspension theorem}]\label{freudenthal}
+    Let \((X,Y)\) be a pair of spaces. Then for large enough \(n\), the suspension map
+    \[[\sus^n X,\sus^n Y]\to[\sus^{n+1}X,\sus^{n+1}Y]\]
     is an isomorphism.
 \end{theorem}
 
+\begin{proof}
+    omitted.
+\end{proof}
 
-\begin{lemma}\label{natural map}\cite{thom}
-    The natural map
-    \[\sus\{MSO(n)\}\to MSO(n+1)\]
-    induces isomorphisms of homotopy groups \(\pi_{n+1}\) for \(n\) large.
-\end{lemma}
+%\begin{lemma}\label{natural map}\cite{thom}
+%    The natural map
+%    \[\sus\{MSO(n)\}\to MSO(n+1)\]
+%    induces isomorphisms of homotopy groups \(\pi_{n+1}\) for \(n\) large.
+%\end{lemma}
 
-\begin{corollary}[{\cite[p.201]{atiyah}}]
-    For a finite CW-complex \(X\) with basepoint, \[[X,\sus\{MSO(n)\}]\to[X,MSO(n+1)]\] is bijective for \(n\) large.
-\end{corollary}
+%\begin{corollary}[{\cite[p.201]{atiyah}}]
+%    For a finite CW-complex \(X\) with basepoint, \[[X,\sus\{MSO(n)\}]\to[X,MSO(n+1)]\] is bijective for \(n\) large.
+%\end{corollary}
 
-\begin{lemma}[{\cite[p.201]{atiyah}}]
-    Let \(Y\) be a subcomplex of a CW-complex \(X\). Then from\ \ref{suspension} and\ \ref{natural map}, we get a map
-    \[[\sus^{n-k}(X\big/ Y),MSO(n)]\to[\sus^{n+1-k}(X\big/Y, MSO(n+1))]\]
-\end{lemma}
+%\begin{lemma}[{\cite[p.201]{atiyah}}]
+%    Let \(Y\) be a subcomplex of a CW-complex \(X\). Then from\ \ref{suspension} and\ \ref{natural map}, we get a map
+%    \[[\sus^{n-k}(X\big/ Y),MSO(n)]\to[\sus^{n+1-k}(X\big/Y, MSO(n+1))]\]
+%\end{lemma}
 
-\begin{definition}[Reduced cohomology associated to a spectrum]
+%\begin{definition}[Reduced cohomology associated to a spectrum]
     
-\end{definition}
+%\end{definition}
 
-\begin{theorem}[Cohomology associated to a spectrum]\label{spectrum cohomology}
+\begin{theorem}[Cohomology theory associated to a spectrum]\label{spectrum cohomology}
     Let \(\underline{E}\) be a spectrum. Then the following is a cohomology theory.
-    \[\h(X,Y;\underline{E}):=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),E_n]\]
+    \[\h^k(X,Y;\underline{E}):=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),E_n]\]
 \end{theorem}
 
 \begin{definition}[Cobordism group\ {\cite[p.201]{atiyah}}]
@@ -1207,9 +1266,10 @@ Maybe it is enough to just say that these are called this way because the Grassm
     \[\mathfrak{N}^k(X,Y):= \h^k(X\big/Y;MO)=\lim_{n\to\infty}[\sus^{n-k}(X\big/ Y),MO(n)]\]
 \end{definition}
 
-So, proving theorem\ \ref{spectrum cohomology} gives us that cobordism defines a cohomology theory. Again, we need to check axioms.
+So, proving theorem\ \ref{spectrum cohomology} gives us that cobordism defines a cohomology theory. Again, we need to check axioms.\\
+Proving theorem\ \ref{spectrum cohomology} will be the goal of\ \ref{cohomology}
 
-\subsubsection{The Eilenberg-Steenrod axioms}
+\subsubsection{\todo{The Eilenberg-Steenrod axioms}}
 To get a the axioms for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in\ \ref{es axioms}.
 
 \begin{definition}[Cohomology theory\ {\cite[Definition 5.2]{luck}}]
@@ -1229,19 +1289,51 @@ To get a the axioms for cohomology theories, intuitively, we \enquote{reverse al
     \end{itemize}
 \end{definition}
 
-\subsubsection{Bordism cohomology}
-Again, we will check the axioms one by one.
+\subsubsection{Bordism cohomology}\label{cohomology}
+To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one. For this section, we will fix a spectrum \(\underline{E}\), and \(\h^\ast\) will be the associated map, as defined in theorem\ \ref{spectrum cohomology}.
 
-\begin{lemma}[Functoriality]
+\begin{lemma}[Functoriality]\label{cofunctoriality}
+    \(\h^\ast\) defines a contravariant functor
+    \[\h^\ast:\mathrm{TOP}^2\to \text{graded abelian groups}\]
 \end{lemma}
+
+\begin{remark}
+    Every abelian group is a \(\Z\)-module.
+\end{remark}
+
+\begin{proof}
+    Let \((X,A)\in\mathrm{Ob}(\mathrm{TOP}^2)\). Then \(\h^\ast(X,A)=\lim_{n\to\infty}[\sus^{n-k}(X\big/A),E_n]\) is an abelian group, as for every \(n,k\), \([\sus^{n-k}(X\big/A),E_n]\) is an abelian group and the limit of a sequence of abelian groups is an abelian group.\\
+    Now, for a map \(f\in\mathrm{Mor}(\mathrm{TOP}^2)\), \(f:(X,A)\to(Y,B)\), we get a map
+    \[f_\ast:=\h^\ast(f):\lim_{n\to\infty}[\sus^{n-k}(Y\big/B),E_n]\to\lim_{n\to\infty}[\sus^{n-k}(X\big/A,E_n)]\]
+    by
+    \[x\mapsto x\circ \lim_{n\to\infty}f_n\]
+    where \[f_n:\sus^{n-k}(X\big/A)\to\sus^{n-k}(Y\big/A)\]
+    is the map such that the following diagram commutes:
+    \begin{center}
+        \begin{tikzcd}
+            {(X,A)} \arrow[r, "f"] \arrow[d, "\sus^{n-k}\circ q"'] & {(Y,B)}  \arrow[d, "\sus^{n-k}\circ q"] \\
+            {\sus^{n-k}(X\big/A)} \arrow[r, "f_n"]  & {\sus^{n-k}(Y\big/B)}
+        \end{tikzcd}
+    \end{center}
+    where \(q:(X,A)\to X\big/A\) is the quotient map.\\
+    Then we have that \(\h^\ast(\id_{(X,A)})=\id_{\h^\ast(X,A)}\), as all \(f_n=\id\) for every \(n\).\\
+    For \(f:(X,A)\to(Y,B)\), \(g:(Y,B)\to(Z,C)\), we have, for \(x\in\h^\ast(Z,C)\)
+    \[(g\circ f)^\ast(x)=x\circ\lim_{n\to\infty}(g\circ f)_n=x\circ\lim_{n\to\infty}(g_n\circ f_n)\]\[=x\circ\lim_{n\to\infty}g_n\circ\lim_{n\to\infty}f_n=g^\ast(x)\circ\lim_{n\to\infty}f_n=f^\ast(g^\ast(x))\]
+    %Thus, \((g\circ f)^\ast=f^\ast\circ g^\ast\), so \(\h^\ast\) is contravariant.
+\end{proof}
 
 \begin{lemma}[Naturality]
+    The boundary operator
+    \[\partial^\ast:\h^{\ast-1}(A)\to\h^\ast(X,A)\]
+    is given by \todo{?the suspension homomorphism?}
 \end{lemma}
 
-\begin{lemma}[Homotopy invariance]
-\end{lemma}
+\begin{observation}
+    The homotopy invariance axiom is satisfied by the defintion of the cohomology groups as set of homotopy classes of maps.
+\end{observation}
 
 \begin{lemma}[Long exact sequence]
+    
 \end{lemma}
 
 \begin{lemma}[Excision]
@@ -1253,11 +1345,18 @@ Again, we will check the axioms one by one.
 \begin{observation}[Dimension axiom]
 \end{observation}
 
+
+\begin{proof}[Proof of theorem\ \ref{spectrum cohomology}]
+    
+\end{proof}
+
 Conclude:
 \begin{theorem}[Bordism cohomology theory]
 \end{theorem}
 
-\subsubsection{Calculations}
+%\subsubsection{Calculations}
+
+%\todo{I could cite the original axioms of Eilenberg-Steenrod\ \ref{eilenberg}}
 
 %Thom isomorphism, Thom class, Thom isomorphism theorem
 

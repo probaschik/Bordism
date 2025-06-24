@@ -1,10 +1,10 @@
 \usepackage{amsmath, amssymb, amsthm, amsfonts, mathtools}
 \usepackage[utf8]{inputenc}
-\usepackage[T1]{fontenc}
+%\usepackage[T1]{fontenc}
 \usepackage{comment}
-\usepackage{marginnote}
-\usepackage{booktabs}
-\usepackage{tikz, tikz-cd}
+%\usepackage{marginnote}
+%\usepackage{booktabs}
+%\usepackage{tikz, tikz-cd}
 \usepackage{hyperref}
 \usepackage{geometry}
 \usepackage[english]{babel}
@@ -12,14 +12,15 @@
 \usepackage[backend=biber, style=alphabetic, sorting=nty]{biblatex}
 \usepackage{BA_Titelseite}
 \usepackage{graphicx}
-\usepackage{wrapfig}
+%\usepackage{wrapfig}
 \usepackage{quiver}
+\usepackage{xcolor}
 
 
-\usepackage{pdfsync}
+%\usepackage{pdfsync}
 
-\usepackage{empheq}
-\usepackage{mathrsfs}
+%\usepackage{empheq}
+%\usepackage{mathrsfs}
 
 
 \graphicspath{ {./images/} }
@@ -31,7 +32,7 @@
 %Gebortsort des Verfassers
 \geburtsort{K\"oln}
 %Datum der Abgabe der Arbeit
-\date{\today}
+\date{30.06.2025}
 
 %Name des Betreuers
 % z.B.: Prof. Dr. Peter Koepke
@@ -51,6 +52,10 @@
 
 \theoremstyle{definition}
 \newtheorem{definition}{Definition}[section]
+\newtheorem{example}{Example}
+\newtheorem{exs}[example]{Examples}
+\newtheorem{nonex}[example]{Non-example}
+\newtheorem{nonexs}[example]{Non-examples}
 
 \theoremstyle{plain}
 \newtheorem{theorem}[definition]{Theorem}
@@ -58,10 +63,6 @@
 \newtheorem{lemma}[definition]{Lemma}
 \newtheorem{corollary}[definition]{Corollary}
 \newtheorem*{fact}{Fact}
-\newtheorem{example}{Example}
-\newtheorem{exs}[example]{Examples}
-\newtheorem*{nonex}{Non-example}
-\newtheorem*{nonexs}{Non-examples}
 \newtheorem*{observation}{Observation}
 
 \theoremstyle{remark}
@@ -85,7 +86,10 @@
 \newcommand{\K}{\mathbb{K}}
 \newcommand{\id}{\mathrm{id}}
 \def\H{\mathbb{H}}
-\def\h{\mathcal{H}}
+\def\h{\mathfrak{H}}
 %\def{\ker}{\mathrm{ker}}
 \newcommand{\im}{\mathrm{im}}
 \newcommand{\T}{\mathbb{T}}
+
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+\newcommand{\unsure}[1]{\textcolor{blue}{#1}}
