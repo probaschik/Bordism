@@ -929,6 +929,10 @@ We will now define additional  structure on manifolds.
     This gives us exactly two orientations for any vector space.
 \end{definition}
 
+\begin{definition}[Orientation preserving {\cite[VIII.8]{tomdieck}}]
+    A linear isomorphism \(f:U\to V\) between two oriented vector spaces is called \demph{orientation preserving} if for the orientation \((u_1,\dots,u_n)\) of \(U\), the images \((f(u_1),\dots,f(u_n))\) give us the chosen orientation of \(V\).
+\end{definition}
+
 \begin{definition}[Orienting atlas\ {\cite[VIII.8]{tomdieck}}]
     Let \(M\) be a topological \(n\)-manifold with or without boundary. An \demph{orienting atlas} on \(M\) is a atlas \(\mathcal{O}\) such that the transition maps are not only smooth but also \demph{oriented-related}, i.e.\ for any \(\varphi,\psi\in\mathcal{O}\), the Jacobian \(D(\psi\circ\varphi^{-1})\) has positive determinant.\\
     A manifold is called \demph{orientable} if it admits an orienting atlas.
@@ -989,7 +993,15 @@ We will now define additional  structure on manifolds.
     Clearly, \([\mathcal{O}]\cap[-\mathcal{O}]=\emptyset\). If \([\mathcal{O}]=\emptyset\), the opposite orientation is also empty. This happens if the manifold is not orientable. Typical examples for non-orientable manifolds are \(\mathbb{RP}^{2n}\) and the Klein bottle.
 \end{remark}
 
-\todo{examples of orientable manifolds and give their orientation}
+An orientation on a manifold \(M\) induces an orientation on the tangent spaces \(T_p M\) via the differential of charts \(\varphi:U\to\mathbb{R}^n\)
+\[d\varphi_p:T_p U\to T_{\varphi(p)}\R^n\cong\R^n\]
+and the standard orientation on \(\R^n\).
+
+\begin{remark}
+    Orientation on manifolds can also be defined via pointwise orientation (orientation on the tangent spaces), but as not every pointwise orientation gives a orientation on the manifold, one has to be careful here. The pointwise orientation has to admit an orienting atlas in the sense that the differentials of the charts are orientation preserving.
+\end{remark}
+
+For manifolds with boundary, the \demph{boundary orientation} is induced by the orientation of \(T_p\partial M\), which is, in turn, induced by the orientation of \(T_p M\) by forgetting the first basis vector.
 
 %\begin{definition}[vector bundle]
 %    To be put somewhere else
@@ -1002,14 +1014,13 @@ We will now define additional  structure on manifolds.
 \subsubsection{Definitions}
 %Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)).
 
-Now we have defined additional structure on manifolds.
-We will adapt our definition of bordism to respect the additional structure.\\
+We will adapt our definition of bordism to respect orientations.\\
 The Definition of singular manifolds stays the same, but we additionally require \(M\) to be oriented now.
 
 \begin{definition}[bordant\ {\cite[p.526]{dieck}}, {\cite[p.202]{atiyah}}]
-    Two closed singular oriented \(n\)-manifolds \((M,f),(N,g)\) are called \demph{bordant}, if there exists a singular oriented \(n+1\)-manifold \((B,F)\) with \todo{oriented boundary} such that \(\partial (B,F) = (N,g)-(M,f)\). \((N,g)-(M,f)\) is defined as
+    Two closed singular oriented \(n\)-manifolds \((M,f),(N,g)\) are called \demph{bordant}, if there exists a singular oriented \(n+1\)-manifold \((B,F)\) with oriented boundary such that \(\partial (B,F) = (N,g)-(M,f)\). \((N,g)-(M,f)\) is defined as
     \[(N,g)-(M,f)=(N,g)+(M^-,f),\]
-    where \(M^-=(M,-\mathcal{O})\), \(M\) with opposite orientation. \((B,F)\) is then called a \demph{oriented bordism} between \((M,f)\) and \((N,g)\).
+    where \(M^-=(M,-[\mathcal{O}])\), \(M\) with opposite orientation. \((B,F)\) is then called a \demph{oriented bordism} between \((M,f)\) and \((N,g)\).
 \end{definition}
 
 \begin{remark}
@@ -1123,7 +1134,7 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 \end{proof}
 
 \begin{remark}
-    We used lemma\ \ref{almost excision} in the proof. The oriented version of this lemma also holds, by the same proof, just keep in mind that \(M\times\{1\}\) and \(N\times\{1\}\) have negative orientation.
+    We used lemma\ \ref{almost excision} in the proof. The oriented version of this lemma also holds, by the same proof, just keep in mind that \(M\times\{1\}\) and \(N\times\{1\}\) have the opposite orientation.
 \end{remark}
 
 \begin{lemma}[Excision axiom,\ {\cite[5.7]{conner}}]
