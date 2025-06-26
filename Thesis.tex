@@ -1334,27 +1334,31 @@ Maybe it is enough to just say that these are called this way because the Grassm
 So, proving theorem\ \ref{spectrum cohomology} gives us that cobordism defines a cohomology theory. Again, we need to check axioms.\\
 Proving theorem\ \ref{spectrum cohomology} will be the goal of\ \ref{cohomology}
 
-\subsubsection{\todo{The Eilenberg-Steenrod Axioms}}
+\subsubsection{The Eilenberg-Steenrod Axioms}
 To get a the axioms for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in\ \ref{es axioms}.
 
-\begin{definition}[Cohomology theory\ {\cite[Definition 5.2]{luck}}]
-    A \demph{cohomology theory} \(\mathcal{H}^\ast=(\mathcal{H}^\ast,\partial^\ast)\) with coefficients in \(R\)-modules is a contravariant functor \[\mathcal{H}^\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\] together with a natural transformation \[\partial^\ast:\mathcal{H}^\ast\circ I\to\mathcal{H}^{\ast+1}\] satisfying the following axioms:
+\begin{definition}[Cohomology theory\ {\cite[\nopp I.3c]{eilenberg}}{\cite[Definition 5.2]{luck}}]
+    An \demph{ordinary cohomology theory} \(\mathcal{H}^\ast=(\mathcal{H}^\ast,\partial^\ast)\) with coefficients in \(R\)-modules is a contravariant functor \[\mathcal{H}^\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\] together with a natural boundary map
+    \[\partial^\ast:\mathcal{H}^\ast\circ I\to\mathcal{H}^{\ast+1}\] satisfying the following axioms:
     \begin{itemize}
         \item \textbf{Homotopy invariance} For homotopic maps of pairs \(f,g:(X,A\to Y,B)\), we have \[\mathcal{H}^n(f)=\mathcal{H}^n(g):\mathcal{H}^n(Y,B)\to\mathcal{H}^n(X,A)\]
         \item \textbf{Long exact sequence} For a pair of spaces \((X,A)\), the sequence \[\dots\xrightarrow{\partial^{n-1}}\mathcal{H}^n(X,A)\xrightarrow{\mathcal{H}^n(j)}\mathcal{H}^n(X)\xrightarrow{\mathcal{H}^n(i)}\mathcal{H}^n(A)\xrightarrow{\partial^n(X,A)}\mathcal{H}^{n+1}(X,A)\rightarrow\dots\] is exact, where \(i:A\hookrightarrow X\) and \(j:(X,\emptyset)\hookrightarrow (X,A)\) are the inclusions.
         \item \textbf{Excision} Let \((X,B,A)\) be a triple of spaces such that \(\overline{A}\subseteq\overset{\circ}{B}\). Then the inclusion map \(i:(X\setminus A,B\setminus A)\hookrightarrow(X,B)\) induces an isomorphism of cohomology groups: \[\mathcal{H}^n(i):\mathcal{H}^n(X,B)\xrightarrow{\cong}\mathcal{H}^n(X\setminus A, B\setminus A)\]
+        \item \textbf{Dimension axiom}
+        For all \(n\in\mathbb{Z}\), we have \[\mathcal{H}^n(\{\mathrm{pt}\})\cong\begin{cases} R, & n=0\\ 0, & n\neq0\end{cases}\]
     \end{itemize}
-    Sometimes one adds the following axioms:
+    Again, one may add Milnor's disjoint union axiom\ \cite[p.337,Additivity Axiom]{milnor}:
     \begin{itemize}
         \item \textbf{Disjoint union axiom}
         For a disjoint union of spaces \(\coprod_{i\in I}X_i\) over any index set \(I\) and the inclusions \(j_i:X_i\to\coprod_{i\in I}X_i\), the map
         \[\prod_{i\in I}\mathcal{H}^n(j_i):\mathcal{H}^n\left(\coprod_{i\in I X_i}\right)\xrightarrow{\cong}\prod_{i\in I}\mathcal{H}^n(X_i)\]
-        \item \textbf{Dimension axiom}
-        For all \(n\in\mathbb{Z}\), we have \[\mathcal{H}^n(\{\mathrm{pt}\})\cong\begin{cases} R, & n=0\\ 0, & n\neq0\end{cases}\]
     \end{itemize}
 \end{definition}
 
-\subsubsection{Bordism Cohomology}\label{cohomology}
+Again, if only the dimension axiom and the disjoint union axiom do not hold, we have a \demph{extraordinary cohomology theory}.
+
+\subsubsection{\todo{Bordism Cohomology}}\label{cohomology}
+\todo{maybe I can manage to do this if I do it only for CW-complexes}
 To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one. For this section, we will fix a spectrum \(\underline{E}\), and \(\h^\ast\) will be the associated map, as defined in theorem\ \ref{spectrum cohomology}.
 
 \begin{lemma}[Functoriality]\label{cofunctoriality}
