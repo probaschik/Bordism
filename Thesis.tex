@@ -97,7 +97,7 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
     The charts we chose for the \(n\)-sphere \(S^n\) in example\ \ref{sphere chart} form a smooth atlas on \(S^n\).
 \end{example}
 
-\begin{definition}[Equivalence of atlases]
+\begin{definition}[Equivalence of atlases]\label{equivalence atlas}
     Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still an atlas.
 \end{definition}
 
@@ -179,7 +179,8 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 \end{remark}
 
 \begin{definition}[Boundary\ {\cite[p.25]{lee}}]
-    Let \(M^n\) be a manifold. A point \(x\in M^n\) is called an \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}. The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
+    Let \(M^n\) be a manifold. A point \(x\in M^n\) is called an \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}.\\
+    The set of interiour points is denoted by \(\mathrm{int}(M)\) and is called the \demph{interior} of \(M\). The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
     If \(M\) is compact and has empty boundary, \(M\) is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
 \end{definition}
 
@@ -259,7 +260,7 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 \end{proof}
 
 \begin{definition}[Connected sum {\cite[Example 9.31]{lee}}]
-    For two connected manifolds \(M^n,N^n\), choose smooth embeddings \(D^n\xhookrightarrow{i}M\), \(D^n\xhookrightarrow{j}N\). Then the connected sum of \(M\) and \(N\) is defined as \todo{could be done as pushout}
+    For two connected manifolds \(M^n,N^n\), choose smooth embeddings \(D^n\xhookrightarrow{i}\mathrm{int}(M)\), \(D^n\xhookrightarrow{j}\mathrm{int}(N)\). Then the connected sum of \(M\) and \(N\) is defined as \todo{could be done as pushout}
     \[M\#N:=((M\setminus i(\overset{\circ}{D^n}))\dis(N\setminus j(\overset{\circ}{D^n})))\big/(i(x)\sim j(x))\]
     for all \(x\in\partial D^n\).
     \begin{center}
@@ -914,7 +915,7 @@ It suffices to calculate \(\tilde\N_n(S^0)=\ker(\N_n(S^0))\xrightarrow{\varepsil
 Consider \(\varepsilon\circ\iota\).\ \(\varepsilon\circ\iota([M]\oplus[M'])=[M]+[M']\). This is zero if and only if \([M]=[M']\), as elements are self-inverse. It follows that \(\ker(\varepsilon\cong\N_n)\). 
 Altogether, we have \[\N_n(S^k)\cong\N_{n-k}\oplus\N_n\].
 
-\subsection{\todo{Orientation}}
+\subsection{Orientation}
 
 We will now define additional  structure on manifolds.
 
@@ -922,15 +923,24 @@ We will now define additional  structure on manifolds.
 %\end{definition}
 %I probably need this already before. (Along with tangent bundle, vector fields), done, but not bundle/field
 
-\begin{definition}[Orientation on vector spaces\ {\cite[p.379]{lee}}]
-    An \demph{orientation} on a real vector space \(V\) with \(\mathrm{dim} V\geq 1\) is an equivalence class of ordered bases \((e_1,\dots,e_{\mathrm{dim}V})\). Two bases are equivalent if the basis transformation has positive determinant. 
-    For \(\mathrm{dim}V=0\) an orientation is the choice of \(\pm\).\\
+\begin{definition}[Orientation on vector spaces\ {\cite[p.379]{lee}}]%{\cite[VIII.8]{tomdieck}}]%
+    An \demph{orientation} on a real vector space \(V\) with \(\dim V\geq 1\) is an equivalence class of ordered bases \((e_1,\dots,e_{\dim V})\). Two bases are equivalent if the basis transformation has positive determinant. 
+    For \(\dim V=0\) an orientation is the choice of \(\pm\).\\
     This gives us exactly two orientations for any vector space.
 \end{definition}
 
-\begin{definition}[Pointwise orientation on manifolds\ {\cite[p.380]{lee}}]
-    For each point on a manifold, we have an associated vector space: the tangent space. A \demph{pointwise orientation} on a manifold is a choice of orientation on each tangent space.
+\begin{definition}[Orienting atlas\ {\cite[VIII.8]{tomdieck}}]
+    Let \(M\) be a topological \(n\)-manifold with or without boundary. An \demph{orienting atlas} on \(M\) is a atlas \(\mathcal{O}\) such that the transition maps are not only smooth but also \demph{oriented-related}, i.e.\ for any \(\varphi,\psi\in\mathcal{O}\), the Jacobian \(D(\psi\circ\varphi^{-1})\) has positive determinant.\\
+    A manifold is called \demph{orientable} if it admits an orienting atlas.
 \end{definition}
+
+\begin{remark}
+    For smooth manifolds this definition of being orientable coincides with the homological definition.
+\end{remark}
+
+%\begin{definition}[Pointwise orientation on manifolds\ {\cite[p.380]{lee}}]
+%    For each point on a manifold, we have an associated vector space: the tangent space. A \demph{pointwise orientation} on a manifold is a choice of orientation on each tangent space.
+%\end{definition}
 
 %\begin{definition}[Tangent bundle {\cite[p.65]{lee}}]
 %    For a manifold \(M\), the tangent bundle is defined to be \[TM=\coprod_{p\in M} T_p M\]
@@ -949,18 +959,37 @@ We will now define additional  structure on manifolds.
 %    A pointwise orientation on a manifold \(M\) is called \demph{continuous}, if for every point \(p\in M\), there exists a neighbourhood \(U\) of \(p\) such that the orientations on the tangent spaces of all points in \(U\) are equivalent.
 %\end{definition}
 
-\begin{definition}[Orientation on manifolds\ {\cite[p.380]{lee}}]
-    An \demph{orientation} of a manifold \(M\) is a \todo{continuous} pointwise orientation of \(M\). If there exists an orientation on \(M\), \(M\) is called \demph{orientable}.
-\end{definition}
+%\begin{definition}[Orientation on manifolds\ {\cite[p.380]{lee}}]
+%    An \demph{orientation} of a manifold \(M\) is a \todo{continuous} pointwise orientation of \(M\). If there exists an orientation on \(M\), \(M\) is called \demph{orientable}.
+%\end{definition}
 
 %\begin{remark}
 %    One could remark here, that I have not defined what it means for a pointwise orientation to be continuous. See\ \cite{lee} for more detail.
 %\end{remark}
 
-\begin{definition}[Oriented manifold\ {\cite[p.380]{lee}}]
-    An \demph{oriented manifold} is the pair \((M,\mathcal{O})\), of an orientable manifold \(M\) and a choice of an orientation \(\mathcal{O}\) of \(M\).
+\begin{definition}[Oriented manifold\ {\cite[VIII.8]{tomdieck}}]\label{oriented manifold}%{\cite[p.380]{lee}}]\
+    An \demph{oriented manifold} is the pair \((M,[\mathcal{O}])\), of an orientable manifold \(M\) and a choice of an equivalence class of orientating atlases \([\mathcal{O}]\) of \(M\). 
+    Two orienting atlases are equivalent, if, analogous to definition\ \ref{equivalence atlas}, their union is again an orienting atlas. 
+    The choice of \([\mathcal{O}]\) is called an \demph{orientation} on \(M\).
     We will often write just \(M\) for an oriented manifold.
 \end{definition}
+
+\begin{observation}
+    For a connected manifold \(M\), every equivalence class of atlases with the relation as in definition\ \ref{equivalence atlas} (\(\sim_{\text{smooth}}\)) is split into two equivalence classes with the relation as in\ \ref{oriented manifold} (\(\sim_{\text{oriented}}\)). 
+    I.e.\ for any atlas \(\mathcal{A}\), there exists, 
+    if \(\mathcal{A}\) is orientable, 
+    an atlas \(-\mathcal{A}\in[\mathcal{A}]_{\text{smooth}}\) and two equivalence classes 
+    \([\mathcal{O}]_\text{oriented}\) and \([\mathcal{O}]_{\text{oriented}}\) such that 
+    \(\mathcal{A}\in[\mathcal{O}]_\text{oriented}\) and \(-\mathcal{A}\in[-\mathcal{O}]_\text{oriented}\). \\
+    Moreover, \([\mathcal{O}]_\text{oriented}\cup[-\mathcal{O}]_\text{oriented}=[\mathcal{A}]_\text{smooth}\cap\{\text{orientable atlases on }M\}\)\\
+    We call \([-\mathcal{O}]\) the \demph{opposite orientation} to \([\mathcal{O}]\).
+\end{observation}
+
+\begin{remark}
+    Clearly, \([\mathcal{O}]\cap[-\mathcal{O}]=\emptyset\). If \([\mathcal{O}]=\emptyset\), the opposite orientation is also empty. This happens if the manifold is not orientable. Typical examples for non-orientable manifolds are \(\mathbb{RP}^{2n}\) and the Klein bottle.
+\end{remark}
+
+\todo{examples of orientable manifolds and give their orientation}
 
 %\begin{definition}[vector bundle]
 %    To be put somewhere else
