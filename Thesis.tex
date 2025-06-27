@@ -180,7 +180,7 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 
 \begin{definition}[Boundary\ {\cite[p.25]{lee}}]
     Let \(M^n\) be a manifold. A point \(x\in M^n\) is called an \demph{interior point} if it admits a neighbourhood homeomorphic to \(\mathbb{R}^n\). Otherwise, it is called a \demph{boundary point}.\\
-    The set of interiour points is denoted by \(\mathrm{int}(M)\) and is called the \demph{interior} of \(M\). The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
+    The set of interior points is denoted by \(\mathrm{int}(M)\) and is called the \demph{interior} of \(M\). The set of boundary points is denoted by \(\partial M\) and is called the \demph{boundary} of \(M\).\\
     If \(M\) is compact and has empty boundary, \(M\) is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
 \end{definition}
 
@@ -202,7 +202,7 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 
 \begin{proof}
     Let \((M^n,[\mathcal{A}])\) be a manifold. A smooth structure on \(\partial M\) is given by the restriction of the charts in \([\mathcal{A}]\) to \(\partial M\): \[\{(U\cap\partial M,\varphi\restrict{U\cap\partial M})\mid (U,\varphi)\in[\mathcal{A}]\}\]
-    Smooth compatability follows from the smooth compatibility of the charts in \([\mathcal{A}]\). This makes \(\partial M\) a submanifold of \(M\). It remains to show that it is closed and of codimension \(1\). The charts in \([\mathcal{A}]\) map every point in \(\partial M\) to \(\partial\H^n=\R^{n-1}\). If they didn't, we could find a Euclidean neighbourhood of that point, contradicting the fact that it was a boundary point in \(M\). As the charts restricted to \(\partial M\) now map to \(\R^{n-1}\), we have an \((n-1)\)-dimensional submanifold without boundary.\\
+    Smooth compatibility follows from the smooth compatibility of the charts in \([\mathcal{A}]\). This makes \(\partial M\) a submanifold of \(M\). It remains to show that it is closed and of codimension \(1\). The charts in \([\mathcal{A}]\) map every point in \(\partial M\) to \(\partial\H^n=\R^{n-1}\). If they didn't, we could find a Euclidean neighbourhood of that point, contradicting the fact that it was a boundary point in \(M\). As the charts restricted to \(\partial M\) now map to \(\R^{n-1}\), we have an \((n-1)\)-dimensional submanifold without boundary.\\
     \unsure{Need: \(\varphi(U\cap\partial M)\) is open and \(\varphi(x)\notin\partial\H^n\) for \(x\) interior point}
 \end{proof}
 
@@ -413,6 +413,7 @@ We will refer to this relation as \demph{bordism relation}.
     The bordism class of \((M,f)\) is denoted by \([M,f]\). 
     The set of bordism classes of \(n\)-dimensional singular manifolds in \(X\) is denoted by \(\mathfrak{N}_n(X)\) and is called the \(n\)\demph{-th bordism group of }\(X\).
     \[\mathfrak{N}_n(X)=\{\text{closed singular \(n\)-manifolds in \(X\)}\}\big/\text{bordism}\]
+    For negative \(n\), we set \(\N_n(X)\) to be the trivial group.
 \end{definition}
 
 \begin{observation}
@@ -545,7 +546,7 @@ As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will ex
     Two \(n\)-dimensional singular manifolds \((M_0,f_0)\) and \((M_1,f_1)\) in \((X,A)\) are called \demph{bordant}, if there exists an (\(n+1\))-dimensional singular manifold \((B,F)\) in \(X\), such that:
     \begin{itemize}
         %\item \((B,F)\) is a (\(n+1\))-dimensional compact manifold with boundary,
-        \item \(\partial B\) can be decomposed as  \(\partial B=M_0\cup M_1\cup M'\), where \(M_0,M_1,M'\) are considerd as embedded submanifolds of \(B\) with boundary, such that 
+        \item \(\partial B\) can be decomposed as  \(\partial B=M_0\cup M_1\cup M'\), where \(M_0,M_1,M'\) are considered as embedded submanifolds of \(B\) with boundary, such that 
         \(\partial M'=\partial M_0\dis \partial M_1\), 
         \(M_i\cap M'=\partial M_i\) and \(\partial M_0
         \cap\partial M_1=\emptyset\), for \(i\in\{0,1\}\).
@@ -1201,13 +1202,15 @@ Now that we have seen that bordism is a homology theory, we can ask the question
 
 \subsection{Cobordism}
 
+Cobordism is defined in a less intuitive way than bordism, we will define them over spectra.
+
 \subsubsection{(Thom) Spectra}
 
-\begin{definition}[Local trivialization\ {\cite[p.242]{tu}}]
-    Let \(E,B,F\) be manifolds. A \demph{local trivialization} for a smooth surjective map \(\pi:E\to B\) is a collection of charts \(\{(U_i,\varphi_i)\}_{i\in I}\) (for \(\{U_i\}\) an open cover of \(M\)) such that \(\pi^{-1}(U_i)\) is diffeomorphic to \(U_i\times F\) via \(\varphi_i\) for all \(i\in I\). The charts are called \demph{trivializing charts}.
-\end{definition}
+%\begin{definition}[Local trivialization\ {\cite[p.242]{tu}}]
+%    Let \(E,B,F\) be manifolds. A \demph{local trivialization} for a smooth surjective map \(\pi:E\to B\) is a collection of charts \(\{(U_i,\varphi_i)\}_{i\in I}\) (for \(\{U_i\}\) an open cover of \(M\)) such that \(\pi^{-1}(U_i)\) is diffeomorphic to \(U_i\times F\) via \(\varphi_i\) for all \(i\in I\). The charts are called \demph{trivializing charts}.
+%\end{definition}
 
-\todo{Unsure if I need this.}
+%\todo{Unsure if I need this.}
 
 %\begin{definition}[Fibre bundle\ {\cite[p.242]{tu}}]
 %    Let \(E,B,F\) be manifolds. A \demph{fibre bundle} is a smooth surjective map \(\pi:E\to B\) with a local trivialization with fibre \(F\).
@@ -1216,11 +1219,15 @@ Now that we have seen that bordism is a homology theory, we can ask the question
 
 %Maybe I will not need this Probably
 
+%\begin{definition}[Vector bundle]
+%    A (real) \demph{vector bundle} is the triple \((\pi,E,B)\) such that \(\pi:E\to B\) is a continuous map between topological spaces and every fibre \(E_n:=\pi^{-1}(b)\) carries the structure of a finite dimensional vector space.
+%\end{definition}
+
 \begin{definition}[Principal bundle {\cite[\nopp I.11]{tomdieck}}]
     Let \(G\) be a topological group, \(r:E\times G\to E\), \(r(x,g)=xg\) be a free right action on \(E\), and \(p:E\to B\) a continuous map. Then \((p,r)\) is called a \(G\)\demph{-principal bundle}, if 
     \begin{itemize}
         \item \(\forall g\in G, x\in E: p(xg)=p(x)\)
-        \item \(\forall b\in B\exists\) a neighbourhood \(U\) and a \(G\)-homeomorphism \(\varphi:p^{-1}(U)\to U\times G\) which is a local trivialization of \(p\) over \(U\). \(\varphi\) is given by \(((u,x),g)\mapsto (u,xg)\).
+        \item \(\forall b\in B\exists\) a neighbourhood \(U\) and a \(G\)-homeomorphism \(\varphi:p^{-1}(U)\to U\times G\) which is a local trivialization, i.e.\ \(p\circ\varphi^{-1}(x,g)=x\) for all \(g\in G\) and \(g\mapsto\varphi^{-1}(x,g)\) is an isomorphism between \(G\) and \(p^{-1}(x)\).\ \(\varphi\) is given by \(((u,x),g)\mapsto (u,xg)\).
     \end{itemize}
 \end{definition}
 
@@ -1248,10 +1255,16 @@ Now that we have seen that bordism is a homology theory, we can ask the question
     Let \(G\) be a topological group. The \demph{classifying space} \(BG\) of \(G\) is the base space of the universal principal \(G\)-bundle.
 \end{definition}
 
-\begin{observation}
-    \[BO(n)=\mathbb{G}_{k,\infty}\]
-    \[BSO(n)=\widetilde{\mathbb{G}}_{k,\infty}\]
-\end{observation}
+\begin{remark}\cite[p.32]{thom}
+    \[BO(n)=\mathbb{G}_{n,\infty}:=\lim_{k\to\infty}\G_{n,k}\]
+    \[BSO(n)=\widetilde{\mathbb{G}}_{n,\infty}:=\lim_{k\to\infty}\widetilde{\G_{n,k}}\]
+    Where \(\G_{n,k}=\{n-\text{dim.\ linear subspaces of }\R^k\}\) is the Grassmannian, and \(\widetilde{\G_{n,k}}\) the space of the oriented linear subspaces. The direct limit is taken with respect to the inclusions \(\G_{n,k}\hookrightarrow\G_{n,k+1}\), resp.\ \(\widetilde{\G_{n,k}}\hookrightarrow\widetilde{\G_{n,k+1}}\).
+\end{remark}
+
+\begin{definition}[Vector bundle]
+    A (real) \demph{vector bundle} is the triple \((\pi,E,B)\) such that \(\pi:E\to B\) is a continuous map between topological spaces and every fibre \(E_n:=\pi^{-1}(b)\) carries the structure of a finite dimensional vector space.
+    Additionally, for every point \(b\in B\), there has to be an open neighbourhood \(U\) and a homeomorphism \(\varphi:U\times\mathbb{R}^n\to\pi^{-1}(U)\), which is a local trivialization for some \(k\). \(k\) is called the dimension of the vector bundle.
+\end{definition}
 
 \todo{I might adjust this to be more like\ \cite{thom}'s definition.}
 \begin{definition}[Thom space\cite{brocker}, {\cite[p.29]{thom}}, {\cite[p.201]{atiyah}}]
@@ -1264,11 +1277,12 @@ Now that we have seen that bordism is a homology theory, we can ask the question
     For \(\xi\) the universal principal \(G\)-bundle, we can write \(M(G)\) instead of \(M(\xi)\).
 \end{definition}
 
-\begin{definition}[\(MO(n), MSO(n)\)\ \cite{brocker}]
-    \[MO(n):=M(\xi_{n,\infty})\] with \(\xi_{n,\infty}\) being the universal real vector bundle over \(\mathbb{G}_{k,\infty}\).
-    \[MSO(n):=  \]
-\end{definition}
-Maybe it is enough to just say that these are called this way because the Grassmannians are the classifying spaces of \(O(n), SO(n)\) instead of defining classifying spaces.
+\begin{example}[\(MO(n), MSO(n)\)\ \cite{brocker}]
+    \[MO(n)=M(\gamma_{n,\infty})\] with \(\gamma_{n,\infty}\) being the universal real vector bundle over \(\mathbb{G}_{k,\infty}\). Similarly,
+    \[MSO(n)= M(\tilde\gamma_{n,\infty}) \]
+    is the Thom space of the universal real oriented vector bundle.
+\end{example}
+%Maybe it is enough to just say that these are called this way because the Grassmannians are the classifying spaces of \(O(n), SO(n)\) instead of defining classifying spaces.
 
 \begin{definition}[Spectrum\ {\cite[Definition IV.1.1.]{brocker}}]
     A \demph{spectrum} \(\underline E = \{(E_n,\sigma_n)\mid n\in\mathbb{Z}\}\) is a sequence of pointed spaces \(E_n\) with pointed \demph{structure maps}\[\sigma_n:\sus E_n\to E_{n+1}\]
@@ -1280,24 +1294,30 @@ Maybe it is enough to just say that these are called this way because the Grassm
 \end{example}
 
 \begin{example}[Thom spectrum\ {\cite[Beispiel IV.1.2(b)]{brocker}}]
-    Let \(\gamma_{n,\infty}\) be the universal real vector bundle over \(BO(n)=\mathbb{G}_{n,\infty}\)
+    %Let \(\gamma_{n,\infty}\) be the universal real vector bundle over \(BO(n)=\mathbb{G}_{n,\infty}\)
+    Let \(\gamma_n\) be a vector bundle. The trivial map \(\gamma_n\oplus\varepsilon\to\gamma_{n+1}\) induces a pointed map
+    \[\sigma_n:\sus M(\gamma_n)\cong M(\gamma_n\oplus \varepsilon)\to M(\gamma_{n+1})\]
+    where \(\varepsilon:B\times\R\to B\) denotes the trivial line bundle. The homeomorphism comes from \(M(\gamma\oplus\varepsilon)\cong M(\gamma)\land M(\varepsilon)\cong M(\gamma)\land S^1\cong \sus M(\gamma_n)\).\\
+    The (orthogonal) \demph{Thom spectra} \(\mathbf{MO}=(MO(n),e_n)\) and \(\mathbf{MSO}=(MSO(n),\widetilde{e_n})\) with the structure maps being the induced maps of the classifying maps of the universal real (oriented) vector bundles
 \end{example}
 
-\begin{definition}[Suspension sequence]\label{suspension}
-    Let \(X, Y\) be pointed spaces. We denote by \({[X,Y]}\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
-    \[[X,Y]\to[\sus{X},\sus{Y}]\to\dots\to[\sus^n{X},\sus^n{Y}]\] 
-\end{definition}
+\todo{maybe above whitney sum - smash product identity}
+
+%\begin{definition}[Suspension sequence]\label{suspension}
+%    Let \(X, Y\) be pointed spaces. We denote by \({[X,Y]}\) the set of homotopy classes of pointed maps \(X\to Y\). Then we have the \demph{suspension sequence}:
+%    \[[X,Y]\to[\sus{X},\sus{Y}]\to\dots\to[\sus^n{X},\sus^n{Y}]\] 
+%\end{definition}
 
 
-\begin{theorem}[\todo{Freudenthal suspension theorem}]\label{freudenthal}
-    Let \((X,Y)\) be a pair of spaces. Then for large enough \(n\), the suspension map
-    \[[\sus^n X,\sus^n Y]\to[\sus^{n+1}X,\sus^{n+1}Y]\]
-    is an isomorphism.
-\end{theorem}
+%\begin{theorem}[\todo{Freudenthal suspension theorem}]\label{freudenthal}
+%    Let \((X,Y)\) be a pair of spaces. Then for large enough \(n\), the suspension map
+%    \[[\sus^n X,\sus^n Y]\to[\sus^{n+1}X,\sus^{n+1}Y]\]
+%    is an isomorphism.
+%\end{theorem}
 
-\begin{proof}
-    omitted.
-\end{proof}
+%\begin{proof}
+%    omitted.
+%\end{proof}
 
 %\begin{lemma}\label{natural map}\cite{thom}
 %    The natural map
@@ -1318,8 +1338,8 @@ Maybe it is enough to just say that these are called this way because the Grassm
     
 %\end{definition}
 
-\begin{theorem}[Cohomology theory associated to a spectrum]\label{spectrum cohomology}
-    Let \(\underline{E}\) be a spectrum. Then the following is a cohomology theory.
+\begin{theorem}[Cohomology theory associated to a spectrum {\cite{whitehead}}]\label{spectrum cohomology}
+    Let \(\underline{E}\) be a spectrum. Then the following is an extraordinary cohomology theory.
     \[\h^k(X,Y;\underline{E}):=\lim_{n\to\infty}[\sus^{n-k}(X\big/Y),E_n]\]
 \end{theorem}
 
@@ -1331,8 +1351,12 @@ Maybe it is enough to just say that these are called this way because the Grassm
     \[\mathfrak{N}^k(X,Y):= \h^k(X\big/Y;MO)=\lim_{n\to\infty}[\sus^{n-k}(X\big/ Y),MO(n)]\]
 \end{definition}
 
-So, proving theorem\ \ref{spectrum cohomology} gives us that cobordism defines a cohomology theory. Again, we need to check axioms.\\
-Proving theorem\ \ref{spectrum cohomology} will be the goal of\ \ref{cohomology}
+\begin{corollary}
+    \(\N^\ast\) and \(\Omega^\ast\) are extraordinary cohomology theories.
+\end{corollary}
+
+%So, proving theorem\ \ref{spectrum cohomology} gives us that cobordism defines a cohomology theory. Again, we need to check axioms.\\
+%Proving theorem\ \ref{spectrum cohomology} will be the goal of\ \ref{cohomology}
 
 \subsubsection{The Eilenberg-Steenrod Axioms}
 To get a the axioms for cohomology theories, intuitively, we \enquote{reverse all arrows} in the previously defined axioms for homology theories in\ \ref{es axioms}.
@@ -1359,7 +1383,18 @@ Again, if only the dimension axiom and the disjoint union axiom do not hold, we 
 
 \subsubsection{\todo{Bordism Cohomology}}\label{cohomology}
 \todo{maybe I can manage to do this if I do it only for CW-complexes}
-To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one. For this section, we will fix a spectrum \(\underline{E}\), and \(\h^\ast\) will be the associated map, as defined in theorem\ \ref{spectrum cohomology}.
+To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one. For this section, we will fix a spectrum \(\underline{E}\), and \(\h^\ast\) will be the associated functor, as defined in theorem\ \ref{spectrum cohomology}.
+
+\begin{theorem}[{\cite[Th\'eor\`eme II.7]{thom}}]
+    For \(n\) large enough, we have
+    \[\pi_{n+k}(\sus MO(n))\cong\pi_{n+k}(MO(n+1))\]
+    \[\pi_{n+k}(\sus MSO(n))\cong\pi_{n+k}(MSO(n+1))\]
+\end{theorem}
+
+\begin{corollary}[{\cite[p.201]{atiyah}}]
+    For \(X\) a finite CW-complex, we have
+    \[\]
+\end{corollary}
 
 \begin{lemma}[Functoriality]\label{cofunctoriality}
     \(\h^\ast\) defines a contravariant functor
@@ -1398,7 +1433,7 @@ To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one
 \end{lemma}
 
 \begin{observation}
-    The homotopy invariance axiom is satisfied by the defintion of the cohomology groups as set of homotopy classes of maps.
+    The homotopy invariance axiom is satisfied by the definition of the cohomology groups as set of homotopy classes of maps.
 \end{observation}
 
 \begin{lemma}[Long exact sequence]
