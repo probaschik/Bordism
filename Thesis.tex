@@ -25,6 +25,7 @@
 \addcontentsline{toc}{section}{Zusammenfassung}
 \section*{\todo{Zusammenfassung}}
 \todo{Hier eine deutsche Zusammenfassung der Arbeit}
+Diese Bachelorarbei besch\"aftigt sich mit der Bordismus-Homologie und -Kohomologie. Daf\"ur werden zun\"achst die Grundlagen der Bodismen-Theorie gelegt. Dazu geh\"oren die Definition von Bordismen, die Definition von Bordismus-Homologie und -Kohomologie, sowie die Definition von Bordismus-Klassen. Es wird gezeigt, dass Bordismus-Klassen eine Ringstruktur haben.
 
 \section{Introduction/Motivation}
 %\includegraphics{galaxy.png}
@@ -1486,7 +1487,23 @@ To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one
 \end{proof}
 
 \begin{lemma}[Excision]
+    Let \((X,A)\) be a pair and \(U\subset X\) open such that \(\overline{U}\subset\overset{\circ}A\). Then \[\iota:X\setminus U,A\setminus U\hookrightarrow(X,A)\]
+    induces an isomorphisms
+    \[\N^\ast(X,A)\xrightarrow{\cong}\N^\ast(X\setminus U,A\setminus U)\]
+    \[\Omega^\ast(X,A)\xrightarrow{\cong}\Omega^\ast(X\setminus U,A\setminus U)\]
 \end{lemma}
+
+\begin{proof}[Proof Sketch for CW-complexes]\cite[Chapter 6, p.250]{adams}
+    Let \((X,A)\) be a CW-pair. By cellular approximation, we can assume that \(\overline{U}\) lies in a subcomplex of \(A\). In particular, \(X\) is a union of two subcomplexes \(X=A\cup(X\setminus U)\) with intersection \(A\cap(X\setminus U)=A\setminus U\). Then
+    \[A\big/(A\setminus U)\to X\big/(X\setminus U)\]
+    is a homeomorphism. Because of the \(\overline U\subset \overset{\circ}A\) assumption, we also have \(A\big/(A\setminus U)\cong (X\setminus U)\big/(A\setminus U)\) and \(X\big/(X\setminus U)\cong X\big/A\). So we have
+    \[(X\setminus U)\big/(A\setminus U)\cong X\big/A\]
+    Applying the the functor \(\N^\ast\) resp. \(\Omega^\ast\) concludes the proof.
+\end{proof}
+
+\begin{remark}
+    This argument also works for any other spectrum-cohomology theory.
+\end{remark}
 
 \begin{lemma}[Disjoint union axiom]
 \end{lemma}
