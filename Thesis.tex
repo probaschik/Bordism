@@ -22,23 +22,30 @@
 
 \setcounter{section}{-1}
 
-\addcontentsline{toc}{section}{Zusammenfassung}
-\section*{\todo{Zusammenfassung}}
-\todo{Hier eine deutsche Zusammenfassung der Arbeit}
-Diese Bachelorarbei besch\"aftigt sich mit der Bordismus-Homologie und -Kohomologie. Daf\"ur werden zun\"achst die Grundlagen der Bodismen-Theorie gelegt. Dazu geh\"oren die Definition von Bordismen, die Definition von Bordismus-Homologie und -Kohomologie, sowie die Definition von Bordismus-Klassen. Es wird gezeigt, dass Bordismus-Klassen eine Ringstruktur haben.
+\addcontentsline{toc}{section}{Vorwort}
+\section*{Vorwort}
+%\todo{Hier eine deutsche Zusammenfassung der Arbeit}
+Diese Bachelorarbei besch\"aftigt sich mit der Bordismus-Homologie und -Kohomologie. Daf\"ur werden zun\"achst die Grundlagen der Bodismen-Theorie gelegt. 
+Angefangen von Mannigfaltigkeiten, wird die Bordismus-Relation definiert, erst nur f\"ur nicht-orientierte Mannigfaltigkeiten, dann auch f\"ur orientierte Mannigfaltigkeiten.
+Anschlie\ss end wird die Bordismus-Homologie f\"ur den nicht-orientierten als auch den orientierten Fall definiert und es werden die Axiome der Homologie-Theorie gepr\"uft.
+Um in Kapitel\ \ref{cobordism} dann \"uber die Bordismus-Kohomologie zu sprechen, werden die Grundlagen der Spektren-Theorie gelegt. Dann wird auch die Bordismus-Kohomologie definiert und die Axiome der Kohomologie-Theorie gepr\"uft.
 
-\section{Introduction/Motivation}
+
+\section{Motivation}
 %\includegraphics{galaxy.png}
 
 Recall the definition of homotopy groups \(\pi_n(X)\) as the set of pointed homotopy classes of maps from the \(n\)-sphere \(S^n\) to a space \(X\). 
-The problem with homotopy groups is that they are, in general, hard to compute, even for simple spaces such as spheres.\\
-\todo{The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).}
+A problem with homotopy groups is that they are, in general, hard to compute, even for simple spaces such as spheres.\\
+Bordism groups arise as a natural generalisation of homotopy groups, where we replace the \(n\)-sphere with any closed manifold of dimension \(n\) and consider the maps from this manifold to the space \(X\). The cylinder we use to define homotopy classes is replaced by a bordism, which is a manifold of dimension \(n+1\) with boundary the disjoint union of two copies of the manifold we are interested in. With this new equivalence relateion, we also avoid the problem of classifying manifolds up to diffeomorphism or homeomorphism, which is known to be hard in higher dimensions.
+%\todo{The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).}
 
-\todo{more detail here}
+%\todo{more detail here}
 
 %Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatcher},\cite{dieck},\cite{luck}
 
 \section{Bordism}
+
+Before we can define bordism, we need some preliminary definitions. We will start with the recalling the definition of manifolds. We will also state some differential topological theorems, which will be useful later on.
 
 \subsection{Manifolds}
 
@@ -52,7 +59,9 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
     We will often write \(M^n\) for an \(n\)-dimensional manifold.\ \(n\)-dimensional manifolds are also called \demph{\(n\)-manifolds}.
 \end{definition}
 
-\todo{maybe charts here}
+\begin{definition}[Chart]
+    For a manifold \(M^n\), a \demph{chart} is a pair \(U,\varphi\) of an open subset \(U\subset M\) and a map \(\varphi:U\to\R^n\) such that \(\varphi:U\to\varphi(U)\) is a homeomorphism.
+\end{definition}
 
 \begin{example}
     \(\mathbb{R}^n\) is an \(n\)-dimensional topological manifold.
@@ -81,16 +90,14 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 
 %Being a topological manifold is just a property of a topological space \(M\). We will give manifolds extra structure by defining a smooth structure on them.
 
-\begin{definition}[Chart]
-    For a manifold \(M^n\), a \demph{chart} is a pair \(U,\varphi\) of an open subset \(U\subset M\) and a map \(\varphi:U\to\R^n\) such that \(\varphi:U\to\varphi(U)\) is a homeomorphism.
-\end{definition}
+
 
 \begin{definition}[(Smooth) Atlas\ {\cite[p.12]{lee}}]
     Let \(M\) be a topological manifold. A \demph{(smooth) atlas} \(\mathcal{A}\) on \(M\) is a collection of charts \((U_\alpha,\varphi_\alpha)\) such that:
     \begin{itemize}
         \item the \(\{U_\alpha\}\) cover \(M\),
         \item the charts are pairwise smoothly compatible, i.e.\ the transition functions 
-        \(\varphi_j \circ \varphi_i^{-1}:\R^n\supset\varphi_i(U_i\cap U_j)\to\varphi_j(U_i\cap U_j)\subset\R^n\) are smooth.
+        \(\varphi_j \circ \varphi_i^{-1}:\R^n\supset\varphi_i(U_i\cap U_j)\to\varphi_j(U_i\cap U_j)\subset\R^n\) are smooth as maps from \(\R^n\) to \(\R^n\).
     \end{itemize}
 \end{definition}
 
@@ -102,6 +109,10 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
     Two atlases \(\mathcal{A}\) and \(\mathcal{A}^\prime\) (on a fixed topological manifold) are said to be \demph{equivalent}, if their union is still an atlas.
 \end{definition}
 
+\begin{remark}
+    This is indeed an equivalence relation, we only have to check transitivity, but this is also straightforward since we can just take the union of the three atlases.
+\end{remark}
+
 %It can be shown that this is indeed an equivalence relation, but I will omit the proof here.
 
 \begin{definition}[Smooth manifold\ {\cite[p.13]{lee}}]
@@ -111,6 +122,12 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
         \item an equivalence class \([\mathcal{A}]\) of smooth atlases on \(M\).
     \end{itemize}
 \end{definition}
+
+\begin{remark}
+    An alternative, equivalent definition would take a maximal atlas instead of an equivalence class of atlases.
+\end{remark}
+
+We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be smooth and what it means for charts to be smoothly compatible. We can now extend the definition of smoothness to maps between manifolds.
 
 \begin{definition}[Smoothness of maps]
     A map \(f:(M^m,\mathcal{A})\to (N^n,\mathcal{B})\) between two smooth manifolds is said to be \demph{smooth}, if for all \(p\in M\), there exists a chart \((U,\varphi)\in\mathcal{A}\) such that \(p\in U\) and \((V,\psi)\in\mathcal{B}\) such that
@@ -211,7 +228,9 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
     Let \(M\) be a manifold. Then there exists a neighbourhood \(U\) of \(\partial M\) with a diffeomorphism \(s:\partial M\times [0,1)\to U\) with \(s(\partial M\times\{0\})=\partial M\). \(U\) is called a \demph{collar} of \(\partial M\) in \(M\).
 \end{theorem}
 
-\begin{proof}\todo{See\ \cite[p.223]{lee} for a proof. Maybe I want Br\"ocker, tom Dieck here}
+\begin{proof}
+    omitted. A proof can be found in\ \cite[p.223]{lee}.
+    %\todo{See\ \cite[p.223]{lee} for a proof. Maybe I want Br\"ocker, tom Dieck here}
 \end{proof}
 
 \begin{observation}
@@ -252,6 +271,10 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 
 \todo{with a bit of measure theory, we can state this}
 
+\begin{definition}[\todo{Measure zero}]
+    A subset \(A\) of a topological space \(X\) is said to have \demph{measure zero}, if for every \(\varepsilon>0\), there exists a countable collection of open sets \(\{U_i\}_{i\in\mathbb{N}}\) such that \(A\subseteq \bigcup_{i\in\mathbb{N}}U_i\) and \(\sum_{i=1}^\infty \mathrm{vol}(U_i)<\varepsilon\), where \(\mathrm{vol}\) is the volume measure on \(X\).
+\end{definition}
+
 \begin{theorem}[Sard's theorem\ {\cite[Theorem 6.10]{lee}}]\label{sard}
     For a smooth map \(f:M\to N\) between two manifolds, the set of critical values of \(f\) has measure zero in \(N\).
 \end{theorem}
@@ -260,10 +283,20 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
     See\ \cite{lee} for a proof.
 \end{proof}
 
+\begin{remark}
+    We will not need that the set of critical values has measure zero, but we will use that the set of regular values is dense in \(N\), which follows from Sard's theorem.
+\end{remark}
+
 \begin{definition}[Connected sum {\cite[Example 9.31]{lee}}]
-    For two connected manifolds \(M^n,N^n\), choose smooth embeddings \(D^n\xhookrightarrow{i}\mathrm{int}(M)\), \(D^n\xhookrightarrow{j}\mathrm{int}(N)\). Then the connected sum of \(M\) and \(N\) is defined as \todo{could be done as pushout}
-    \[M\#N:=((M\setminus i(\overset{\circ}{D^n}))\dis(N\setminus j(\overset{\circ}{D^n})))\big/(i(x)\sim j(x))\]
-    for all \(x\in\partial D^n\).
+    For two connected manifolds \(M^n,N^n\), choose smooth embeddings \(D^n\xhookrightarrow{i}\mathrm{int}(M)\), \(D^n\xhookrightarrow{j}\mathrm{int}(N)\). Then the connected sum of \(M\) and \(N\) is defined as the pushout %\todo{could be done as pushout}
+    %\[M\#N:=((M\setminus i(\overset{\circ}{D^n}))\dis(N\setminus j(\overset{\circ}{D^n})))\big/(i(x)\sim j(x))\]
+    %for all \(x\in\partial D^n\).
+    \begin{center}
+        \begin{tikzcd}
+            \partial D^n \arrow[d, "j\restrict{\partial D^n}"] \arrow[r, "i\restrict{\partial D^n}"] \arrow[dr, phantom, "\ulcorner", near end] & M\setminus i(\overset{\circ}{D^n}) \arrow[d, " "] \\
+            N\setminus j(\overset{\circ}{D^n}) \arrow[r, " "] & M\#N
+        \end{tikzcd}
+    \end{center}
     \begin{center}
         \includegraphics[width=0.6\textwidth]{connectedsum.jpg}
     \end{center}
@@ -280,7 +313,7 @@ The problem with homotopy groups is that they are, in general, hard to compute, 
 
 %\section{Bordism}
 
-One of the problems with working with manifolds is that they are, in higher dimensions, hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is \todo{easier to work with}. \todo{maybe in introduction}
+%One of the problems with working with manifolds is that they are, in higher dimensions, hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is \todo{easier to work with}. \todo{maybe in introduction}
 
 \subsection{Unoriented Bordism}
 \subsubsection{Definitions}
@@ -1267,11 +1300,11 @@ Cobordism is defined in a less intuitive way than bordism, we will define them o
     Additionally, for every point \(b\in B\), there has to be an open neighbourhood \(U\) and a homeomorphism \(\varphi:U\times\mathbb{R}^k\to\pi^{-1}(U)\), which is a local trivialization for some \(k\).\ \(k\) is called the dimension of the vector bundle.
 \end{definition}
 
-\todo{I might adjust this to be more like\ \cite{thom}'s definition.}
-\begin{definition}[Thom space\cite{brocker}, {\cite[p.29]{thom}}, {\cite[p.201]{atiyah}}]
-    Let \(\xi:E\to B\) be a real \(k\)-dimensional vector bundle over a compact manifold \(B\).
-    Then the Thom space of \(\xi\) is defined as\[M(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.\\
-    Alternatively (without compact assumption):\\
+%\todo{I might adjust this to be more like\ \cite{thom}'s definition.}
+\begin{definition}[Thom space {\cite[p.29]{thom}}]%\cite{brocker}, {\cite[p.29]{thom}}, {\cite[p.201]{atiyah}}]
+%    Let \(\xi:E\to B\) be a real \(k\)-dimensional vector bundle over a compact manifold \(B\).
+%    Then the Thom space of \(\xi\) is defined as\[M(\xi)=E^c\] the one-point compactification of the total space of \(\xi\), the added point serving as the base point.\\
+%    Alternatively (without compact assumption):\\
     Let \(\xi:E\to B\) be a real vector bundle with Riemannian metric over a manifold \(B\). Its \demph{disk bundle} is defined by \(D(\xi):DE\to X\), \(DE=\{v\in E\mid \lVert v\rVert \leq 1\}\) and similarly, the \demph{sphere bundle} is defined by \(S(\xi):SE\to X\), \(SE=\{v\in E\mid \lVert v\rVert = 1\}\). Then the Thom space of \(\xi\) is defined as
     \[M(\xi)=D(\xi)\big/S(\xi)\]
     where the sphere bundle is collapsed to a point. We can also get the Thom space without a choice of a Riemannian metric, but I will omit this here.\\
@@ -1384,8 +1417,8 @@ To get a the axioms for cohomology theories, intuitively, we \enquote{reverse al
 
 Again, if only the dimension axiom doesn't not hold, we have a \demph{extraordinary cohomology theory}.
 
-\subsubsection{\todo{Bordism Cohomology}}\label{cohomology}
-\todo{maybe I can manage to do this if I do it only for CW-complexes}
+\subsubsection{Bordism Cohomology}\label{cohomology}
+%\todo{maybe I can manage to do this if I do it only for CW-complexes}
 To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one. For this section, we will fix a spectrum \(\underline{E}\), and \(\h^\ast\) will be the associated functor, as defined in theorem\ \ref{spectrum cohomology}.
 
 \begin{theorem}[{\cite[Th\'eor\`eme II.7]{thom}}]
@@ -1518,8 +1551,8 @@ To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one
     \[\h^n(X\dis Y;\underline{E})=\tilde{\h}^n((X\dis Y)_+;\underline{E})\cong\tilde{\h}^n(X_+\vee Y_+;\underline{E})\]\[\cong\tilde{\h}^n(X_+;\underline{E})\times\tilde{\h}^n(Y_+,\underline{E})=\h^n(X;\underline{E})\times\h^n(Y;\underline{E}).\]
 \end{proof}
 
-\begin{remark}[Dimension axiom]
-    The dimension axiom does not hold, in particular, we have \(\N^{-1}\cong\F_2\), generated by \(S^1\), and \(\Omega^{-4}\cong\Z\), generated by \(\mathbb{CP}^2\).
+\begin{remark}[Dimension axiom]\cite{thom}
+    The dimension axiom does not hold, in particular, we have \(\N^{-2}\cong\F_2\), generated by \(\mathbb{RP}^2\), and \(\Omega^{-4}\cong\Z\), generated by \(\mathbb{CP}^2\).
 \end{remark}
 
 %\begin{proof}[Proof of theorem\ \ref{spectrum cohomology}]
@@ -1537,7 +1570,7 @@ Conclude:
 \subsection{Duality to Bordism Homology}
 
 We still need to satisfy the name \enquote{cobordism} and \enquote{bordism cohomology}. It is not at all clear that the cohomology theory we defined above is the dual to the bordism homology theory.
-%We will show that this is indeed the case, and that it is a consequence of Brown's representation theorem\ \cite[Theorem 9.27]{switzer}.
+%We will show that this is indeed the case, and that it is a consequence of Brown's representation theorem\ \cite[Theorem 9.27]{switzer}. theoreme IV.8 in thom vllt
 
 \begin{theorem}[Brown's representation theorem {\cite[Theorem 9.27]{switzer}}]%{\cite[\s 4 Theorem II]{brown}}]
     Let \(\mathcal{H}^\ast\) be a extraordinary cohomology theory with values in \(\Z\)-modules satisfying the disjoint union axiom defined on CW-pairs. Then there exists a spectrum \(\underline E\) and a natural equivalence of cohomology theories
@@ -1558,17 +1591,25 @@ But the theorem we really need is dual to theorem\ \ref{spectrum cohomology}:
     This is well-defined, as \(X\land\underline{E}\) again defines a spectrum.
 \end{remark}
 
-Now, we get the duality between bordism and cobordism by the fact that they are both defined by the same spectra, namely \(\mathbf{MO}\) (unoriented) resp. \(\mathbf{MSO}\) (oriented).
+Now, we get the duality between bordism and cobordism by the fact that they are both defined by the same spectra, namely \(\mathbf{MO}\) (unoriented) resp.\ \(\mathbf{MSO}\) (oriented).
 
-\begin{theorem}
+\begin{theorem}[{\cite[\nopp III]{brocker}}]
     There are natural equivalences of homology theories
     \[\N_\ast(--)\xrightarrow{\cong}\h_\ast(--;\mathbf{MO})\]
     \[\Omega_\ast(--)\xrightarrow{\cong}\h_\ast(--;\mathbf{MSO})\]
 \end{theorem}
 
 \begin{proof}
-    omitted here, see\ \cite{thom} for the proof.
+    omitted.
 \end{proof}
+
+Thus, we can view the bordism groups as stable homotopy groups:
+\begin{corollary}[{\cite[Th\'eor\`eme IV.8]{thom}}]
+    The absolute bordism groups \(\N_k\) and \(\Omega_k\) are isomorphic to the stable homotopy groups of the respective Thom spectra:
+    \[\N_k\cong\lim_{n\to\infty}\pi_{n+k}(MO)\]
+    \[\Omega_k\cong\lim_{n\to\infty}\pi_{n+k}(MSO)\]
+\end{corollary}
+
 
 %\subsubsection{Calculations}
 
