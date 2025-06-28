@@ -1263,7 +1263,7 @@ Cobordism is defined in a less intuitive way than bordism, we will define them o
 
 \begin{definition}[Vector bundle]
     A (real) \demph{vector bundle} is the triple \((\pi,E,B)\) such that \(\pi:E\to B\) is a continuous map between topological spaces and every fibre \(E_n:=\pi^{-1}(b)\) carries the structure of a finite dimensional vector space.
-    Additionally, for every point \(b\in B\), there has to be an open neighbourhood \(U\) and a homeomorphism \(\varphi:U\times\mathbb{R}^n\to\pi^{-1}(U)\), which is a local trivialization for some \(k\). \(k\) is called the dimension of the vector bundle.
+    Additionally, for every point \(b\in B\), there has to be an open neighbourhood \(U\) and a homeomorphism \(\varphi:U\times\mathbb{R}^k\to\pi^{-1}(U)\), which is a local trivialization for some \(k\).\ \(k\) is called the dimension of the vector bundle.
 \end{definition}
 
 \todo{I might adjust this to be more like\ \cite{thom}'s definition.}
@@ -1379,7 +1379,7 @@ To get a the axioms for cohomology theories, intuitively, we \enquote{reverse al
     \end{itemize}
 \end{definition}
 
-Again, if only the dimension axiom and the disjoint union axiom do not hold, we have a \demph{extraordinary cohomology theory}.
+Again, if only the dimension axiom doesn't not hold, we have a \demph{extraordinary cohomology theory}.
 
 \subsubsection{\todo{Bordism Cohomology}}\label{cohomology}
 \todo{maybe I can manage to do this if I do it only for CW-complexes}
@@ -1392,9 +1392,16 @@ To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one
 \end{theorem}
 
 \begin{corollary}[{\cite[p.201]{atiyah}}]
-    For \(X\) a finite CW-complex, we have
-    \[\]
+    For \(X\) a pointed finite CW-complex, \(n\) large enough, we have bijections
+    \[[X,\sus MO(n)]\to[X,MO(n+1)]\]
+    \[[X,\sus MSO(n)]\to[X,MSO(n+1)]\]
 \end{corollary}
+
+\begin{theorem}[Freudenthal suspension theorem {\cite[p.201]{atiyah}}]\label{freudenthal}
+    Let \(X,Y\) a pointed CW-complexes. Then for large enough \(n\), the suspension map
+    \[[\sus^n X,\sus^n Y]\to[\sus^{n+1} X,\sus^{n+1}Y]\]
+    is an isomorphism.
+\end{theorem}
 
 \begin{lemma}[Functoriality]\label{cofunctoriality}
     \(\h^\ast\) defines a contravariant functor
@@ -1408,36 +1415,69 @@ To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one
 \begin{proof}
     Let \((X,A)\in\mathrm{Ob}(\mathrm{TOP}^2)\). Then \(\h^\ast(X,A)=\lim_{n\to\infty}[\sus^{n-k}(X\big/A),E_n]\) is an abelian group, as for every \(n,k\), \([\sus^{n-k}(X\big/A),E_n]\) is an abelian group and the limit of a sequence of abelian groups is an abelian group.\\
     Now, for a map \(f\in\mathrm{Mor}(\mathrm{TOP}^2)\), \(f:(X,A)\to(Y,B)\), we get a map
-    \[f_\ast:=\h^\ast(f):\lim_{n\to\infty}[\sus^{n-k}(Y\big/B),E_n]\to\lim_{n\to\infty}[\sus^{n-k}(X\big/A,E_n)]\]
+    \[f^\ast:=\h^\ast(f):\lim_{n\to\infty}[\sus^{n-k}(Y\big/B),E_n]\to\lim_{n\to\infty}[\sus^{n-k}(X\big/A,E_n)]\]
     by
-    \[x\mapsto x\circ \lim_{n\to\infty}f_n\]
-    where \[f_n:\sus^{n-k}(X\big/A)\to\sus^{n-k}(Y\big/A)\]
-    is the map such that the following diagram commutes:
-    \begin{center}
-        \begin{tikzcd}
-            {(X,A)} \arrow[r, "f"] \arrow[d, "\sus^{n-k}\circ q"'] & {(Y,B)}  \arrow[d, "\sus^{n-k}\circ q"] \\
-            {\sus^{n-k}(X\big/A)} \arrow[r, "f_n"]  & {\sus^{n-k}(Y\big/B)}
-        \end{tikzcd}
-    \end{center}
-    where \(q:(X,A)\to X\big/A\) is the quotient map.\\
-    Then we have that \(\h^\ast(\id_{(X,A)})=\id_{\h^\ast(X,A)}\), as all \(f_n=\id\) for every \(n\).\\
-    For \(f:(X,A)\to(Y,B)\), \(g:(Y,B)\to(Z,C)\), we have, for \(x\in\h^\ast(Z,C)\)
-    \[(g\circ f)^\ast(x)=x\circ\lim_{n\to\infty}(g\circ f)_n=x\circ\lim_{n\to\infty}(g_n\circ f_n)\]\[=x\circ\lim_{n\to\infty}g_n\circ\lim_{n\to\infty}f_n=g^\ast(x)\circ\lim_{n\to\infty}f_n=f^\ast(g^\ast(x))\]
+    \[f^\ast [x]= [x\circ\sus^{n-k}(\tilde{f})]\]
+    for \([x]\in[\sus^{n-k}(Y\big/B),E_n]\). Here, \(\tilde{f}:X\big/A\to Y\big/B\) is the induced map on the quotients.
+    Taking the colimit, we get the desired map.
+    %where \[f_n:\sus^{n-k}(X\big/A)\to\sus^{n-k}(Y\big/A)\]
+    %is the map such that the following diagram commutes:
+    %\begin{center}
+    %    \begin{tikzcd}
+    %        {(X,A)} \arrow[r, "f"] \arrow[d, "\sus^{n-k}\circ q"'] & {(Y,B)}  \arrow[d, "\sus^{n-k}\circ q"] \\
+    %        {\sus^{n-k}(X\big/A)} \arrow[r, "f_n"]  & {\sus^{n-k}(Y\big/B)}
+    %    \end{tikzcd}
+    %\end{center}
+    %where \(q:(X,A)\to X\big/A\) is the quotient map.\\
+    %\begin{center}
+    %    \begin{tikzcd}
+    %        \begin{tikzcd}
+    %        {(X,A)} \arrow[r, "f"] \arrow[d, "\sus^{n-k}\circ q"'] & {(Y,B)}  \arrow[d, "\sus^{n-k}\circ q"] \\
+    %        {\sus^{n-k}(X\big/A)} \arrow[r, "\sus^{n-k}f"]  & {\sus^{n-k}(Y\big/B)}\\
+    %        [X\big/A,\underline{E}]
+    %    \end{tikzcd}
+    %\end{center}
+    Then we have that \(\h^\ast(\id_{(X,A)})=\id_{\h^\ast(X,A)}\), as all \(\sus^{n-k}(\tilde{f})=\id\) for every \(n\).\\
+    For \(f:(X,A)\to(Y,B)\), \(g:(Y,B)\to(Z,C)\), we have, for \([x]\in[\sus^{n-k}(Y\big/B),E_n]\)
+    \[{(g\circ f)}^\ast([x])=[x\circ\sus^{n-k}(\widetilde{g\circ f})]=[x\circ\sus^{n-k}(\tilde{g})\circ \sus^{n-k}(\tilde{f})]=%\]
+    %\[=x\circ\lim_{n\to\infty}g_n\circ\lim_{n\to\infty}f_n=g^\ast(x)\circ\lim_{n\to\infty}f_n=
+    f^\ast(g^\ast([x]))\].
     %Thus, \((g\circ f)^\ast=f^\ast\circ g^\ast\), so \(\h^\ast\) is contravariant.
+    Since the equality holds for every \(n\), it holds for the limit, so we have
+    \({(g\circ f)}^\ast=f^\ast\circ g^\ast\).
 \end{proof}
 
 \begin{lemma}[Naturality]
     The boundary operator
     \[\partial^\ast:\h^{\ast-1}(A)\to\h^\ast(X,A)\]
-    is given by \todo{?the suspension homomorphism?}
+    is natural.
 \end{lemma}
 
-\begin{observation}
-    The homotopy invariance axiom is satisfied by the definition of the cohomology groups as set of homotopy classes of maps.
-\end{observation}
+\begin{remark}
+    Let \([x]\in[\sus^{n-k+1}(A\big/\emptyset),E_n]\) for \(n\) large enough. This \(x\) induces a map \(\sus x:\sus^{n-k+2}(A\big/\emptyset)\to\sus E_n\). We can extend this map to a map \(y:\sus^{n-k+2}(X\big/\emptyset)\to\sus E_n\) via the inclusion \(i:A\big/\emptyset\hookrightarrow X\big/\emptyset\) such that \(y\) sends the complement of \(A\big/\emptyset\) to the basepoint of \(\sus E_n\). 
+    Now we collapse \(\sus^{n+k+2}A\big/\emptyset\subset\sus^{n+k+2}X\big/\emptyset\) and get a map \(\tilde y\) from \(\sus^{n+k+2}X\big/A\).
+    By suspending twice afterwards, we get a map
+    \[\tilde y\circ\sus^2:\sus^{n-k+2}X\big/A\to \sus^2 E_n\]
+    Thus, \([\tilde y\circ\sus^2]\in[\sus^{n-k+2}X\big/A,\sus^2 E_n]\cong[\sus^{n-k}X\big/A,E_n]\) by theorem\ \ref{freudenthal}.\\
+    We define the boundary map as \(\partial([x])=\tilde y\).
+\end{remark}
 
-\begin{lemma}[Long exact sequence]
-    
+\begin{proof}
+    omitted.
+\end{proof}
+
+\begin{lemma}
+    The homotopy invariance axiom is satisfied.
+\end{lemma}
+
+\begin{proof}
+    This is immediate by the definition of the cohomology groups as sets of homotopy classes of maps.
+\end{proof}
+
+\begin{lemma}[Long exact sequence {\cite[Proposition \(1\cdot 1\)]{atiyah}}]
+    For a finite CW-complex \(X\), and subcomplexes \(Z\subset Y\subset X\), we have the long exact sequences
+    \[\cdots\to\N^n(X,Y)\to\N^n(X,Z)\to\N^n(Y,Z)\to\N^{n+1}(X,Y)\to\cdots\]
+    \[\cdots\to\Omega^n(X,Y)\to\Omega^n(X,Z)\to\Omega^n(Y,Z)\to\Omega^{n+1}(X,Y)\to\cdots\]
 \end{lemma}
 
 \begin{lemma}[Excision]
@@ -1459,6 +1499,11 @@ Conclude:
 \end{theorem}
 
 \subsection{Duality to Bordism Homology}
+
+\begin{theorem}[Brown's representation theorem {\cite[Theorem 9.27]{switzer}}]%{\cite[\s 4 Theorem II]{brown}}]
+    Let \(\mathcal{H}^\ast\) be a extraordinary cohomology theory with values in \(\Z\)-modules satisfying the disjoint union axiom on CW-complexes. Then there exists a spectrum \(\underline E\) and a natural equivalence of cohomology theories
+    \[\h(--,\underline{E})\to\mathcal{H}^\ast\]
+\end{theorem}
 
 %\subsubsection{Calculations}
 
