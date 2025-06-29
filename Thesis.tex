@@ -211,6 +211,11 @@ We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be 
     If \(M\) is compact and has empty boundary, \(M\) is called a \demph{closed manifold}. %If a manifold is compact and has non-empty boundary, it is called a \demph{compact manifold with boundary}. If a manifold is not compact, it is called an \demph{open manifold}
 \end{definition}
 
+\begin{observation}
+    \[\partial M\cup\mathrm{int}(M)=M\]
+    \[\partial M\cap \mathrm{int}(M)=\emptyset\]
+\end{observation}
+
 \begin{example}
     \(([0,1],[([0,1],i)])\), where \(i\) is the inclusion into \(\mathbb{R}\), is a 1-manifold. Its boundary is \(\partial [0,1]=\{0,1\}\).
 \end{example}
@@ -223,8 +228,8 @@ We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be 
     The \(n\)-disk \(D^n\) is a manifold with boundary \(S^{n-1}\)
 \end{example}
 
-\begin{theorem}[Boundaries are submanifolds]\label{boundary manifold}
-    The boundary of an \(n\)-manifold is a closed \((n-1)\)-dimensional (embedded) submanifold.
+\begin{theorem}[Boundaries are submanifolds {\cite[Theorem 5.12]{lee}}]\label{boundary manifold}
+    The boundary of an \(n\)-manifold is a \((n-1)\)-dimensional (embedded) submanifold without boundary.
 \end{theorem}
 
 \begin{proof}
@@ -233,12 +238,12 @@ We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be 
     %\unsure{Need: \(\varphi(U\cap\partial M)\) is open and \(\varphi(x)\notin\partial\H^n\) for \(x\) interior point}
 \end{proof}
 
-\begin{theorem}[Collar theorem \ {\cite[I, Satz 1.5]{brocker}}]\label{collar}
+\begin{theorem}[Collar theorem\ {\cite[I, Satz 1.5]{brocker}},\ {\cite[Theorem 9.25]{lee}}]\label{collar}
     Let \(M\) be a manifold. Then there exists a neighbourhood \(U\) of \(\partial M\) with a diffeomorphism \(s:\partial M\times [0,1)\to U\) with \(s(\partial M\times\{0\})=\partial M\). \(U\) is called a \demph{collar} of \(\partial M\) in \(M\).
 \end{theorem}
 
 \begin{proof}
-    omitted. A proof can be found in\ \cite[p.223]{lee}.
+    omitted. A proof can be found in\ \cite{lee}.
     %\todo{See\ \cite[p.223]{lee} for a proof. Maybe I want Br\"ocker, tom Dieck here}
 \end{proof}
 
@@ -290,7 +295,8 @@ We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be 
     \[\R^n\supset C_i=(a_1^i-\varepsilon_1^i,a_1^i+\varepsilon_1^i)\times\cdots\times(a_n^i-\varepsilon_n^i,a_n^i+\varepsilon_n^i)\]
     where \((a_1^i,\dots,a_n^i)\in\R^n\) and \((\varepsilon+1^i,\dots,\varepsilon_n^i)\in\R^n_{>0}\) such that
     \[S\subset\bigcup_{i=1}^\infty C_i\]
-    \[\sum_{i=1}^\infty vol(C_i)<\varepsilon.\]
+    \[\sum_{i=1}^\infty vol(C_i)<\varepsilon,\]
+    where \(vol(C_i)=2^n\cdot\varepsilon_1^i\cdot\ldots\cdot\varepsilon_n^i\), the Lebesgue measure of \(C_i\).\\
     A subset \(S\) of a manifold \(M\) is said to have \demph{measure zero}, if for every chart \((U,\varphi)\) in its atlas, the set \(\varphi(S\cap U)\) has measure zero in \(\R^n\).
 \end{definition}
 
@@ -347,6 +353,10 @@ We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be 
     Let \((M,f)\) be a singular \(n\)-manifold in \(X\). We say that \((M,f)\) is \demph{nullbordant}, if there exists a singular (\(n+1\))-manifold \((B,F)\) in \(X\), such that \(\partial(B,F)=(M,f)\).\\
     \(B,F\) is then called a \demph{nullbordism} of \((M,f)\).
 \end{definition}
+
+\begin{remark}
+    If \(M\) has non-empty boundary, \((M,f)\) can never be nullbordant, as the boundary of a compact manifold is always closed via theorem\ \ref{boundary manifold}.
+\end{remark}
 
 In the following, we will sometimes omit \(f\) from the notation, if it is clear, what \(f\) is, e.g.\ if \(X=\pt\) or \(M=\emptyset\)
 
@@ -543,7 +553,7 @@ This notion only makes sense if we have an neutral element, so we can speak of a
 \end{remark}
 
 \subsubsection{The Eilenberg-Steenrod Axioms}\label{es axioms}\label{Kap ES}
-The Eilenberg-Steenrod axioms are a set of axioms that characterize homology and cohomology theories.
+The Eilenberg-Steenrod axioms are a set of axioms that characterize homology and cohomology theories. It will be checked later that the bordism groups satisfy these axioms.
 
 \begin{definition}[Homology theory\ {\cite[\nopp I.3]{eilenberg}}, {\cite[Definition 1.1.]{luck}}]\label{homtheo}
     An \demph{ordinary homology theory} \(\mathcal{H}_\ast=(\mathcal{H}_\ast,\partial_\ast)\) with coefficients in \(R\)-modules is a covariant functor\[\mathcal{H}_\ast:\mathrm{TOP}^2\to\mathbb{Z}\text{-graded }R\text{-modules}\]
@@ -567,7 +577,6 @@ The Eilenberg-Steenrod axioms are a set of axioms that characterize homology and
         For the point space \(\mathrm{pt}\), we have
         \[\mathcal{H}_n(\mathrm{pt})\cong\begin{cases}R&n=0\\\{0\}&n\neq0\end{cases}\]
     \end{itemize}
-\end{definition}
 
 The following axiom is often considered part of the Eilenberg-Steenrod axioms, although it was formulated by Milnor 10 years later
 
@@ -576,6 +585,7 @@ The following axiom is often considered part of the Eilenberg-Steenrod axioms, a
         Let \({\{X_i\}}_{i\in I}\) be a family of topological spaces. Let \(j_i:X_i\to\coprod_{i\in I}X_i\) be the inclusion. Then for all \(n\in\mathbb{Z}\), we have a bijection:
         \[\bigoplus_{i\in I}\mathcal{H}_n(j_i):\bigoplus_{i\in I}\mathcal{H}_n(X_i)\xrightarrow{\cong}\mathcal{H}_n\left(\coprod_{i\in I}X_i\right)\]
 \end{itemize}
+\end{definition}
 
 The motivation behind the disjoint union axiom is the following uniqueness theorem.
 
@@ -594,8 +604,8 @@ A proof can be found in\ \cite{milnor}, but we will not need this here.
 
 As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will extend the definition of bordism to pairs of topological spaces.
 
-\begin{definition}[relative bordism\ {\cite[pp.524-525]{dieck}}]
-    For a pair of topological spaces \((X,A)\), we call \((M,f)=(M,\partial M,f)\) a \demph{singular manifold in }\((X,A)\), if \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
+\begin{definition}[Relative bordism\ {\cite[pp.524-525]{dieck}}]
+    For a pair of topological spaces \((X,A)\), we call \((M,f)=(M,\partial M,f)\) a \demph{singular manifold in }\((X,A)\) if \((M,f)\) is a singular manifold in \(X\) and \(f:(M,\partial M)\to (X,A)\) is a continuous map of pairs.\\
     Two \(n\)-dimensional singular manifolds \((M_0,f_0)\) and \((M_1,f_1)\) in \((X,A)\) are called \demph{bordant}, if there exists an (\(n+1\))-dimensional singular manifold \((B,F)\) in \(X\), such that:
     \begin{itemize}
         %\item \((B,F)\) is a (\(n+1\))-dimensional compact manifold with boundary,
@@ -648,7 +658,7 @@ As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will ex
 \end{proof}
 
 Relative bordism groups are also defined to be the set of relative bordism classes, analogously to absolute bordism groups, but as manifolds with boundary are also allowed now, we have
-\[\N_n(X,A)=\{\text{\textit{compact} singular $n$-manifolds in $(X,A)$}\}\big/\text{relative bordism}.\]
+\[\N_n(X,A)=\{\text{singular $n$-manifolds in $(X,A)$}\}\big/\text{relative bordism}.\]
 These also are abelian by the same proof (theorem\ \ref{group structure}). The product map is defined as \[\cdot:\N_p(X,A)\times\N_q(Y,B)\to\N_{p+q}(X\times Y, (A\times Y)\cup(X\times B))\]
 on elements, it does the same as before. A product of manifolds is again a smoothable manifold by straightening the angle as in the remark after example\ \ref{pokeball}. Again, we get a graded module structure
 \[\N_\ast(X,A):= \bigoplus_{n\in\Z}\N_n(X,A)\]
@@ -674,7 +684,9 @@ over \(\N_\ast\), the relative bordism module.
 
 \subsubsection{Bordism Homology}\label{Kap Bordism Homology}
 
-\begin{lemma}\cite[II, Satz 3.2]{brocker}\label{functoriality}
+We will now check the Eilenberg-Steenrod axioms for the relative bordism groups one by one.
+
+\begin{lemma}[Functoriality\ {\cite[II, Satz 3.2]{brocker}}]\label{functoriality}
     Relative bordism is a covariant functor \[\mathfrak{N}_\ast:\mathrm{TOP}^2\to\text{graded \(\mathfrak{N}_\ast\)modules}\]
 \end{lemma}
 
@@ -793,7 +805,7 @@ I will not prove this theorem, a proof can be found in\ \cite{lee}.
 
 \end{comment}
 
-Only the excision axiom is left to check. To see the excision property, we need some preliminary lemmas.
+Before we can check the excision axiom, we need to do some more differential topology.
 
 \begin{lemma}[{\cite[Chapter I, 3.1]{conner}}]\label{plemma}%{\cite[Lemma 5.6]{zhang}}
     Let \(M^n\) be a compact manifold, let \(K,L\subseteq M\) closed, such that \(K\cap L=\emptyset\). Then there exists a closed \(n\)-dimensional submanifold \(N\subset M\) with boundary \(\partial N\) such that \(K\subseteq N\) and \(L\cap N=\emptyset\).
@@ -1026,7 +1038,7 @@ We will now define additional  structure on manifolds.
 %    One could remark here, that I have not defined what it means for a pointwise orientation to be continuous. See\ \cite{lee} for more detail.
 %\end{remark}
 
-\begin{definition}[Oriented manifold\ {\cite[VIII.8]{tomdieck}}]\label{oriented manifold}%{\cite[p.380]{lee}}]\
+\begin{definition}[Oriented manifold\ {\cite[\nopp VIII.8]{tomdieck}}]\label{oriented manifold}%{\cite[p.380]{lee}}]\
     An \demph{oriented manifold} is the pair \((M,[\mathcal{O}])\), of an orientable manifold \(M\) and a choice of an equivalence class of orientating atlases \([\mathcal{O}]\) of \(M\). 
     Two orienting atlases are equivalent, if, analogous to definition\ \ref{equivalence atlas}, their union is again an orienting atlas. 
     The choice of \([\mathcal{O}]\) is called an \demph{orientation} on \(M\).
@@ -1117,7 +1129,7 @@ Up until now, everything seems to work out the same as in the unoriented case, b
 \end{theorem}
 
 \begin{proof}
-    See proof of theorem\ \ref{group structure}. The only thing that changes is the inverse element. Note that the elements are not self-inverse anymore, as \((M,f)\) and \((M,f)\) being bordant only gives us that \((M,f)+(M^-,f)\) is nullbordant, and in general, \(M\todo{\neq} M^-\). So the inverse for \([M,f]\) exists, but is \([M^-,f]\) rather than \([M,f]\).
+    See proof of theorem\ \ref{group structure}. The only thing that changes is the inverse element. Note that the elements are not self-inverse anymore, as \((M,f)\) and \((M,f)\) being bordant only gives us that \((M,f)+(M^-,f)\) is nullbordant, and in general, \(M\neq M^-\) in the sense of that there does not exist a orientation preserving diffeomorphism between them. So the inverse for \([M,f]\) exists, but is \([M^-,f]\) rather than \([M,f]\).
     %For this proof, the only thing we need to change is for the existence of the inverse. We have seen in an example (to be added) that the elements are not self-inverse anymore. The inverse of \([M,f]\) is now given by \([-M,f]\). We have seen in the proof of\ \ref{oriented eq. rel} that \([M,f]+[-M,f]=0\).
 \end{proof}
 
@@ -1129,11 +1141,12 @@ The graded ring \(\Omega_\ast\) and the graded module \(\Omega_\ast(X)\) are def
 
 \subsubsection{Relative Oriented Bordism}
 
-The path from absolute oriented bordism to relative oriented bordism is exactly the same as in the unoriented case. We just always need to remember that we reverse the orientations for the second singular oriented manifold. Relative oriented bordism extends the equivalence relation to not necessarily closed singular oriented manifolds.
+The path from absolute oriented bordism to relative oriented bordism is exactly the same as in the unoriented case. We just always need to remember that we reverse the orientations for the second singular oriented manifold. Relative oriented bordism extends the equivalence relation singular oriented manifolds with not necessarity empty boundary.
 
 Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a more complicated homology theory now.
 
 \subsubsection{Oriented Bordism Homology}\label{Kap Oriented Bordism Homology}
+We will check the Eilenberg-Steenrod axioms for the relative oriented bordism groups \(\Omega_n(X,A)\), but as most of the proofs are the same as in the unoriented case, we will only sketch the proofs and state what changes.
 
 \begin{lemma}
     Relative oriented bordism is a covariant functor
@@ -1155,7 +1168,7 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 \end{lemma}
 
 \begin{proof}
-    See proof of lemma\ \ref{naturality}
+    See proof of lemma\ \ref{naturality}.
 \end{proof}
 
 \begin{lemma}[Homotopy invariance\ {\cite[Lemma \(2\cdot1\)]{atiyah}}]
@@ -1175,7 +1188,7 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 \end{lemma}
 
 \begin{proof}\cite{conner}
-    The proof is exactly the same as in the unoriented case, up to one minor adjustment. For exactness at \(\Omega_n(X,A)\), we identify the boundaries of \((M,f)\) and \((B^-,F)\); \(B\) with the opposite orientation.
+    The proof is the same as in the unoriented case, up to one minor adjustment. For exactness at \(\Omega_n(X,A)\), we identify the boundaries of \((M,f)\) and \((B^-,F)\); \(B\) with the opposite orientation.
 \begin{comment}
     \begin{itemize}
         \item \textbf{Exactness at \(\Omega_n(A)\)}: \(i_\ast\circ\partial=0\), as \((M,f)\) is a nullbordism for \(i_\ast\circ\partial(M,f)=\partial(M,f)\)\\
@@ -1214,8 +1227,8 @@ Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a mor
 %\end{observation}
 
 \begin{remark}
-    The dimension axiom does not hold. Seeing this is harder than in the unoriented case, but for dimension 4 the signature map gives an isomorphism
-    \[\mathrm{sign}:\Omega_4\xrightarrow{\cong}\Z\]
+    The dimension axiom does not hold. Seeing this is harder than in the unoriented case, but for dimension 4 the signature map (see \cite[\nopp X.9]{tomdieck} for a definition) gives an isomorphism
+    \[\mathrm{sign}:\Omega_4\xrightarrow{\cong}\Z.\]
     This map is well-defined, because the signature is a bordism invariant in every dimension, but we will not show this here.
 \end{remark}
 
@@ -1362,7 +1375,7 @@ Cobordism is defined in a less intuitive way than bordism, we will define them o
     Let \(\gamma_n\) be a vector bundle. The trivial map \(\gamma_n\oplus\varepsilon\to\gamma_{n+1}\) induces a pointed map
     \[\sigma_n:\sus M(\gamma_n)\cong M(\gamma_n\oplus \varepsilon)\to M(\gamma_{n+1})\]
     where \(\varepsilon:B\times\R\to B\) denotes the trivial line bundle. The homeomorphism comes from \(M(\gamma\oplus\varepsilon)\cong M(\gamma)\land M(\varepsilon)\cong M(\gamma)\land S^1\cong \sus M(\gamma_n)\).\\
-    The (orthogonal) \demph{Thom spectra} \(\mathbf{MO}=(MO(n),e_n)\) and \(\mathbf{MSO}=(MSO(n),\widetilde{e_n})\) with the structure maps being the induced maps of the classifying maps of the universal real (oriented) vector bundles
+    The (orthogonal) \demph{Thom spectra} \(\mathbf{MO}=(MO(n),e_n)\) and \(\mathbf{MSO}=(MSO(n),\widetilde{e_n})\) with the structure maps being the induced maps of the classifying maps of the universal real (oriented) vector bundles.
 \end{example}
 
 %\todo{maybe above whitney sum - smash product identity}
@@ -1457,7 +1470,7 @@ Again, if only the dimension axiom doesn't not hold, we have a \demph{extraordin
 
 \subsubsection{Bordism Cohomology}\label{cohomology}\label{Kap Bordism Cohomology}
 %\todo{maybe I can manage to do this if I do it only for CW-complexes}
-To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one. For this section, we will fix a spectrum \(\underline{E}\), and \(\h^\ast\) will be the associated functor, as defined in theorem\ \ref{spectrum cohomology}.
+The goal of this section is to show that cobordism satisfies the Eilenberg-Steenrod axioms, thus giving us a cohomology theory. For some of the axioms, we will argue for the stronger version, as in theorem\ \ref{spectrum cohomology}. Some of the proofs will only be sketched, and some will be omitted.
 
 \begin{theorem}[{\cite[Th\'eor\`eme II.7]{thom}}]
     For \(n\) large enough, we have
@@ -1607,13 +1620,17 @@ We finally conclude:
 
 \subsection{Duality to Bordism Homology}\label{Kap Duality}
 
-We still need to satisfy the name \enquote{cobordism} and \enquote{bordism cohomology}. It is not at all clear that the cohomology theory we defined above is the dual to the bordism homology theory.
+We still need to satisfy the name \enquote{cobordism} and \enquote{bordism cohomology}. It is not at all clear that the cohomology theory we defined above is the dual to the bordism homology theory. This section is thought as an outlook, there will be no proofs here.
 %We will show that this is indeed the case, and that it is a consequence of Brown's representation theorem\ \cite[Theorem 9.27]{switzer}. theoreme IV.8 in thom vllt
 
-\begin{theorem}[Brown's representation theorem {\cite[Theorem 9.27]{switzer}}]%{\cite[\s 4 Theorem II]{brown}}]
+\begin{theorem}[Brown's representation theorem {\cite[Theorem 9.27]{switzer}}, {\cite{brown}}]%{\cite[\s 4 Theorem II]{brown}}]
     Let \(\mathcal{H}^\ast\) be a extraordinary cohomology theory with values in \(\Z\)-modules satisfying the disjoint union axiom defined on CW-pairs. Then there exists a spectrum \(\underline E\) and a natural equivalence of cohomology theories
     \[\h(--,\underline{E})\to\mathcal{H}^\ast\]
 \end{theorem}
+
+%\begin{proof}
+%    See\ \cite{switzer} or\ \cite{brown}.
+%\end{proof}
 
 \begin{remark}
     There is also a version of this theorem for homology theories, at least over finite CW-complexes.
@@ -1624,6 +1641,10 @@ But the theorem we really need is dual to theorem\ \ref{spectrum cohomology}:
     Let \(\underline{E}\) be a spectrum. Then the following is an extraordinary homology theory:
     \[\h_\ast(X,A;\underline{E}):=\h^{-\ast}(S^0;(X\big/A)\land \underline{E})\]
 \end{theodef}
+
+%\begin{proof}
+%    See\ \cite{brocker} for a proof.
+%\end{proof}
 
 \begin{remark}
     This is well-defined, as \(X\land\underline{E}\) again defines a spectrum for any pointed space \(X\).
@@ -1646,9 +1667,9 @@ Now, we get the duality between bordism and cobordism by the fact that they are 
     \[\Omega_\ast(--)\xrightarrow{\cong}\h_\ast(--;\mathbf{MSO})\]
 \end{theorem}
 
-\begin{proof}
-    omitted.
-\end{proof}
+%\begin{proof}
+%    See\ \cite{brocker} for a proof.
+%\end{proof}
 
 \noindent\textit{Outlook.} There also exists a stronger connection between the bordism and stable homotopy groups.
 \begin{theorem}[{\cite[Th\'eor\`eme IV.8]{thom}}]
@@ -1656,6 +1677,10 @@ Now, we get the duality between bordism and cobordism by the fact that they are 
     \[\N_k\cong\lim_{n\to\infty}\pi_{n+k}(MO(k))\]
     \[\Omega_k\cong\lim_{n\to\infty}\pi_{n+k}(MSO(k))\]
 \end{theorem}
+
+%\begin{proof}
+%    See\ \cite{thom} for a proof.
+%\end{proof}
 
 
 %\subsubsection{Calculations}
