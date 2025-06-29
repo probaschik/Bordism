@@ -25,7 +25,7 @@
 \addcontentsline{toc}{section}{Vorwort}
 \section*{Vorwort}\label{Vorwort}
 %\todo{Hier eine deutsche Zusammenfassung der Arbeit}
-Diese Bachelorarbei besch\"aftigt sich mit der Entwicklung der Bordismus-Homologie und -Kohomologie. Daf\"ur werden in Kapitel\ \ref{Kap Manifolds}zun\"achst die ben\"otigten Grundlagen der Differentialtopologie gelegt. 
+Diese Bachelorarbeit besch\"aftigt sich mit der Entwicklung der Bordismus-Homologie und -Kohomologie. Daf\"ur werden in Kapitel\ \ref{Kap Manifolds} zun\"achst die ben\"otigten Grundlagen der Differentialtopologie gelegt. 
 In Kapitel\ \ref{Kap unor. Bordism} wird dann die Bordismus-Relation f\"ur Mannigfaltigkeiten definiert. Dabei hei\ss en zwei Mannigfaltigkeiten bordant, wenn ihre disjunkte Vereinigung der Rand einer anderen Mannigfaltigkeit ist. Wir werden zeigen, dass dies eine \"Aquivalenzrelation ist und dass die Bordismus-Klassen eine Gruppe bilden.
 In Abschnitt\ \ref{Kap ES} werden Homologietheorien axiomatisch definiert und dann f\"ur die in Abschnitt\ \ref{Kap rel. Bordism} zu relativen Bordismus erweiterten Bordismus Klassen in Abschnitt\ \ref{Kap Bordism Homology} nachgepr\"uft.\\
 In Kapitel\ \ref{Kap Orientation} wird der Begriff der Orientierung auf glatten Mannigfaltigkeiten eingef\"uhrt, um in Kapitel\ \ref{Kap Oriented Bordism} eine orientierte Version der Bordismus-Relation zu definieren. Wieder werden in Abschnitt\ \ref{Kap Oriented Bordism Homology} die Axiome der Homologie-Theorie nachgepr\"uft.\\
@@ -36,10 +36,10 @@ Zuletzt wird in Kapitel\ \ref{Kap Duality} die Verbindung zwischen der Bordismus
 %\newpage
 
 \section{Motivation}\label{Motivation}
-Bordism theory starts with an equivalence relation on manifolds, where two manifolds are called bordant if their disjoint union is the boundary of a higher-dimensional manifold. First, this seems like a very abstract definition, but it turns out to be a very useful one for algebraic topology.\\
+Bordism theory starts with an equivalence relation on manifolds, where two manifolds are called bordant if their disjoint union is the boundary of a higher-dimensional manifold. At first glance, this seems like a very abstract definition, but it turns out to be a very useful one for algebraic topology.\\
 Obviously, this is a far weaker equivalence relation than diffeomorphism or homeomorphism, but while classifying manifolds up to diffeomorphism or homeomorphism is known to be difficult in higher dimensions, classifying manifolds up to bordism has been fully understood.\\
 Bordism theory is a powerful generalization of homotopy theory. Homotopy groups \(\pi_n(X)\) classify maps from spheres to a space \(X\), but are often difficult to compute, even for simple spaces.\\
-Bordism groups take a slightly different approach: Instead of spheres, one considers arbitrary compact manifolds and two maps are considered equivalent if there exists a bordism between the manifolds making the maps compatible. This makes computation a lot easier.\\
+Bordism groups take a slightly different approach: Instead of spheres, one considers arbitrary compact manifolds and two maps are considered equivalent if there exists a bordism between the manifolds making the maps compatible. This simplifies computations.\\
 Additionally, bordism gives rise to a extraordinary homology theory, which we will define and prove to be a homology theory in later chapters.
 %\includegraphics{galaxy.png}
 
@@ -54,7 +54,7 @@ Additionally, bordism gives rise to a extraordinary homology theory, which we wi
 
 \section{Bordism}\label{Kap Bordism}
 
-Before we can define bordism, we need some preliminary definitions. We will start with the recalling the definition of manifolds. We will also introduce some useful tools from differential topology.
+Before we can define bordism, we need some preliminary definitions. We will start by recalling the definition of manifolds. We will also introduce some useful tools from differential topology.
 
 \subsection{Manifolds}\label{Kap Manifolds}
 
@@ -382,7 +382,7 @@ In the following, we will sometimes omit \(f\) from the notation, if it is clear
 \end{observation}
 
 \begin{example}
-    \(X=S^1\), \(M=S^1\), and \(f\) is given by wrapping around the circle twice, a nullbordism is given by the M\"obius strip \(\mathbb{M}\) with \(F\) as projection onto the circle.\begin{center} \includegraphics[width=0.4\textwidth]{mobius.jpg} \end{center}
+    \(X=S^1\), \(M=S^1\), and \(f\) is given by wrapping around the circle twice, a nullbordism is given by the M\"obius strip, \(\mathbb{M}\) with \(F\) as projection onto the circle.\begin{center} \includegraphics[width=0.4\textwidth]{mobius.jpg} \end{center}
 \end{example}
 
 
@@ -908,13 +908,13 @@ Before we can check the excision axiom, we need to do some more differential top
 Now we can finally conclude:
 
 \begin{theorem}
-    Bordism defines a homology theory satisfying the disjoint union axiom.
+    Bordism defines a extraordinary homology theory satisfying the disjoint union axiom.
 \end{theorem}
 
 \begin{proof}
     This follows directly from the lemmas\ \ref{functoriality},\ \ref{htpy inv},\ \ref{les},\ \ref{excision} and\ \ref{disjoint union}.\\
     %The only axiom that does not hold is the dimension axiom.\\
-    As it is not an ordinary homology theory (i.e.\ the dimension axiom does not hold), we call bordism an \demph{extraordinary} or a \demph{generalized} homology theory.
+    %As it is not an ordinary homology theory (i.e.\ the dimension axiom does not hold), we call bordism an \demph{extraordinary} or a \demph{generalized} homology theory.
 \end{proof}
 
 

@@ -5,6 +5,7 @@
         "abelian",
         "Abgabe",
         "Arbeit",
+        "Bachelorarbeit",
         "basepoint",
         "bijective",
         "bilinearity",
@@ -19,6 +20,7 @@
         "compactification",
         "definedness",
         "Dieck",
+        "Diese",
         "diffeomorphic",
         "diffeomorphism",
         "diffeomorphisms",
@@ -67,6 +69,7 @@
         "Unoriented",
         "vari",
         "Verfassers",
-        "Verlag"
+        "Verlag",
+        "Vorwort"
     ]
 }
