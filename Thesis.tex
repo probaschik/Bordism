@@ -1,4 +1,4 @@
-\documentclass[a4paper,12pt]{article}
+\documentclass[a4paper,11pt]{article}
 \input{preamble.tex}
 
 \addbibresource{sources.bib}
@@ -23,31 +23,40 @@
 \setcounter{section}{-1}
 
 \addcontentsline{toc}{section}{Vorwort}
-\section*{Vorwort}
+\section*{Vorwort}\label{Vorwort}
 %\todo{Hier eine deutsche Zusammenfassung der Arbeit}
-Diese Bachelorarbei besch\"aftigt sich mit der Bordismus-Homologie und -Kohomologie. Daf\"ur werden zun\"achst die Grundlagen der Bodismen-Theorie gelegt. 
-Angefangen von Mannigfaltigkeiten, wird die Bordismus-Relation definiert, erst nur f\"ur nicht-orientierte Mannigfaltigkeiten, dann auch f\"ur orientierte Mannigfaltigkeiten.
-Anschlie\ss end wird die Bordismus-Homologie f\"ur den nicht-orientierten als auch den orientierten Fall definiert und es werden die Axiome der Homologie-Theorie gepr\"uft.
-Um in Kapitel\ \ref{cobordism} dann \"uber die Bordismus-Kohomologie zu sprechen, werden die Grundlagen der Spektren-Theorie gelegt. Dann wird auch die Bordismus-Kohomologie definiert und die Axiome der Kohomologie-Theorie gepr\"uft.
+Diese Bachelorarbei besch\"aftigt sich mit der Entwicklung der Bordismus-Homologie und -Kohomologie. Daf\"ur werden in Kapitel\ \ref{Kap Manifolds}zun\"achst die ben\"otigten Grundlagen der Differentialtopologie gelegt. 
+In Kapitel\ \ref{Kap unor. Bordism} wird dann die Bordismus-Relation f\"ur Mannigfaltigkeiten definiert. Dabei hei\ss en zwei Mannigfaltigkeiten bordant, wenn ihre disjunkte Vereinigung der Rand einer anderen Mannigfaltigkeit ist. Wir werden zeigen, dass dies eine \"Aquivalenzrelation ist und dass die Bordismus-Klassen eine Gruppe bilden.
+In Abschnitt\ \ref{Kap ES} werden Homologietheorien axiomatisch definiert und dann f\"ur die in Abschnitt\ \ref{Kap rel. Bordism} zu relativen Bordismus erweiterten Bordismus Klassen in Abschnitt\ \ref{Kap Bordism Homology} nachgepr\"uft.\\
+In Kapitel\ \ref{Kap Orientation} wird der Begriff der Orientierung auf glatten Mannigfaltigkeiten eingef\"uhrt, um in Kapitel\ \ref{Kap Oriented Bordism} eine orientierte Version der Bordismus-Relation zu definieren. Wieder werden in Abschnitt\ \ref{Kap Oriented Bordism Homology} die Axiome der Homologie-Theorie nachgepr\"uft.\\
+Im zweiten Teil der Arbeit geht es um die Bordismus-Kohomologie. Diese werden wir \"uber Spektren definieren. Dazu werden in Abschnitt\ \ref{Kap Spectra} die ben\"otigten Grundlagen der Spektrentheorie. Hier werden auch die (orthogonalen) Thom-Spektren definiert, deren assoziierte Kohomologietheorie die Bordismus-Kohomologie ist.
+Wie in Teil\ \ref{Kap Bordism} werden dann die Axiome der Kohomologietheorie in Abschnitt\ \ref{Kap Bordism Cohomology} f\"ur die Bordismus-Kohomologie \"uberpr\"uft.\\
+Zuletzt wird in Kapitel\ \ref{Kap Duality} die Verbindung zwischen der Bordismus-Homologie und -Kohomologie hergestellt.
 
+%\newpage
 
-\section{Motivation}
+\section{Motivation}\label{Motivation}
+Bordism theory starts with an equivalence relation on manifolds, where two manifolds are called bordant if their disjoint union is the boundary of a higher-dimensional manifold. First, this seems like a very abstract definition, but it turns out to be a very useful one for algebraic topology.\\
+Obviously, this is a far weaker equivalence relation than diffeomorphism or homeomorphism, but while classifying manifolds up to diffeomorphism or homeomorphism is known to be difficult in higher dimensions, classifying manifolds up to bordism has been fully understood.\\
+Bordism theory is a powerful generalization of homotopy theory. Homotopy groups \(\pi_n(X)\) classify maps from spheres to a space \(X\), but are often difficult to compute, even for simple spaces.\\
+Bordism groups take a slightly different approach: Instead of spheres, one considers arbitrary compact manifolds and two maps are considered equivalent if there exists a bordism between the manifolds making the maps compatible. This makes computation a lot easier.\\
+Additionally, bordism gives rise to a extraordinary homology theory, which we will define and prove to be a homology theory in later chapters.
 %\includegraphics{galaxy.png}
 
-Recall the definition of homotopy groups \(\pi_n(X)\) as the set of pointed homotopy classes of maps from the \(n\)-sphere \(S^n\) to a space \(X\). 
-A problem with homotopy groups is that they are, in general, hard to compute, even for simple spaces such as spheres.\\
-Bordism groups arise as a natural generalisation of homotopy groups, where we replace the \(n\)-sphere with any closed manifold of dimension \(n\) and consider the maps from this manifold to the space \(X\). The cylinder we use to define homotopy classes is replaced by a bordism, which is a manifold of dimension \(n+1\) with boundary the disjoint union of two copies of the manifold we are interested in. With this new equivalence relateion, we also avoid the problem of classifying manifolds up to diffeomorphism or homeomorphism, which is known to be hard in higher dimensions.
+%Recall the definition of homotopy groups \(\pi_n(X)\) as the set of pointed homotopy classes of maps from the \(n\)-sphere \(S^n\) to a space \(X\). 
+%A problem with homotopy groups is that they are, in general, hard to compute, even for simple spaces such as spheres.\\
+%Bordism groups arise as a natural generalisation of homotopy groups, where we replace the \(n\)-sphere with any closed manifold of dimension \(n\) and consider the maps from this manifold to the space \(X\). The cylinder we use to define homotopy classes is replaced by a bordism, which is a manifold of dimension \(n+1\) with boundary the disjoint union of two copies of the manifold we are interested in. With this new equivalence relateion, we also avoid the problem of classifying manifolds up to diffeomorphism or homeomorphism, which is known to be hard in higher dimensions.
 %\todo{The general idea of bordism is to replace the \(n\)-sphere with a manifold of dimension \(n\) and to consider the homotopy classes of maps from this manifold to a space \(X\).}
 
 %\todo{more detail here}
 
 %Testing citations:\cite{atiyah},\cite{brocker},\cite{thom},\cite{lee},\cite{hatcher},\cite{dieck},\cite{luck}
 
-\section{Bordism}
+\section{Bordism}\label{Kap Bordism}
 
-Before we can define bordism, we need some preliminary definitions. We will start with the recalling the definition of manifolds. We will also state some differential topological theorems, which will be useful later on.
+Before we can define bordism, we need some preliminary definitions. We will start with the recalling the definition of manifolds. We will also introduce some useful tools from differential topology.
 
-\subsection{Manifolds}
+\subsection{Manifolds}\label{Kap Manifolds}
 
 \begin{definition}[Topological manifold\ {\cite[pp.2-3]{lee}}]
     An \(n\)-dimensional \demph{topological manifold} is a topological space \(M\) such that:
@@ -60,7 +69,7 @@ Before we can define bordism, we need some preliminary definitions. We will star
 \end{definition}
 
 \begin{definition}[Chart]
-    For a manifold \(M^n\), a \demph{chart} is a pair \(U,\varphi\) of an open subset \(U\subset M\) and a map \(\varphi:U\to\R^n\) such that \(\varphi:U\to\varphi(U)\) is a homeomorphism.
+    For a manifold \(M^n\), a \demph{chart} is a pair \((U,\varphi)\) of an open subset \(U\subset M\) and a map \(\varphi:U\to\R^n\) such that \(\varphi:U\to\varphi(U)\) is a homeomorphism.
 \end{definition}
 
 \begin{example}
@@ -68,7 +77,7 @@ Before we can define bordism, we need some preliminary definitions. We will star
 \end{example}
 
 \begin{example}\label{sphere chart}
-    The \(n\)-dimensional sphere \(S^n\) is an \(n\)-dimensional topological manifold. Hausdorffness and second countability follow from \(S^n\subset \mathbb{R}^{n+1}\). For local Euclideanness, we can use charts onto the open ball \(B_1^n(0)\)
+    The \(n\)-dimensional sphere \(S^n\subset\R^{n+1}\) with subspace topology is an \(n\)-dimensional topological manifold. Hausdorffness and second countability follow from \(S^n\subset \mathbb{R}^{n+1}\). For local Euclideanness, we can use charts onto the open ball \(B_1^n(0)\)
      \[\varphi_i^\pm:U_i:=\{(x_0,\dots,x_n)\in S^n\mid \pm x_i>0\}\to B_1^n(0)\] by \[(x_0,\dots,x_i,\dots,x_n)\mapsto(x_0,\dots,x_{i-1},x_{i+1},\dots,x_n)\]
 \end{example}
 
@@ -158,16 +167,16 @@ We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be 
     For smooth manifolds \(M^m,N^n\), the product \(M\times N\) is a smooth \((m\cdot n)\)-manifold with the charts\[\{(U\times V,(\varphi,\psi))\mid(U,\varphi),(V,\psi)\text{ charts of }M,N\}\]
 \end{example}
 
-\begin{remark}
-    While being a topological manifold is just a property of the topological space \(M\), being a smooth manifold gives the manifold extra structure.
-\end{remark}
+
+    While being a topological manifold is just a property of the topological space \(M\), being a smooth manifold gives the manifold \emph{extra structure}.
+
 
 \begin{example}
-    \((\mathbb{R},[(\mathbb{R},\mathrm{id})])\) and \((\mathbb{R},[\mathbb{R},x\mapsto x^3])\) are different smooth manifolds, because the transition functions between the charts are not smooth: 
+    \((\mathbb{R},[(\mathbb{R},\mathrm{id})])\) and \((\mathbb{R},[\mathbb{R},x\mapsto x^3])\) are \emph{different} smooth manifolds, because the transition functions between the charts are not smooth: 
     \(\mathrm{id}\circ{(x\mapsto x^3)}^{-1}=\varphi\), where
-    \[\varphi(x)=\begin{cases}x^{\frac13} & x\geq0\\ -\lvert x\rvert^{\frac13}\end{cases}\]
+    \[\varphi(x)=\begin{cases}x^{\frac13} & x\geq0\\ -\lvert x\rvert^{\frac13}\end{cases}.\]
     \(\varphi\) is not differentiable at 0, hence the atlases are not equivalent.\\
-    However, they are diffeomorphic, as the map \(\varphi\) is a diffeomorphism between the two manifolds: 
+    However, the manifolds are diffeomorphic, as the map \(\varphi\) is a diffeomorphism between the two manifolds: 
     \((x\mapsto x^3)\circ \varphi\circ \id^{-1}= \id\). Its inverse is given by \(x\mapsto x^3\), which is also smooth: \(\id\circ (x\mapsto x^3)\circ{(x\mapsto x^3)}^{-1}=\id\)
 \end{example}
 
@@ -325,7 +334,7 @@ We already know what it means for a map \(f:\mathbb{R}^n\to\mathbb{R}^m\) to be 
 
 %One of the problems with working with manifolds is that they are, in higher dimensions, hard to classify up to homeomorphism or diffeomorphism. Bordism is a way to classify manifolds up to a weaker equivalence relation, which is \todo{easier to work with}. \todo{maybe in introduction}
 
-\subsection{Unoriented Bordism}
+\subsection{Unoriented Bordism}\label{Kap unor. Bordism}
 \subsubsection{Definitions}
 %Examples need to be added here, too.
 
@@ -533,7 +542,7 @@ This notion only makes sense if we have an neutral element, so we can speak of a
     Notice that in this definition, this is a left module, but since we could just project to the first factor instead, we also get a right module structure.
 \end{remark}
 
-\subsubsection{The Eilenberg-Steenrod Axioms}\label{es axioms}
+\subsubsection{The Eilenberg-Steenrod Axioms}\label{es axioms}\label{Kap ES}
 The Eilenberg-Steenrod axioms are a set of axioms that characterize homology and cohomology theories.
 
 \begin{definition}[Homology theory\ {\cite[\nopp I.3]{eilenberg}}, {\cite[Definition 1.1.]{luck}}]\label{homtheo}
@@ -581,7 +590,7 @@ A proof can be found in\ \cite{milnor}, but we will not need this here.
 \end{remark}
 
 
-\subsubsection{Relative Bordism}
+\subsubsection{Relative Bordism}\label{Kap rel. Bordism}
 
 As homology theories are defined as functors from \(\mathrm{TOP}^2\), we will extend the definition of bordism to pairs of topological spaces.
 
@@ -663,7 +672,7 @@ over \(\N_\ast\), the relative bordism module.
     %\[g(\partial B\setminus(M_0\cup N_1))=g((M_1\setminus N_1)\cup(\partial M\times I))=f(M\setminus N)\cup f(\partial M)\subseteq A\]
 \end{proof}
 
-\subsubsection{Bordism Homology}
+\subsubsection{Bordism Homology}\label{Kap Bordism Homology}
 
 \begin{lemma}\cite[II, Satz 3.2]{brocker}\label{functoriality}
     Relative bordism is a covariant functor \[\mathfrak{N}_\ast:\mathrm{TOP}^2\to\text{graded \(\mathfrak{N}_\ast\)modules}\]
@@ -961,7 +970,7 @@ It suffices to calculate \(\tilde\N_n(S^0)=\ker(\N_n(S^0))\xrightarrow{\varepsil
 Consider \(\varepsilon\circ\iota\).\ \(\varepsilon\circ\iota([M]\oplus[M'])=[M]+[M']\). This is zero if and only if \([M]=[M']\), as elements are self-inverse. It follows that \(\ker(\varepsilon\cong\N_n)\). 
 Altogether, we have \[\N_n(S^k)\cong\N_{n-k}\oplus\N_n\].
 
-\subsection{Orientation}
+\subsection{Orientation}\label{Kap Orientation}
 
 We will now define additional  structure on manifolds.
 
@@ -1055,7 +1064,7 @@ For manifolds with boundary, the \demph{boundary orientation} is induced by the 
 
 %Maybe I should say something about orientations covers\dots
 
-\subsection{Oriented Bordism}
+\subsection{Oriented Bordism}\label{Kap Oriented Bordism}
 
 \subsubsection{Definitions}
 %Probably I should use less confusing notations (e.g.\ \(M^-\) instead of \(M\)).
@@ -1124,7 +1133,7 @@ The path from absolute oriented bordism to relative oriented bordism is exactly 
 
 Again, \(\Omega_n(X,A)\) is not a \(\mathbb{F}_2\)-vector space. So we get a more complicated homology theory now.
 
-\subsubsection{Oriented Bordism Homology}
+\subsubsection{Oriented Bordism Homology}\label{Kap Oriented Bordism Homology}
 
 \begin{lemma}
     Relative oriented bordism is a covariant functor
@@ -1246,15 +1255,15 @@ By the same arguments as in the unoriented case, we get
 \[\Omega_n(S^k)\cong\Omega_n\oplus\Omega_{n-k}\]
 
 
-\section{Cobordism}
-Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual to this, giving rise to a cohomology theory. The answer is yes, as we will see now.\\
+\section{Cobordism}\label{Kap Cobordism}
+Now that we have seen that bordism is a homology theory, we can ask the question wether there is a dual to this, giving rise to a cohomology theory. The answer is yes, as we will see now.
 %I should give a explanation of how \(O(n)\) (real bundles) and \(SO(n)\) (oriented real bundles) come into play.
 
 \subsection{Cobordism}
 
 Cobordism is defined in a less intuitive way than bordism, we will define them over spectra.
 
-\subsubsection{(Thom) Spectra}
+\subsubsection{(Thom) Spectra}\label{Kap Spectra}
 
 %\begin{definition}[Local trivialization\ {\cite[p.242]{tu}}]
 %    Let \(E,B,F\) be manifolds. A \demph{local trivialization} for a smooth surjective map \(\pi:E\to B\) is a collection of charts \(\{(U_i,\varphi_i)\}_{i\in I}\) (for \(\{U_i\}\) an open cover of \(M\)) such that \(\pi^{-1}(U_i)\) is diffeomorphic to \(U_i\times F\) via \(\varphi_i\) for all \(i\in I\). The charts are called \demph{trivializing charts}.
@@ -1446,7 +1455,7 @@ To get a the axioms for cohomology theories, intuitively, we \enquote{reverse al
 
 Again, if only the dimension axiom doesn't not hold, we have a \demph{extraordinary cohomology theory}.
 
-\subsubsection{Bordism Cohomology}\label{cohomology}
+\subsubsection{Bordism Cohomology}\label{cohomology}\label{Kap Bordism Cohomology}
 %\todo{maybe I can manage to do this if I do it only for CW-complexes}
 To prove theorem\ \ref{spectrum cohomology}, we will check the axioms one by one. For this section, we will fix a spectrum \(\underline{E}\), and \(\h^\ast\) will be the associated functor, as defined in theorem\ \ref{spectrum cohomology}.
 
@@ -1596,7 +1605,7 @@ We finally conclude:
     This can be seen as a corollary to theorem\ \ref{spectrum cohomology}, or as a consequence of the above lemmas\ \ref{cofunctoriality},\ \ref{coboundary},\ \ref{cohtpy inv},\ \ref{coles},\ \ref{coexcision},\ \ref{codisjoint}.
 \end{proof}
 
-\subsection{Duality to Bordism Homology}
+\subsection{Duality to Bordism Homology}\label{Kap Duality}
 
 We still need to satisfy the name \enquote{cobordism} and \enquote{bordism cohomology}. It is not at all clear that the cohomology theory we defined above is the dual to the bordism homology theory.
 %We will show that this is indeed the case, and that it is a consequence of Brown's representation theorem\ \cite[Theorem 9.27]{switzer}. theoreme IV.8 in thom vllt
